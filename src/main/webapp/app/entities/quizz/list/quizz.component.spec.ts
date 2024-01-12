@@ -31,6 +31,7 @@ describe('Quizz Management Component', () => {
                 page: '1',
                 size: '1',
                 sort: 'id,desc',
+                'filter[someId.in]': 'dc4279ea-cfb9-11ec-9d64-0242ac120002',
               }),
             ),
             snapshot: { queryParams: {} },
@@ -108,5 +109,16 @@ describe('Quizz Management Component', () => {
         }),
       }),
     );
+  });
+
+  it('should re-initialize the page', () => {
+    // WHEN
+    comp.loadPage(1);
+    comp.reset();
+
+    // THEN
+    expect(comp.page).toEqual(1);
+    expect(service.query).toHaveBeenCalledTimes(2);
+    expect(comp.quizzes?.[0]).toEqual(expect.objectContaining({ id: '9fec3727-3421-4967-b213-ba36557ca194' }));
   });
 });

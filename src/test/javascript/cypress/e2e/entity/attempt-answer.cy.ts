@@ -5,7 +5,7 @@ describe('AttemptAnswer e2e test', () => {
   const attemptAnswerPageUrlPattern = new RegExp('/attempt-answer(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const attemptAnswerSample = { started: '2024-01-11T23:32:15.245Z', ended: '2024-01-12T01:30:24.393Z' };
+  const attemptAnswerSample = { started: '2024-01-11T19:12:52.084Z' };
 
   let attemptAnswer;
   let question;

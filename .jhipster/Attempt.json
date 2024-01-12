@@ -23,8 +23,7 @@
     },
     {
       "fieldName": "ended",
-      "fieldType": "Instant",
-      "fieldValidateRules": ["required"]
+      "fieldType": "Instant"
     }
   ],
   "name": "Attempt",

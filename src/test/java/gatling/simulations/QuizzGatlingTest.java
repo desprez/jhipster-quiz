@@ -81,10 +81,13 @@ public class QuizzGatlingTest extends Simulation {
                                 ", \"description\": \"SAMPLE_TEXT\"" +
                                 ", \"difficulty\": \"EASY\"" +
                                 ", \"category\": \"GENERAL_KNOWLEDGE\"" +
-                                ", \"published\": null" +
                                 ", \"questionOrder\": \"RANDOM\"" +
                                 ", \"maxAnswerTime\": 0" +
-                                ", \"rollbackAllowed\": null" +
+                                ", \"allowBack\": null" +
+                                ", \"allowReview\": null" +
+                                ", \"secretGoodAnwers\": null" +
+                                ", \"image\": null" +
+                                ", \"published\": null" +
                                 "}"
                             )
                         )

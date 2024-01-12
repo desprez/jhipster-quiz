@@ -22,10 +22,13 @@
       "description": "Description",
       "difficulty": "Difficulty",
       "category": "Category",
-      "published": "Published",
       "questionOrder": "Question Order",
       "maxAnswerTime": "Max Answer Time",
-      "rollbackAllowed": "Rollback Allowed",
+      "allowBack": "Allow Back",
+      "allowReview": "Allow Review",
+      "secretGoodAnwers": "Secret Good Anwers",
+      "image": "Image",
+      "published": "Published",
       "questions": "Questions",
       "user": "User"
     }

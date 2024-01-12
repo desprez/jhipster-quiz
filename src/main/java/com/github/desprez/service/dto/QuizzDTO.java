@@ -3,6 +3,7 @@ package com.github.desprez.service.dto;
 import com.github.desprez.domain.enumeration.Category;
 import com.github.desprez.domain.enumeration.Difficulty;
 import com.github.desprez.domain.enumeration.DisplayOrder;
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -30,16 +31,26 @@ public class QuizzDTO implements Serializable {
     private Category category;
 
     @NotNull
-    private Boolean published;
-
-    @NotNull
     private DisplayOrder questionOrder;
 
-    @NotNull
     private Integer maxAnswerTime;
 
     @NotNull
-    private Boolean rollbackAllowed;
+    private Boolean allowBack;
+
+    @NotNull
+    private Boolean allowReview;
+
+    @NotNull
+    private Boolean secretGoodAnwers;
+
+    @Lob
+    private byte[] image;
+
+    private String imageContentType;
+
+    @NotNull
+    private Boolean published;
 
     private UserDTO user;
 
@@ -83,14 +94,6 @@ public class QuizzDTO implements Serializable {
         this.category = category;
     }
 
-    public Boolean getPublished() {
-        return published;
-    }
-
-    public void setPublished(Boolean published) {
-        this.published = published;
-    }
-
     public DisplayOrder getQuestionOrder() {
         return questionOrder;
     }
@@ -107,12 +110,52 @@ public class QuizzDTO implements Serializable {
         this.maxAnswerTime = maxAnswerTime;
     }
 
-    public Boolean getRollbackAllowed() {
-        return rollbackAllowed;
+    public Boolean getAllowBack() {
+        return allowBack;
     }
 
-    public void setRollbackAllowed(Boolean rollbackAllowed) {
-        this.rollbackAllowed = rollbackAllowed;
+    public void setAllowBack(Boolean allowBack) {
+        this.allowBack = allowBack;
+    }
+
+    public Boolean getAllowReview() {
+        return allowReview;
+    }
+
+    public void setAllowReview(Boolean allowReview) {
+        this.allowReview = allowReview;
+    }
+
+    public Boolean getSecretGoodAnwers() {
+        return secretGoodAnwers;
+    }
+
+    public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
+        this.secretGoodAnwers = secretGoodAnwers;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
+    public Boolean getPublished() {
+        return published;
+    }
+
+    public void setPublished(Boolean published) {
+        this.published = published;
     }
 
     public UserDTO getUser() {
@@ -153,10 +196,13 @@ public class QuizzDTO implements Serializable {
             ", description='" + getDescription() + "'" +
             ", difficulty='" + getDifficulty() + "'" +
             ", category='" + getCategory() + "'" +
-            ", published='" + getPublished() + "'" +
             ", questionOrder='" + getQuestionOrder() + "'" +
             ", maxAnswerTime=" + getMaxAnswerTime() +
-            ", rollbackAllowed='" + getRollbackAllowed() + "'" +
+            ", allowBack='" + getAllowBack() + "'" +
+            ", allowReview='" + getAllowReview() + "'" +
+            ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
+            ", image='" + getImage() + "'" +
+            ", published='" + getPublished() + "'" +
             ", user=" + getUser() +
             "}";
     }

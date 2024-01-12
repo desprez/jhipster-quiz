@@ -208,24 +208,6 @@ class AttemptResourceIT {
 
     @Test
     @Transactional
-    void checkEndedIsRequired() throws Exception {
-        int databaseSizeBeforeTest = attemptRepository.findAll().size();
-        // set the field null
-        attempt.setEnded(null);
-
-        // Create the Attempt, which fails.
-        AttemptDTO attemptDTO = attemptMapper.toDto(attempt);
-
-        restAttemptMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(attemptDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Attempt> attemptList = attemptRepository.findAll();
-        assertThat(attemptList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     void getAllAttempts() throws Exception {
         // Initialize the database
         attemptRepository.saveAndFlush(attempt);

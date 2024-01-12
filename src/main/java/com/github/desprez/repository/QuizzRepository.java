@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * Spring Data JPA repository for the Quizz entity.
  */
 @Repository
-public interface QuizzRepository extends JpaRepository<Quizz, UUID> {
+public interface QuizzRepository extends JpaRepository<Quizz, UUID>, JpaSpecificationExecutor<Quizz> {
     @Query("select quizz from Quizz quizz where quizz.user.login = ?#{authentication.name}")
     List<Quizz> findByUserIsCurrentUser();
 

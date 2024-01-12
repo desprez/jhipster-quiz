@@ -1,11 +1,11 @@
-id;title;description;difficulty;category;published;question_order;max_answer_time;rollback_allowed;user_id
-7bf9fa79-5b46-4bb0-bb38-298bf9bd036b;where potentially;filter afore instrumentation;EASY;SCIENCE_NATURE;true;FIXED;19353;true;1
-0dcef665-5080-48b6-97d1-2084adbea6da;veterinarian including divert;bah aha tricky;EASY;GEOGRAPHY;true;FIXED;10308;true;2
-d75356be-f381-4139-9a26-9888d2a65a3e;flaunt;whenever um;EASY;MUSIC;true;FIXED;25974;false;2
-b1c555bc-ca58-471f-bba9-78cfd70a5d7a;economy average;cumbersome;EASY;HISTORY;true;FIXED;27669;false;2
-b47eb570-f707-408c-a72a-2b0f6a3ebcf2;audience channel golden;worth than;MEDIUM;GEOGRAPHY;true;FIXED;10538;false;2
-a80f2877-3dba-4f70-8713-efc9b58123ec;size so overstep;urgently;EASY;ART;true;FIXED;17111;true;2
-ab61d87b-4069-4e02-b122-c3cf2afb4018;what bathrobe qua;woozy notwithstanding;MEDIUM;ANIME_MANGA;true;RANDOM;1873;true;2
-4cdffb12-81b4-4e2a-8873-7a965bedca8d;below till cockpit;for;MEDIUM;CELEBRITIES;false;FIXED;31075;true;2
-22defeb2-a226-4929-a569-b9229e672eeb;blot humming;what promptly;MEDIUM;ANIME_MANGA;false;FIXED;331;true;2
-4735436d-1065-403b-9b34-5e05b1cde5fa;above broadly;how after;EASY;MUSIC;false;FIXED;20145;false;1
+id;title;description;difficulty;category;question_order;max_answer_time;allow_back;allow_review;secret_good_anwers;image;image_content_type;published;user_id
+7bf9fa79-5b46-4bb0-bb38-298bf9bd036b;where potentially;filter afore instrumentation;EASY;SCIENCE_NATURE;RANDOM;19219;false;true;true;../fake-data/blob/hipster.png;image/png;false;1
+cef66550-808b-467d-9120-84adbea6da6e;angrily workplace;critic at;EASY;MYTHOLOGY;RANDOM;3595;true;false;false;../fake-data/blob/hipster.png;image/png;true;2
+8b9d296a-56d7-4535-a6be-f381139a2698;for although;for reoccur;MEDIUM;MYTHOLOGY;FIXED;3697;true;true;false;../fake-data/blob/hipster.png;image/png;false;1
+bb1c555b-cca5-4871-afba-978cfd70a5d7;truthfully smoggy opposite;scented following million;HARD;MYTHOLOGY;RANDOM;21460;true;false;true;../fake-data/blob/hipster.png;image/png;false;2
+6a3ebcf2-ae44-42ac-980c-b62462378468;worth than;into geez;HARD;CELEBRITIES;FIXED;32334;true;true;true;../fake-data/blob/hipster.png;image/png;true;1
+3efc9b58-123e-4c3b-958b-0bac2d1f0b90;accidentally rudely;colorfully;HARD;SPORTS;RANDOM;23555;true;true;true;../fake-data/blob/hipster.png;image/png;false;2
+e02122c3-cf2a-4fb4-8018-fcef1e1fb38c;extremely overproduce if;baboon;MEDIUM;BOARD_GAMES;FIXED;27854;false;false;false;../fake-data/blob/hipster.png;image/png;true;1
+281b4e2a-8737-4a96-a5be-dca8d3cf9fb0;till;aside;MEDIUM;ANIMALS;FIXED;4478;true;false;true;../fake-data/blob/hipster.png;image/png;false;2
+beff722d-efeb-42a2-9269-29569b9229e6;attached;so;MEDIUM;ANIMALS;FIXED;12982;false;false;false;../fake-data/blob/hipster.png;image/png;true;1
+e85bffb1-0299-4f8f-8044-735436d10650;brr voluntarily dependable;yet;EASY;FILM;RANDOM;16902;false;true;false;../fake-data/blob/hipster.png;image/png;true;1

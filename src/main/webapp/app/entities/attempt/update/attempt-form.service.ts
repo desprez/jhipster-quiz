@@ -62,9 +62,7 @@ export class AttemptFormService {
       started: new FormControl(attemptRawValue.started, {
         validators: [Validators.required],
       }),
-      ended: new FormControl(attemptRawValue.ended, {
-        validators: [Validators.required],
-      }),
+      ended: new FormControl(attemptRawValue.ended),
       quizz: new FormControl(attemptRawValue.quizz, {
         validators: [Validators.required],
       }),

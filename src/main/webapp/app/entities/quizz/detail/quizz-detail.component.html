@@ -31,10 +31,6 @@
           <dd>
             <span jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.quizz.published">Published</span></dt>
-          <dd>
-            <span>{{ quizz.published }}</span>
-          </dd>
           <dt><span jhiTranslate="quizzApp.quizz.questionOrder">Question Order</span></dt>
           <dd>
             <span jhiTranslate="{{ 'quizzApp.DisplayOrder.' + quizz.questionOrder }}">{{ quizz.questionOrder }}</span>
@@ -43,9 +39,32 @@
           <dd>
             <span>{{ quizz.maxAnswerTime }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.quizz.rollbackAllowed">Rollback Allowed</span></dt>
+          <dt><span jhiTranslate="quizzApp.quizz.allowBack">Allow Back</span></dt>
           <dd>
-            <span>{{ quizz.rollbackAllowed }}</span>
+            <span>{{ quizz.allowBack }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.allowReview">Allow Review</span></dt>
+          <dd>
+            <span>{{ quizz.allowReview }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.secretGoodAnwers">Secret Good Anwers</span></dt>
+          <dd>
+            <span>{{ quizz.secretGoodAnwers }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.image">Image</span></dt>
+          <dd>
+            @if (quizz.image) {
+              <div>
+                <a (click)="openFile(quizz.image, quizz.imageContentType)">
+                  <img [src]="'data:' + quizz.imageContentType + ';base64,' + quizz.image" style="max-width: 100%" alt="quizz image" />
+                </a>
+                {{ quizz.imageContentType }}, {{ byteSize(quizz.image) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.published">Published</span></dt>
+          <dd>
+            <span>{{ quizz.published }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.user">User</span></dt>
           <dd>

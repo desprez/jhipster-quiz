@@ -49,21 +49,35 @@ public class Quizz implements Serializable {
     private Category category;
 
     @NotNull
-    @Column(name = "published", nullable = false)
-    private Boolean published;
-
-    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "question_order", nullable = false)
     private DisplayOrder questionOrder;
 
-    @NotNull
-    @Column(name = "max_answer_time", nullable = false)
+    @Column(name = "max_answer_time")
     private Integer maxAnswerTime;
 
     @NotNull
-    @Column(name = "rollback_allowed", nullable = false)
-    private Boolean rollbackAllowed;
+    @Column(name = "allow_back", nullable = false)
+    private Boolean allowBack;
+
+    @NotNull
+    @Column(name = "allow_review", nullable = false)
+    private Boolean allowReview;
+
+    @NotNull
+    @Column(name = "secret_good_anwers", nullable = false)
+    private Boolean secretGoodAnwers;
+
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "image_content_type")
+    private String imageContentType;
+
+    @NotNull
+    @Column(name = "published", nullable = false)
+    private Boolean published;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "quizz")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -141,19 +155,6 @@ public class Quizz implements Serializable {
         this.category = category;
     }
 
-    public Boolean getPublished() {
-        return this.published;
-    }
-
-    public Quizz published(Boolean published) {
-        this.setPublished(published);
-        return this;
-    }
-
-    public void setPublished(Boolean published) {
-        this.published = published;
-    }
-
     public DisplayOrder getQuestionOrder() {
         return this.questionOrder;
     }
@@ -180,17 +181,82 @@ public class Quizz implements Serializable {
         this.maxAnswerTime = maxAnswerTime;
     }
 
-    public Boolean getRollbackAllowed() {
-        return this.rollbackAllowed;
+    public Boolean getAllowBack() {
+        return this.allowBack;
     }
 
-    public Quizz rollbackAllowed(Boolean rollbackAllowed) {
-        this.setRollbackAllowed(rollbackAllowed);
+    public Quizz allowBack(Boolean allowBack) {
+        this.setAllowBack(allowBack);
         return this;
     }
 
-    public void setRollbackAllowed(Boolean rollbackAllowed) {
-        this.rollbackAllowed = rollbackAllowed;
+    public void setAllowBack(Boolean allowBack) {
+        this.allowBack = allowBack;
+    }
+
+    public Boolean getAllowReview() {
+        return this.allowReview;
+    }
+
+    public Quizz allowReview(Boolean allowReview) {
+        this.setAllowReview(allowReview);
+        return this;
+    }
+
+    public void setAllowReview(Boolean allowReview) {
+        this.allowReview = allowReview;
+    }
+
+    public Boolean getSecretGoodAnwers() {
+        return this.secretGoodAnwers;
+    }
+
+    public Quizz secretGoodAnwers(Boolean secretGoodAnwers) {
+        this.setSecretGoodAnwers(secretGoodAnwers);
+        return this;
+    }
+
+    public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
+        this.secretGoodAnwers = secretGoodAnwers;
+    }
+
+    public byte[] getImage() {
+        return this.image;
+    }
+
+    public Quizz image(byte[] image) {
+        this.setImage(image);
+        return this;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return this.imageContentType;
+    }
+
+    public Quizz imageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+        return this;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
+    public Boolean getPublished() {
+        return this.published;
+    }
+
+    public Quizz published(Boolean published) {
+        this.setPublished(published);
+        return this;
+    }
+
+    public void setPublished(Boolean published) {
+        this.published = published;
     }
 
     public Set<Question> getQuestions() {
@@ -265,10 +331,14 @@ public class Quizz implements Serializable {
             ", description='" + getDescription() + "'" +
             ", difficulty='" + getDifficulty() + "'" +
             ", category='" + getCategory() + "'" +
-            ", published='" + getPublished() + "'" +
             ", questionOrder='" + getQuestionOrder() + "'" +
             ", maxAnswerTime=" + getMaxAnswerTime() +
-            ", rollbackAllowed='" + getRollbackAllowed() + "'" +
+            ", allowBack='" + getAllowBack() + "'" +
+            ", allowReview='" + getAllowReview() + "'" +
+            ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
+            ", image='" + getImage() + "'" +
+            ", imageContentType='" + getImageContentType() + "'" +
+            ", published='" + getPublished() + "'" +
             "}";
     }
 }

@@ -1,7 +1,9 @@
 package com.github.desprez.web.rest;
 
 import com.github.desprez.repository.QuizzRepository;
+import com.github.desprez.service.QuizzQueryService;
 import com.github.desprez.service.QuizzService;
+import com.github.desprez.service.criteria.QuizzCriteria;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
@@ -43,9 +45,12 @@ public class QuizzResource {
 
     private final QuizzRepository quizzRepository;
 
-    public QuizzResource(QuizzService quizzService, QuizzRepository quizzRepository) {
+    private final QuizzQueryService quizzQueryService;
+
+    public QuizzResource(QuizzService quizzService, QuizzRepository quizzRepository, QuizzQueryService quizzQueryService) {
         this.quizzService = quizzService;
         this.quizzRepository = quizzRepository;
+        this.quizzQueryService = quizzQueryService;
     }
 
     /**
@@ -142,23 +147,31 @@ public class QuizzResource {
      * {@code GET  /quizzes} : get all the quizzes.
      *
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
+     * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of quizzes in body.
      */
     @GetMapping("")
     public ResponseEntity<List<QuizzDTO>> getAllQuizzes(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
-        @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
+        QuizzCriteria criteria,
+        @org.springdoc.core.annotations.ParameterObject Pageable pageable
     ) {
-        log.debug("REST request to get a page of Quizzes");
-        Page<QuizzDTO> page;
-        if (eagerload) {
-            page = quizzService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = quizzService.findAll(pageable);
-        }
+        log.debug("REST request to get Quizzes by criteria: {}", criteria);
+
+        Page<QuizzDTO> page = quizzQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /quizzes/count} : count all the quizzes.
+     *
+     * @param criteria the criteria which the requested entities should match.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the count in body.
+     */
+    @GetMapping("/count")
+    public ResponseEntity<Long> countQuizzes(QuizzCriteria criteria) {
+        log.debug("REST request to count Quizzes by criteria: {}", criteria);
+        return ResponseEntity.ok().body(quizzQueryService.countByCriteria(criteria));
     }
 
     /**

@@ -15,7 +15,7 @@ describe('Quizz e2e test', () => {
   const quizzPageUrlPattern = new RegExp('/quizz(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const quizzSample = {"title":"but","difficulty":"MEDIUM","category":"MATHEMATICS","published":false,"questionOrder":"FIXED","maxAnswerTime":29754,"rollbackAllowed":true};
+  // const quizzSample = {"title":"or lazy anenst","difficulty":"MEDIUM","category":"BOOKS","questionOrder":"FIXED","allowBack":true,"allowReview":true,"secretGoodAnwers":true,"published":false};
 
   let quizz;
   // let user;
@@ -183,7 +183,7 @@ describe('Quizz e2e test', () => {
         cy.url().should('match', quizzPageUrlPattern);
       });
 
-      it('edit button click should load edit Quizz page and save', () => {
+      it.skip('edit button click should load edit Quizz page and save', () => {
         cy.get(entityEditButtonSelector).first().click();
         cy.getEntityCreateUpdateHeading('Quizz');
         cy.get(entityCreateSaveButtonSelector).click();
@@ -218,31 +218,43 @@ describe('Quizz e2e test', () => {
     });
 
     it.skip('should create an instance of Quizz', () => {
-      cy.get(`[data-cy="title"]`).type('oof');
-      cy.get(`[data-cy="title"]`).should('have.value', 'oof');
+      cy.get(`[data-cy="title"]`).type('attitude');
+      cy.get(`[data-cy="title"]`).should('have.value', 'attitude');
 
-      cy.get(`[data-cy="description"]`).type('joust');
-      cy.get(`[data-cy="description"]`).should('have.value', 'joust');
+      cy.get(`[data-cy="description"]`).type('traveler unwelcome');
+      cy.get(`[data-cy="description"]`).should('have.value', 'traveler unwelcome');
 
-      cy.get(`[data-cy="difficulty"]`).select('HARD');
+      cy.get(`[data-cy="difficulty"]`).select('EASY');
 
-      cy.get(`[data-cy="category"]`).select('MYTHOLOGY');
+      cy.get(`[data-cy="category"]`).select('SPORTS');
+
+      cy.get(`[data-cy="questionOrder"]`).select('FIXED');
+
+      cy.get(`[data-cy="maxAnswerTime"]`).type('12974');
+      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', '12974');
+
+      cy.get(`[data-cy="allowBack"]`).should('not.be.checked');
+      cy.get(`[data-cy="allowBack"]`).click();
+      cy.get(`[data-cy="allowBack"]`).should('be.checked');
+
+      cy.get(`[data-cy="allowReview"]`).should('not.be.checked');
+      cy.get(`[data-cy="allowReview"]`).click();
+      cy.get(`[data-cy="allowReview"]`).should('be.checked');
+
+      cy.get(`[data-cy="secretGoodAnwers"]`).should('not.be.checked');
+      cy.get(`[data-cy="secretGoodAnwers"]`).click();
+      cy.get(`[data-cy="secretGoodAnwers"]`).should('be.checked');
+
+      cy.setFieldImageAsBytesOfEntity('image', 'integration-test.png', 'image/png');
 
       cy.get(`[data-cy="published"]`).should('not.be.checked');
       cy.get(`[data-cy="published"]`).click();
       cy.get(`[data-cy="published"]`).should('be.checked');
 
-      cy.get(`[data-cy="questionOrder"]`).select('RANDOM');
-
-      cy.get(`[data-cy="maxAnswerTime"]`).type('20320');
-      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', '20320');
-
-      cy.get(`[data-cy="rollbackAllowed"]`).should('not.be.checked');
-      cy.get(`[data-cy="rollbackAllowed"]`).click();
-      cy.get(`[data-cy="rollbackAllowed"]`).should('be.checked');
-
       cy.get(`[data-cy="user"]`).select(1);
 
+      // since cypress clicks submit too fast before the blob fields are validated
+      cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {

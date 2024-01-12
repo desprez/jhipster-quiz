@@ -50,10 +50,10 @@ describe('Question Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Quizz query and add missing value', () => {
       const question: IQuestion = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const quizz: IQuizz = { id: '40ee05ff-34d6-4ccd-9bfe-ebafa4c78fce' };
+      const quizz: IQuizz = { id: 'ccdbfeeb-afa4-4c78-9fce-44a9fda5bc49' };
       question.quizz = quizz;
 
-      const quizzCollection: IQuizz[] = [{ id: '4a9fda5b-c496-4921-9792-b973530a4b26' }];
+      const quizzCollection: IQuizz[] = [{ id: '921792b9-7353-40a4-bb26-5947e9580efc' }];
       jest.spyOn(quizzService, 'query').mockReturnValue(of(new HttpResponse({ body: quizzCollection })));
       const additionalQuizzes = [quizz];
       const expectedCollection: IQuizz[] = [...additionalQuizzes, ...quizzCollection];
@@ -72,7 +72,7 @@ describe('Question Management Update Component', () => {
 
     it('Should update editForm', () => {
       const question: IQuestion = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const quizz: IQuizz = { id: '947e9580-efcd-406b-9a80-01ef7fd508ee' };
+      const quizz: IQuizz = { id: '06ba8001-ef7f-4d50-88ee-76389850f8f4' };
       question.quizz = quizz;
 
       activatedRoute.data = of({ question });

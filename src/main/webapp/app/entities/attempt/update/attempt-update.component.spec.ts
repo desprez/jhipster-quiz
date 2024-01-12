@@ -55,10 +55,10 @@ describe('Attempt Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Quizz query and add missing value', () => {
       const attempt: IAttempt = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const quizz: IQuizz = { id: '6389850f-8f43-48e4-b6c7-f3132f3e58aa' };
+      const quizz: IQuizz = { id: '8e46c7f3-132f-43e5-a8aa-e478be149803' };
       attempt.quizz = quizz;
 
-      const quizzCollection: IQuizz[] = [{ id: '478be149-803a-4d24-993f-350f7be8f105' }];
+      const quizzCollection: IQuizz[] = [{ id: 'd2493f35-0f7b-4e8f-9105-716794828d81' }];
       jest.spyOn(quizzService, 'query').mockReturnValue(of(new HttpResponse({ body: quizzCollection })));
       const additionalQuizzes = [quizz];
       const expectedCollection: IQuizz[] = [...additionalQuizzes, ...quizzCollection];
@@ -99,7 +99,7 @@ describe('Attempt Management Update Component', () => {
 
     it('Should update editForm', () => {
       const attempt: IAttempt = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const quizz: IQuizz = { id: '16794828-d817-4d40-91b8-a9565e1a6ea2' };
+      const quizz: IQuizz = { id: 'd401b8a9-565e-41a6-9ea2-54d267c0f1c1' };
       attempt.quizz = quizz;
       const user: IUser = { id: 25358 };
       attempt.user = user;

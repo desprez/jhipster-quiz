@@ -76,19 +76,6 @@
               placeholder="YYYY-MM-DD HH:mm"
             />
           </div>
-          @if (editForm.get('ended')!.invalid && (editForm.get('ended')!.dirty || editForm.get('ended')!.touched)) {
-            <div>
-              @if (editForm.get('ended')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
-              }
-              <small
-                class="form-text text-danger"
-                [hidden]="!editForm.get('ended')?.errors?.datetimelocal"
-                jhiTranslate="entity.validation.datetimelocal"
-                >This field should be a date and time.</small
-              >
-            </div>
-          }
         </div>
 
         <div class="mb-3">

@@ -10,10 +10,14 @@ export interface IQuizz {
   description?: string | null;
   difficulty?: keyof typeof Difficulty | null;
   category?: keyof typeof Category | null;
-  published?: boolean | null;
   questionOrder?: keyof typeof DisplayOrder | null;
   maxAnswerTime?: number | null;
-  rollbackAllowed?: boolean | null;
+  allowBack?: boolean | null;
+  allowReview?: boolean | null;
+  secretGoodAnwers?: boolean | null;
+  image?: string | null;
+  imageContentType?: string | null;
+  published?: boolean | null;
   questions?: Pick<IQuestion, 'id' | 'statement'>[] | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }

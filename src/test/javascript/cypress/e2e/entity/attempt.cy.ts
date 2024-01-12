@@ -15,7 +15,7 @@ describe('Attempt e2e test', () => {
   const attemptPageUrlPattern = new RegExp('/attempt(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const attemptSample = {"score":19800,"started":"2024-01-12T01:32:49.152Z","ended":"2024-01-12T17:12:43.931Z"};
+  // const attemptSample = {"score":15292,"started":"2024-01-12T04:33:43.229Z"};
 
   let attempt;
   // let quizz;
@@ -31,7 +31,7 @@ describe('Attempt e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/quizzes',
-      body: {"title":"spotted or","description":"oh grapefruit","difficulty":"EASY","category":"POLITICS","published":true,"questionOrder":"RANDOM","maxAnswerTime":11547,"rollbackAllowed":false},
+      body: {"title":"formal abaft unless","description":"survey circa","difficulty":"MEDIUM","category":"CELEBRITIES","questionOrder":"FIXED","maxAnswerTime":26004,"allowBack":true,"allowReview":true,"secretGoodAnwers":true,"image":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","imageContentType":"unknown","published":true},
     }).then(({ body }) => {
       quizz = body;
     });
@@ -241,16 +241,16 @@ describe('Attempt e2e test', () => {
     });
 
     it.skip('should create an instance of Attempt', () => {
-      cy.get(`[data-cy="score"]`).type('22974');
-      cy.get(`[data-cy="score"]`).should('have.value', '22974');
+      cy.get(`[data-cy="score"]`).type('1664');
+      cy.get(`[data-cy="score"]`).should('have.value', '1664');
 
-      cy.get(`[data-cy="started"]`).type('2024-01-12T13:36');
+      cy.get(`[data-cy="started"]`).type('2024-01-12T02:14');
       cy.get(`[data-cy="started"]`).blur();
-      cy.get(`[data-cy="started"]`).should('have.value', '2024-01-12T13:36');
+      cy.get(`[data-cy="started"]`).should('have.value', '2024-01-12T02:14');
 
-      cy.get(`[data-cy="ended"]`).type('2024-01-12T07:51');
+      cy.get(`[data-cy="ended"]`).type('2024-01-12T13:36');
       cy.get(`[data-cy="ended"]`).blur();
-      cy.get(`[data-cy="ended"]`).should('have.value', '2024-01-12T07:51');
+      cy.get(`[data-cy="ended"]`).should('have.value', '2024-01-12T13:36');
 
       cy.get(`[data-cy="quizz"]`).select(1);
       cy.get(`[data-cy="user"]`).select(1);

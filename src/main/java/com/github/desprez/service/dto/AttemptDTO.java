@@ -21,7 +21,6 @@ public class AttemptDTO implements Serializable {
     @NotNull
     private Instant started;
 
-    @NotNull
     private Instant ended;
 
     private QuizzDTO quizz;

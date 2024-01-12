@@ -7,14 +7,16 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import SharedModule from 'app/shared/shared.module';
 import { SortDirective, SortByDirective } from 'app/shared/sort';
 import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
-import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
 
-import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
+import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
-import { IQuizz } from '../quizz.model';
-import { EntityArrayResponseType, QuizzService } from '../service/quizz.service';
+import { DataUtils } from 'app/core/util/data-util.service';
+import { ParseLinks } from 'app/core/util/parse-links.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { QuizzDeleteDialogComponent } from '../delete/quizz-delete-dialog.component';
+import { EntityArrayResponseType, QuizzService } from '../service/quizz.service';
+import { IQuizz } from '../quizz.model';
 
 @Component({
   standalone: true,
@@ -29,7 +31,7 @@ import { QuizzDeleteDialogComponent } from '../delete/quizz-delete-dialog.compon
     DurationPipe,
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
-    ItemCountComponent,
+    InfiniteScrollModule,
   ],
 })
 export class QuizzComponent implements OnInit {
@@ -40,20 +42,43 @@ export class QuizzComponent implements OnInit {
   ascending = true;
 
   itemsPerPage = ITEMS_PER_PAGE;
-  totalItems = 0;
+  links: { [key: string]: number } = {
+    last: 0,
+  };
   page = 1;
 
   constructor(
     protected quizzService: QuizzService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
+    protected parseLinks: ParseLinks,
+    protected dataUtils: DataUtils,
     protected modalService: NgbModal,
   ) {}
+
+  reset(): void {
+    this.page = 1;
+    this.quizzes = [];
+    this.load();
+  }
+
+  loadPage(page: number): void {
+    this.page = page;
+    this.load();
+  }
 
   trackId = (_index: number, item: IQuizz): string => this.quizzService.getQuizzIdentifier(item);
 
   ngOnInit(): void {
     this.load();
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(quizz: IQuizz): void {
@@ -96,8 +121,6 @@ export class QuizzComponent implements OnInit {
   }
 
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
-    const page = params.get(PAGE_HEADER);
-    this.page = +(page ?? 1);
     const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
     this.predicate = sort[0];
     this.ascending = sort[1] === ASC;
@@ -110,11 +133,30 @@ export class QuizzComponent implements OnInit {
   }
 
   protected fillComponentAttributesFromResponseBody(data: IQuizz[] | null): IQuizz[] {
+    // If there is previous link, data is a infinite scroll pagination content.
+    if ('prev' in this.links) {
+      const quizzesNew = this.quizzes ?? [];
+      if (data) {
+        for (const d of data) {
+          if (quizzesNew.map(op => op.id).indexOf(d.id) === -1) {
+            quizzesNew.push(d);
+          }
+        }
+      }
+      return quizzesNew;
+    }
     return data ?? [];
   }
 
   protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {
-    this.totalItems = Number(headers.get(TOTAL_COUNT_RESPONSE_HEADER));
+    const linkHeader = headers.get('link');
+    if (linkHeader) {
+      this.links = this.parseLinks.parse(linkHeader);
+    } else {
+      this.links = {
+        last: 0,
+      };
+    }
   }
 
   protected queryBackend(page?: number, predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {

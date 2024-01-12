@@ -14,7 +14,7 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type QuizzFormGroupInput = IQuizz | PartialWithRequiredKeyOf<NewQuizz>;
 
-type QuizzFormDefaults = Pick<NewQuizz, 'id' | 'published' | 'rollbackAllowed'>;
+type QuizzFormDefaults = Pick<NewQuizz, 'id' | 'allowBack' | 'allowReview' | 'secretGoodAnwers' | 'published'>;
 
 type QuizzFormGroupContent = {
   id: FormControl<IQuizz['id'] | NewQuizz['id']>;
@@ -22,10 +22,14 @@ type QuizzFormGroupContent = {
   description: FormControl<IQuizz['description']>;
   difficulty: FormControl<IQuizz['difficulty']>;
   category: FormControl<IQuizz['category']>;
-  published: FormControl<IQuizz['published']>;
   questionOrder: FormControl<IQuizz['questionOrder']>;
   maxAnswerTime: FormControl<IQuizz['maxAnswerTime']>;
-  rollbackAllowed: FormControl<IQuizz['rollbackAllowed']>;
+  allowBack: FormControl<IQuizz['allowBack']>;
+  allowReview: FormControl<IQuizz['allowReview']>;
+  secretGoodAnwers: FormControl<IQuizz['secretGoodAnwers']>;
+  image: FormControl<IQuizz['image']>;
+  imageContentType: FormControl<IQuizz['imageContentType']>;
+  published: FormControl<IQuizz['published']>;
   user: FormControl<IQuizz['user']>;
 };
 
@@ -58,16 +62,22 @@ export class QuizzFormService {
       category: new FormControl(quizzRawValue.category, {
         validators: [Validators.required],
       }),
-      published: new FormControl(quizzRawValue.published, {
-        validators: [Validators.required],
-      }),
       questionOrder: new FormControl(quizzRawValue.questionOrder, {
         validators: [Validators.required],
       }),
-      maxAnswerTime: new FormControl(quizzRawValue.maxAnswerTime, {
+      maxAnswerTime: new FormControl(quizzRawValue.maxAnswerTime),
+      allowBack: new FormControl(quizzRawValue.allowBack, {
         validators: [Validators.required],
       }),
-      rollbackAllowed: new FormControl(quizzRawValue.rollbackAllowed, {
+      allowReview: new FormControl(quizzRawValue.allowReview, {
+        validators: [Validators.required],
+      }),
+      secretGoodAnwers: new FormControl(quizzRawValue.secretGoodAnwers, {
+        validators: [Validators.required],
+      }),
+      image: new FormControl(quizzRawValue.image),
+      imageContentType: new FormControl(quizzRawValue.imageContentType),
+      published: new FormControl(quizzRawValue.published, {
         validators: [Validators.required],
       }),
       user: new FormControl(quizzRawValue.user, {
@@ -93,8 +103,10 @@ export class QuizzFormService {
   private getFormDefaults(): QuizzFormDefaults {
     return {
       id: null,
+      allowBack: false,
+      allowReview: false,
+      secretGoodAnwers: false,
       published: false,
-      rollbackAllowed: false,
     };
   }
 }

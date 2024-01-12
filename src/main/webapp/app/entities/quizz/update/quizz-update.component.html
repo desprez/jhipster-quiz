@@ -93,18 +93,6 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.published" for="field_published">Published</label>
-          <input type="checkbox" class="form-check" name="published" id="field_published" data-cy="published" formControlName="published" />
-          @if (editForm.get('published')!.invalid && (editForm.get('published')!.dirty || editForm.get('published')!.touched)) {
-            <div>
-              @if (editForm.get('published')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
-              }
-            </div>
-          }
-        </div>
-
-        <div class="mb-3">
           <label class="form-label" jhiTranslate="quizzApp.quizz.questionOrder" for="field_questionOrder">Question Order</label>
           <select
             class="form-control"
@@ -137,36 +125,108 @@
             data-cy="maxAnswerTime"
             formControlName="maxAnswerTime"
           />
-          @if (editForm.get('maxAnswerTime')!.invalid && (editForm.get('maxAnswerTime')!.dirty || editForm.get('maxAnswerTime')!.touched)) {
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.allowBack" for="field_allowBack">Allow Back</label>
+          <input type="checkbox" class="form-check" name="allowBack" id="field_allowBack" data-cy="allowBack" formControlName="allowBack" />
+          @if (editForm.get('allowBack')!.invalid && (editForm.get('allowBack')!.dirty || editForm.get('allowBack')!.touched)) {
             <div>
-              @if (editForm.get('maxAnswerTime')?.errors?.required) {
+              @if (editForm.get('allowBack')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
-              <small
-                class="form-text text-danger"
-                [hidden]="!editForm.get('maxAnswerTime')?.errors?.number"
-                jhiTranslate="entity.validation.number"
-                >This field should be a number.</small
-              >
             </div>
           }
         </div>
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.rollbackAllowed" for="field_rollbackAllowed">Rollback Allowed</label>
+          <label class="form-label" jhiTranslate="quizzApp.quizz.allowReview" for="field_allowReview">Allow Review</label>
           <input
             type="checkbox"
             class="form-check"
-            name="rollbackAllowed"
-            id="field_rollbackAllowed"
-            data-cy="rollbackAllowed"
-            formControlName="rollbackAllowed"
+            name="allowReview"
+            id="field_allowReview"
+            data-cy="allowReview"
+            formControlName="allowReview"
+          />
+          @if (editForm.get('allowReview')!.invalid && (editForm.get('allowReview')!.dirty || editForm.get('allowReview')!.touched)) {
+            <div>
+              @if (editForm.get('allowReview')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.secretGoodAnwers" for="field_secretGoodAnwers">Secret Good Anwers</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="secretGoodAnwers"
+            id="field_secretGoodAnwers"
+            data-cy="secretGoodAnwers"
+            formControlName="secretGoodAnwers"
           />
           @if (
-            editForm.get('rollbackAllowed')!.invalid && (editForm.get('rollbackAllowed')!.dirty || editForm.get('rollbackAllowed')!.touched)
+            editForm.get('secretGoodAnwers')!.invalid &&
+            (editForm.get('secretGoodAnwers')!.dirty || editForm.get('secretGoodAnwers')!.touched)
           ) {
             <div>
-              @if (editForm.get('rollbackAllowed')?.errors?.required) {
+              @if (editForm.get('secretGoodAnwers')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.image" for="field_image">Image</label>
+          <div>
+            @if (editForm.get('image')!.value) {
+              <img
+                [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
+                style="max-height: 100px"
+                alt="quizz image"
+              />
+            }
+            @if (editForm.get('image')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value!) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('image', 'imageContentType', 'file_image')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_image"
+              data-cy="image"
+              (change)="setFileData($event, 'image', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imageContentType"
+            id="field_imageContentType"
+            formControlName="imageContentType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.published" for="field_published">Published</label>
+          <input type="checkbox" class="form-check" name="published" id="field_published" data-cy="published" formControlName="published" />
+          @if (editForm.get('published')!.invalid && (editForm.get('published')!.dirty || editForm.get('published')!.touched)) {
+            <div>
+              @if (editForm.get('published')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>

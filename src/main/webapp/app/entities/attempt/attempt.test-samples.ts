@@ -6,7 +6,6 @@ export const sampleWithRequiredData: IAttempt = {
   id: 'c528df98-857c-403b-b0e8-45e7a57f61a9',
   score: 25701,
   started: dayjs('2024-01-11T19:33'),
-  ended: dayjs('2024-01-12T09:03'),
 };
 
 export const sampleWithPartialData: IAttempt = {
@@ -26,7 +25,6 @@ export const sampleWithFullData: IAttempt = {
 export const sampleWithNewData: NewAttempt = {
   score: 18642,
   started: dayjs('2024-01-11T20:49'),
-  ended: dayjs('2024-01-12T17:50'),
   id: null,
 };
 

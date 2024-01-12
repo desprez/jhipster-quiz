@@ -29,8 +29,7 @@ public class AttemptAnswer implements Serializable {
     @Column(name = "started", nullable = false)
     private Instant started;
 
-    @NotNull
-    @Column(name = "ended", nullable = false)
+    @Column(name = "ended")
     private Instant ended;
 
     @ManyToOne(optional = false)

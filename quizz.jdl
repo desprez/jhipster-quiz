@@ -16,10 +16,13 @@ entity Quizz {
   description String maxlength(500)
   difficulty Difficulty required
   category Category required
-  published Boolean required
   questionOrder DisplayOrder required
-  maxAnswerTime Integer required
-  rollbackAllowed Boolean required
+  maxAnswerTime Integer
+  allowBack Boolean required
+  allowReview Boolean required
+  secretGoodAnwers Boolean required
+  image ImageBlob
+  published Boolean required
 }
 
 //@skipClient
@@ -42,7 +45,7 @@ entity Attempt {
   id UUID
   score Integer required min(0)
   started Instant required
-  ended Instant required
+  ended Instant
 }
 
 @readOnly
@@ -50,7 +53,7 @@ entity Attempt {
 entity AttemptAnswer {
   id UUID
   started Instant required
-  ended Instant required
+  ended Instant
 }
 
 relationship OneToMany {
@@ -69,5 +72,6 @@ relationship ManyToOne {
 
 dto Quizz, Attempt with mapstruct
 service * with serviceImpl
-paginate Quizz, Attempt with pagination
-//filter Quizz, Question, Attempt, AttemptAnswer
+paginate Quizz with infinite-scroll
+paginate Attempt with pagination
+filter Quizz
