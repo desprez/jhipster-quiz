@@ -1,0 +1,150 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-attempt-heading" data-cy="AttemptCreateUpdateHeading" jhiTranslate="quizzApp.attempt.home.createOrEditLabel">
+        Create or edit a Attempt
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.attempt.id" for="field_id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.score" for="field_score">Score</label>
+          <input type="number" class="form-control" name="score" id="field_score" data-cy="score" formControlName="score" />
+          @if (editForm.get('score')!.invalid && (editForm.get('score')!.dirty || editForm.get('score')!.touched)) {
+            <div>
+              @if (editForm.get('score')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('score')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }"
+                  >This field should be at least 0.</small
+                >
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('score')?.errors?.number" jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.started" for="field_started">Started</label>
+          <div class="d-flex">
+            <input
+              id="field_started"
+              data-cy="started"
+              type="datetime-local"
+              class="form-control"
+              name="started"
+              formControlName="started"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('started')!.invalid && (editForm.get('started')!.dirty || editForm.get('started')!.touched)) {
+            <div>
+              @if (editForm.get('started')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('started')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.ended" for="field_ended">Ended</label>
+          <div class="d-flex">
+            <input
+              id="field_ended"
+              data-cy="ended"
+              type="datetime-local"
+              class="form-control"
+              name="ended"
+              formControlName="ended"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('ended')!.invalid && (editForm.get('ended')!.dirty || editForm.get('ended')!.touched)) {
+            <div>
+              @if (editForm.get('ended')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('ended')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.quizz" for="field_quizz">Quizz</label>
+          <select class="form-control" id="field_quizz" data-cy="quizz" name="quizz" formControlName="quizz" [compareWith]="compareQuizz">
+            @if (!editForm.get('quizz')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (quizzOption of quizzesSharedCollection; track $index) {
+              <option [ngValue]="quizzOption">{{ quizzOption.title }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['quizz'])!.invalid && (editForm.get(['quizz'])!.dirty || editForm.get(['quizz'])!.touched)) {
+          <div>
+            @if (editForm.get(['quizz'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            @if (!editForm.get('user')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['user'])!.invalid && (editForm.get(['user'])!.dirty || editForm.get(['user'])!.touched)) {
+          <div>
+            @if (editForm.get(['user'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

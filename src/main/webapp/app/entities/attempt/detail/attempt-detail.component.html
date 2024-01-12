@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (attempt) {
+      <div>
+        <h2 data-cy="attemptDetailsHeading"><span jhiTranslate="quizzApp.attempt.detail.title">Attempt</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="quizzApp.attempt.id">Id</span></dt>
+          <dd>
+            <span>{{ attempt.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.score">Score</span></dt>
+          <dd>
+            <span>{{ attempt.score }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.started">Started</span></dt>
+          <dd>
+            <span>{{ attempt.started | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.ended">Ended</span></dt>
+          <dd>
+            <span>{{ attempt.ended | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
+          <dd>
+            @if (attempt.quizz) {
+              <div>
+                <a [routerLink]="['/quizz', attempt.quizz.id, 'view']">{{ attempt.quizz.title }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.user">User</span></dt>
+          <dd>
+            <span>{{ attempt.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/attempt', attempt.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

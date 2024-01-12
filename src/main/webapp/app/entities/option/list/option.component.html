@@ -1,0 +1,87 @@
+<div>
+  <h2 id="page-heading" data-cy="OptionHeading">
+    <span jhiTranslate="quizzApp.option.home.title">Options</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quizzApp.option.home.refreshListLabel">Refresh list</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (options?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="quizzApp.option.home.notFound">No Options found</span>
+    </div>
+  }
+
+  @if (options && options.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.option.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="statement">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.option.statement">Statement</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="index">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.option.index">Index</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="question.id">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.option.question">Question</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (option of options; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/option', option.id, 'view']">{{ option.id }}</a>
+              </td>
+              <td>{{ option.statement }}</td>
+              <td>{{ option.index }}</td>
+              <td>
+                @if (option.question) {
+                  <div>
+                    <a [routerLink]="['/question', option.question.id, 'view']">{{ option.question.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/option', option.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,113 @@
+<div>
+  <h2 id="page-heading" data-cy="AttemptAnswerHeading">
+    <span jhiTranslate="quizzApp.attemptAnswer.home.title">Attempt Answers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quizzApp.attemptAnswer.home.refreshListLabel">Refresh list</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (attemptAnswers?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="quizzApp.attemptAnswer.home.notFound">No Attempt Answers found</span>
+    </div>
+  }
+
+  @if (attemptAnswers && attemptAnswers.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="started">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.started">Started</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ended">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.ended">Ended</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="question.statement">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.question">Question</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="option.statement">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.option">Option</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="attempt.id">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.attempt">Attempt</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (attemptAnswer of attemptAnswers; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/attempt-answer', attemptAnswer.id, 'view']">{{ attemptAnswer.id }}</a>
+              </td>
+              <td>{{ attemptAnswer.started | formatMediumDatetime }}</td>
+              <td>{{ attemptAnswer.ended | formatMediumDatetime }}</td>
+              <td>
+                @if (attemptAnswer.question) {
+                  <div>
+                    <a [routerLink]="['/question', attemptAnswer.question.id, 'view']">{{ attemptAnswer.question.statement }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (attemptAnswer.option) {
+                  <div>
+                    <a [routerLink]="['/option', attemptAnswer.option.id, 'view']">{{ attemptAnswer.option.statement }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (attemptAnswer.attempt) {
+                  <div>
+                    <a [routerLink]="['/attempt', attemptAnswer.attempt.id, 'view']">{{ attemptAnswer.attempt.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/attempt-answer', attemptAnswer.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

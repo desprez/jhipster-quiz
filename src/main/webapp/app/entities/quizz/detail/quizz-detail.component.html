@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (quizz) {
+      <div>
+        <h2 data-cy="quizzDetailsHeading"><span jhiTranslate="quizzApp.quizz.detail.title">Quizz</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="quizzApp.quizz.id">Id</span></dt>
+          <dd>
+            <span>{{ quizz.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.title">Title</span></dt>
+          <dd>
+            <span>{{ quizz.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.description">Description</span></dt>
+          <dd>
+            <span>{{ quizz.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.difficulty">Difficulty</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.category">Category</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.published">Published</span></dt>
+          <dd>
+            <span>{{ quizz.published }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.questionOrder">Question Order</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'quizzApp.DisplayOrder.' + quizz.questionOrder }}">{{ quizz.questionOrder }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.maxAnswerTime">Max Answer Time</span></dt>
+          <dd>
+            <span>{{ quizz.maxAnswerTime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.rollbackAllowed">Rollback Allowed</span></dt>
+          <dd>
+            <span>{{ quizz.rollbackAllowed }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.user">User</span></dt>
+          <dd>
+            <span>{{ quizz.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

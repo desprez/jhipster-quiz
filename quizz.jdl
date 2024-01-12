@@ -1,0 +1,73 @@
+enum Difficulty {
+  EASY, MEDIUM, HARD
+}
+
+enum Category {
+  GENERAL_KNOWLEDGE, BOOKS, FILM, MUSIC, MUSICALS_THEATRES, TELEVISION, VIDEO_GAMES, BOARD_GAMES, SCIENCE_NATURE, COMPUTERS, MATHEMATICS, MYTHOLOGY, SPORTS, GEOGRAPHY, HISTORY, POLITICS, ART, CELEBRITIES, ANIMALS, VEHICLES, COMICS, GADGETS, ANIME_MANGA, CARTOON
+}
+
+enum DisplayOrder {
+  RANDOM, FIXED
+}
+
+entity Quizz {
+  id UUID
+  title String minlength(2) maxlength(100) required
+  description String maxlength(500)
+  difficulty Difficulty required
+  category Category required
+  published Boolean required
+  questionOrder DisplayOrder required
+  maxAnswerTime Integer required
+  rollbackAllowed Boolean required
+}
+
+//@skipClient
+entity Question {
+  id UUID
+  statement String minlength(1) maxlength(255) required
+  index Integer required
+  correctOptionIndex Integer required
+}
+
+@readOnly
+//@skipClient
+entity Option {
+  id UUID
+  statement String minlength(1) maxlength(255) required
+  index Integer required
+}
+
+entity Attempt {
+  id UUID
+  score Integer required min(0)
+  started Instant required
+  ended Instant required
+}
+
+@readOnly
+//@skipClient
+entity AttemptAnswer {
+  id UUID
+  started Instant required
+  ended Instant required
+}
+
+relationship OneToMany {
+  Quizz{questions(statement)} to Question
+  Question{options(statement)} to Option
+  Attempt{answers} to AttemptAnswer
+}   
+
+relationship ManyToOne {
+  AttemptAnswer{question(statement) required} to Question
+  AttemptAnswer{option(statement) required} to Option
+  Attempt{quizz(title) required} to Quizz
+  Attempt{user(login) required} to User with builtInEntity
+  Quizz{user(login) required} to User with builtInEntity
+}
+
+dto Quizz, Attempt with mapstruct
+service * with serviceImpl
+paginate Quizz, Attempt with pagination
+//filter Quizz, Question, Attempt, AttemptAnswer

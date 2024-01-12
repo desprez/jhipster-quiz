@@ -48,6 +48,14 @@ public class CacheConfiguration {
             createCache(cm, com.github.desprez.domain.User.class.getName());
             createCache(cm, com.github.desprez.domain.Authority.class.getName());
             createCache(cm, com.github.desprez.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.github.desprez.domain.Quizz.class.getName());
+            createCache(cm, com.github.desprez.domain.Quizz.class.getName() + ".questions");
+            createCache(cm, com.github.desprez.domain.Question.class.getName());
+            createCache(cm, com.github.desprez.domain.Question.class.getName() + ".options");
+            createCache(cm, com.github.desprez.domain.Option.class.getName());
+            createCache(cm, com.github.desprez.domain.Attempt.class.getName());
+            createCache(cm, com.github.desprez.domain.Attempt.class.getName() + ".answers");
+            createCache(cm, com.github.desprez.domain.AttemptAnswer.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

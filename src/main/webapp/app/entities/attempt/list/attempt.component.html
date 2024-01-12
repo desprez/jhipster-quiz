@@ -1,0 +1,143 @@
+<div>
+  <h2 id="page-heading" data-cy="AttemptHeading">
+    <span jhiTranslate="quizzApp.attempt.home.title">Attempts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quizzApp.attempt.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-attempt"
+        [routerLink]="['/attempt/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="quizzApp.attempt.home.createLabel">Create a new Attempt</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (attempts?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="quizzApp.attempt.home.notFound">No Attempts found</span>
+    </div>
+  }
+
+  @if (attempts && attempts.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="score">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.score">Score</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="started">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.started">Started</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ended">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.ended">Ended</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quizz.title">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.quizz">Quizz</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user.login">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (attempt of attempts; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/attempt', attempt.id, 'view']">{{ attempt.id }}</a>
+              </td>
+              <td>{{ attempt.score }}</td>
+              <td>{{ attempt.started | formatMediumDatetime }}</td>
+              <td>{{ attempt.ended | formatMediumDatetime }}</td>
+              <td>
+                @if (attempt.quizz) {
+                  <div>
+                    <a [routerLink]="['/quizz', attempt.quizz.id, 'view']">{{ attempt.quizz.title }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                {{ attempt.user?.login }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/attempt', attempt.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/attempt', attempt.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(attempt)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (attempts && attempts.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

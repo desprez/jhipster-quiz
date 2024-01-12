@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20240112190453",
+    "readOnly": true
+  },
+  "applications": "*",
+  "entityTableName": "attempt_answer",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "started",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ended",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "AttemptAnswer",
+  "relationships": [
+    {
+      "otherEntityField": "statement",
+      "otherEntityName": "question",
+      "relationshipName": "question",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "statement",
+      "otherEntityName": "option",
+      "relationshipName": "option",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

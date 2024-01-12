@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (question) {
+      <div>
+        <h2 data-cy="questionDetailsHeading"><span jhiTranslate="quizzApp.question.detail.title">Question</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="quizzApp.question.id">Id</span></dt>
+          <dd>
+            <span>{{ question.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.question.statement">Statement</span></dt>
+          <dd>
+            <span>{{ question.statement }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.question.index">Index</span></dt>
+          <dd>
+            <span>{{ question.index }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.question.correctOptionIndex">Correct Option Index</span></dt>
+          <dd>
+            <span>{{ question.correctOptionIndex }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.question.quizz">Quizz</span></dt>
+          <dd>
+            @if (question.quizz) {
+              <div>
+                <a [routerLink]="['/quizz', question.quizz.id, 'view']">{{ question.quizz.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/question', question.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

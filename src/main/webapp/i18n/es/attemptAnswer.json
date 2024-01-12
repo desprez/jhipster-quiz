@@ -1,0 +1,20 @@
+{
+  "quizzApp": {
+    "attemptAnswer": {
+      "home": {
+        "title": "Attempt Answers",
+        "refreshListLabel": "Refrescar lista",
+        "notFound": "Ningún Attempt Answers encontrado"
+      },
+      "detail": {
+        "title": "Attempt Answer"
+      },
+      "id": "Id",
+      "started": "Started",
+      "ended": "Ended",
+      "question": "Question",
+      "option": "Option",
+      "attempt": "Attempt"
+    }
+  }
+}

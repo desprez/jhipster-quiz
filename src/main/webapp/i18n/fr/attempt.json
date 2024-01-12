@@ -1,0 +1,29 @@
+{
+  "quizzApp": {
+    "attempt": {
+      "home": {
+        "title": "Attempts",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Attempt",
+        "createOrEditLabel": "Créer ou éditer un Attempt",
+        "notFound": "Aucun Attempt trouvé"
+      },
+      "created": "Un nouveau Attempt a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Attempt avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Attempt avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Attempt {{ id }} ?"
+      },
+      "detail": {
+        "title": "Attempt"
+      },
+      "id": "Id",
+      "score": "Score",
+      "started": "Started",
+      "ended": "Ended",
+      "answers": "Answers",
+      "quizz": "Quizz",
+      "user": "User"
+    }
+  }
+}
