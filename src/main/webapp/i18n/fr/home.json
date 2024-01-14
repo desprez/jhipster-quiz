@@ -5,15 +5,20 @@
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },
-    "question": "Si vous avez des questions à propos de JHipster :",
-    "link": {
-      "homepage": "Page d'accueil de JHipster",
-      "stackoverflow": "JHipster sur Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "Suivez @jhipster sur Twitter"
+    "play": {
+      "heading": "This is a heading",
+      "paragraph": "This is a paragraph",
+      "button": "This is a button"
     },
-    "like": "Si vous aimez JHipster, donnez nous une étoile sur",
-    "github": "GitHub "
+    "make": {
+      "heading": "This is a heading",
+      "paragraph": "This is a paragraph",
+      "button": "This is a button"
+    },
+    "share": {
+      "heading": "This is a heading",
+      "paragraph": "This is a paragraph",
+      "button": "This is a button"
+    }
   }
 }
