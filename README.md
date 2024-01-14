@@ -2,6 +2,32 @@
 
 This application was generated using JHipster 8.1.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.1.0](https://www.jhipster.tech/documentation-archive/v8.1.0).
 
+## Notes
+
+### Rules
+
+#### functional requierements
+
+- Quizz Authors can create, edit, publish and play quizz.
+- Quizz players can play quizz and vieux theirs attemps.
+- Once published, a quizz cant be updatable.
+
+### Tasks
+
+- [x] Use UUIDs for surogate keys
+- [x] Add new about page and move Homepage JHipster Stuff to it
+  > src\main\webapp\app>ng generate component about
+- [ ] Quizz entity **Aggregate** questions & Options entities
+- [ ] Add new Angular PlayComponent as the board game.
+  > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component play
+- [ ] Add Questions count in quizz entity
+- [ ] Add logic to non-admin users only see their data.
+  - [ ] Hide user selection from non-admin users / attach items to the authenticated user.
+- [ ] Change User Role to Author role + add new player role.
+- [ ] add feature to fill a new authored quizz automaticaly with suggestions from
+  - [ ] OpenTrivia (https://opentdb.com/api_config.php)
+  - [ ] IA generative (ChatGPT or others)
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
