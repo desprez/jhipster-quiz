@@ -2,16 +2,16 @@
   "quizzApp": {
     "attemptAnswer": {
       "home": {
-        "title": "AttemptAnswers",
+        "title": "Réponses",
         "refreshListLabel": "Actualiser la liste",
-        "notFound": "Aucun Attempt Answer trouvé"
+        "notFound": "Aucune réponse n'a été trouvée"
       },
       "detail": {
-        "title": "Attempt Answer"
+        "title": "Réponse"
       },
       "id": "Id",
-      "started": "Started",
-      "ended": "Ended",
+      "started": "Début",
+      "ended": "Fin",
       "question": "Question",
       "option": "Option",
       "attempt": "Attempt"

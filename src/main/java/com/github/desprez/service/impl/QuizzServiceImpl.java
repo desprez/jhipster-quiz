@@ -78,7 +78,7 @@ public class QuizzServiceImpl implements QuizzService {
     @Transactional(readOnly = true)
     public Optional<QuizzDTO> findOne(UUID id) {
         log.debug("Request to get Quizz : {}", id);
-        return quizzRepository.findOneWithEagerRelationships(id).map(quizzMapper::toDto);
+        return quizzRepository.findOneWithQuestionRelationships(id).map(quizzMapper::toDto);
     }
 
     @Override

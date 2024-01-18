@@ -34,7 +34,7 @@ public class AttemptResource {
 
     private final Logger log = LoggerFactory.getLogger(AttemptResource.class);
 
-    private static final String ENTITY_NAME = "attempt";
+    public static final String ENTITY_NAME = "attempt";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;

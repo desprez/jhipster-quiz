@@ -4,13 +4,13 @@
       "home": {
         "title": "Options",
         "refreshListLabel": "Actualiser la liste",
-        "notFound": "Aucun Option trouvé"
+        "notFound": "Aucune Option n'a été trouvée"
       },
       "detail": {
         "title": "Option"
       },
       "id": "Id",
-      "statement": "Statement",
+      "statement": "Intitulé",
       "index": "Index",
       "question": "Question"
     }

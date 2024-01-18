@@ -56,23 +56,6 @@ public class QuizzCriteria implements Serializable, Criteria {
         }
     }
 
-    /**
-     * Class for filtering DisplayOrder
-     */
-    public static class DisplayOrderFilter extends Filter<DisplayOrder> {
-
-        public DisplayOrderFilter() {}
-
-        public DisplayOrderFilter(DisplayOrderFilter filter) {
-            super(filter);
-        }
-
-        @Override
-        public DisplayOrderFilter copy() {
-            return new DisplayOrderFilter(this);
-        }
-    }
-
     private static final long serialVersionUID = 1L;
 
     private UUIDFilter id;
@@ -85,19 +68,7 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     private CategoryFilter category;
 
-    private DisplayOrderFilter questionOrder;
-
-    private IntegerFilter maxAnswerTime;
-
-    private BooleanFilter allowBack;
-
-    private BooleanFilter allowReview;
-
-    private BooleanFilter secretGoodAnwers;
-
     private BooleanFilter published;
-
-    private UUIDFilter questionsId;
 
     private LongFilter userId;
 
@@ -111,13 +82,7 @@ public class QuizzCriteria implements Serializable, Criteria {
         this.description = other.description == null ? null : other.description.copy();
         this.difficulty = other.difficulty == null ? null : other.difficulty.copy();
         this.category = other.category == null ? null : other.category.copy();
-        this.questionOrder = other.questionOrder == null ? null : other.questionOrder.copy();
-        this.maxAnswerTime = other.maxAnswerTime == null ? null : other.maxAnswerTime.copy();
-        this.allowBack = other.allowBack == null ? null : other.allowBack.copy();
-        this.allowReview = other.allowReview == null ? null : other.allowReview.copy();
-        this.secretGoodAnwers = other.secretGoodAnwers == null ? null : other.secretGoodAnwers.copy();
         this.published = other.published == null ? null : other.published.copy();
-        this.questionsId = other.questionsId == null ? null : other.questionsId.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.distinct = other.distinct;
     }
@@ -202,81 +167,6 @@ public class QuizzCriteria implements Serializable, Criteria {
         this.category = category;
     }
 
-    public DisplayOrderFilter getQuestionOrder() {
-        return questionOrder;
-    }
-
-    public DisplayOrderFilter questionOrder() {
-        if (questionOrder == null) {
-            questionOrder = new DisplayOrderFilter();
-        }
-        return questionOrder;
-    }
-
-    public void setQuestionOrder(DisplayOrderFilter questionOrder) {
-        this.questionOrder = questionOrder;
-    }
-
-    public IntegerFilter getMaxAnswerTime() {
-        return maxAnswerTime;
-    }
-
-    public IntegerFilter maxAnswerTime() {
-        if (maxAnswerTime == null) {
-            maxAnswerTime = new IntegerFilter();
-        }
-        return maxAnswerTime;
-    }
-
-    public void setMaxAnswerTime(IntegerFilter maxAnswerTime) {
-        this.maxAnswerTime = maxAnswerTime;
-    }
-
-    public BooleanFilter getAllowBack() {
-        return allowBack;
-    }
-
-    public BooleanFilter allowBack() {
-        if (allowBack == null) {
-            allowBack = new BooleanFilter();
-        }
-        return allowBack;
-    }
-
-    public void setAllowBack(BooleanFilter allowBack) {
-        this.allowBack = allowBack;
-    }
-
-    public BooleanFilter getAllowReview() {
-        return allowReview;
-    }
-
-    public BooleanFilter allowReview() {
-        if (allowReview == null) {
-            allowReview = new BooleanFilter();
-        }
-        return allowReview;
-    }
-
-    public void setAllowReview(BooleanFilter allowReview) {
-        this.allowReview = allowReview;
-    }
-
-    public BooleanFilter getSecretGoodAnwers() {
-        return secretGoodAnwers;
-    }
-
-    public BooleanFilter secretGoodAnwers() {
-        if (secretGoodAnwers == null) {
-            secretGoodAnwers = new BooleanFilter();
-        }
-        return secretGoodAnwers;
-    }
-
-    public void setSecretGoodAnwers(BooleanFilter secretGoodAnwers) {
-        this.secretGoodAnwers = secretGoodAnwers;
-    }
-
     public BooleanFilter getPublished() {
         return published;
     }
@@ -290,21 +180,6 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     public void setPublished(BooleanFilter published) {
         this.published = published;
-    }
-
-    public UUIDFilter getQuestionsId() {
-        return questionsId;
-    }
-
-    public UUIDFilter questionsId() {
-        if (questionsId == null) {
-            questionsId = new UUIDFilter();
-        }
-        return questionsId;
-    }
-
-    public void setQuestionsId(UUIDFilter questionsId) {
-        this.questionsId = questionsId;
     }
 
     public LongFilter getUserId() {
@@ -345,13 +220,7 @@ public class QuizzCriteria implements Serializable, Criteria {
             Objects.equals(description, that.description) &&
             Objects.equals(difficulty, that.difficulty) &&
             Objects.equals(category, that.category) &&
-            Objects.equals(questionOrder, that.questionOrder) &&
-            Objects.equals(maxAnswerTime, that.maxAnswerTime) &&
-            Objects.equals(allowBack, that.allowBack) &&
-            Objects.equals(allowReview, that.allowReview) &&
-            Objects.equals(secretGoodAnwers, that.secretGoodAnwers) &&
             Objects.equals(published, that.published) &&
-            Objects.equals(questionsId, that.questionsId) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(distinct, that.distinct)
         );
@@ -359,22 +228,7 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            title,
-            description,
-            difficulty,
-            category,
-            questionOrder,
-            maxAnswerTime,
-            allowBack,
-            allowReview,
-            secretGoodAnwers,
-            published,
-            questionsId,
-            userId,
-            distinct
-        );
+        return Objects.hash(id, title, description, difficulty, category, published, userId, distinct);
     }
 
     // prettier-ignore
@@ -386,13 +240,7 @@ public class QuizzCriteria implements Serializable, Criteria {
             (description != null ? "description=" + description + ", " : "") +
             (difficulty != null ? "difficulty=" + difficulty + ", " : "") +
             (category != null ? "category=" + category + ", " : "") +
-            (questionOrder != null ? "questionOrder=" + questionOrder + ", " : "") +
-            (maxAnswerTime != null ? "maxAnswerTime=" + maxAnswerTime + ", " : "") +
-            (allowBack != null ? "allowBack=" + allowBack + ", " : "") +
-            (allowReview != null ? "allowReview=" + allowReview + ", " : "") +
-            (secretGoodAnwers != null ? "secretGoodAnwers=" + secretGoodAnwers + ", " : "") +
             (published != null ? "published=" + published + ", " : "") +
-            (questionsId != null ? "questionsId=" + questionsId + ", " : "") +
             (userId != null ? "userId=" + userId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";

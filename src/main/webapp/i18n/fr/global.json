@@ -12,7 +12,7 @@
         "question": "Question",
         "option": "Option",
         "attempt": "Attempt",
-        "attemptAnswer": "Attempt Answer"
+        "attemptAnswer": "Réponse"
       },
       "account": {
         "main": "Compte",

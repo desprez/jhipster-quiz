@@ -54,4 +54,11 @@ public interface QuestionService {
      * @param id the id of the entity.
      */
     void delete(UUID id);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    Integer countByQuizzId(UUID id);
 }

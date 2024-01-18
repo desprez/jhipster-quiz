@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlertError } from 'app/shared/alert/alert-error.model';
@@ -23,7 +24,7 @@ import { QuizzFormService, QuizzFormGroup } from './quizz-form.service';
   standalone: true,
   selector: 'jhi-quizz-update',
   templateUrl: './quizz-update.component.html',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
 })
 export class QuizzUpdateComponent implements OnInit {
   isSaving = false;

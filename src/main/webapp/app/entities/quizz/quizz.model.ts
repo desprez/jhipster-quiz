@@ -20,6 +20,7 @@ export interface IQuizz {
   published?: boolean | null;
   questions?: Pick<IQuestion, 'id' | 'statement'>[] | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
+  questionCount?: number | null;
 }
 
 export type NewQuizz = Omit<IQuizz, 'id'> & { id: null };

@@ -19,11 +19,11 @@
       },
       "id": "Id",
       "score": "Score",
-      "started": "Started",
-      "ended": "Ended",
-      "answers": "Answers",
+      "started": "Début",
+      "ended": "Fin",
+      "answers": "Réponses",
       "quizz": "Quizz",
-      "user": "User"
+      "user": "Joueur"
     }
   }
 }

@@ -35,7 +35,7 @@
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-            <th scope="col" jhiSortBy="id">
+            <th scope="col" jhiSortBy="id" *jhiHasAnyAuthority="'ROLE_ADMIN'">
               <div class="d-flex">
                 <span jhiTranslate="quizzApp.quizz.id">Id</span>
 
@@ -70,44 +70,9 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="questionOrder">
+            <th scope="col" jhiSortBy="questionCount">
               <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.questionOrder">Question Order</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="maxAnswerTime">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.maxAnswerTime">Max Answer Time</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="allowBack">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.allowBack">Allow Back</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="allowReview">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.allowReview">Allow Review</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="secretGoodAnwers">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.secretGoodAnwers">Secret Good Anwers</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="image">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.quizz.image">Image</span>
+                <span jhiTranslate="quizzApp.quizz.questionCount">Category</span>
 
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
@@ -136,26 +101,14 @@
         >
           @for (quizz of quizzes; track trackId) {
             <tr data-cy="entityTable">
-              <td>
+              <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <a [routerLink]="['/quizz', quizz.id, 'view']">{{ quizz.id }}</a>
               </td>
               <td>{{ quizz.title }}</td>
               <td>{{ quizz.description }}</td>
               <td jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</td>
               <td jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</td>
-              <td jhiTranslate="{{ 'quizzApp.DisplayOrder.' + quizz.questionOrder }}">{{ quizz.questionOrder }}</td>
-              <td>{{ quizz.maxAnswerTime }}</td>
-              <td>{{ quizz.allowBack }}</td>
-              <td>{{ quizz.allowReview }}</td>
-              <td>{{ quizz.secretGoodAnwers }}</td>
-              <td>
-                @if (quizz.image) {
-                  <a (click)="openFile(quizz.image, quizz.imageContentType)">
-                    <img [src]="'data:' + quizz.imageContentType + ';base64,' + quizz.image" style="max-height: 30px" alt="quizz image" />
-                  </a>
-                  <span>{{ quizz.imageContentType }}, {{ byteSize(quizz.image) }}</span>
-                }
-              </td>
+              <td>{{ quizz.questionCount }}</td>
               <td>{{ quizz.published }}</td>
               <td>
                 {{ quizz.user?.login }}
@@ -166,16 +119,25 @@
                     <fa-icon icon="eye"></fa-icon>
                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                   </a>
-
-                  <a [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                    <fa-icon icon="pencil-alt"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                  </a>
-
-                  <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                    <fa-icon icon="times"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                  </button>
+                  @if (quizz && !quizz.published) {
+                    <a [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                      <fa-icon icon="pencil-alt"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </a>
+                  }
+                  @if (quizz && quizz.published) {
+                    <!-- <a [routerLink]="['/quizz', quizz.id, 'play']" class="btn btn-primary btn-sm" data-cy="entityPlayButton"> -->
+                    <button type="submit" (click)="play(quizz)" class="btn btn-primary btn-sm" data-cy="entityPlayButton">
+                      <fa-icon icon="play"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="quizzApp.quizz.play">Play</span>
+                    </button>
+                  }
+                  @if (quizz && !quizz.published) {
+                    <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                      <fa-icon icon="times"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                  }
                 </div>
               </td>
             </tr>

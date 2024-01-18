@@ -2,7 +2,9 @@
   <div class="col-8">
     @if (question) {
       <div>
-        <h2 data-cy="questionDetailsHeading"><span jhiTranslate="quizzApp.question.detail.title">Question</span></h2>
+        <h2 data-cy="questionDetailsHeading">
+          <span jhiTranslate="quizzApp.question.detail.title">Question</span> #<span>{{ question.index }}</span>
+        </h2>
 
         <hr />
 
@@ -19,10 +21,23 @@
           <dd>
             <span>{{ question.statement }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.question.index">Index</span></dt>
+
+          <dt><span jhiTranslate="quizzApp.question.options">Options</span></dt>
           <dd>
-            <span>{{ question.index }}</span>
+            <div>
+              <ul class="list-group">
+                <li
+                  *ngFor="let option of question!.options"
+                  class="list-group-item d-flex {{ option.index === question.correctOptionIndex ? 'list-group-item-success' : '' }}"
+                >
+                  <span class="">{{ option.index }}</span
+                  >.
+                  {{ option.statement }}
+                </li>
+              </ul>
+            </div>
           </dd>
+
           <dt><span jhiTranslate="quizzApp.question.correctOptionIndex">Correct Option Index</span></dt>
           <dd>
             <span>{{ question.correctOptionIndex }}</span>

@@ -14,13 +14,37 @@ This application was generated using JHipster 8.1.0, you can find documentation 
 
 ### Tasks
 
-- [x] Use UUIDs for surogate keys
+- [x] Create JDL File (Quizz.jdl)
+  - [x] Use UUIDs for surogate keys
 - [x] Add new about page and move Homepage JHipster Stuff to it
   > src\main\webapp\app>ng generate component about
-- [ ] Quizz entity **Aggregate** questions & Options entities
-- [ ] Add new Angular PlayComponent as the board game.
+  - [ ] add links to "Log in to track progress", to "Sign In"...
+- [ ] Quizz entity **Aggregate** questions & Options entities :
+  - [x] Add Question & Option entities List (not generated)
+  - [x] Change Quizz & Question entities JPA mapping to allow cascade
+  - [x] Add repository **findOneWithQuestionRelationships()**
+  - [x] Change Quizz & Question pages to display children entities.
+- [ ] Show technical ids for admin user only (UI)
+- [ ] Forbid published Quizz to be updated or deleted
+  - [x] In the UI
+  - [ ] by API
+- [x] Add new Angular Quizz/PlayComponent as the board game.
   > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component play
-- [ ] Add Questions count in quizz entity
+  - [ ] Add calls to this component in Quizz list, Quizz Card, Quizz Detail
+  - [ ] Create Attempt when Quizz start
+  - [ ] Create AttemptAnswser for each Question answered
+  - [ ] Compute Attempt score when Quizz ends
+- [x] Add Questions count in quizz lists and Cards
+- [ ] Add new Angular Quizz/MakerComponent to make a Quizz in one page.
+  > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component maker
+  - [ ] Add Drag & Drop feature
+    - [ ] to reorder Questions
+    - [ ] to reorder Answers
+- [ ] Add new Angular BrowseComponent to browse published Quizz (ready to play only)
+  - [ ] Add surrounded API
+- [ ] Add new Angular MyQuizzComponent to list Quizz by authenticated users
+  - [ ] Add surrounded API
+- [ ] Add new Angular MyScoreComponent to display Quizz attemps by authenticated users
 - [ ] Add logic to non-admin users only see their data.
   - [ ] Hide user selection from non-admin users / attach items to the authenticated user.
 - [ ] Change User Role to Author role + add new player role.

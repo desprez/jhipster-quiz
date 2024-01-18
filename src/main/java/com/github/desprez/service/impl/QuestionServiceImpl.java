@@ -71,12 +71,17 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(readOnly = true)
     public Optional<Question> findOne(UUID id) {
         log.debug("Request to get Question : {}", id);
-        return questionRepository.findById(id);
+        return questionRepository.findOneWithOptionRelationships(id);
     }
 
     @Override
     public void delete(UUID id) {
         log.debug("Request to delete Question : {}", id);
         questionRepository.deleteById(id);
+    }
+
+    @Override
+    public Integer countByQuizzId(UUID quizzId) {
+        return questionRepository.countByQuizzId(quizzId);
     }
 }

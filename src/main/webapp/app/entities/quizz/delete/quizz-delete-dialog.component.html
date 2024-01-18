@@ -8,9 +8,16 @@
 
     <div class="modal-body">
       <jhi-alert-error></jhi-alert-error>
-      <p id="jhi-delete-quizz-heading" jhiTranslate="quizzApp.quizz.delete.question" [translateValues]="{ id: quizz.id }">
-        Are you sure you want to delete Quizz {{ quizz.id }}?
+      <p
+        class="text-primary"
+        id="jhi-delete-quizz-heading"
+        jhiTranslate="quizzApp.quizz.delete.question"
+        [translateValues]="{ id: quizz.title }"
+      >
+        Are you sure you want to delete Quizz "{{ quizz.title }}" ?
       </p>
+      <br />
+      <p class="text-danger">All information associated to this Quizz will be permanently deleted. This operation can not be undone.</p>
     </div>
 
     <div class="modal-footer">

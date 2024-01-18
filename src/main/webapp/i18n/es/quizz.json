@@ -30,7 +30,8 @@
       "image": "Image",
       "published": "Published",
       "questions": "Questions",
-      "user": "User"
+      "user": "User",
+      "questionCount": "Questions#"
     }
   }
 }

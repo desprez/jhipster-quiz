@@ -12,6 +12,8 @@ import java.util.UUID;
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class AttemptDTO implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     private UUID id;
 
     @NotNull

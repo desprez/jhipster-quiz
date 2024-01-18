@@ -39,7 +39,8 @@ public class Question implements Serializable {
     @Column(name = "correct_option_index", nullable = false)
     private Integer correctOptionIndex;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    @OrderBy("index ASC")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "question" }, allowSetters = true)
     private Set<Option> options = new HashSet<>();
