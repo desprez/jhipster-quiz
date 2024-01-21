@@ -7,6 +7,7 @@ import { errorRoute } from './layouts/error/error.route';
 import HomeComponent from './home/home.component';
 import NavbarComponent from './layouts/navbar/navbar.component';
 import LoginComponent from './login/login.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     title: 'login.title',
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    title: 'about.title',
   },
   {
     path: '',

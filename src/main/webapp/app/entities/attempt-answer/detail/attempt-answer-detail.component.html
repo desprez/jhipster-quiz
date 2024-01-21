@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (attemptAnswer) {
+      <div>
+        <h2 data-cy="attemptAnswerDetailsHeading"><span jhiTranslate="quizzApp.attemptAnswer.detail.title">Attempt Answer</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.id">Id</span></dt>
+          <dd>
+            <span>{{ attemptAnswer.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.started">Started</span></dt>
+          <dd>
+            <span>{{ attemptAnswer.started | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.ended">Ended</span></dt>
+          <dd>
+            <span>{{ attemptAnswer.ended | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.question">Question</span></dt>
+          <dd>
+            @if (attemptAnswer.question) {
+              <div>
+                <a [routerLink]="['/question', attemptAnswer.question.id, 'view']">{{ attemptAnswer.question.statement }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.option">Option</span></dt>
+          <dd>
+            @if (attemptAnswer.option) {
+              <div>
+                <a [routerLink]="['/option', attemptAnswer.option.id, 'view']">{{ attemptAnswer.option.statement }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.attempt">Attempt</span></dt>
+          <dd>
+            @if (attemptAnswer.attempt) {
+              <div>
+                <a [routerLink]="['/attempt', attemptAnswer.attempt.id, 'view']">{{ attemptAnswer.attempt.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

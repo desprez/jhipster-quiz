@@ -7,7 +7,12 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "quizz": "Quizz",
+        "question": "Question",
+        "option": "Option",
+        "attempt": "Attempt",
+        "attemptAnswer": "Réponse"
       },
       "account": {
         "main": "Compte",
@@ -30,7 +35,8 @@
         "database": "Base de données",
         "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
-      "language": "Langue"
+      "language": "Langue",
+      "about": "A propos"
     },
     "form": {
       "username.label": "Nom d'utilisateur",
@@ -98,7 +104,12 @@
       "open": "Ouvrir",
       "save": "Sauvegarder",
       "view": "Voir",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "close": "Fermer",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "finish": "Terminer",
+      "retry": "Réessayer"
     },
     "detail": {
       "field": "Champs",

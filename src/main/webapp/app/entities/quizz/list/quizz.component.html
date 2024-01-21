@@ -1,0 +1,148 @@
+<div>
+  <h2 id="page-heading" data-cy="QuizzHeading">
+    <span jhiTranslate="quizzApp.quizz.home.title">Quizzes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="quizzApp.quizz.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quizz"
+        [routerLink]="['/quizz/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="quizzApp.quizz.home.createLabel">Create a new Quizz</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (quizzes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="quizzApp.quizz.home.notFound">No Quizzes found</span>
+    </div>
+  }
+
+  @if (quizzes && quizzes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="difficulty">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.difficulty">Difficulty</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="category">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.category">Category</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="questionCount">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.questionCount">Category</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="published">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.published">Published</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user.login">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.quizz.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody
+          infinite-scroll
+          (scrolled)="loadPage(page + 1)"
+          [infiniteScrollDisabled]="page - 1 >= links['last']"
+          [infiniteScrollDistance]="0"
+        >
+          @for (quizz of quizzes; track trackId) {
+            <tr data-cy="entityTable">
+              <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <a [routerLink]="['/quizz', quizz.id, 'view']">{{ quizz.id }}</a>
+              </td>
+              <td>{{ quizz.title }}</td>
+              <td>{{ quizz.description }}</td>
+              <td jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</td>
+              <td jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</td>
+              <td>{{ quizz.questionCount }}</td>
+              <td>{{ quizz.published }}</td>
+              <td>
+                {{ quizz.user?.login }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/quizz', quizz.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+                  @if (quizz && !quizz.published) {
+                    <a [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                      <fa-icon icon="pencil-alt"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                    </a>
+                  }
+                  @if (quizz && quizz.published) {
+                    <a [routerLink]="['/quizz', quizz.id, 'play']" class="btn btn-primary btn-sm" data-cy="entityPlayButton">
+                      <fa-icon icon="play"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="quizzApp.quizz.play">Play</span>
+                    </a>
+                  }
+                  @if (quizz && !quizz.published) {
+                    <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                      <fa-icon icon="times"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

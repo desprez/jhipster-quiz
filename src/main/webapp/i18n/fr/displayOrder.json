@@ -1,0 +1,9 @@
+{
+  "quizzApp": {
+    "DisplayOrder": {
+      "null": "",
+      "RANDOM": "Aléatoire",
+      "FIXED": "Fixe"
+    }
+  }
+}

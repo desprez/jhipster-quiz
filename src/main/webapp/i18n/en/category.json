@@ -1,0 +1,31 @@
+{
+  "quizzApp": {
+    "Category": {
+      "null": "",
+      "GENERAL_KNOWLEDGE": "General Knowledge",
+      "BOOKS": "Books",
+      "FILM": "Films",
+      "MUSIC": "Music",
+      "MUSICALS_THEATRES": "Musicals & Theatres",
+      "TELEVISION": "Television",
+      "VIDEO_GAMES": "Video Games",
+      "BOARD_GAMES": "Board Games",
+      "SCIENCE_NATURE": "Science & Nature",
+      "COMPUTERS": "Computers",
+      "MATHEMATICS": "Mathematics",
+      "MYTHOLOGY": "Mythology",
+      "SPORTS": "Sports",
+      "GEOGRAPHY": "Geography",
+      "HISTORY": "History",
+      "POLITICS": "Politics",
+      "ART": "Arts",
+      "CELEBRITIES": "Celebrities",
+      "ANIMALS": "Animals",
+      "VEHICLES": "Vehicles",
+      "COMICS": "Comics",
+      "GADGETS": "Gadgets",
+      "ANIME_MANGA": "Animes & Mangas",
+      "CARTOON": "Cartoons"
+    }
+  }
+}

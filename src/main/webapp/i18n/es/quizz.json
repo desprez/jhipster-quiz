@@ -1,0 +1,37 @@
+{
+  "quizzApp": {
+    "quizz": {
+      "home": {
+        "title": "Quizzes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Quizz",
+        "createOrEditLabel": "Crear o editar Quizz",
+        "notFound": "Ningún Quizzes encontrado"
+      },
+      "created": "Un nuevo Quizz ha sido creado con el identificador {{ param }}",
+      "updated": "Un Quizz ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Quizz ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Quizz {{ id }}?"
+      },
+      "detail": {
+        "title": "Quizz"
+      },
+      "id": "Id",
+      "title": "Title",
+      "description": "Description",
+      "difficulty": "Difficulty",
+      "category": "Category",
+      "questionOrder": "Question Order",
+      "maxAnswerTime": "Max Answer Time",
+      "allowBack": "Allow Back",
+      "allowReview": "Allow Review",
+      "secretGoodAnwers": "Secret Good Anwers",
+      "image": "Image",
+      "published": "Published",
+      "questions": "Questions",
+      "user": "User",
+      "questionCount": "Questions#"
+    }
+  }
+}

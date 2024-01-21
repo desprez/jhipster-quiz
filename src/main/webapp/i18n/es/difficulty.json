@@ -1,0 +1,10 @@
+{
+  "quizzApp": {
+    "Difficulty": {
+      "null": "",
+      "EASY": "Fácil",
+      "MEDIUM": "Médio",
+      "HARD": "Difícil"
+    }
+  }
+}

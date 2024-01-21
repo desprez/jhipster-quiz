@@ -1,0 +1,18 @@
+{
+  "quizzApp": {
+    "option": {
+      "home": {
+        "title": "Options",
+        "refreshListLabel": "Actualiser la liste",
+        "notFound": "Aucune Option n'a été trouvée"
+      },
+      "detail": {
+        "title": "Option"
+      },
+      "id": "Id",
+      "statement": "Intitulé",
+      "index": "Index",
+      "question": "Question"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "annotations": {
+    "changelogDate": "20240112190053"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "entityTableName": "quizz",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "difficulty",
+      "fieldType": "Difficulty",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "EASY,MEDIUM,HARD"
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "Category",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "GENERAL_KNOWLEDGE,BOOKS,FILM,MUSIC,MUSICALS_THEATRES,TELEVISION,VIDEO_GAMES,BOARD_GAMES,SCIENCE_NATURE,COMPUTERS,MATHEMATICS,MYTHOLOGY,SPORTS,GEOGRAPHY,HISTORY,POLITICS,ART,CELEBRITIES,ANIMALS,VEHICLES,COMICS,GADGETS,ANIME_MANGA,CARTOON"
+    },
+    {
+      "fieldName": "questionOrder",
+      "fieldType": "DisplayOrder",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "RANDOM,FIXED"
+    },
+    {
+      "fieldName": "maxAnswerTime",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "allowBack",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "allowReview",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "secretGoodAnwers",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "published",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Quizz",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityField": "statement",
+      "otherEntityName": "question",
+      "relationshipName": "questions",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -5,15 +5,20 @@
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
-    "question": "If you have any question on JHipster:",
-    "link": {
-      "homepage": "JHipster homepage",
-      "stackoverflow": "JHipster on Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "follow @jhipster on Twitter"
+    "play": {
+      "heading": "Have fun",
+      "paragraph": "With <strong>Quizz</strong>, and play them on your phone, tablet, or computer and it's FREE.<br>With Quizz you have access to thousands of games shared by other users.",
+      "button": "Play a quiz"
     },
-    "like": "If you like JHipster, don't forget to give us a star on",
-    "github": "GitHub"
+    "make": {
+      "heading": "Create an awesome quiz in minutes",
+      "paragraph": "<strong>Quizz</strong> is the easiest way to make quizzes and it's FREE.<br>Make a quiz to engage students in a classroom, train employees at work, or play trivia with friends.<br>Fill the quiz form with title, choose optionn for your quiz and enter your questions and mark the correct answer, publish and Voila ! your quiz is imediately playable",
+      "button": "Make a quiz"
+    },
+    "share": {
+      "heading": "Share with your friends",
+      "paragraph": "This is a third paragraph",
+      "button": "Share a quiz"
+    }
   }
 }

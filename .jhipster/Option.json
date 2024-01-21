@@ -1,0 +1,30 @@
+{
+  "annotations": {
+    "changelogDate": "20240112190253",
+    "readOnly": true
+  },
+  "applications": "*",
+  "entityTableName": "option",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "statement",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMaxlength": "255",
+      "fieldValidateRulesMinlength": "1"
+    },
+    {
+      "fieldName": "index",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Option",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
