@@ -104,7 +104,11 @@
       "open": "Abrir",
       "save": "Guardar",
       "view": "Vista",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "close": "Cerrar",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "finish": "Finalizar"
     },
     "detail": {
       "field": "Campo",

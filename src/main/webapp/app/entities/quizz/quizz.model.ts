@@ -18,7 +18,7 @@ export interface IQuizz {
   image?: string | null;
   imageContentType?: string | null;
   published?: boolean | null;
-  questions?: Pick<IQuestion, 'id' | 'statement'>[] | null;
+  questions?: Pick<IQuestion, 'id' | 'statement' | 'index'>[] | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
   questionCount?: number | null;
 }

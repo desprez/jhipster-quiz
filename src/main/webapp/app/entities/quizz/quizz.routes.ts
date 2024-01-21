@@ -7,6 +7,7 @@ import { QuizzDetailComponent } from './detail/quizz-detail.component';
 import { QuizzUpdateComponent } from './update/quizz-update.component';
 import QuizzResolve from './route/quizz-routing-resolve.service';
 import { QuizzPlayComponent } from './play/quizz-play.component';
+import { ModalContainerComponent } from './play/modal-container-routable-modals';
 
 const quizzRoute: Routes = [
   {
@@ -43,7 +44,7 @@ const quizzRoute: Routes = [
   },
   {
     path: ':id/play',
-    component: QuizzPlayComponent,
+    component: ModalContainerComponent,
     resolve: {
       quizz: QuizzResolve,
     },

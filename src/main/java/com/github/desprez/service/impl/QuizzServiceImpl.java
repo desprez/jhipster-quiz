@@ -2,6 +2,9 @@ package com.github.desprez.service.impl;
 
 import com.github.desprez.domain.Quizz;
 import com.github.desprez.repository.QuizzRepository;
+import com.github.desprez.repository.UserRepository;
+import com.github.desprez.security.AuthoritiesConstants;
+import com.github.desprez.security.SecurityUtils;
 import com.github.desprez.service.QuizzService;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.mapper.QuizzMapper;
@@ -27,15 +30,23 @@ public class QuizzServiceImpl implements QuizzService {
 
     private final QuizzMapper quizzMapper;
 
-    public QuizzServiceImpl(QuizzRepository quizzRepository, QuizzMapper quizzMapper) {
+    private final UserRepository userRepository;
+
+    public QuizzServiceImpl(QuizzRepository quizzRepository, QuizzMapper quizzMapper, UserRepository userRepository) {
         this.quizzRepository = quizzRepository;
         this.quizzMapper = quizzMapper;
+        this.userRepository = userRepository;
     }
 
     @Override
     public QuizzDTO save(QuizzDTO quizzDTO) {
         log.debug("Request to save Quizz : {}", quizzDTO);
         Quizz quizz = quizzMapper.toEntity(quizzDTO);
+        if (!SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.ADMIN)) {
+            log.debug("No user passed in, using current user: {}", SecurityUtils.getCurrentUserLogin().get());
+            String username = SecurityUtils.getCurrentUserLogin().get();
+            quizz.setUser(userRepository.findOneByLogin(username).get());
+        }
         quizz = quizzRepository.save(quizz);
         return quizzMapper.toDto(quizz);
     }

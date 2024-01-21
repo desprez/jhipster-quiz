@@ -8,7 +8,8 @@
     <div class="modal-body">
       <jhi-alert-error></jhi-alert-error>
       @switch (mode) {
-        @case (PlayModeEnum.ENTER) {
+        @case (PlayModeEnum.OPENING) {
+          <p>{{ quizz.description }}</p>
           <div class="start_btn">
             <button (click)="showWarningPopup()">Start Quiz</button>
           </div>
@@ -24,11 +25,16 @@
         }
         @case (PlayModeEnum.PLAYING) {
           <header>
-            <div class="timer">
-              <div class="time_left_txt">Time off</div>
-              <div class="timer_sec">{{ remainingTime }}</div>
+            <div class="float-end">
+              <span class="badge bg-primary">
+                {{ remainingTime }}
+              </span>
+              <fa-icon icon="stopwatch"></fa-icon>
             </div>
-            <div class="time_line" style="width: 550px"></div>
+
+            <div class="float-start">
+              <span class="badge bg-primary"> {{ currentQuestionNo + 1 }} / {{ questionList.length }} </span>
+            </div>
           </header>
           <div class="progress mb-3">
             <div
@@ -42,23 +48,19 @@
           </div>
           <h5>{{ questionList[currentQuestionNo].statement }}</h5>
 
-          <div class="options" *ngFor="let option of questionList[currentQuestionNo].options">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="answer" id="answer" value="{{ option.index }}" />
-              <label class="form-check-label" for="answer">
-                {{ option.statement }}
-              </label>
+          <div class="row">
+            <div class="options" *ngFor="let option of questionList[currentQuestionNo].options">
+              <div class="col-xs-12">
+                <h5 class="answer">
+                  <input class="form-check-input" type="radio" name="answer" id="answer" value="{{ option.index }}" />
+                  <label class="form-check-label" for="answer">
+                    {{ option.statement }}
+                  </label>
+                </h5>
+              </div>
             </div>
           </div>
-          <footer>
-            <div class="total_question">
-              <span>
-                <p>{{ currentQuestionNo + 1 }}</p>
-                of
-                <p>{{ questionList.length }}</p>
-              </span>
-            </div>
-          </footer>
+          <footer></footer>
         }
         @case (PlayModeEnum.FINISHED) {
           <div class="icon">
@@ -70,12 +72,13 @@
               >and congrats!, You got
               <p>'{{ correctAnswerCount }}'</p>
               out of
-              <p>'{{ questionList.length }}'</p></span
-            >
-          </div>
-          <div class="buttons">
-            <button class="btn btn-outline-secondary">Replay Quizz</button>
-            <button class="btn btn-outline-secondary">Quit Quizz</button>
+              <p>'{{ questionList.length }}'</p>
+
+              <p>Total Question Attempted : {{ questionList.length }}</p>
+              <p>Total Correct Answered : {{ correctAnswerCount }}</p>
+              <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
+              <p>Your Score : {{ points }} Points</p> -->
+            </span>
           </div>
         }
       }

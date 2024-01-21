@@ -31,7 +31,8 @@
       "published": "Published",
       "questions": "Questions",
       "user": "User",
-      "questionCount": "Questions#"
+      "questionCount": "Questions#",
+      "play": "Play"
     }
   }
 }

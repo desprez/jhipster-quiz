@@ -34,10 +34,15 @@ This application was generated using JHipster 8.1.0, you can find documentation 
   - [ ] Create Attempt when Quizz start
   - [ ] Create AttemptAnswser for each Question answered
   - [ ] Compute Attempt score when Quizz ends
+  - [ ] Add progress bar
+  - [ ] Add optional Timer if Quizz timed
+  - [ ] Add optional Review if Quizz reviewable
+  - [ ] Redirect to Attempt Page when Quizz finish
 - [x] Add Questions count in quizz lists and Cards
 - [ ] Add new Angular Quizz/MakerComponent to make a Quizz in one page.
   > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component maker
   - [ ] Add Drag & Drop feature
+    > npm install --save @angular/cdk @angular/animations
     - [ ] to reorder Questions
     - [ ] to reorder Answers
 - [ ] Add new Angular BrowseComponent to browse published Quizz (ready to play only)

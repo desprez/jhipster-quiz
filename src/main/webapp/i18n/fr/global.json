@@ -104,7 +104,12 @@
       "open": "Ouvrir",
       "save": "Sauvegarder",
       "view": "Voir",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "close": "Fermer",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "finish": "Terminer",
+      "retry": "Réessayer"
     },
     "detail": {
       "field": "Champs",

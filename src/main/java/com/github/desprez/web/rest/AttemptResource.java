@@ -1,6 +1,7 @@
 package com.github.desprez.web.rest;
 
 import com.github.desprez.repository.AttemptRepository;
+import com.github.desprez.security.SecurityUtils;
 import com.github.desprez.service.AttemptService;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
@@ -14,12 +15,15 @@ import java.util.Optional;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
@@ -90,11 +94,12 @@ public class AttemptResource {
         if (!Objects.equals(id, attemptDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
-
         if (!attemptRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
-
+        if (attemptDTO.getUser() != null && !attemptDTO.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(""))) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
         AttemptDTO result = attemptService.update(attemptDTO);
         return ResponseEntity
             .ok()
@@ -125,11 +130,12 @@ public class AttemptResource {
         if (!Objects.equals(id, attemptDTO.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
-
         if (!attemptRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
-
+        if (attemptDTO.getUser() != null && !attemptDTO.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse(""))) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+        }
         Optional<AttemptDTO> result = attemptService.partialUpdate(attemptDTO);
 
         return ResponseUtil.wrapOrNotFound(
@@ -147,7 +153,7 @@ public class AttemptResource {
      */
     @GetMapping("")
     public ResponseEntity<List<AttemptDTO>> getAllAttempts(
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable,
+        @ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
         log.debug("REST request to get a page of Attempts");
@@ -183,6 +189,10 @@ public class AttemptResource {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAttempt(@PathVariable("id") UUID id) {
         log.debug("REST request to delete Attempt : {}", id);
+        Optional<AttemptDTO> blog = attemptService.findOne(id);
+        blog
+            .filter(b -> b.getUser() != null && b.getUser().getLogin().equals(SecurityUtils.getCurrentUserLogin().orElse("")))
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.FORBIDDEN));
         attemptService.delete(id);
         return ResponseEntity
             .noContent()

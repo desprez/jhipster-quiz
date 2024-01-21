@@ -1,6 +1,7 @@
 package com.github.desprez.repository;
 
 import com.github.desprez.domain.Question;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,6 @@ public interface QuestionRepository extends JpaRepository<Question, UUID> {
     Optional<Question> findOneWithOptionRelationships(@Param("id") UUID id);
 
     Integer countByQuizzId(UUID quizzId);
+
+    List<Question> findByQuizzId(UUID quizzId);
 }

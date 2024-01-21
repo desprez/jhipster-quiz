@@ -6,7 +6,6 @@ import com.github.desprez.service.dto.QuizzBasicDTO;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.dto.UserDTO;
 import org.mapstruct.BeanMapping;
-import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

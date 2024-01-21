@@ -1,5 +1,5 @@
 export enum PlayMode {
-  ENTER = 'ENTER',
+  OPENING = 'OPENING',
   SHOW_RULES = 'SHOW RULES',
   PLAYING = 'PLAYING',
   FINISHED = 'FINISHED',

@@ -39,7 +39,7 @@ public class Attempt implements Serializable {
     @Column(name = "ended")
     private Instant ended;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "attempt")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "attempt", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "question", "option", "attempt" }, allowSetters = true)
     private Set<AttemptAnswer> answers = new HashSet<>();

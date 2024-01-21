@@ -45,6 +45,9 @@ import {
   faChevronUp,
   faChevronDown,
   faGripVertical,
+  faStopwatch,
+  faHourglass,
+  faFlagCheckered,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -95,5 +98,8 @@ export const fontAwesomeIcons = [
   faChevronUp,
   faChevronDown,
   faGripVertical,
+  faStopwatch,
+  faHourglass,
+  faFlagCheckered,
   // jhipster-needle-add-icon-import
 ];
