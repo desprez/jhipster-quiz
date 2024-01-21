@@ -108,7 +108,8 @@
       "close": "Close",
       "previous": "Previous",
       "next": "Next",
-      "finish": "Finish"
+      "finish": "Finish",
+      "retry": "Retry"
     },
     "detail": {
       "field": "Field",

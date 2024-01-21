@@ -1,5 +1,5 @@
 INSERT INTO quizz(id, title, description, difficulty, category, published, question_order, max_answer_time, allow_back, allow_review, secret_good_anwers, user_id) VALUES 
-('7bf9fa79-5b46-4bb0-bb38-298bf9bd036b', 'My first Quizz', 'a quizz....', 'EASY', 'GENERAL_KNOWLEDGE', true, 'FIXED', 0, true, true, false, 2);
+('7bf9fa79-5b46-4bb0-bb38-298bf9bd036b', 'My first Quizz', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis ipsum nisi, eu ullamcorper tortor suscipit eget. Donec hendrerit, justo blandit lobortis egestas, magna ex accumsan diam, sit amet molestie nisi diam id urna. Cras tortor mauris, dictum quis imperdiet ut, sollicitudin in quam. Mauris sit amet nisl sit amet felis dictum dapibus congue ac nisi. Ut ut justo eget neque placerat tempus nec ut velit. Integer mattis urna sed mi fringilla, vel pretium felis lobortis.', 'EASY', 'GENERAL_KNOWLEDGE', true, 'FIXED', 0, true, true, false, 2);
 
 INSERT INTO question(id, statement, index, correct_option_index, quizz_id) VALUES
 ('ea641920-1492-4cfd-b8ef-e0f58d5d9dc2', 'Que mesure l''année lumière ?', 2, 3, '7bf9fa79-5b46-4bb0-bb38-298bf9bd036b'),

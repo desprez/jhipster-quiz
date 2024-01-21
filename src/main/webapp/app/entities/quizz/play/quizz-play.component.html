@@ -2,7 +2,9 @@
   <form name="playForm" (ngSubmit)="close(quizz.id!)">
     <div class="modal-header">
       <h4 class="modal-title" data-cy="quizzPlayDialogHeading">{{ quizz.title }}</h4>
-      <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
+      @if (!PlayModeEnum.PLAYING) {
+        <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
+      }
     </div>
 
     <div class="modal-body">
@@ -10,6 +12,9 @@
       @switch (mode) {
         @case (PlayModeEnum.OPENING) {
           <p>{{ quizz.description }}</p>
+          @if (quizz.image) {
+            <img [src]="quizz.image" alt="quizz image" />
+          }
           <div class="start_btn">
             <button (click)="showWarningPopup()">Start Quiz</button>
           </div>
@@ -25,12 +30,14 @@
         }
         @case (PlayModeEnum.PLAYING) {
           <header>
-            <div class="float-end">
-              <span class="badge bg-primary">
-                {{ remainingTime }}
-              </span>
-              <fa-icon icon="stopwatch"></fa-icon>
-            </div>
+            @if (timerEnabled) {
+              <div class="float-end">
+                <span class="badge bg-primary">
+                  {{ remainingTime }}
+                </span>
+                <fa-icon icon="stopwatch"></fa-icon>
+              </div>
+            }
 
             <div class="float-start">
               <span class="badge bg-primary"> {{ currentQuestionNo + 1 }} / {{ questionList.length }} </span>
@@ -51,7 +58,7 @@
           <div class="row">
             <div class="options" *ngFor="let option of questionList[currentQuestionNo].options">
               <div class="col-xs-12">
-                <h5 class="answer">
+                <h5 class="answer" (click)="answer(option)">
                   <input class="form-check-input" type="radio" name="answer" id="answer" value="{{ option.index }}" />
                   <label class="form-check-label" for="answer">
                     {{ option.statement }}
@@ -70,12 +77,12 @@
           <div class="score_text">
             <span
               >and congrats!, You got
-              <p>'{{ correctAnswerCount }}'</p>
+              <p>'{{ attempt!.score }}'</p>
               out of
               <p>'{{ questionList.length }}'</p>
 
               <p>Total Question Attempted : {{ questionList.length }}</p>
-              <p>Total Correct Answered : {{ correctAnswerCount }}</p>
+              <p>Total Correct Answered : {{ attempt!.score }}</p>
               <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
               <p>Your Score : {{ points }} Points</p> -->
             </span>
@@ -93,12 +100,11 @@
           <button type="button" class="btn btn-primary" (click)="startQuizz()">Continue</button>
         }
         @case (PlayModeEnum.PLAYING) {
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+          <button type="button" [disabled]="currentQuestionNo === 0" class="btn btn-outline-primary" (click)="previousQuestion()">
+            <fa-icon icon="chevron-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.previous">Previous</span>
           </button>
-
           <button type="button" *ngIf="currentQuestionNo + 1 == questionList.length" class="btn btn-outline-primary" (click)="finish()">
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.finish">Finish</span>
+            <fa-icon icon="flag-checkered"></fa-icon>&nbsp;<span jhiTranslate="entity.action.finish">Finish</span>
           </button>
           <button
             type="button"
@@ -106,26 +112,18 @@
             class="btn btn-outline-primary"
             (click)="nextQuestion()"
           >
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.next">Next</span>
+            <span jhiTranslate="entity.action.next">Next</span>&nbsp;<fa-icon icon="chevron-right"></fa-icon>
           </button>
         }
         @case (PlayModeEnum.FINISHED) {
-          <button id="jhi-confirm-delete-quizz" data-cy="entityReplayButton" type="submit" class="btn btn-danger">
-            <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.replay">Replay</span>
+          <button id="jhi-replay-quizz" data-cy="entityReplayButton" class="btn btn-outline-primary" (click)="retry()">
+            <fa-icon icon="rotate"></fa-icon>&nbsp;<span jhiTranslate="entity.action.retry">Retry</span>
           </button>
-          <button id="jhi-confirm-delete-quizz" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+          <button id="jhi-close-quizz" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
             <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.close">Close</span>
           </button>
         }
       }
-      <div class="d-flex align-items-center pt-3">
-        <div id="prev">
-          <button class="btn btn-primary">Previous</button>
-        </div>
-        <div class="ml-auto mr-sm-5">
-          <button class="btn btn-success">Next</button>
-        </div>
-      </div>
     </div>
   </form>
 }

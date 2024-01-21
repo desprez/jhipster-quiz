@@ -108,7 +108,8 @@
       "close": "Cerrar",
       "previous": "Anterior",
       "next": "Siguiente",
-      "finish": "Finalizar"
+      "finish": "Finalizar",
+      "retry": "Reintentar"
     },
     "detail": {
       "field": "Campo",

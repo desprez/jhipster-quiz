@@ -8,7 +8,7 @@ export interface IAttempt {
   score?: number | null;
   started?: dayjs.Dayjs | null;
   ended?: dayjs.Dayjs | null;
-  answers?: Pick<IAttemptAnswer, 'id'>[] | null;
+  answers?: Pick<IAttemptAnswer, 'id' | 'option'>[] | null;
   quizz?: Pick<IQuizz, 'id' | 'title'> | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }

@@ -14,6 +14,8 @@ import dayjs from 'dayjs/esm';
 import { PlayMode } from './play-mode';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { IOption } from 'app/entities/option/option.model';
+import { IAttemptAnswer } from 'app/entities/attempt-answer/attempt-answer.model';
 
 @Component({
   standalone: true,
@@ -28,16 +30,18 @@ export class QuizzPlayComponent {
   progress: string = '0';
   PlayModeEnum = PlayMode;
   mode = PlayMode.SHOW_RULES;
-  showWarning: boolean = false;
+
+  timerEnabled: boolean = true;
 
   questionList: IQuestion[] = [];
   currentQuestionNo: number = 0;
 
-  remainingTime: number = 10;
+  remainingTime: number = 0;
 
-  timer = interval(1000);
+  timer = interval(1000); // every second (1000ms)
   subscription: Subscription[] = [];
-  correctAnswerCount: number = 0;
+  answerCount: number = 0;
+
   constructor(
     protected quizzService: QuizzService,
     protected attemptService: AttemptService,
@@ -46,19 +50,40 @@ export class QuizzPlayComponent {
   ) {}
 
   ngOnInit(): void {
-    // this.activatedRoute.data.subscribe(({ quizz }) => {
-    //   this.quizz = quizz;
-    // });
     this.questionList = this.quizz?.questions ?? [];
+    if (this.quizz?.maxAnswerTime != null && this.quizz?.maxAnswerTime > 0) {
+      this.remainingTime = this.quizz?.maxAnswerTime;
+      this.timerEnabled = true;
+    } else {
+      this.timerEnabled = false;
+    }
+  }
+
+  showWarningPopup(): void {
+    this.mode = PlayMode.SHOW_RULES;
   }
 
   nextQuestion(): void {
     if (this.currentQuestionNo < this.questionList.length - 1) {
       this.currentQuestionNo++;
     } else {
-      this.subscription.forEach(element => {
-        element.unsubscribe();
-      });
+      this.stopCounter();
+    }
+  }
+
+  answer(option: IOption) {
+    //const answer =  this.attempt?.answers?[this.currentQuestionNo];
+    this.computeAnsweredCount(this.attempt?.answers ?? []);
+    this.getProgressPercent();
+  }
+
+  computeAnsweredCount(answers: IAttemptAnswer[]) {
+    this.answerCount = answers.filter((a: IAttemptAnswer) => a.option != null).length;
+  }
+
+  previousQuestion(): void {
+    if (this.currentQuestionNo > 0) {
+      this.currentQuestionNo--;
     }
   }
 
@@ -66,8 +91,47 @@ export class QuizzPlayComponent {
     this.mode = PlayMode.FINISHED;
   }
 
-  start(): void {
+  startQuizz(): void {
+    this.submitNewAttempt();
     this.mode = PlayMode.PLAYING;
+    this.startCounter();
+  }
+
+  private startCounter() {
+    if (!this.timerEnabled) {
+      return;
+    }
+    this.subscription.push(
+      this.timer.subscribe(res => {
+        if (this.remainingTime !== 0) {
+          this.remainingTime--;
+        }
+        // Auto move to next question after x seconds
+        if (this.remainingTime === 0) {
+          this.nextQuestion();
+          this.remainingTime = this.quizz?.maxAnswerTime ?? 0;
+        }
+      }),
+    );
+  }
+
+  private stopCounter() {
+    if (!this.timerEnabled) {
+      return;
+    }
+    this.subscription.forEach(element => {
+      element.unsubscribe();
+    });
+  }
+
+  private submitNewAttempt() {
+    this.attemptService.create(this.createNewAttempt()).subscribe(
+      (res: HttpResponse<IAttempt>) => {
+        this.attempt = res.body;
+        console.log(this.attempt);
+      },
+      (res: HttpErrorResponse) => console.log(res.message),
+    );
   }
 
   createNewAttempt(): NewAttempt {
@@ -79,51 +143,12 @@ export class QuizzPlayComponent {
     };
   }
 
-  showWarningPopup(): void {
-    this.mode = PlayMode.SHOW_RULES;
-  }
-
-  selectOption(option: any): void {
-    if (option.isCorrect) {
-      this.correctAnswerCount++;
-    }
-    option.isSelected = true;
-  }
-
-  isOptionSelected(options: any): boolean {
-    const selectionCount = options.filter((m: any) => m.isSelected === true).length;
-    if (selectionCount === 0) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  startQuizz(): void {
-    this.attemptService.create(this.createNewAttempt()).subscribe(
-      (res: HttpResponse<IAttempt>) => {
-        this.attempt = res.body;
-      },
-      (res: HttpErrorResponse) => console.log(res.message),
-    );
-    this.mode = PlayMode.PLAYING;
-
-    this.subscription.push(
-      this.timer.subscribe(res => {
-        if (this.remainingTime !== 0) {
-          this.remainingTime--;
-        }
-        if (this.remainingTime === 0) {
-          this.nextQuestion();
-          this.remainingTime = 10;
-        }
-      }),
-    );
-  }
-
   getProgressPercent() {
-    this.progress = ((this.currentQuestionNo / this.questionList.length) * 100).toString();
-    return this.progress;
+    this.progress = ((this.answerCount / this.questionList.length) * 100).toString();
+  }
+
+  retry(): void {
+    this.mode = PlayMode.SHOW_RULES;
   }
 
   cancel(): void {
