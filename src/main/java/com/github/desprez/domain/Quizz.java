@@ -79,7 +79,7 @@ public class Quizz implements Serializable {
     @Column(name = "published", nullable = false)
     private Boolean published;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quizz")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quizz", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "options", "quizz" }, allowSetters = true)
     private Set<Question> questions = new HashSet<>();

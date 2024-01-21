@@ -1,10 +1,15 @@
 package com.github.desprez.service;
 
-import com.github.desprez.domain.*; // for static metamodels
+// for static metamodels
+import com.github.desprez.domain.Question_;
 import com.github.desprez.domain.Quizz;
+import com.github.desprez.domain.Quizz_;
+import com.github.desprez.domain.User_;
 import com.github.desprez.repository.QuizzRepository;
 import com.github.desprez.service.criteria.QuizzCriteria;
+import com.github.desprez.service.dto.QuizzBasicDTO;
 import com.github.desprez.service.dto.QuizzDTO;
+import com.github.desprez.service.mapper.QuizzBasicMapper;
 import com.github.desprez.service.mapper.QuizzMapper;
 import jakarta.persistence.criteria.JoinType;
 import java.util.List;
@@ -31,9 +36,9 @@ public class QuizzQueryService extends QueryService<Quizz> {
 
     private final QuizzRepository quizzRepository;
 
-    private final QuizzMapper quizzMapper;
+    private final QuizzBasicMapper quizzMapper;
 
-    public QuizzQueryService(QuizzRepository quizzRepository, QuizzMapper quizzMapper) {
+    public QuizzQueryService(QuizzRepository quizzRepository, QuizzBasicMapper quizzMapper) {
         this.quizzRepository = quizzRepository;
         this.quizzMapper = quizzMapper;
     }
@@ -44,7 +49,7 @@ public class QuizzQueryService extends QueryService<Quizz> {
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public List<QuizzDTO> findByCriteria(QuizzCriteria criteria) {
+    public List<QuizzBasicDTO> findByCriteria(QuizzCriteria criteria) {
         log.debug("find by criteria : {}", criteria);
         final Specification<Quizz> specification = createSpecification(criteria);
         return quizzMapper.toDto(quizzRepository.findAll(specification));
@@ -57,7 +62,7 @@ public class QuizzQueryService extends QueryService<Quizz> {
      * @return the matching entities.
      */
     @Transactional(readOnly = true)
-    public Page<QuizzDTO> findByCriteria(QuizzCriteria criteria, Pageable page) {
+    public Page<QuizzBasicDTO> findByCriteria(QuizzCriteria criteria, Pageable page) {
         log.debug("find by criteria : {}, page: {}", criteria, page);
         final Specification<Quizz> specification = createSpecification(criteria);
         return quizzRepository.findAll(specification, page).map(quizzMapper::toDto);
@@ -102,30 +107,11 @@ public class QuizzQueryService extends QueryService<Quizz> {
             if (criteria.getCategory() != null) {
                 specification = specification.and(buildSpecification(criteria.getCategory(), Quizz_.category));
             }
-            if (criteria.getQuestionOrder() != null) {
-                specification = specification.and(buildSpecification(criteria.getQuestionOrder(), Quizz_.questionOrder));
-            }
-            if (criteria.getMaxAnswerTime() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getMaxAnswerTime(), Quizz_.maxAnswerTime));
-            }
-            if (criteria.getAllowBack() != null) {
-                specification = specification.and(buildSpecification(criteria.getAllowBack(), Quizz_.allowBack));
-            }
-            if (criteria.getAllowReview() != null) {
-                specification = specification.and(buildSpecification(criteria.getAllowReview(), Quizz_.allowReview));
-            }
-            if (criteria.getSecretGoodAnwers() != null) {
-                specification = specification.and(buildSpecification(criteria.getSecretGoodAnwers(), Quizz_.secretGoodAnwers));
-            }
+
             if (criteria.getPublished() != null) {
                 specification = specification.and(buildSpecification(criteria.getPublished(), Quizz_.published));
             }
-            if (criteria.getQuestionsId() != null) {
-                specification =
-                    specification.and(
-                        buildSpecification(criteria.getQuestionsId(), root -> root.join(Quizz_.questions, JoinType.LEFT).get(Question_.id))
-                    );
-            }
+
             if (criteria.getUserId() != null) {
                 specification =
                     specification.and(

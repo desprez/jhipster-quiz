@@ -52,7 +52,7 @@ entity Attempt {
 //@skipClient
 entity AttemptAnswer {
   id UUID
-  started Instant required
+  started Instant
   ended Instant
 }
 
@@ -64,7 +64,7 @@ relationship OneToMany {
 
 relationship ManyToOne {
   AttemptAnswer{question(statement) required} to Question
-  AttemptAnswer{option(statement) required} to Option
+  AttemptAnswer{option(statement)} to Option
   Attempt{quizz(title) required} to Quizz
   Attempt{user(login) required} to User with builtInEntity
   Quizz{user(login) required} to User with builtInEntity

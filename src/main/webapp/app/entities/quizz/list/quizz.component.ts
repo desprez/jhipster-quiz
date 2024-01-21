@@ -17,6 +17,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { QuizzDeleteDialogComponent } from '../delete/quizz-delete-dialog.component';
 import { EntityArrayResponseType, QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
+import { QuizzPlayComponent } from '../play/quizz-play.component';
 
 @Component({
   standalone: true,
@@ -83,6 +84,22 @@ export class QuizzComponent implements OnInit {
 
   delete(quizz: IQuizz): void {
     const modalRef = this.modalService.open(QuizzDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.quizz = quizz;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed
+      .pipe(
+        filter(reason => reason === ITEM_DELETED_EVENT),
+        switchMap(() => this.loadFromBackendWithRouteInformations()),
+      )
+      .subscribe({
+        next: (res: EntityArrayResponseType) => {
+          this.onResponseSuccess(res);
+        },
+      });
+  }
+
+  play(quizz: IQuizz): void {
+    const modalRef = this.modalService.open(QuizzPlayComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.quizz = quizz;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed

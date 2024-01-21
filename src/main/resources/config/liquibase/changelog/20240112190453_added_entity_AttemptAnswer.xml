@@ -15,7 +15,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="started" type="${datetimeType}">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="ended" type="${datetimeType}">
                 <constraints nullable="true" />
@@ -24,7 +24,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="option_id" type="${uuidType}">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="attempt_id" type="${uuidType}">
                 <constraints nullable="true" />

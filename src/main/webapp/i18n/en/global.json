@@ -35,7 +35,8 @@
         "database": "Database",
         "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
-      "language": "Language"
+      "language": "Language",
+      "about": "About"
     },
     "form": {
       "username.label": "Username",
@@ -103,7 +104,11 @@
       "open": "Open",
       "save": "Save",
       "view": "View",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next",
+      "finish": "Finish"
     },
     "detail": {
       "field": "Field",

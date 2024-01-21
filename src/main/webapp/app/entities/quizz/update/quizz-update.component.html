@@ -9,7 +9,7 @@
         <jhi-alert-error></jhi-alert-error>
 
         @if (editForm.controls.id.value !== null) {
-          <div class="mb-3">
+          <div class="mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <label class="form-label" jhiTranslate="quizzApp.quizz.id" for="field_id">Id</label>
             <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
           </div>
@@ -39,14 +39,16 @@
 
         <div class="mb-3">
           <label class="form-label" jhiTranslate="quizzApp.quizz.description" for="field_description">Description</label>
-          <input
+          <textarea
             type="text"
             class="form-control"
             name="description"
             id="field_description"
             data-cy="description"
             formControlName="description"
-          />
+            maxlength="500"
+            rows="3"
+          ></textarea>
           @if (editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)) {
             <div>
               @if (editForm.get('description')?.errors?.maxlength) {
@@ -57,79 +59,91 @@
             </div>
           }
         </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.difficulty" for="field_difficulty">Difficulty</label>
-          <select class="form-control" name="difficulty" formControlName="difficulty" id="field_difficulty" data-cy="difficulty">
-            <option [ngValue]="null">{{ 'quizzApp.Difficulty.null' | translate }}</option>
-            @for (difficulty of difficultyValues; track $index) {
-              <option [value]="difficulty">{{ 'quizzApp.Difficulty.' + difficulty | translate }}</option>
-            }
-          </select>
-          @if (editForm.get('difficulty')!.invalid && (editForm.get('difficulty')!.dirty || editForm.get('difficulty')!.touched)) {
-            <div>
-              @if (editForm.get('difficulty')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.difficulty" for="field_difficulty">Difficulty</label>
+            <select class="form-control" name="difficulty" formControlName="difficulty" id="field_difficulty" data-cy="difficulty">
+              <option [ngValue]="null">{{ 'quizzApp.Difficulty.null' | translate }}</option>
+              @for (difficulty of difficultyValues; track $index) {
+                <option [value]="difficulty">{{ 'quizzApp.Difficulty.' + difficulty | translate }}</option>
               }
-            </div>
-          }
+            </select>
+            @if (editForm.get('difficulty')!.invalid && (editForm.get('difficulty')!.dirty || editForm.get('difficulty')!.touched)) {
+              <div>
+                @if (editForm.get('difficulty')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.category" for="field_category">Category</label>
+            <select class="form-control" name="category" formControlName="category" id="field_category" data-cy="category">
+              <option [ngValue]="null">{{ 'quizzApp.Category.null' | translate }}</option>
+              @for (category of categoryValues; track $index) {
+                <option [value]="category">{{ 'quizzApp.Category.' + category | translate }}</option>
+              }
+            </select>
+            @if (editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)) {
+              <div>
+                @if (editForm.get('category')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.category" for="field_category">Category</label>
-          <select class="form-control" name="category" formControlName="category" id="field_category" data-cy="category">
-            <option [ngValue]="null">{{ 'quizzApp.Category.null' | translate }}</option>
-            @for (category of categoryValues; track $index) {
-              <option [value]="category">{{ 'quizzApp.Category.' + category | translate }}</option>
-            }
-          </select>
-          @if (editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)) {
-            <div>
-              @if (editForm.get('category')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.questionOrder" for="field_questionOrder">Question Order</label>
+            <select
+              class="form-control"
+              name="questionOrder"
+              formControlName="questionOrder"
+              id="field_questionOrder"
+              data-cy="questionOrder"
+            >
+              <option [ngValue]="null">{{ 'quizzApp.DisplayOrder.null' | translate }}</option>
+              @for (displayOrder of displayOrderValues; track $index) {
+                <option [value]="displayOrder">{{ 'quizzApp.DisplayOrder.' + displayOrder | translate }}</option>
               }
-            </div>
-          }
+            </select>
+            @if (
+              editForm.get('questionOrder')!.invalid && (editForm.get('questionOrder')!.dirty || editForm.get('questionOrder')!.touched)
+            ) {
+              <div>
+                @if (editForm.get('questionOrder')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.maxAnswerTime" for="field_maxAnswerTime">Max Answer Time</label>
+            <input
+              type="number"
+              class="form-control"
+              name="maxAnswerTime"
+              id="field_maxAnswerTime"
+              data-cy="maxAnswerTime"
+              formControlName="maxAnswerTime"
+            />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.questionOrder" for="field_questionOrder">Question Order</label>
-          <select
-            class="form-control"
-            name="questionOrder"
-            formControlName="questionOrder"
-            id="field_questionOrder"
-            data-cy="questionOrder"
-          >
-            <option [ngValue]="null">{{ 'quizzApp.DisplayOrder.null' | translate }}</option>
-            @for (displayOrder of displayOrderValues; track $index) {
-              <option [value]="displayOrder">{{ 'quizzApp.DisplayOrder.' + displayOrder | translate }}</option>
-            }
-          </select>
-          @if (editForm.get('questionOrder')!.invalid && (editForm.get('questionOrder')!.dirty || editForm.get('questionOrder')!.touched)) {
-            <div>
-              @if (editForm.get('questionOrder')?.errors?.required) {
-                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
-              }
-            </div>
-          }
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.maxAnswerTime" for="field_maxAnswerTime">Max Answer Time</label>
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.allowBack" for="field_allowBack">Allow Back</label>
           <input
-            type="number"
-            class="form-control"
-            name="maxAnswerTime"
-            id="field_maxAnswerTime"
-            data-cy="maxAnswerTime"
-            formControlName="maxAnswerTime"
+            type="checkbox"
+            class="form-check-input"
+            name="allowBack"
+            id="field_allowBack"
+            data-cy="allowBack"
+            formControlName="allowBack"
           />
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.allowBack" for="field_allowBack">Allow Back</label>
-          <input type="checkbox" class="form-check" name="allowBack" id="field_allowBack" data-cy="allowBack" formControlName="allowBack" />
           @if (editForm.get('allowBack')!.invalid && (editForm.get('allowBack')!.dirty || editForm.get('allowBack')!.touched)) {
             <div>
               @if (editForm.get('allowBack')?.errors?.required) {
@@ -139,11 +153,11 @@
           }
         </div>
 
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.allowReview" for="field_allowReview">Allow Review</label>
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.allowReview" for="field_allowReview">Allow Review</label>
           <input
             type="checkbox"
-            class="form-check"
+            class="form-check-input"
             name="allowReview"
             id="field_allowReview"
             data-cy="allowReview"
@@ -158,11 +172,13 @@
           }
         </div>
 
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.secretGoodAnwers" for="field_secretGoodAnwers">Secret Good Anwers</label>
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.secretGoodAnwers" for="field_secretGoodAnwers"
+            >Secret Good Anwers</label
+          >
           <input
             type="checkbox"
-            class="form-check"
+            class="form-check-input"
             name="secretGoodAnwers"
             id="field_secretGoodAnwers"
             data-cy="secretGoodAnwers"
@@ -221,9 +237,16 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.quizz.published" for="field_published">Published</label>
-          <input type="checkbox" class="form-check" name="published" id="field_published" data-cy="published" formControlName="published" />
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.published" for="field_published">Published</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="published"
+            id="field_published"
+            data-cy="published"
+            formControlName="published"
+          />
           @if (editForm.get('published')!.invalid && (editForm.get('published')!.dirty || editForm.get('published')!.touched)) {
             <div>
               @if (editForm.get('published')?.errors?.required) {

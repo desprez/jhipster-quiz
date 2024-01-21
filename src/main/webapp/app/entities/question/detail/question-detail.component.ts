@@ -9,6 +9,7 @@ import { IQuestion } from '../question.model';
   standalone: true,
   selector: 'jhi-question-detail',
   templateUrl: './question-detail.component.html',
+  styleUrl: './question-detail.component.scss',
   imports: [SharedModule, RouterModule, DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe],
 })
 export class QuestionDetailComponent {

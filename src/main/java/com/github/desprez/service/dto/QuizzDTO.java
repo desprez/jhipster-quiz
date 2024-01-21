@@ -1,34 +1,17 @@
 package com.github.desprez.service.dto;
 
-import com.github.desprez.domain.enumeration.Category;
-import com.github.desprez.domain.enumeration.Difficulty;
 import com.github.desprez.domain.enumeration.DisplayOrder;
 import jakarta.persistence.Lob;
-import jakarta.validation.constraints.*;
-import java.io.Serializable;
+import jakarta.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Objects;
-import java.util.UUID;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.github.desprez.domain.Quizz} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class QuizzDTO implements Serializable {
-
-    private UUID id;
-
-    @NotNull
-    @Size(min = 2, max = 100)
-    private String title;
-
-    @Size(max = 500)
-    private String description;
-
-    @NotNull
-    private Difficulty difficulty;
-
-    @NotNull
-    private Category category;
+public class QuizzDTO extends QuizzBasicDTO {
 
     @NotNull
     private DisplayOrder questionOrder;
@@ -49,50 +32,7 @@ public class QuizzDTO implements Serializable {
 
     private String imageContentType;
 
-    @NotNull
-    private Boolean published;
-
-    private UserDTO user;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    private Set<QuestionDTO> questions = new HashSet<>();
 
     public DisplayOrder getQuestionOrder() {
         return questionOrder;
@@ -150,20 +90,12 @@ public class QuizzDTO implements Serializable {
         this.imageContentType = imageContentType;
     }
 
-    public Boolean getPublished() {
-        return published;
+    public Set<QuestionDTO> getQuestions() {
+        return questions;
     }
 
-    public void setPublished(Boolean published) {
-        this.published = published;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public void setUser(UserDTO user) {
-        this.user = user;
+    public void setQuestions(Set<QuestionDTO> questions) {
+        this.questions = questions;
     }
 
     @Override

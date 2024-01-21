@@ -1,6 +1,7 @@
 package com.github.desprez.repository;
 
 import com.github.desprez.domain.Attempt;
+import com.github.desprez.domain.Quizz;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,4 +42,9 @@ public interface AttemptRepository extends JpaRepository<Attempt, UUID> {
 
     @Query("select attempt from Attempt attempt left join fetch attempt.quizz left join fetch attempt.user where attempt.id =:id")
     Optional<Attempt> findOneWithToOneRelationships(@Param("id") UUID id);
+
+    @Query(
+        "select attempt from Attempt attempt left join fetch attempt.quizz left join fetch attempt.user left join fetch attempt.answers answers where attempt.id =:id"
+    )
+    Optional<Attempt> findOneWithAnswerRelationships(@Param("id") UUID id);
 }

@@ -39,6 +39,17 @@
           <dd>
             <span>{{ attempt.user?.login }}</span>
           </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.answers">Questions</span></dt>
+          <dd>
+            <div>
+              <ul class="list-group">
+                <li *ngFor="let answer of attempt?.answers" class="list-group-item d-flex">
+                  <!-- <span class="">{{ question.index }}</span>. -->
+                  {{ answer.id }}
+                </li>
+              </ul>
+            </div>
+          </dd>
         </dl>
 
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

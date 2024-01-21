@@ -21,7 +21,7 @@
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.description">Description</span></dt>
           <dd>
-            <span>{{ quizz.description }}</span>
+            <span [innerHTML]="quizz.description"></span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.difficulty">Difficulty</span></dt>
           <dd>
@@ -69,6 +69,19 @@
           <dt><span jhiTranslate="quizzApp.quizz.user">User</span></dt>
           <dd>
             <span>{{ quizz.user?.login }}</span>
+          </dd>
+
+          <dt><span jhiTranslate="quizzApp.quizz.questions">Questions</span></dt>
+          <dd>
+            <div>
+              <ul class="list-group">
+                <li *ngFor="let question of quizz!.questions" class="list-group-item d-flex">
+                  <span class="">{{ question.index }}</span
+                  >.
+                  {{ question.statement }}
+                </li>
+              </ul>
+            </div>
           </dd>
         </dl>
 

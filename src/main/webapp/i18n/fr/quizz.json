@@ -6,7 +6,7 @@
         "refreshListLabel": "Actualiser la liste",
         "createLabel": "Créer un nouveau Quizz",
         "createOrEditLabel": "Créer ou éditer un Quizz",
-        "notFound": "Aucun Quizz trouvé"
+        "notFound": "Aucun Quizz n'a été trouvé"
       },
       "created": "Un nouveau Quizz a été créé avec l'identifiant {{ param }}",
       "updated": "Le Quizz avec l'identifiant {{ param }} a été mis à jour",
@@ -18,19 +18,20 @@
         "title": "Quizz"
       },
       "id": "Id",
-      "title": "Title",
+      "title": "Titre",
       "description": "Description",
-      "difficulty": "Difficulty",
-      "category": "Category",
-      "questionOrder": "Question Order",
-      "maxAnswerTime": "Max Answer Time",
-      "allowBack": "Allow Back",
-      "allowReview": "Allow Review",
-      "secretGoodAnwers": "Secret Good Anwers",
+      "difficulty": "Difficulté",
+      "category": "Categorie",
+      "questionOrder": "Ordre des questions",
+      "maxAnswerTime": "Temps de réponse maximum",
+      "allowBack": "Permettre le retour en arrière",
+      "allowReview": "Permettre la revue",
+      "secretGoodAnwers": "Garder les bonnes réponses secrètes",
       "image": "Image",
-      "published": "Published",
+      "published": "Publié",
       "questions": "Questions",
-      "user": "User"
+      "user": "Auteur",
+      "questionCount": "Questions#"
     }
   }
 }

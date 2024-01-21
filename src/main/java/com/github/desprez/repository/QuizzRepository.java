@@ -38,4 +38,7 @@ public interface QuizzRepository extends JpaRepository<Quizz, UUID>, JpaSpecific
 
     @Query("select quizz from Quizz quizz left join fetch quizz.user where quizz.id =:id")
     Optional<Quizz> findOneWithToOneRelationships(@Param("id") UUID id);
+
+    @Query("select quizz from Quizz quizz left join fetch quizz.user left join fetch quizz.questions questions where quizz.id =:id")
+    Optional<Quizz> findOneWithQuestionRelationships(@Param("id") UUID id);
 }

@@ -1,0 +1,7 @@
+export enum PlayMode {
+  OPENING = 'OPENING',
+  SHOW_RULES = 'SHOW RULES',
+  PLAYING = 'PLAYING',
+  FINISHED = 'FINISHED',
+  SUMMARY = 'SUMMARY',
+}

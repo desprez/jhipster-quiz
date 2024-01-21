@@ -25,7 +25,7 @@ public class AttemptAnswer implements Serializable {
     @Column(name = "id")
     private UUID id;
 
-    @NotNull
+    // @NotNull
     @Column(name = "started", nullable = false)
     private Instant started;
 
@@ -38,7 +38,7 @@ public class AttemptAnswer implements Serializable {
     private Question question;
 
     @ManyToOne(optional = false)
-    @NotNull
+    // @NotNull
     @JsonIgnoreProperties(value = { "question" }, allowSetters = true)
     private Option option;
 

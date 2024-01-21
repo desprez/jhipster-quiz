@@ -85,6 +85,9 @@ public class SecurityConfiguration {
                     .requestMatchers(mvc.pattern("/management/info")).permitAll()
                     .requestMatchers(mvc.pattern("/management/prometheus")).permitAll()
                     .requestMatchers(mvc.pattern("/management/**")).hasAuthority(AuthoritiesConstants.ADMIN)
+                    // custom paths for not authenticated users
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/quizz/*")).permitAll()
+                    .requestMatchers(mvc.pattern(HttpMethod.GET, "/api/attempts/*")).permitAll()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .exceptionHandling(exceptions ->

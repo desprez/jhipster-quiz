@@ -4,13 +4,13 @@
       "home": {
         "title": "Questions",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Question",
+        "createLabel": "Créer une nouvelle Question",
         "createOrEditLabel": "Créer ou éditer un Question",
-        "notFound": "Aucun Question trouvé"
+        "notFound": "Aucune Question n'a été trouvée"
       },
-      "created": "Un nouveau Question a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Question avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Question avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Question a été créé avec l'identifiant {{ param }}",
+      "updated": "La Question avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "La Question avec l'identifiant {{ param }} a été supprimée",
       "delete": {
         "question": "Êtes-vous certain de vouloir supprimer le Question {{ id }} ?"
       },
@@ -18,9 +18,9 @@
         "title": "Question"
       },
       "id": "Id",
-      "statement": "Statement",
+      "statement": "Intitulé",
       "index": "Index",
-      "correctOptionIndex": "Correct Option Index",
+      "correctOptionIndex": "Index de la bonne réponse",
       "options": "Options",
       "quizz": "Quizz"
     }

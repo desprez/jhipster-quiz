@@ -2,9 +2,9 @@
   "quizzApp": {
     "Difficulty": {
       "null": "",
-      "EASY": "EASY",
-      "MEDIUM": "MEDIUM",
-      "HARD": "HARD"
+      "EASY": "Facile",
+      "MEDIUM": "Moyen",
+      "HARD": "Difficile"
     }
   }
 }

@@ -1,9 +1,11 @@
 package com.github.desprez.web.rest;
 
 import com.github.desprez.repository.QuizzRepository;
+import com.github.desprez.service.AttemptService;
 import com.github.desprez.service.QuizzQueryService;
 import com.github.desprez.service.QuizzService;
 import com.github.desprez.service.criteria.QuizzCriteria;
+import com.github.desprez.service.dto.QuizzBasicDTO;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
@@ -16,12 +18,21 @@ import java.util.Optional;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
@@ -47,10 +58,18 @@ public class QuizzResource {
 
     private final QuizzQueryService quizzQueryService;
 
-    public QuizzResource(QuizzService quizzService, QuizzRepository quizzRepository, QuizzQueryService quizzQueryService) {
+    private final AttemptService attemptService;
+
+    public QuizzResource(
+        QuizzService quizzService,
+        QuizzRepository quizzRepository,
+        QuizzQueryService quizzQueryService,
+        AttemptService attemptService
+    ) {
         this.quizzService = quizzService;
         this.quizzRepository = quizzRepository;
         this.quizzQueryService = quizzQueryService;
+        this.attemptService = attemptService;
     }
 
     /**
@@ -151,13 +170,10 @@ public class QuizzResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of quizzes in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<QuizzDTO>> getAllQuizzes(
-        QuizzCriteria criteria,
-        @org.springdoc.core.annotations.ParameterObject Pageable pageable
-    ) {
+    public ResponseEntity<List<QuizzBasicDTO>> getAllQuizzes(QuizzCriteria criteria, @ParameterObject Pageable pageable) {
         log.debug("REST request to get Quizzes by criteria: {}", criteria);
 
-        Page<QuizzDTO> page = quizzQueryService.findByCriteria(criteria, pageable);
+        Page<QuizzBasicDTO> page = quizzQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -202,4 +218,23 @@ public class QuizzResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+    /**
+     * {@code GET  /quizzes/:id} : play the "id" quizz.
+     *
+     * @param id the id of the quizzDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the AttemptDTO, or with status {@code 404 (Not Found)}.
+     */
+    //    @GetMapping("/{id}/play")
+    //    public ResponseEntity<AttemptDTO> play(@PathVariable("id") UUID id) throws URISyntaxException {
+    //        log.debug("REST request to get Quizz : {}", id);
+    //        Optional<QuizzDTO> quizzDTO = quizzService.findOne(id);
+    //
+    //        AttemptDTO result = attemptService.save(new AttemptDTO( ));
+    //
+    //        return ResponseEntity
+    //            .created(new URI("/api/attempts/" + result.getId()))
+    //            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, AttemptResource.ENTITY_NAME, result.getId().toString()))
+    //            .body(result);
+    //    }
+
 }

@@ -2,8 +2,8 @@
   "quizzApp": {
     "DisplayOrder": {
       "null": "",
-      "RANDOM": "RANDOM",
-      "FIXED": "FIXED"
+      "RANDOM": "Random",
+      "FIXED": "Fixed"
     }
   }
 }

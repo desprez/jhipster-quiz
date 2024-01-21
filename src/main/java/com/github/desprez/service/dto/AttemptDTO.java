@@ -3,7 +3,9 @@ package com.github.desprez.service.dto;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -11,6 +13,8 @@ import java.util.UUID;
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class AttemptDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private UUID id;
 
@@ -26,6 +30,8 @@ public class AttemptDTO implements Serializable {
     private QuizzDTO quizz;
 
     private UserDTO user;
+
+    private Set<AttemptAnswerDTO> answers = new HashSet<>();
 
     public UUID getId() {
         return id;
@@ -73,6 +79,14 @@ public class AttemptDTO implements Serializable {
 
     public void setUser(UserDTO user) {
         this.user = user;
+    }
+
+    public Set<AttemptAnswerDTO> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<AttemptAnswerDTO> answers) {
+        this.answers = answers;
     }
 
     @Override
