@@ -56,37 +56,41 @@
           <h5>{{ questionList[currentQuestionNo].statement }}</h5>
 
           <div class="row">
-            <div class="options" *ngFor="let option of questionList[currentQuestionNo].options">
+            <jhi-radio-options [options]="questionList[currentQuestionNo]!.options!" [formControl]="answerSelected!" onchange="answer()">
+              <!-- value="answerList[currentQuestionNo]!.options!.id!" -->
+            </jhi-radio-options>
+            <!-- <div class="options" *ngFor="let option of questionList[currentQuestionNo].options; let i = index">
               <div class="col-xs-12">
                 <h5 class="answer" (click)="answer(option)">
-                  <input class="form-check-input" type="radio" name="answer" id="answer" value="{{ option.index }}" />
-                  <label class="form-check-label" for="answer">
+                  <input class="form-check-input" type="radio" name="answer" id="i" value="{{ option.index }}" />
+                  <label class="form-check-label" for="i">
                     {{ option.statement }}
                   </label>
                 </h5>
               </div>
-            </div>
+            </div> -->
+            <!-- <form [formGroup]="quizzForm">
+                <ng-container *ngFor="let option of questionList[currentQuestionNo].options; let i = index">
+                    <input type="radio" [value]="option.index" formControlName="answer" />{{ option }}
+                </ng-container>
+              </form> -->
+            <!-- <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="answer" id="answer" value="{{ option.index }}" />
+                <label class="btn btn-outline-primary" for="answer">{{ option.statement }}</label>
+              </div> -->
           </div>
           <footer></footer>
         }
         @case (PlayModeEnum.FINISHED) {
-          <div class="icon">
-            <i class="fas fa-down"></i>
-          </div>
-          <div class="complete-text">You've completed the Quizz !</div>
-          <div class="score_text">
-            <span
-              >and congrats!, You got
-              <p>'{{ attempt!.score }}'</p>
-              out of
-              <p>'{{ questionList.length }}'</p>
+          <jhi-circle-progress [value]="progress"></jhi-circle-progress>
+          <p>You've completed the Quizz !</p>
 
-              <p>Total Question Attempted : {{ questionList.length }}</p>
-              <p>Total Correct Answered : {{ attempt!.score }}</p>
-              <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
-              <p>Your Score : {{ points }} Points</p> -->
-            </span>
-          </div>
+          <p>and congrats!, You got {{ attempt!.score }} out of {{ questionList.length }}'</p>
+
+          <p>Total Question Attempted : {{ questionList.length }}</p>
+          <p>Total Correct Answered : {{ attempt!.score }}</p>
+          <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
+                <p>Your Score : {{ points }} Points</p> -->
         }
       }
     </div>

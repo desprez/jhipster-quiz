@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
@@ -16,24 +16,31 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { IOption } from 'app/entities/option/option.model';
 import { IAttemptAnswer } from 'app/entities/attempt-answer/attempt-answer.model';
+import { CircleProgressComponent } from 'app/circle-progress/circle-progress.component';
+import { PlayRadioOptionsComponent } from 'app/entities/option/play/radio-options.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   standalone: true,
   templateUrl: './quizz-play.component.html',
-  imports: [SharedModule, FormsModule],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, CircleProgressComponent, PlayRadioOptionsComponent],
 })
 export class QuizzPlayComponent {
   @Input() quizz: IQuizz | null = null;
 
   attempt: IAttempt | null = null;
 
-  progress: string = '0';
+  public answerSelected: FormControl;
+
+  progress: number = 0;
   PlayModeEnum = PlayMode;
   mode = PlayMode.SHOW_RULES;
 
   timerEnabled: boolean = true;
 
   questionList: IQuestion[] = [];
+  answerList: IAttemptAnswer[] = [];
+
   currentQuestionNo: number = 0;
 
   remainingTime: number = 0;
@@ -47,7 +54,12 @@ export class QuizzPlayComponent {
     protected attemptService: AttemptService,
     protected activeModal: NgbActiveModal,
     protected activatedRoute: ActivatedRoute,
-  ) {}
+    private fb: FormBuilder,
+  ) {
+    this.answerSelected = new FormControl('');
+  }
+
+  //answerSelected = new FormControl('');
 
   ngOnInit(): void {
     this.questionList = this.quizz?.questions ?? [];
@@ -66,25 +78,50 @@ export class QuizzPlayComponent {
   nextQuestion(): void {
     if (this.currentQuestionNo < this.questionList.length - 1) {
       this.currentQuestionNo++;
+      this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
     } else {
       this.stopCounter();
     }
-  }
-
-  answer(option: IOption) {
-    //const answer =  this.attempt?.answers?[this.currentQuestionNo];
-    this.computeAnsweredCount(this.attempt?.answers ?? []);
-    this.getProgressPercent();
-  }
-
-  computeAnsweredCount(answers: IAttemptAnswer[]) {
-    this.answerCount = answers.filter((a: IAttemptAnswer) => a.option != null).length;
+    console.log('answerSelected:' + this.answerSelected.value);
   }
 
   previousQuestion(): void {
     if (this.currentQuestionNo > 0) {
+      this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
       this.currentQuestionNo--;
     }
+    console.log('answerSelected:' + this.answerSelected.value);
+  }
+
+  answer() {
+    console.log('answerSelected:' + this.answerSelected.value);
+    const option = this.questionList[this.currentQuestionNo].options?.find((o: IOption) => o.id === this.answerSelected.value) ?? null;
+    const answer: IAttemptAnswer = this.getAnswer(this.questionList[this.currentQuestionNo]);
+    answer.option = option;
+    answer.ended = dayjs();
+
+    // const answers = this.attempt?.answers ?? []; // Ensure that answers is an array
+
+    if (this.attempt) {
+      this.attemptService.update(this.attempt).subscribe();
+    }
+
+    this.computeAnsweredCount(this.answerList);
+    this.getProgressPercent();
+  }
+
+  getAnswer(question: IQuestion): IAttemptAnswer {
+    return (
+      this.attempt?.answers?.find((a: IAttemptAnswer) => a.question?.id === question.id) ?? {
+        id: '',
+        option: null,
+        question: question,
+      }
+    );
+  }
+
+  computeAnsweredCount(answers: IAttemptAnswer[]) {
+    this.answerCount = answers.filter((a: IAttemptAnswer) => a.option != null).length;
   }
 
   finish(): void {
@@ -129,6 +166,7 @@ export class QuizzPlayComponent {
       (res: HttpResponse<IAttempt>) => {
         this.attempt = res.body;
         console.log(this.attempt);
+        this.answerList = this.attempt?.answers ?? [];
       },
       (res: HttpErrorResponse) => console.log(res.message),
     );
@@ -144,7 +182,7 @@ export class QuizzPlayComponent {
   }
 
   getProgressPercent() {
-    this.progress = ((this.answerCount / this.questionList.length) * 100).toString();
+    this.progress = (this.answerCount / this.questionList.length) * 100;
   }
 
   retry(): void {
