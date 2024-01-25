@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 import { IQuizz, NewQuizz } from '../quizz.model';
+import { IQuestion, NewQuestion } from 'app/entities/question/question.model';
+import { IOption, NewOption } from 'app/entities/option/option.model';
 
 /**
  * A partial Type with required key is used as form input.
@@ -15,6 +17,20 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
 type QuizzFormGroupInput = IQuizz | PartialWithRequiredKeyOf<NewQuizz>;
 
 type QuizzFormDefaults = Pick<NewQuizz, 'id' | 'allowBack' | 'allowReview' | 'secretGoodAnwers' | 'published'>;
+
+type OptionFormGroupContent = {
+  id: FormControl<IOption['id'] | NewOption['id']>;
+  statement: FormControl<IOption['statement']>;
+  index: FormControl<IOption['index']>;
+};
+
+type QuestionFormGroupContent = {
+  id: FormControl<IQuestion['id'] | NewQuestion['id']>;
+  statement: FormControl<IQuestion['statement']>;
+  index: FormControl<IQuestion['index']>;
+  correctOptionIndex: FormControl<IQuestion['correctOptionIndex']>;
+  options: FormArray<FormGroup<OptionFormGroupContent>>;
+};
 
 type QuizzFormGroupContent = {
   id: FormControl<IQuizz['id'] | NewQuizz['id']>;
@@ -31,12 +47,15 @@ type QuizzFormGroupContent = {
   imageContentType: FormControl<IQuizz['imageContentType']>;
   published: FormControl<IQuizz['published']>;
   user: FormControl<IQuizz['user']>;
+  questions: FormArray<FormGroup<QuestionFormGroupContent>>;
 };
 
 export type QuizzFormGroup = FormGroup<QuizzFormGroupContent>;
 
 @Injectable({ providedIn: 'root' })
 export class QuizzFormService {
+  constructor(private fb: FormBuilder) {}
+
   createQuizzFormGroup(quizz: QuizzFormGroupInput = { id: null }): QuizzFormGroup {
     const quizzRawValue = {
       ...this.getFormDefaults(),
@@ -83,6 +102,27 @@ export class QuizzFormService {
       user: new FormControl(quizzRawValue.user, {
         validators: [Validators.required],
       }),
+      questions: new FormArray<FormGroup<QuestionFormGroupContent>>(
+        (quizzRawValue.questions ?? []).map(question => this.initQuestion(question)),
+      ),
+    });
+  }
+
+  initQuestion(questionRawValue: IQuestion): FormGroup<QuestionFormGroupContent> {
+    return new FormGroup<QuestionFormGroupContent>({
+      id: new FormControl({ value: questionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
+      statement: new FormControl(questionRawValue.statement, { validators: [Validators.required] }),
+      index: new FormControl(questionRawValue.index, { validators: [Validators.required] }),
+      correctOptionIndex: new FormControl(questionRawValue.correctOptionIndex, { validators: [Validators.required] }),
+      options: new FormArray<FormGroup<OptionFormGroupContent>>((questionRawValue.options ?? []).map(option => this.initOption(option))),
+    });
+  }
+
+  initOption(optionRawValue: IOption): FormGroup<OptionFormGroupContent> {
+    return new FormGroup<OptionFormGroupContent>({
+      id: new FormControl({ value: optionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
+      statement: new FormControl(optionRawValue.statement, { validators: [Validators.required] }),
+      index: new FormControl(optionRawValue.index, { validators: [Validators.required] }),
     });
   }
 

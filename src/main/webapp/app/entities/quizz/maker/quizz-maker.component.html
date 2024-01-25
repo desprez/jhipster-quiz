@@ -276,6 +276,42 @@
         }
       </div>
 
+      <ng-container formArrayName="questions">
+        <div *ngFor="let question of questions.controls; let i = index" class="card">
+          <div class="card-heading">
+            <span>Question {{ i + 1 }}</span>
+            <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a>
+          </div>
+          <div class="card-body" [formGroupName]="i" class="col-md-12 border">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label>Statement</label>
+                <input type="text" class="form-control" formControlName="statement" />
+              </div>
+            </div>
+            <br />
+
+            <ng-container formArrayName="options" *ngFor="let option of getOptionControls(i); let j = index" class="col-md-6">
+              <ng-container [formGroupName]="j">
+                <ng-container class="form-group" style="padding-left: 10px">
+                  <label>Option {{ j + 1 }}</label>
+                  <a *ngIf="getOptionControls(i).length > 1" (click)="removeOption(i, j)" style="cursor: default; float: right">X</a>
+                  <input type="text" class="form-control" placeholder="Enter option" formControlName="statement" />
+                </ng-container>
+              </ng-container>
+              <a class="pull-right" *ngIf="j == getOptionsFormArray(i).length - 1" (click)="addOption(i)" style="float: right">Option +</a>
+              <br />
+            </ng-container>
+
+            <!-- <jhi-option [parentForm]="questions.controls[i]"></jhi-option> -->
+          </div>
+        </div>
+      </ng-container>
+      <!-- <jhi-question [parentForm]="editForm"></jhi-question> -->
+      <div class="margin-20">
+        <a (click)="addQuestion()" style="cursor: default; float: right"> New question + </a>
+      </div>
+
       <div>
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
@@ -290,6 +326,10 @@
         >
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
+      </div>
+
+      <div class="margin-20">
+        <pre>form value: <br>{{editForm.value | json}}</pre>
       </div>
     </form>
   </div>

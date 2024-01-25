@@ -6,7 +6,7 @@ import { finalize, map } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
@@ -19,6 +19,8 @@ import { DisplayOrder } from 'app/entities/enumerations/display-order.model';
 import { QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from '../update/quizz-form.service';
+import { IQuestion } from 'app/entities/question/question.model';
+import { IOption } from 'app/entities/option/option.model';
 
 @Component({
   standalone: true,
@@ -132,5 +134,45 @@ export class QuizzMakerComponent implements OnInit {
       .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
       .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.quizz?.user)))
       .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
+  }
+
+  get questions(): FormArray {
+    return this.editForm.get('questions') as FormArray;
+  }
+
+  get options(): FormArray {
+    return this.editForm.get('options') as any;
+  }
+
+  getOptionsFormArray(questionIndex: number) {
+    return this.questions.controls[questionIndex].get('options') as FormArray;
+  }
+
+  getOptionControls(questionIndex: number) {
+    return this.getOptionsFormArray(questionIndex).controls;
+  }
+
+  addQuestion() {
+    const nextQuestionIndex = this.questions.length + 1;
+    const newQuestion: IQuestion = { id: '', statement: '', index: nextQuestionIndex, correctOptionIndex: 0, options: [this.newOption(1)] };
+    this.questions.push(this.quizzFormService.initQuestion(newQuestion));
+  }
+
+  removeQuestion(questionIndex: number) {
+    this.questions.removeAt(questionIndex);
+  }
+
+  addOption(questionIndex: number): void {
+    const option = this.newOption(this.options.length + 1);
+    console.log('addOption:' + option);
+    this.getOptionsFormArray(questionIndex).push(this.quizzFormService.initOption(option));
+  }
+
+  newOption(nextOptionIndex: number): IOption {
+    return { id: '', statement: '', index: nextOptionIndex };
+  }
+
+  removeOption(questionIndex: number, optionIndex: number) {
+    this.getOptionsFormArray(questionIndex).removeAt(optionIndex);
   }
 }
