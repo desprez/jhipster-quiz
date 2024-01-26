@@ -282,6 +282,7 @@
             <span>Question {{ i + 1 }}</span>
             <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a>
           </div>
+
           <div class="card-body" [formGroupName]="i" class="col-md-12 border">
             <div class="row">
               <div class="form-group col-md-12">

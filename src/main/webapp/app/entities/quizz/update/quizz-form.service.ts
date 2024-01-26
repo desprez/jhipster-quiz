@@ -24,6 +24,8 @@ type OptionFormGroupContent = {
   index: FormControl<IOption['index']>;
 };
 
+export type OptionFormGroup = FormGroup<OptionFormGroupContent>;
+
 type QuestionFormGroupContent = {
   id: FormControl<IQuestion['id'] | NewQuestion['id']>;
   statement: FormControl<IQuestion['statement']>;
@@ -31,6 +33,8 @@ type QuestionFormGroupContent = {
   correctOptionIndex: FormControl<IQuestion['correctOptionIndex']>;
   options: FormArray<FormGroup<OptionFormGroupContent>>;
 };
+
+export type QuestionFormGroup = FormGroup<QuestionFormGroupContent>;
 
 type QuizzFormGroupContent = {
   id: FormControl<IQuizz['id'] | NewQuizz['id']>;
@@ -61,6 +65,7 @@ export class QuizzFormService {
       ...this.getFormDefaults(),
       ...quizz,
     };
+    console.log('createQuizzFormGroup : ', quizzRawValue);
     return new FormGroup<QuizzFormGroupContent>({
       id: new FormControl(
         { value: quizzRawValue.id, disabled: true },
@@ -102,23 +107,23 @@ export class QuizzFormService {
       user: new FormControl(quizzRawValue.user, {
         validators: [Validators.required],
       }),
-      questions: new FormArray<FormGroup<QuestionFormGroupContent>>(
-        (quizzRawValue.questions ?? []).map(question => this.initQuestion(question)),
-      ),
+      questions: new FormArray<QuestionFormGroup>((quizzRawValue.questions ?? []).map(question => this.initQuestion(question))),
     });
   }
 
-  initQuestion(questionRawValue: IQuestion): FormGroup<QuestionFormGroupContent> {
+  initQuestion(questionRawValue: IQuestion): QuestionFormGroup {
+    console.log('initQuestion', questionRawValue);
     return new FormGroup<QuestionFormGroupContent>({
       id: new FormControl({ value: questionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
       statement: new FormControl(questionRawValue.statement, { validators: [Validators.required] }),
       index: new FormControl(questionRawValue.index, { validators: [Validators.required] }),
       correctOptionIndex: new FormControl(questionRawValue.correctOptionIndex, { validators: [Validators.required] }),
-      options: new FormArray<FormGroup<OptionFormGroupContent>>((questionRawValue.options ?? []).map(option => this.initOption(option))),
+      options: new FormArray<OptionFormGroup>((questionRawValue.options ?? []).map(option => this.initOption(option))),
     });
   }
 
-  initOption(optionRawValue: IOption): FormGroup<OptionFormGroupContent> {
+  initOption(optionRawValue: IOption): OptionFormGroup {
+    console.log('initOption', optionRawValue);
     return new FormGroup<OptionFormGroupContent>({
       id: new FormControl({ value: optionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
       statement: new FormControl(optionRawValue.statement, { validators: [Validators.required] }),
@@ -138,6 +143,25 @@ export class QuizzFormService {
         id: { value: quizzRawValue.id, disabled: true },
       } as any /* cast to workaround https://github.com/angular/angular/issues/46458 */,
     );
+
+    // if (!quizz.questions) {
+    //   quizz.questions = [];
+    //   quizz.questions.push({
+    //     id: '',
+    //     index: 1,
+    //     statement: '',
+    //     correctOptionIndex: 0,
+    //   });
+    // }
+    console.log(`resetForm quizz.questions`, quizz.questions);
+    // quizz.questions.map(question => {
+    //   (form.get('questions') as FormArray).push(
+    //     this.fb.group({
+    //       index: question.index,
+    //       statement: question.statement,
+    //     })
+    //   )
+    // })
   }
 
   private getFormDefaults(): QuizzFormDefaults {

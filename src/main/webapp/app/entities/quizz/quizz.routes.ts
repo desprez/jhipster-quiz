@@ -29,7 +29,7 @@ const quizzRoute: Routes = [
   },
   {
     path: 'new',
-    component: QuizzUpdateComponent,
+    component: QuizzMakerComponent,
     resolve: {
       quizz: QuizzResolve,
     },
