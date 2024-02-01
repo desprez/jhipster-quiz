@@ -6,7 +6,7 @@ import { finalize, map } from 'rxjs/operators';
 
 import SharedModule from 'app/shared/shared.module';
 import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
@@ -126,41 +126,17 @@ export class QuizzMakerComponent implements OnInit {
     this.quizz = quizz;
     this.quizzFormService.resetForm(this.editForm, quizz);
     this.setQuestions(quizz);
-    // this.questions.setValue(new FormArray<QuestionFormGroup>(
-    //   (quizz.questions ?? []).map(question => this.quizzFormService.initQuestion(question)),
-    // ));
+
     this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, quizz.user);
   }
 
-  setQuestions(quizz: IQuizz) {
+  setQuestions(quizz: IQuizz): void {
     if (quizz.questions) {
       quizz.questions.forEach(question => {
-        this.questions.push(
-          this.quizzFormService.initQuestion(question),
-          // this.fb.group({
-          //   statement: question.statement,
-          //   options: this.setOptions(question)
-          // })
-        );
+        this.questions.push(this.quizzFormService.initQuestion(question));
       });
     }
   }
-
-  // setOptions(question: IQuestion): FormArray<FormGroup<OptionFormGroupContent>> {
-  //   let arr = new FormArray([]);
-  //   if (question.options) {
-  //     question.options.forEach(option => {
-  //       const questionIndex = question.index ?? 0; // Provide a default value of 0 if question.index is undefined or null
-  //       this.getOptionsFormArray(questionIndex).controls.push(this.quizzFormService.initOption(option));
-  //       // arr.push(this.fb.group({
-  //       //   id: [option.id],
-  //       //   statement: [option.statement],
-  //       //   index: [option.index]
-  //       // }));
-  //     });
-  //   }
-  //   return arr;
-  // }
 
   protected loadRelationshipsOptions(): void {
     this.userService
@@ -170,11 +146,20 @@ export class QuizzMakerComponent implements OnInit {
       .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
   }
 
+  getRadioBoundControl(questionIndex: number) {
+    return this.questions.controls[questionIndex].get('correctOptionIndex') as FormControl;
+  }
+
+  getRadioBoundProperty(questionIndex: number): number {
+    return this.questions.controls[questionIndex].get('correctOptionIndex')?.value;
+  }
+
   get questions(): FormArray {
+    console.log('get questions:' + this.editForm.get('questions')?.value);
     return this.editForm.get('questions') as FormArray;
   }
 
-  getOptionsFormArray(questionIndex: number) {
+  getOptionsFormArray(questionIndex: number): FormArray {
     return this.questions.controls[questionIndex].get('options') as FormArray;
   }
 
@@ -182,27 +167,55 @@ export class QuizzMakerComponent implements OnInit {
     return this.getOptionsFormArray(questionIndex).controls;
   }
 
-  addQuestion() {
+  addQuestion(): void {
     const nextQuestionIndex = this.questions.length + 1;
-    const newQuestion: IQuestion = { id: '', statement: '', index: nextQuestionIndex, correctOptionIndex: 0, options: [this.newOption(1)] };
+    const newQuestion: IQuestion = {
+      id: '',
+      statement: '',
+      index: nextQuestionIndex,
+      correctOptionIndex: 1,
+      options: [this.newOption(1), this.newOption(2)],
+    };
     this.questions.push(this.quizzFormService.initQuestion(newQuestion));
   }
 
-  removeQuestion(questionIndex: number) {
+  removeQuestion(questionIndex: number): void {
     this.questions.removeAt(questionIndex);
   }
 
   addOption(questionIndex: number): void {
     const option = this.newOption(this.getOptionsFormArray(questionIndex).length + 1);
-    console.log('addOption:' + option);
     this.getOptionsFormArray(questionIndex).push(this.quizzFormService.initOption(option));
   }
 
   newOption(nextOptionIndex: number): IOption {
-    return { id: '', statement: '', index: nextOptionIndex };
+    return { id: '', statement: '', index: nextOptionIndex, isCorrect: false };
   }
 
-  removeOption(questionIndex: number, optionIndex: number) {
+  removeOption(questionIndex: number, optionIndex: number): void {
+    if (this.getOptionIndex(questionIndex, optionIndex) === this.getRadioBoundProperty(questionIndex)) {
+      this.getRadioBoundControl(questionIndex).setValue(1);
+    }
     this.getOptionsFormArray(questionIndex).removeAt(optionIndex);
+  }
+
+  onCorrectRadioChange(questionIndex: number, optionIndex: number): void {
+    console.log('onCorrectRadioChange:' + questionIndex + ' ' + optionIndex);
+    this.getOptionsFormArray(questionIndex).value.forEach((option: IOption) => {
+      option.isCorrect = optionIndex === option.index;
+      console.log('option.isCorrect:' + option.isCorrect);
+      if (option.isCorrect) {
+        this.questions.controls[questionIndex].get('correctOptionIndex')?.setValue(option.index);
+        console.log('correctOptionIndex:' + option.index);
+      }
+    });
+  }
+
+  getOptionIndex(questionIndex: number, optionIndex: number): number {
+    return this.getOptionControls(questionIndex)[optionIndex].get('index')?.value;
+  }
+
+  customTrackBy(index: number, obj: any): any {
+    return index;
   }
 }

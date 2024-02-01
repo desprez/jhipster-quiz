@@ -4,6 +4,7 @@ export interface IOption {
   id: string;
   statement?: string | null;
   index?: number | null;
+  isCorrect: boolean | null;
   question?: IQuestion | null;
 }
 

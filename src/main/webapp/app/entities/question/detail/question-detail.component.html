@@ -24,11 +24,12 @@
 
           <dt><span jhiTranslate="quizzApp.question.options">Options</span></dt>
           <dd>
-            <div>
-              <ul class="list-group">
+            <div class="option-buttons-container">
+              <ul *ngFor="let option of question!.options">
                 <li
-                  *ngFor="let option of question!.options"
-                  class="list-group-item d-flex {{ option.index === question.correctOptionIndex ? 'list-group-item-success' : '' }}"
+                  class="list-group-item d-flex flex-row mb-6 {{
+                    option.index === question.correctOptionIndex ? 'list-group-item-success' : ''
+                  }}"
                 >
                   <span class="">{{ option.index }}</span
                   >.

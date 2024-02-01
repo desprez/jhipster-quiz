@@ -1,6 +1,12 @@
 <form [formGroup]="radioForm">
-  <ng-container *ngFor="let option of options">
-    <input [id]="option.id" type="radio" formControlName="value" [value]="option.id" />
-    <label [for]="option.id">{{ option.statement }}</label>
-  </ng-container>
+  <ul class="list-group col-12">
+    <div class="row">
+      @for (option of options; track option.id) {
+        <li class="list-group-item col-md-6">
+          <input class="form-check-input me-1" [id]="option.id" type="radio" formControlName="value" [value]="option.id" />
+          <label class="form-check-label stretched-link" [for]="option.id">{{ option.statement }}</label>
+        </li>
+      }
+    </div>
+  </ul>
 </form>

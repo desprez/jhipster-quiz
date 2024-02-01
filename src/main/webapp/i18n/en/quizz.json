@@ -32,7 +32,19 @@
       "questions": "Questions",
       "user": "User",
       "questionCount": "Questions#",
-      "play": "Play"
+      "play": "Play",
+      "maker": {
+        "question": {
+          "placeholder": "Enter question statement",
+          "addButton": "Add question",
+          "removeButton": "Remove question"
+        },
+        "option": {
+          "placeholder": "Enter option statement",
+          "addButton": "Add option",
+          "removeButton": "Remove option"
+        }
+      }
     }
   }
 }

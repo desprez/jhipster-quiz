@@ -9,6 +9,7 @@ import QuizzResolve from './route/quizz-routing-resolve.service';
 import { QuizzPlayComponent } from './play/quizz-play.component';
 import { ModalContainerComponent } from './play/modal-container-routable-modals';
 import { QuizzMakerComponent } from './maker/quizz-maker.component';
+import { MqcComponent } from './mqc/mqc.component';
 
 const quizzRoute: Routes = [
   {
@@ -30,6 +31,14 @@ const quizzRoute: Routes = [
   {
     path: 'new',
     component: QuizzMakerComponent,
+    resolve: {
+      quizz: QuizzResolve,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'mqc',
+    component: MqcComponent,
     resolve: {
       quizz: QuizzResolve,
     },

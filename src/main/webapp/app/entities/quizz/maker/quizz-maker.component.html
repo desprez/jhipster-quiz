@@ -276,42 +276,121 @@
         }
       </div>
 
-      <ng-container formArrayName="questions">
-        <div *ngFor="let question of questions.controls; let i = index" class="card">
-          <div class="card-heading">
-            <span>Question {{ i + 1 }}</span>
-            <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a>
+      <!-- <div ngbAccordion [closeOthers]="true">
+        <ng-container formArrayName="questions">
+          @for (let question of questions; let i = index; let isFirst = first) {
+            <div ngbAccordionItem [collapsed]="!isFirst">
+              <h2 ngbAccordionHeader>
+                <button ngbAccordionButton>{{ question }}</button>
+              </h2>
+              <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                  <ng-template>
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
+                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                    you probably haven't heard of them accusamus labore sustainable VHS.
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          }
+        </ng-container>
+      </div> -->
+
+      <div formArrayName="questions" div class="card text-white bg-primary mb-12">
+        <div *ngFor="let question of questions.controls; let i = index; trackBy: customTrackBy" class="card border-primary mb-12">
+          <div class="card-header">
+            <span class="text-primary">Question {{ i + 1 }}</span>
+            <!-- <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a> -->
+
+            <button class="btn btn-secondary" type="button" id="button-addon2" (click)="removeQuestion(i)" style="float: right">
+              <fa-icon icon="trash-alt"></fa-icon>
+            </button>
           </div>
 
-          <div class="card-body" [formGroupName]="i" class="col-md-12 border">
+          <div class="card-body" [formGroupName]="i">
             <div class="row">
               <div class="form-group col-md-12">
-                <label>Statement</label>
-                <input type="text" class="form-control" formControlName="statement" />
+                <label class="form-label" jhiTranslate="quizzApp.question.statement" for="field_statement">Statement</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="field_question_statement"
+                  data-cy="statement"
+                  formControlName="statement"
+                  placeholder="{{ 'quizzApp.quizz.maker.question.placeholder' | translate }}"
+                />
               </div>
             </div>
             <br />
 
-            <ng-container formArrayName="options" *ngFor="let option of getOptionControls(i); let j = index" class="col-md-6">
+            <div formArrayName="options" *ngFor="let option of getOptionControls(i); let j = index">
               <ng-container [formGroupName]="j">
-                <ng-container class="form-group" style="padding-left: 10px">
-                  <label>Option {{ j + 1 }}</label>
-                  <a *ngIf="getOptionControls(i).length > 1" (click)="removeOption(i, j)" style="cursor: default; float: right">X</a>
-                  <input type="text" class="form-control" placeholder="Enter option" formControlName="statement" />
+                <ng-container class="form-group" style="padding-left: 100px">
+                  <!-- <a *ngIf="getOptionControls(i).length > 1" (click)="removeOption(i, j)" style="cursor: default; float: right">X</a> -->
+                  <!-- <input type="text" class="form-control" placeholder="Enter option" formControlName="statement" /> -->
+
+                  <div class="input-group mb-3">
+                    <!-- <span class="input-group-text"><fa-icon icon="grip-vertical"></fa-icon></span> -->
+                    <div class="input-group-text">
+                      <!-- <input type="radio" [value]="getOptionIndex(i,j)" id="{{ 'field_correctOptionIndex' + i +'' + j}}" class="form-check-input mt-0"
+                      formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex{{ i }}"/> -->
+                      <!-- <input type="radio" [value]="j + 1" formControlName="correctOptionIndex" id="{{ 'field_correctOptionIndex' + i +''+ j}}" class="form-check-input mt-0"/> -->
+                    </div>
+                    <span class="input-group-text">{{ j + 1 }}</span>
+
+                    <input
+                      type="radio"
+                      id="{{ 'correctOptionIndex' + i + '' + j }}"
+                      [formControl]="getRadioBoundControl(i)"
+                      [value]="j + 1"
+                    />&nbsp;
+                    <!-- <input type="radio"  formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex" [value]="i" (change)="onCorrectRadioChange(i, j)"/>&nbsp; -->
+
+                    <!-- name="correctOptionIndex" formControlName="correctOptionIndex"  -->
+                    <!-- <input type="radio" [value]="j+1" formControlName="correctOptionIndex" name="correctOptionIndex" /> -->
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="field_option_statement"
+                      formControlName="statement"
+                      placeholder="{{ 'quizzApp.quizz.maker.option.placeholder' | translate }}"
+                    />
+                    <!-- <input type="text" formControlName="index" placeholder="Index"> -->
+                    <button
+                      *ngIf="getOptionControls(i).length > 1"
+                      class="btn btn-secondary"
+                      type="button"
+                      id="button-addon2"
+                      (click)="removeOption(i, j)"
+                    >
+                      <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                  </div>
                 </ng-container>
               </ng-container>
-              <a class="pull-right" *ngIf="j == getOptionsFormArray(i).length - 1" (click)="addOption(i)" style="float: right">Option +</a>
-              <br />
-            </ng-container>
-
-            <!-- <jhi-option [parentForm]="questions.controls[i]"></jhi-option> -->
+              <!-- <a class="pull-right" *ngIf="j == getOptionsFormArray(i).length - 1" (click)="addOption(i)" style="float: right">Option +</a> -->
+              <button type="button" *ngIf="j == getOptionsFormArray(i).length - 1" class="btn btn-secondary" (click)="addOption(i)">
+                <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.option.addButton">Add option</span>
+              </button>
+            </div>
           </div>
         </div>
-      </ng-container>
-      <!-- <jhi-question [parentForm]="editForm"></jhi-question> -->
-      <div class="margin-20">
-        <a (click)="addQuestion()" style="cursor: default; float: right"> New question + </a>
+        <br />
       </div>
+
+      <div class="margin-20">
+        <!-- <a (click)="addQuestion()" style="cursor: default; float: right"> New question + </a> -->
+        <button type="button" class="btn btn-secondary" (click)="addQuestion()">
+          <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.question.addButton">Add option</span>
+        </button>
+      </div>
+      <br />
+      <!-- <jhi-questions [questionsFormArray]="questions"></jhi-questions> -->
 
       <div>
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">

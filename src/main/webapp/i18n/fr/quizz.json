@@ -31,7 +31,20 @@
       "published": "Publié",
       "questions": "Questions",
       "user": "Auteur",
-      "questionCount": "Questions#"
+      "questionCount": "Questions#",
+      "play": "Play",
+      "maker": {
+        "question": {
+          "placeholder": "Entrer un intitulé de question",
+          "addButton": "Ajouter une question",
+          "removeButton": "Supprimer une question"
+        },
+        "option": {
+          "placeholder": "Entrer une option",
+          "addButton": "Ajouter une option",
+          "removeButton": "Supprimer une option"
+        }
+      }
     }
   }
 }
