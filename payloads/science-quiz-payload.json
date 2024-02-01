@@ -1,0 +1,156 @@
+{
+  "title": "My first Quizz",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis ipsum nisi, eu ullamcorper tortor suscipit eget. Donec hendrerit, justo blandit lobortis egestas, magna ex accumsan diam, sit amet molestie nisi diam id urna. Cras tortor mauris, dictum quis imperdiet ut, sollicitudin in quam. Mauris sit amet nisl sit amet felis dictum dapibus congue ac nisi. Ut ut justo eget neque placerat tempus nec ut velit. Integer mattis urna sed mi fringilla, vel pretium felis lobortis.",
+  "difficulty": "EASY",
+  "category": "GENERAL_KNOWLEDGE",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "secretGoodAnwers": false,
+  "questions": [
+    {
+      "statement": "Que mesure l'année lumière ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "La luminosité",
+          "index": 1
+        },
+        {
+          "statement": "Le temps",
+          "index": 2
+        },
+        {
+          "statement": "La distance",
+          "index": 3
+        },
+        {
+          "statement": "Le poids",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Lequel de ces éléments est nécessaire pour faire de l'énergie nucléaire et des armes nucléaires ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Chlorure de sodium",
+          "index": 1
+        },
+        {
+          "statement": "Uranium",
+          "index": 2
+        },
+        {
+          "statement": "Azote",
+          "index": 3
+        },
+        {
+          "statement": "Dioxide de carbone",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Lequel de ces termes défini l'étude de l'influence de la position des étoiles et des planètes sur le comportement humain ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Astrologie",
+          "index": 1
+        },
+        {
+          "statement": "Alchimie",
+          "index": 2
+        },
+        {
+          "statement": "Astronomie",
+          "index": 3
+        },
+        {
+          "statement": "Météorologie",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Philology is the ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "study of bones",
+          "index": 1
+        },
+        {
+          "statement": "study of muscles",
+          "index": 2
+        },
+        {
+          "statement": "study of architecture",
+          "index": 3
+        },
+        {
+          "statement": "science of languages",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Richter scale is used for measuring",
+      "index": 5,
+      "options": [
+        {
+          "statement": "density of liquid",
+          "index": 1
+        },
+        {
+          "statement": "intensity of earthquakes",
+          "index": 2
+        },
+        {
+          "statement": "velocity of wind",
+          "index": 3
+        },
+        {
+          "statement": "humidity of air",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Robert Koch worked on ... ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "tuberculosis",
+          "index": 1
+        },
+        {
+          "statement": "influenza",
+          "index": 2
+        },
+        {
+          "statement": "malaria",
+          "index": 3
+        },
+        {
+          "statement": "diabetes",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}
