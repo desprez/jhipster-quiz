@@ -1,5 +1,5 @@
 @if (quizz) {
-  <form name="playForm" (ngSubmit)="close(quizz.id!)">
+  <form name="playForm" role="form" novalidate (ngSubmit)="close(quizz.id!)" [formGroup]="playForm">
     <div class="modal-header">
       <h4 class="modal-title" data-cy="quizzPlayDialogHeading">{{ quizz.title }}</h4>
       @if (!PlayModeEnum.PLAYING) {
@@ -56,7 +56,7 @@
           <h5>{{ questionList[currentQuestionNo].statement }}</h5>
 
           <div class="row">
-            <jhi-radio-options [options]="questionList[currentQuestionNo]!.options!" [formControl]="answerSelected!" onchange="answer()">
+            <jhi-radio-options [options]="questionList[currentQuestionNo]!.options!" [formControl]="getRadioBoundControl()">
               <!-- value="answerList[currentQuestionNo]!.options!.id!" -->
             </jhi-radio-options>
             <!-- <div class="options" *ngFor="let option of questionList[currentQuestionNo].options; let i = index">
@@ -128,6 +128,9 @@
           </button>
         }
       }
+    </div>
+    <div class="margin-20">
+      <pre>form value: <br>{{playForm.value | json}}</pre>
     </div>
   </form>
 }

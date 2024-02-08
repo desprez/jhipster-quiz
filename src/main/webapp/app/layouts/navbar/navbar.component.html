@@ -28,8 +28,17 @@
           </a>
         </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/quizz/browse" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="check-double"></fa-icon>
+              <span jhiTranslate="global.menu.browse">Browse</span>
+            </span>
+          </a>
+        </li>
         @if (account !== null) {
           <li
+            *jhiHasAnyAuthority="'ROLE_ADMIN'"
             ngbDropdown
             class="nav-item dropdown pointer"
             display="dynamic"
@@ -271,7 +280,7 @@
           <a class="nav-link" routerLink="/about" (click)="collapseNavbar()">
             <span>
               <fa-icon icon="star"></fa-icon>
-              <span jhiTranslate="global.menu.about">Home</span>
+              <span jhiTranslate="global.menu.about">About</span>
             </span>
           </a>
         </li>

@@ -1,5 +1,7 @@
 package com.github.desprez.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,6 +14,7 @@ import java.util.UUID;
  * A DTO for the {@link com.github.desprez.domain.Attempt} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@JsonInclude(Include.NON_NULL)
 public class AttemptDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,12 +52,22 @@ public class AttemptDTO implements Serializable {
         this.score = score;
     }
 
+    public AttemptDTO score(Integer score) {
+        this.score = score;
+        return this;
+    }
+
     public Instant getStarted() {
         return started;
     }
 
     public void setStarted(Instant started) {
         this.started = started;
+    }
+
+    public AttemptDTO started(Instant started) {
+        this.started = started;
+        return this;
     }
 
     public Instant getEnded() {
@@ -65,6 +78,11 @@ public class AttemptDTO implements Serializable {
         this.ended = ended;
     }
 
+    public AttemptDTO ended(Instant ended) {
+        this.ended = ended;
+        return this;
+    }
+
     public QuizzDTO getQuizz() {
         return quizz;
     }
@@ -73,12 +91,22 @@ public class AttemptDTO implements Serializable {
         this.quizz = quizz;
     }
 
+    public AttemptDTO quizz(QuizzDTO quizz) {
+        this.quizz = quizz;
+        return this;
+    }
+
     public UserDTO getUser() {
         return user;
     }
 
     public void setUser(UserDTO user) {
         this.user = user;
+    }
+
+    public AttemptDTO user(UserDTO user) {
+        this.user = user;
+        return this;
     }
 
     public Set<AttemptAnswerDTO> getAnswers() {

@@ -1,0 +1,248 @@
+{
+  "title": "Quiz the Starwars universe(English)",
+  "description": "A quiz about Starwars universe",
+  "difficulty": "EASY",
+  "category": "FILM",
+  "questionOrder": "RANDOM",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "secretGoodAnwers": false,
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questions": [
+    {
+      "statement": "Who is Luke Skywalker's father?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Darth Vader",
+          "index": 1
+        },
+        {
+          "statement": "Emperor Palpatine",
+          "index": 2
+        },
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 3
+        },
+        {
+          "statement": "Han Solo",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of Han Solo's ship?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "TIE Fighter",
+          "index": 1
+        },
+        {
+          "statement": "X-wing",
+          "index": 2
+        },
+        {
+          "statement": "Millennium Falcon",
+          "index": 3
+        },
+        {
+          "statement": "Star Destroyer",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who killed Jabba the Hutt?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Han Solo",
+          "index": 1
+        },
+        {
+          "statement": "Princess Leia",
+          "index": 2
+        },
+        {
+          "statement": "Luke Skywalker",
+          "index": 3
+        },
+        {
+          "statement": "Boba Fett",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Which planet is home to Chewbacca and the Wookiees?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Kashyyyk",
+          "index": 1
+        },
+        {
+          "statement": "Tatooine",
+          "index": 2
+        },
+        {
+          "statement": "Hoth",
+          "index": 3
+        },
+        {
+          "statement": "Endor",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Who is the main antagonist in the original Star Wars trilogy?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Darth Vader",
+          "index": 1
+        },
+        {
+          "statement": "Emperor Palpatine",
+          "index": 2
+        },
+        {
+          "statement": "Kylo Ren",
+          "index": 3
+        },
+        {
+          "statement": "General Grievous",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which bounty hunter captures Han Solo in The Empire Strikes Back?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Boba Fett",
+          "index": 1
+        },
+        {
+          "statement": "Jango Fett",
+          "index": 2
+        },
+        {
+          "statement": "IG-88",
+          "index": 3
+        },
+        {
+          "statement": "Dengar",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is Yoda's apprentice in the prequel trilogy?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 1
+        },
+        {
+          "statement": "Mace Windu",
+          "index": 2
+        },
+        {
+          "statement": "Qui-Gon Jinn",
+          "index": 3
+        },
+        {
+          "statement": "Count Dooku",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which planet is destroyed by the Death Star in A New Hope?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Alderaan",
+          "index": 1
+        },
+        {
+          "statement": "Tatooine",
+          "index": 2
+        },
+        {
+          "statement": "Coruscant",
+          "index": 3
+        },
+        {
+          "statement": "Naboo",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which droid speaks primarily in beeps and whistles?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "R2-D2",
+          "index": 1
+        },
+        {
+          "statement": "C-3PO",
+          "index": 2
+        },
+        {
+          "statement": "BB-8",
+          "index": 3
+        },
+        {
+          "statement": "K-2SO",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which Sith Lord is known for his red and black facial tattoos?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Darth Maul",
+          "index": 1
+        },
+        {
+          "statement": "Darth Sidious",
+          "index": 2
+        },
+        {
+          "statement": "Darth Tyranus",
+          "index": 3
+        },
+        {
+          "statement": "Darth Vader",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

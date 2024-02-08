@@ -53,6 +53,12 @@ import {
   faChevronRight,
   faUnlock,
   faRandom,
+  faCheckSquare,
+  faCheckDouble,
+  faCircle,
+  faCircleQuestion,
+  faListCheck,
+  faClock,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -111,5 +117,11 @@ export const fontAwesomeIcons = [
   faRotate,
   faUnlock,
   faRandom,
+  faList,
+  faCheckSquare,
+  faCheckDouble,
+  faCircleQuestion,
+  faListCheck,
+  faClock,
   // jhipster-needle-add-icon-import
 ];

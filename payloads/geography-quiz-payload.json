@@ -1,5 +1,4 @@
 {
-  "id": "a9538aa4-e30a-4cbe-92d1-767ab1167250",
   "title": "A geography quiz",
   "description": null,
   "difficulty": "MEDIUM",
@@ -19,27 +18,22 @@
   "imageContentType": null,
   "questions": [
     {
-      "id": "7886ca98-1e62-4e44-895b-b83a69d839d2",
       "statement": "What is the capital city of China?",
       "index": 1,
       "options": [
         {
-          "id": "7f13c387-36d3-4fd4-a126-8f173f45cfab",
           "statement": "Beijing",
           "index": 1
         },
         {
-          "id": "da64c20c-a17b-420a-af1b-9939a66abc99",
           "statement": "Shanghai",
           "index": 2
         },
         {
-          "id": "d1d3e021-c8a7-48d1-a942-7697772e8f56",
           "statement": "Guangzhou",
           "index": 3
         },
         {
-          "id": "84ef6fea-e941-4246-895f-1f28a1d5cdda",
           "statement": "Tokyo",
           "index": 4
         }
@@ -47,27 +41,22 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "28daa04a-a281-4240-b87a-f37f77eb4bca",
       "statement": "Oslo is the capital of",
       "index": 2,
       "options": [
         {
-          "id": "60b81e03-14be-4200-934d-03e698983b26",
           "statement": "Denmark",
           "index": 1
         },
         {
-          "id": "7b323bbc-9d4b-44de-ace3-1f54090a5bc3",
           "statement": "Finland",
           "index": 2
         },
         {
-          "id": "db5ea7db-5749-48a2-be2c-8626a1151c54",
           "statement": "Norway",
           "index": 3
         },
         {
-          "id": "7d66a445-8d48-4e8c-ab55-75cdb1df61c6",
           "statement": "Australia",
           "index": 4
         }
@@ -75,27 +64,22 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "630a5a04-3c4e-466f-b869-4ecf9e095b59",
       "statement": "Belgrade is the capital of",
       "index": 3,
       "options": [
         {
-          "id": "9eda4916-dbf9-4dbc-8ad5-edfe85da69b7",
           "statement": "Serbia",
           "index": 1
         },
         {
-          "id": "3feb3acd-20a9-4bb5-a798-ab4c0f5172eb",
           "statement": "Palestine",
           "index": 2
         },
         {
-          "id": "90172044-221d-486a-af9d-6a810e998328",
           "statement": "Croatia",
           "index": 3
         },
         {
-          "id": "0303cfc8-b45f-463f-bf80-1217dcc4bbda",
           "statement": "Bulgaria",
           "index": 4
         }
@@ -103,27 +87,22 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "079f5fe9-cd26-41e5-9cbe-6c4d765f9f20",
       "statement": "Portugal is bordered by what other country?",
       "index": 4,
       "options": [
         {
-          "id": "8f437b0b-868f-47dd-814c-d50bd72e4c1b",
           "statement": "France",
           "index": 1
         },
         {
-          "id": "ddf79aa9-fa75-4f56-b674-22f185944c36",
           "statement": "Italy",
           "index": 2
         },
         {
-          "id": "b6f1f74a-12d9-4ce0-9268-9d7a8a2d8551",
           "statement": "Spain",
           "index": 3
         },
         {
-          "id": "0704edff-2d37-470e-941c-ef99c1dc80f6",
           "statement": "China",
           "index": 4
         }
@@ -131,27 +110,22 @@
       "correctOptionIndex": 3
     },
     {
-      "id": "a013b67d-725b-46ab-8e16-a89a07807463",
       "statement": "What body of water separates Saudi Arabia from Africa?",
       "index": 5,
       "options": [
         {
-          "id": "7947e94e-93e4-42f3-a90b-e4c9243ceb05",
           "statement": "Indian Ocean",
           "index": 1
         },
         {
-          "id": "969d2441-060a-4bab-bd4b-20545ec9d627",
           "statement": "Pacific Ocean",
           "index": 2
         },
         {
-          "id": "94045704-d03c-4566-b246-dd125d286707",
           "statement": "Bass strait",
           "index": 3
         },
         {
-          "id": "d610c17c-4ded-45a6-8f4e-3d0acc402b2c",
           "statement": "Red Sea",
           "index": 4
         }
@@ -159,27 +133,22 @@
       "correctOptionIndex": 4
     },
     {
-      "id": "dcbc604d-5e55-4f82-963e-b817423db4fd",
       "statement": "What is the only sea on Earth with no coastline?",
       "index": 6,
       "options": [
         {
-          "id": "977cfa02-fe42-4385-9a9f-d4eff9900822",
           "statement": "Sargasso Sea",
           "index": 1
         },
         {
-          "id": "de7b2095-58e3-4199-bcd4-a1e4de971e51",
           "statement": "Red Sea",
           "index": 2
         },
         {
-          "id": "2143e0c7-6052-4879-9b95-42e7716243a5",
           "statement": "Pacific Ocean",
           "index": 3
         },
         {
-          "id": "952c8293-6a1c-45b1-af12-f677c6a7d573",
           "statement": "Caspian",
           "index": 4
         }
@@ -187,27 +156,22 @@
       "correctOptionIndex": 1
     },
     {
-      "id": "c58da1d7-e41f-4fd7-b0e7-0da6a435d4e1",
       "statement": "What is the most populer city in the world?",
       "index": 7,
       "options": [
         {
-          "id": "5ee87bb9-8358-45b1-b118-90f1b1a464d9",
           "statement": "New York",
           "index": 1
         },
         {
-          "id": "81e17d85-9fd8-4761-9873-7da780e8854c",
           "statement": "Tokyo",
           "index": 2
         },
         {
-          "id": "38f3f73f-4d37-4db4-82c4-e4e6f42eaca7",
           "statement": "Jakarta",
           "index": 3
         },
         {
-          "id": "00a45804-506c-4d88-952c-1bca2fc4f538",
           "statement": "Manila",
           "index": 4
         }
@@ -215,27 +179,22 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "5fdfe9c5-86ea-48c1-8797-1de9e1e6698f",
       "statement": "Which country has the greatest surface area?",
       "index": 8,
       "options": [
         {
-          "id": "659910c4-dc7f-4059-a58a-e78906a1d662",
           "statement": "United States",
           "index": 1
         },
         {
-          "id": "0cfe30f6-9333-4827-a93d-d155e638b4a7",
           "statement": "Russia",
           "index": 2
         },
         {
-          "id": "04b917a0-608e-4b88-9511-265d4d16c727",
           "statement": "Australia",
           "index": 3
         },
         {
-          "id": "39f77823-cc8e-437d-a03e-4ec95222232d",
           "statement": "Canada",
           "index": 4
         }
@@ -243,27 +202,22 @@
       "correctOptionIndex": 2
     },
     {
-      "id": "27194966-a3fa-4d18-894b-bb48233dac3a",
       "statement": "How many continents are there?",
       "index": 9,
       "options": [
         {
-          "id": "da598e28-db10-451a-9e11-ccf74b2a3994",
           "statement": "5",
           "index": 1
         },
         {
-          "id": "6de11829-fa81-48da-8cfb-ae99ce08d63d",
           "statement": "6",
           "index": 2
         },
         {
-          "id": "505bc4cf-831c-45c4-ae6f-c1434950bb84",
           "statement": "7",
           "index": 3
         },
         {
-          "id": "989a3c49-f177-4889-85ea-263a84175bc0",
           "statement": "8",
           "index": 4
         }
@@ -271,32 +225,50 @@
       "correctOptionIndex": 3
     },
     {
-      "id": "e309a4c3-1aa8-4dd0-be07-6bee5fcf3277",
       "statement": "Which lake is the worlds largest lake?",
       "index": 10,
       "options": [
         {
-          "id": "ccf11f59-7af0-4b91-8791-9a82103bb913",
           "statement": "Superior",
           "index": 1
         },
         {
-          "id": "b7f8f916-6758-45da-9f24-715a42b6f0ef",
           "statement": "Victoria",
           "index": 2
         },
         {
-          "id": "1dcc0a3a-b970-46b0-9aa8-97b9f0f12027",
           "statement": "Huron",
           "index": 3
         },
         {
-          "id": "fc96d9fb-f8c6-443f-bffe-820f64ec4c22",
           "statement": "Michigan",
           "index": 4
         }
       ],
       "correctOptionIndex": 1
+    },
+    {
+      "statement": "Whet is the capital city of France?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "New york",
+          "index": 1
+        },
+        {
+          "statement": "London",
+          "index": 2
+        },
+        {
+          "statement": "Paris",
+          "index": 3
+        },
+        {
+          "statement": "Dublin",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
     }
   ]
 }

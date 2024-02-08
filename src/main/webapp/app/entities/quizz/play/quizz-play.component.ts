@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
 import { IQuizz } from '../quizz.model';
 import { QuizzService } from '../service/quizz.service';
-import { AttemptService } from 'app/entities/attempt/service/attempt.service';
 import { Observable, Subscription, interval } from 'rxjs';
 import { IQuestion } from 'app/entities/question/question.model';
 import { IAttempt, NewAttempt } from 'app/entities/attempt/attempt.model';
@@ -20,15 +19,20 @@ import { CircleProgressComponent } from 'app/circle-progress/circle-progress.com
 import { PlayRadioOptionsComponent } from 'app/entities/option/play/radio-options.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { PlayService } from './play.service';
+import { AttemptFormGroup, PlayFormService } from './play-form.service';
+
 @Component({
   standalone: true,
   templateUrl: './quizz-play.component.html',
   imports: [SharedModule, FormsModule, ReactiveFormsModule, CircleProgressComponent, PlayRadioOptionsComponent],
 })
 export class QuizzPlayComponent {
-  @Input() quizz: IQuizz | null = null;
+  @Input({ required: true }) quizz!: IQuizz;
 
   attempt: IAttempt | null = null;
+
+  playForm: AttemptFormGroup = this.playFormService.createAttemptFormGroup();
 
   public answerSelected: FormControl;
 
@@ -39,7 +43,6 @@ export class QuizzPlayComponent {
   timerEnabled: boolean = true;
 
   questionList: IQuestion[] = [];
-  answerList: IAttemptAnswer[] = [];
 
   currentQuestionNo: number = 0;
 
@@ -51,7 +54,8 @@ export class QuizzPlayComponent {
 
   constructor(
     protected quizzService: QuizzService,
-    protected attemptService: AttemptService,
+    protected playService: PlayService,
+    protected playFormService: PlayFormService,
     protected activeModal: NgbActiveModal,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -62,9 +66,9 @@ export class QuizzPlayComponent {
   //answerSelected = new FormControl('');
 
   ngOnInit(): void {
-    this.questionList = this.quizz?.questions ?? [];
-    if (this.quizz?.maxAnswerTime != null && this.quizz?.maxAnswerTime > 0) {
-      this.remainingTime = this.quizz?.maxAnswerTime;
+    this.questionList = this.quizz.questions ?? [];
+    if (this.quizz.maxAnswerTime != null && this.quizz.maxAnswerTime > 0) {
+      this.remainingTime = this.quizz.maxAnswerTime;
       this.timerEnabled = true;
     } else {
       this.timerEnabled = false;
@@ -78,7 +82,7 @@ export class QuizzPlayComponent {
   nextQuestion(): void {
     if (this.currentQuestionNo < this.questionList.length - 1) {
       this.currentQuestionNo++;
-      this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
+      // this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
     } else {
       this.stopCounter();
     }
@@ -87,44 +91,43 @@ export class QuizzPlayComponent {
 
   previousQuestion(): void {
     if (this.currentQuestionNo > 0) {
-      this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
+      // this.answerSelected.patchValue(this.answerList[this.currentQuestionNo].option?.id);
       this.currentQuestionNo--;
     }
     console.log('answerSelected:' + this.answerSelected.value);
   }
 
-  answer() {
-    console.log('answerSelected:' + this.answerSelected.value);
-    const option = this.questionList[this.currentQuestionNo].options?.find((o: IOption) => o.id === this.answerSelected.value) ?? null;
-    const answer: IAttemptAnswer = this.getAnswer(this.questionList[this.currentQuestionNo]);
-    answer.option = option;
-    answer.ended = dayjs();
+  // selectAnswer() {
+  //   console.log('answerSelected:' + this.answerSelected.value);
+  //   const option = this.questionList[this.currentQuestionNo].options?.find((o: IOption) => o.id === this.answerSelected.value) ?? null;
+  //   const answer: IAttemptAnswer = this.getAnswer(this.questionList[this.currentQuestionNo]);
+  //   answer.option = option;
+  //   answer.ended = dayjs();
 
-    // const answers = this.attempt?.answers ?? []; // Ensure that answers is an array
+  //   // const answers = this.attempt?.answers ?? []; // Ensure that answers is an array
 
-    if (this.attempt) {
-      this.attemptService.update(this.attempt).subscribe();
-    }
+  //   this.computeAnsweredCount(this.attempt?.answers ?? []);
+  //   this.getProgressPercent();
+  // }
 
-    this.computeAnsweredCount(this.answerList);
-    this.getProgressPercent();
-  }
-
-  getAnswer(question: IQuestion): IAttemptAnswer {
-    return (
-      this.attempt?.answers?.find((a: IAttemptAnswer) => a.question?.id === question.id) ?? {
-        id: '',
-        option: null,
-        question: question,
-      }
-    );
-  }
+  // getAnswer(question: IQuestion): IAttemptAnswer {
+  //   return (
+  //     this.attempt?.answers?.find((a: IAttemptAnswer) => a.question?.id === question.id) ?? {
+  //       id: '',
+  //       option: null,
+  //       question: question,
+  //     }
+  //   );
+  // }
 
   computeAnsweredCount(answers: IAttemptAnswer[]) {
     this.answerCount = answers.filter((a: IAttemptAnswer) => a.option != null).length;
   }
 
   finish(): void {
+    if (this.attempt) {
+      this.playService.evaluate(this.attempt).subscribe();
+    }
     this.mode = PlayMode.FINISHED;
   }
 
@@ -162,14 +165,42 @@ export class QuizzPlayComponent {
   }
 
   private submitNewAttempt() {
-    this.attemptService.create(this.createNewAttempt()).subscribe(
-      (res: HttpResponse<IAttempt>) => {
-        this.attempt = res.body;
-        console.log(this.attempt);
-        this.answerList = this.attempt?.answers ?? [];
+    this.playService.play(this.quizz.id).subscribe({
+      next: (res: HttpResponse<IAttempt>) => {
+        if (res.body) {
+          this.updateForm(res.body);
+        }
       },
-      (res: HttpErrorResponse) => console.log(res.message),
-    );
+      error: response => console.log(response.message),
+    });
+  }
+
+  protected updateForm(attempt: IAttempt): void {
+    this.attempt = attempt;
+    this.playFormService.resetForm(this.playForm, attempt);
+    this.setAnswsers(attempt);
+  }
+
+  setAnswsers(attempt: IAttempt): void {
+    if (attempt.answers) {
+      attempt.answers.forEach(answer => {
+        this.answers.push(this.playFormService.initAnswer(answer));
+      });
+    }
+  }
+
+  getAnswer(index: number): FormGroup {
+    return this.answers.at(index) as FormGroup;
+  }
+
+  getRadioBoundControl(): FormControl {
+    // return this.answers.controls[this.currentQuestionNo].get('option') as FormControl;
+    return this.getAnswer(this.currentQuestionNo).get('option') as FormControl;
+  }
+
+  get answers(): FormArray {
+    console.log('get answers:' + this.playForm.get('answers')?.value);
+    return this.playForm.get('answers') as FormArray;
   }
 
   createNewAttempt(): NewAttempt {

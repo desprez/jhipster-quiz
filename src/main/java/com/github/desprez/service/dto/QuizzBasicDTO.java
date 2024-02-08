@@ -2,6 +2,7 @@ package com.github.desprez.service.dto;
 
 import com.github.desprez.domain.enumeration.Category;
 import com.github.desprez.domain.enumeration.Difficulty;
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Objects;
@@ -30,6 +31,11 @@ public class QuizzBasicDTO {
     private Boolean published;
 
     private UserDTO user;
+
+    @Lob
+    private byte[] image;
+
+    private String imageContentType;
 
     private Integer questionCount;
 
@@ -81,6 +87,22 @@ public class QuizzBasicDTO {
         this.published = published;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageContentType() {
+        return imageContentType;
+    }
+
+    public void setImageContentType(String imageContentType) {
+        this.imageContentType = imageContentType;
+    }
+
     public UserDTO getUser() {
         return user;
     }
@@ -129,6 +151,7 @@ public class QuizzBasicDTO {
           ", difficulty='" + getDifficulty() + "'" +
           ", category='" + getCategory() + "'" +
           ", published='" + getPublished() + "'" +
+          ", image='" + getImage() + "'" +
           ", user=" + getUser() +
           "}";
   }

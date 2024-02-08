@@ -1,14 +1,14 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
+    "title": "Welcome !",
     "subtitle": "This is your homepage",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
     "play": {
-      "heading": "Have fun",
-      "paragraph": "With <strong>Quizz</strong>, and play them on your phone, tablet, or computer and it's FREE.<br>With Quizz you have access to thousands of games shared by other users.",
-      "button": "Play a quiz"
+      "heading": "Have fun with Quizz !",
+      "paragraph": "With <strong>Quizz</strong>, and play them on your phone, tablet, or computer and it's FREE.<br>With Quizz you have access to thousands of questions shared by other users.",
+      "button": "Choose a quiz"
     },
     "make": {
       "heading": "Create an awesome quiz in minutes",
@@ -17,8 +17,8 @@
     },
     "share": {
       "heading": "Share with your friends",
-      "paragraph": "This is a third paragraph",
-      "button": "Share a quiz"
+      "paragraph": "With your friends, your colleagues or your students...",
+      "button": "Available soon"
     }
   }
 }

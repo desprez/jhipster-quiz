@@ -1,7 +1,8 @@
 package com.github.desprez.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.github.desprez.domain.enumeration.DisplayOrder;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,7 +12,10 @@ import java.util.Set;
  * A DTO for the {@link com.github.desprez.domain.Quizz} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@JsonInclude(Include.NON_EMPTY)
 public class QuizzDTO extends QuizzBasicDTO {
+
+    private static final long serialVersionUID = 1L;
 
     @NotNull
     private DisplayOrder questionOrder;
@@ -26,11 +30,6 @@ public class QuizzDTO extends QuizzBasicDTO {
 
     @NotNull
     private Boolean secretGoodAnwers;
-
-    @Lob
-    private byte[] image;
-
-    private String imageContentType;
 
     private Set<QuestionDTO> questions = new HashSet<>();
 
@@ -72,22 +71,6 @@ public class QuizzDTO extends QuizzBasicDTO {
 
     public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
         this.secretGoodAnwers = secretGoodAnwers;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public String getImageContentType() {
-        return imageContentType;
-    }
-
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
     }
 
     public Set<QuestionDTO> getQuestions() {
@@ -133,7 +116,6 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
             ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
-            ", image='" + getImage() + "'" +
             ", published='" + getPublished() + "'" +
             ", user=" + getUser() +
             "}";

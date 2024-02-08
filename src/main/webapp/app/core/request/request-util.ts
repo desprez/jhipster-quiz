@@ -11,7 +11,6 @@ export const createRequestOption = (req?: any): HttpParams => {
         }
       }
     });
-
     if (req.sort) {
       req.sort.forEach((val: string) => {
         options = options.append('sort', val);

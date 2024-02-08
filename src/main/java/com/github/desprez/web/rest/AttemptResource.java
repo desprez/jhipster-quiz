@@ -6,6 +6,7 @@ import com.github.desprez.security.SecurityUtils;
 import com.github.desprez.service.AttemptService;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
+import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
@@ -94,7 +95,10 @@ public class AttemptResource {
      */
     @PutMapping("/{id}")
     public ResponseEntity<AttemptDTO> updateAttempt(
-        @PathVariable(value = "id", required = false) final UUID id,
+        @Parameter(description = "id of attempt to be updated", example = "f34f26a1-e0ce-4a71-9043-6858e4b387d6") @PathVariable(
+            value = "id",
+            required = false
+        ) final UUID id,
         @Valid @RequestBody AttemptDTO attemptDTO
     ) throws URISyntaxException {
         log.debug("REST request to update Attempt : {}, {}", id, attemptDTO);
@@ -130,7 +134,10 @@ public class AttemptResource {
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<AttemptDTO> partialUpdateAttempt(
-        @PathVariable(value = "id", required = false) final UUID id,
+        @Parameter(description = "id of attempt to be updated", example = "f34f26a1-e0ce-4a71-9043-6858e4b387d6") @PathVariable(
+            value = "id",
+            required = false
+        ) final UUID id,
         @NotNull @RequestBody AttemptDTO attemptDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update Attempt partially : {}, {}", id, attemptDTO);
@@ -184,7 +191,11 @@ public class AttemptResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the attemptDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<AttemptDTO> getAttempt(@PathVariable("id") UUID id) {
+    public ResponseEntity<AttemptDTO> getAttempt(
+        @Parameter(description = "id of attempt to be retrieved", example = "f34f26a1-e0ce-4a71-9043-6858e4b387d6") @PathVariable(
+            "id"
+        ) UUID id
+    ) {
         log.debug("REST request to get Attempt : {}", id);
         Optional<AttemptDTO> attemptDTO = attemptService.findOne(id);
         return ResponseUtil.wrapOrNotFound(attemptDTO);
@@ -197,7 +208,11 @@ public class AttemptResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAttempt(@PathVariable("id") UUID id) {
+    public ResponseEntity<Void> deleteAttempt(
+        @Parameter(description = "id of attempt to be deleted", example = "f34f26a1-e0ce-4a71-9043-6858e4b387d6") @PathVariable(
+            "id"
+        ) UUID id
+    ) {
         log.debug("REST request to delete Attempt : {}", id);
 
         if (!SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.ADMIN)) {

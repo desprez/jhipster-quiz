@@ -1,9 +1,12 @@
 package com.github.desprez.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
+@JsonInclude(Include.NON_EMPTY)
 public class AttemptAnswerDTO {
 
     private UUID id;
@@ -11,6 +14,8 @@ public class AttemptAnswerDTO {
     private Instant started;
 
     private Instant ended;
+
+    private QuestionDTO question;
 
     private OptionDTO option;
 
@@ -36,6 +41,14 @@ public class AttemptAnswerDTO {
 
     public void setEnded(Instant ended) {
         this.ended = ended;
+    }
+
+    public QuestionDTO getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(QuestionDTO question) {
+        this.question = question;
     }
 
     public OptionDTO getOption() {
@@ -69,9 +82,8 @@ public class AttemptAnswerDTO {
     // prettier-ignore
   @Override
   public String toString() {
-    return "AttemptAnswerDTO{" + "id='" + getId() + "'" 
-       + ", started='" + getStarted() + "'"  
-       + ", ended='" + getEnded() + "'"  
-       + ", option='" + getOption() + "'" + "}";
+    return "AttemptAnswerDTO{" + "id='" + getId() + "'" + ", started='" + getStarted() + "'"
+        + ", ended='" + getEnded() + "'" + ", question='" + getQuestion() + "'" + ", option='"
+        + getOption() + "'" + "}";
   }
 }

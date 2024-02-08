@@ -26,9 +26,9 @@ public class QuizzServiceImpl implements QuizzService {
 
     private final Logger log = LoggerFactory.getLogger(QuizzServiceImpl.class);
 
-    private final QuizzRepository quizzRepository;
+    protected final QuizzRepository quizzRepository;
 
-    private final QuizzMapper quizzMapper;
+    protected final QuizzMapper quizzMapper;
 
     private final UserRepository userRepository;
 
