@@ -117,7 +117,8 @@ public class PlayServiceImpl implements PlayService {
                 unansweredCount++;
             }
         }
-        attempt.setScore(correctAnswercount);
+        attempt.score(correctAnswercount).ended(Instant.now().truncatedTo(ChronoUnit.SECONDS));
+
         log.info("correctAnswercount {}, wrongAnswerCount {}, unansweredCount {}", correctAnswercount, wrongAnswerCount, unansweredCount);
         // attempt.setCorrectAnswerCount(correctAnswercount);
         // attempt.setWrongAnswerCount(wrongAnswerCount);

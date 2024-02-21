@@ -45,7 +45,8 @@
               <ul class="list-group">
                 <li *ngFor="let answer of attempt?.answers" class="list-group-item d-flex">
                   <!-- <span class="">{{ question.index }}</span>. -->
-                  {{ answer.id }}
+                  <!-- {{ answer.question!.statement }} -->
+                  {{ answer.option!.statement }}
                 </li>
               </ul>
             </div>

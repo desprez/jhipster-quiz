@@ -1,136 +1,44 @@
-@if (quizz) {
-  <form name="playForm" role="form" novalidate (ngSubmit)="close(quizz.id!)" [formGroup]="playForm">
-    <div class="modal-header">
-      <h4 class="modal-title" data-cy="quizzPlayDialogHeading">{{ quizz.title }}</h4>
-      @if (!PlayModeEnum.PLAYING) {
-        <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
-      }
+<div class="modal-header">
+  <h4 class="modal-title" data-cy="quizzPlayDialogHeading">{{ quizz.title }}</h4>
+  @if (!PlayModeEnum.PLAYING) {
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></button>
+  }
+</div>
+@switch (mode) {
+  @case (PlayModeEnum.WELCOME) {
+    <jhi-welcome [quizz]="quizz"></jhi-welcome>
+    <div class="start_btn">
+      <button (click)="displayRules()">Start Quiz</button>
     </div>
-
-    <div class="modal-body">
-      <jhi-alert-error></jhi-alert-error>
-      @switch (mode) {
-        @case (PlayModeEnum.OPENING) {
-          <p>{{ quizz.description }}</p>
-          @if (quizz.image) {
-            <img [src]="quizz.image" alt="quizz image" />
-          }
-          <div class="start_btn">
-            <button (click)="showWarningPopup()">Start Quiz</button>
-          </div>
-        }
-        @case (PlayModeEnum.SHOW_RULES) {
-          <div class="info_title"><span>Some rules of this Quiz</span></div>
-          <div class="info_list">
-            <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
-            <div class="info">2. Once you will select your answer, it can't be undone.</div>
-            <div class="info">3. You can't select any option one time goes off.</div>
-            <div class="info">4. You can't exit from the Quizz once started.</div>
-          </div>
-        }
-        @case (PlayModeEnum.PLAYING) {
-          <header>
-            @if (timerEnabled) {
-              <div class="float-end">
-                <span class="badge bg-primary">
-                  {{ remainingTime }}
-                </span>
-                <fa-icon icon="stopwatch"></fa-icon>
-              </div>
-            }
-
-            <div class="float-start">
-              <span class="badge bg-primary"> {{ currentQuestionNo + 1 }} / {{ questionList.length }} </span>
-            </div>
-          </header>
-          <div class="progress mb-3">
-            <div
-              class="progress-bar progress-bar-striped bg-success"
-              role="progressbar"
-              [ngStyle]="{ width: progress + '%' }"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <h5>{{ questionList[currentQuestionNo].statement }}</h5>
-
-          <div class="row">
-            <jhi-radio-options [options]="questionList[currentQuestionNo]!.options!" [formControl]="getRadioBoundControl()">
-              <!-- value="answerList[currentQuestionNo]!.options!.id!" -->
-            </jhi-radio-options>
-            <!-- <div class="options" *ngFor="let option of questionList[currentQuestionNo].options; let i = index">
-              <div class="col-xs-12">
-                <h5 class="answer" (click)="answer(option)">
-                  <input class="form-check-input" type="radio" name="answer" id="i" value="{{ option.index }}" />
-                  <label class="form-check-label" for="i">
-                    {{ option.statement }}
-                  </label>
-                </h5>
-              </div>
-            </div> -->
-            <!-- <form [formGroup]="quizzForm">
-                <ng-container *ngFor="let option of questionList[currentQuestionNo].options; let i = index">
-                    <input type="radio" [value]="option.index" formControlName="answer" />{{ option }}
-                </ng-container>
-              </form> -->
-            <!-- <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="answer" id="answer" value="{{ option.index }}" />
-                <label class="btn btn-outline-primary" for="answer">{{ option.statement }}</label>
-              </div> -->
-          </div>
-          <footer></footer>
-        }
-        @case (PlayModeEnum.FINISHED) {
-          <jhi-circle-progress [value]="progress"></jhi-circle-progress>
-          <p>You've completed the Quizz !</p>
-
-          <p>and congrats!, You got {{ attempt!.score }} out of {{ questionList.length }}'</p>
-
-          <p>Total Question Attempted : {{ questionList.length }}</p>
-          <p>Total Correct Answered : {{ attempt!.score }}</p>
-          <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
-                <p>Your Score : {{ points }} Points</p> -->
-        }
-      }
-    </div>
+  }
+  @case (PlayModeEnum.RULES) {
+    <jhi-rules [quizz]="quizz"></jhi-rules>
 
     <div class="modal-footer justify-content-between">
-      @switch (mode) {
-        @case (PlayModeEnum.SHOW_RULES) {
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
-            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-          </button>
-          <button type="button" class="btn btn-primary" (click)="startQuizz()">Continue</button>
-        }
-        @case (PlayModeEnum.PLAYING) {
-          <button type="button" [disabled]="currentQuestionNo === 0" class="btn btn-outline-primary" (click)="previousQuestion()">
-            <fa-icon icon="chevron-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.previous">Previous</span>
-          </button>
-          <button type="button" *ngIf="currentQuestionNo + 1 == questionList.length" class="btn btn-outline-primary" (click)="finish()">
-            <fa-icon icon="flag-checkered"></fa-icon>&nbsp;<span jhiTranslate="entity.action.finish">Finish</span>
-          </button>
-          <button
-            type="button"
-            *ngIf="currentQuestionNo + 1 != questionList.length"
-            class="btn btn-outline-primary"
-            (click)="nextQuestion()"
-          >
-            <span jhiTranslate="entity.action.next">Next</span>&nbsp;<fa-icon icon="chevron-right"></fa-icon>
-          </button>
-        }
-        @case (PlayModeEnum.FINISHED) {
-          <button id="jhi-replay-quizz" data-cy="entityReplayButton" class="btn btn-outline-primary" (click)="retry()">
-            <fa-icon icon="rotate"></fa-icon>&nbsp;<span jhiTranslate="entity.action.retry">Retry</span>
-          </button>
-          <button id="jhi-close-quizz" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
-            <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.close">Close</span>
-          </button>
-        }
-      }
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+      <button type="button" class="btn btn-primary" (click)="startQuizz()">Continue</button>
     </div>
-    <div class="margin-20">
-      <pre>form value: <br>{{playForm.value | json}}</pre>
+  }
+  @case (PlayModeEnum.PLAYING) {
+    @if (newAttempt) {
+      <jhi-questions [quizz]="quizz" [attempt]="newAttempt" (onNextStep)="displayResult()"></jhi-questions>
+    }
+  }
+  <!-- @case (PlayModeEnum.SUMMARY) {
+    <jhi-sumary [quizz]="quizz" [attempt]="attempt"></jhi-sumary>
+  } -->
+  @case (PlayModeEnum.RESULTS) {
+    <jhi-results [attempt]="newAttempt"></jhi-results>
+
+    <div class="modal-footer justify-content-between">
+      <button id="jhi-replay-quizz" data-cy="entityReplayButton" class="btn btn-outline-primary" (click)="retry()">
+        <fa-icon icon="rotate"></fa-icon>&nbsp;<span jhiTranslate="entity.action.retry">Retry</span>
+      </button>
+      <button id="jhi-close-quizz" data-cy="closeButton" class="btn btn-danger" (click)="close()">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.close">Close</span>
+      </button>
     </div>
-  </form>
+  }
 }
