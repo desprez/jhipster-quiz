@@ -1,11 +1,9 @@
 package com.github.desprez.web.rest;
 
 import com.github.desprez.repository.QuizzRepository;
-import com.github.desprez.service.AttemptService;
 import com.github.desprez.service.QuizzQueryService;
-import com.github.desprez.service.QuizzService;
+import com.github.desprez.service.QuizzServiceExtended;
 import com.github.desprez.service.criteria.QuizzCriteria;
-import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.service.dto.QuizzBasicDTO;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
@@ -54,13 +52,13 @@ public class QuizzResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final QuizzService quizzService;
+    private final QuizzServiceExtended quizzService;
 
     private final QuizzRepository quizzRepository;
 
     private final QuizzQueryService quizzQueryService;
 
-    public QuizzResource(QuizzService quizzService, QuizzRepository quizzRepository, QuizzQueryService quizzQueryService) {
+    public QuizzResource(QuizzServiceExtended quizzService, QuizzRepository quizzRepository, QuizzQueryService quizzQueryService) {
         this.quizzService = quizzService;
         this.quizzRepository = quizzRepository;
         this.quizzQueryService = quizzQueryService;
@@ -219,6 +217,26 @@ public class QuizzResource {
     ) {
         log.debug("REST request to delete Quizz : {}", id);
         quizzService.delete(id);
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
+    }
+
+    /**
+     * {@code PUBLISH  /quizzes/:id/publish} : publish the "id" quizz.
+     *
+     * @param id the id of the quizzDTO to publish.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @PutMapping("/{id}/publish")
+    public ResponseEntity<Void> publishQuizz(
+        @Parameter(description = "id of quizz to be published", example = "7bf9fa79-5b46-4bb0-bb38-298bf9bd036b") @PathVariable(
+            "id"
+        ) UUID id
+    ) {
+        log.debug("REST request to publish Quizz : {}", id);
+        quizzService.publishQuiz(id);
         return ResponseEntity
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

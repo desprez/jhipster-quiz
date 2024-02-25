@@ -7,6 +7,7 @@ export interface IAttemptAnswer {
   id: string;
   started?: dayjs.Dayjs | null;
   ended?: dayjs.Dayjs | null;
+  correct?: boolean | null;
   question?: IQuestion | null;
   option?: IOption | null;
   attempt?: IAttempt | null;

@@ -4,6 +4,7 @@ import com.github.desprez.repository.AttemptRepository;
 import com.github.desprez.security.AuthoritiesConstants;
 import com.github.desprez.security.SecurityUtils;
 import com.github.desprez.service.AttemptService;
+import com.github.desprez.service.dto.AttemptBasicDTO;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.web.rest.errors.BadRequestAlertException;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -169,12 +170,12 @@ public class AttemptResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of attempts in body.
      */
     @GetMapping("")
-    public ResponseEntity<List<AttemptDTO>> getAllAttempts(
+    public ResponseEntity<List<AttemptBasicDTO>> getAllAttempts(
         @ParameterObject Pageable pageable,
         @RequestParam(name = "eagerload", required = false, defaultValue = "true") boolean eagerload
     ) {
         log.debug("REST request to get a page of Attempts");
-        Page<AttemptDTO> page;
+        Page<AttemptBasicDTO> page;
         if (eagerload) {
             page = attemptService.findAllWithEagerRelationships(pageable);
         } else {

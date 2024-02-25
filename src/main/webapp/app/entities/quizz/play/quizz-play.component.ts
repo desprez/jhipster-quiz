@@ -44,7 +44,7 @@ export class QuizzPlayComponent {
   newAttempt!: IAttempt;
 
   PlayModeEnum = PlayMode;
-  mode = PlayMode.RESULTS;
+  mode = PlayMode.WELCOME;
 
   questionList: IQuestion[] = [];
 
@@ -83,7 +83,6 @@ export class QuizzPlayComponent {
       next: (res: HttpResponse<IAttempt>) => {
         if (res.body) {
           this.newAttempt = res.body as IAttempt;
-          console.log(this.newAttempt);
         }
       },
       error: response => console.log(response.message),

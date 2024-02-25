@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.desprez.domain.enumeration.Category;
 import com.github.desprez.domain.enumeration.Difficulty;
 import com.github.desprez.domain.enumeration.DisplayOrder;
+import com.github.desprez.domain.enumeration.Period;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -65,8 +67,8 @@ public class Quizz implements Serializable {
     private Boolean allowReview;
 
     @NotNull
-    @Column(name = "secret_good_anwers", nullable = false)
-    private Boolean secretGoodAnwers;
+    @Column(name = "keep_answers_secret", nullable = false)
+    private Boolean keepAnswersSecret;
 
     @Lob
     @Column(name = "image")
@@ -78,6 +80,19 @@ public class Quizz implements Serializable {
     @NotNull
     @Column(name = "published", nullable = false)
     private Boolean published;
+
+    @Column(name = "publish_date")
+    private Instant publishDate;
+
+    @Column(name = "attemps_limit")
+    private Integer attempsLimit;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "attemps_limit_period")
+    private Period attempsLimitPeriod;
+
+    @Column(name = "question_count")
+    private Integer questionCount;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "quizz", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -207,17 +222,17 @@ public class Quizz implements Serializable {
         this.allowReview = allowReview;
     }
 
-    public Boolean getSecretGoodAnwers() {
-        return this.secretGoodAnwers;
+    public Boolean getKeepAnswersSecret() {
+        return this.keepAnswersSecret;
     }
 
-    public Quizz secretGoodAnwers(Boolean secretGoodAnwers) {
-        this.setSecretGoodAnwers(secretGoodAnwers);
+    public Quizz keepAnswersSecret(Boolean keepAnswersSecret) {
+        this.setKeepAnswersSecret(keepAnswersSecret);
         return this;
     }
 
-    public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
-        this.secretGoodAnwers = secretGoodAnwers;
+    public void setKeepAnswersSecret(Boolean keepAnswersSecret) {
+        this.keepAnswersSecret = keepAnswersSecret;
     }
 
     public byte[] getImage() {
@@ -257,6 +272,58 @@ public class Quizz implements Serializable {
 
     public void setPublished(Boolean published) {
         this.published = published;
+    }
+
+    public Instant getPublishDate() {
+        return this.publishDate;
+    }
+
+    public Quizz publishDate(Instant publishDate) {
+        this.setPublishDate(publishDate);
+        return this;
+    }
+
+    public void setPublishDate(Instant publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Integer getAttempsLimit() {
+        return this.attempsLimit;
+    }
+
+    public Quizz attempsLimit(Integer attempsLimit) {
+        this.setAttempsLimit(attempsLimit);
+        return this;
+    }
+
+    public void setAttempsLimit(Integer attempsLimit) {
+        this.attempsLimit = attempsLimit;
+    }
+
+    public Period getAttempsLimitPeriod() {
+        return this.attempsLimitPeriod;
+    }
+
+    public Quizz attempsLimitPeriod(Period attempsLimitPeriod) {
+        this.setAttempsLimitPeriod(attempsLimitPeriod);
+        return this;
+    }
+
+    public void setAttempsLimitPeriod(Period attempsLimitPeriod) {
+        this.attempsLimitPeriod = attempsLimitPeriod;
+    }
+
+    public Integer getQuestionCount() {
+        return this.questionCount;
+    }
+
+    public Quizz questionCount(Integer questionCount) {
+        this.setQuestionCount(questionCount);
+        return this;
+    }
+
+    public void setQuestionCount(Integer questionCount) {
+        this.questionCount = questionCount;
     }
 
     public Set<Question> getQuestions() {
@@ -335,10 +402,14 @@ public class Quizz implements Serializable {
             ", maxAnswerTime=" + getMaxAnswerTime() +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
-            ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
+            ", keepAnswersSecret='" + getKeepAnswersSecret() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
             ", published='" + getPublished() + "'" +
+            ", publishDate='" + getPublishDate() + "'" +
+            ", attempsLimit=" + getAttempsLimit() +
+            ", attempsLimitPeriod='" + getAttempsLimitPeriod() + "'" +
+            ", questionCount=" + getQuestionCount() +
             "}";
     }
 }

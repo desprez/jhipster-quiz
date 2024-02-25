@@ -77,7 +77,9 @@ public class AttemptGatlingTest extends Simulation {
                         .body(
                             StringBody(
                                 "{" +
-                                "\"score\": 0" +
+                                "\"correctAnswerCount\": 0" +
+                                ", \"wrongAnswerCount\": 0" +
+                                ", \"unansweredCount\": 0" +
                                 ", \"started\": \"2020-01-01T00:00:00.000Z\"" +
                                 ", \"ended\": \"2020-01-01T00:00:00.000Z\"" +
                                 "}"

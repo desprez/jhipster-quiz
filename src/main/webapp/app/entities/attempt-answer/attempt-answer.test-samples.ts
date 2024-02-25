@@ -10,12 +10,15 @@ export const sampleWithRequiredData: IAttemptAnswer = {
 export const sampleWithPartialData: IAttemptAnswer = {
   id: '994ed486-0267-4ec8-bd0b-bf39f1c8c562',
   started: dayjs('2024-01-12T07:28'),
+  ended: dayjs('2024-01-12T14:24'),
+  correct: false,
 };
 
 export const sampleWithFullData: IAttemptAnswer = {
   id: 'f3a46f53-7323-4d06-b9a3-605c55f7bea4',
   started: dayjs('2024-01-12T12:12'),
   ended: dayjs('2024-01-12T11:16'),
+  correct: false,
 };
 
 export const sampleWithNewData: NewAttemptAnswer = {

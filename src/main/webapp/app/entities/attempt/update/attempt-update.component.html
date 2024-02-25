@@ -16,19 +16,99 @@
         }
 
         <div class="mb-3">
-          <label class="form-label" jhiTranslate="quizzApp.attempt.score" for="field_score">Score</label>
-          <input type="number" class="form-control" name="score" id="field_score" data-cy="score" formControlName="score" />
-          @if (editForm.get('score')!.invalid && (editForm.get('score')!.dirty || editForm.get('score')!.touched)) {
+          <label class="form-label" jhiTranslate="quizzApp.attempt.correctAnswerCount" for="field_correctAnswerCount"
+            >Correct Answercount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="correctAnswerCount"
+            id="field_correctAnswerCount"
+            data-cy="correctAnswerCount"
+            formControlName="correctAnswerCount"
+          />
+          @if (
+            editForm.get('correctAnswerCount')!.invalid &&
+            (editForm.get('correctAnswerCount')!.dirty || editForm.get('correctAnswerCount')!.touched)
+          ) {
             <div>
-              @if (editForm.get('score')?.errors?.required) {
+              @if (editForm.get('correctAnswerCount')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
-              @if (editForm.get('score')?.errors?.min) {
+              @if (editForm.get('correctAnswerCount')?.errors?.min) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }"
                   >This field should be at least 0.</small
                 >
               }
-              <small class="form-text text-danger" [hidden]="!editForm.get('score')?.errors?.number" jhiTranslate="entity.validation.number"
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('correctAnswerCount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.wrongAnswerCount" for="field_wrongAnswerCount">Wrong Answer Count</label>
+          <input
+            type="number"
+            class="form-control"
+            name="wrongAnswerCount"
+            id="field_wrongAnswerCount"
+            data-cy="wrongAnswerCount"
+            formControlName="wrongAnswerCount"
+          />
+          @if (
+            editForm.get('wrongAnswerCount')!.invalid &&
+            (editForm.get('wrongAnswerCount')!.dirty || editForm.get('wrongAnswerCount')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('wrongAnswerCount')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('wrongAnswerCount')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }"
+                  >This field should be at least 0.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('wrongAnswerCount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.attempt.unansweredCount" for="field_unansweredCount">Unanswered Count</label>
+          <input
+            type="number"
+            class="form-control"
+            name="unansweredCount"
+            id="field_unansweredCount"
+            data-cy="unansweredCount"
+            formControlName="unansweredCount"
+          />
+          @if (
+            editForm.get('unansweredCount')!.invalid && (editForm.get('unansweredCount')!.dirty || editForm.get('unansweredCount')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('unansweredCount')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('unansweredCount')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }"
+                  >This field should be at least 0.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('unansweredCount')?.errors?.number"
+                jhiTranslate="entity.validation.number"
                 >This field should be a number.</small
               >
             </div>

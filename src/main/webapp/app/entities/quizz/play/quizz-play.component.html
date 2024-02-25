@@ -30,7 +30,7 @@
     <jhi-sumary [quizz]="quizz" [attempt]="attempt"></jhi-sumary>
   } -->
   @case (PlayModeEnum.RESULTS) {
-    <jhi-results [attempt]="newAttempt"></jhi-results>
+    <jhi-results [quizz]="quizz" [attempt]="newAttempt"></jhi-results>
 
     <div class="modal-footer justify-content-between">
       <button id="jhi-replay-quizz" data-cy="entityReplayButton" class="btn btn-outline-primary" (click)="retry()">

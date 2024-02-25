@@ -58,7 +58,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   updateChoice(choice: string) {
-    this.answerList[this.currentQuestionIndex].option = { id: choice, isCorrect: null };
+    this.answerList[this.currentQuestionIndex].option = { id: choice };
     this.computeAnsweredCount(this.answerList);
     this.getProgressPercent();
   }

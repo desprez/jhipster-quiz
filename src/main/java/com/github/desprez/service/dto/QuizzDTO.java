@@ -3,6 +3,7 @@ package com.github.desprez.service.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.github.desprez.domain.enumeration.DisplayOrder;
+import com.github.desprez.domain.enumeration.Period;
 import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Objects;
@@ -29,7 +30,11 @@ public class QuizzDTO extends QuizzBasicDTO {
     private Boolean allowReview;
 
     @NotNull
-    private Boolean secretGoodAnwers;
+    private Boolean keepAnswersSecret;
+
+    private Integer attempsLimit;
+
+    private Period attempsLimitPeriod;
 
     private Set<QuestionDTO> questions = new HashSet<>();
 
@@ -65,12 +70,28 @@ public class QuizzDTO extends QuizzBasicDTO {
         this.allowReview = allowReview;
     }
 
-    public Boolean getSecretGoodAnwers() {
-        return secretGoodAnwers;
+    public Boolean getKeepAnswersSecret() {
+        return keepAnswersSecret;
     }
 
-    public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
-        this.secretGoodAnwers = secretGoodAnwers;
+    public void setKeepAnswersSecret(Boolean keepAnswersSecret) {
+        this.keepAnswersSecret = keepAnswersSecret;
+    }
+
+    public Integer getAttempsLimit() {
+        return attempsLimit;
+    }
+
+    public void setAttempsLimit(Integer attempsLimit) {
+        this.attempsLimit = attempsLimit;
+    }
+
+    public Period getAttempsLimitPeriod() {
+        return attempsLimitPeriod;
+    }
+
+    public void setAttempsLimitPeriod(Period attempsLimitPeriod) {
+        this.attempsLimitPeriod = attempsLimitPeriod;
     }
 
     public Set<QuestionDTO> getQuestions() {
@@ -115,8 +136,11 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", maxAnswerTime=" + getMaxAnswerTime() +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
-            ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
+            ", keepAnswersSecret='" + getKeepAnswersSecret() + "'" +
             ", published='" + getPublished() + "'" +
+            ", attempsLimit=" + getAttempsLimit() +
+            ", attempsLimitPeriod='" + getAttempsLimitPeriod() + "'" +
+            ", questions='" + getQuestions() + "'" +
             ", user=" + getUser() +
             "}";
     }

@@ -47,9 +47,9 @@
           <dd>
             <span>{{ quizz.allowReview }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.quizz.secretGoodAnwers">Secret Good Anwers</span></dt>
+          <dt><span jhiTranslate="quizzApp.quizz.keepAnswersSecret">Keep Answers Secret</span></dt>
           <dd>
-            <span>{{ quizz.secretGoodAnwers }}</span>
+            <span>{{ quizz.keepAnswersSecret }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.image">Image</span></dt>
           <dd>
@@ -65,6 +65,22 @@
           <dt><span jhiTranslate="quizzApp.quizz.published">Published</span></dt>
           <dd>
             <span>{{ quizz.published }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.publishDate">Publish Date</span></dt>
+          <dd>
+            <span>{{ quizz.publishDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.attempsLimit">Attemps Limit</span></dt>
+          <dd>
+            <span>{{ quizz.attempsLimit }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.attempsLimitPeriod">Attemps Limit Period</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'quizzApp.Period.' + quizz.attempsLimitPeriod }}">{{ quizz.attempsLimitPeriod }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.quizz.questionCount">Question Count</span></dt>
+          <dd>
+            <span>{{ quizz.questionCount }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.user">User</span></dt>
           <dd>

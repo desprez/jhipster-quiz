@@ -20,7 +20,7 @@
       "id": "Id",
       "statement": "Intitulé",
       "index": "Index",
-      "correctOptionIndex": "Index de la bonne réponse",
+      "correctOptionIndex": "Index de la réponse correcte",
       "options": "Options",
       "quizz": "Quizz"
     }

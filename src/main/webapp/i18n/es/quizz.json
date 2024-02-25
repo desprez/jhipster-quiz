@@ -29,9 +29,13 @@
       "secretGoodAnwers": "Buenas respuestas secretas",
       "image": "Imagen",
       "published": "Publicado",
+      "publishDate": "Publish Date",
+      "attempsLimit": "Attemps Limit",
+      "attempsLimitPeriod": "Attemps Limit Period",
+      "questionCount": "Questions#",
       "questions": "Preguntas",
       "user": "Usuario",
-      "questionCount": "Questions#",
+
       "play": "Jugar",
       "maker": {
         "question": {

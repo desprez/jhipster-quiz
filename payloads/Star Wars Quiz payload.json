@@ -1,14 +1,16 @@
 {
-  "title": "Quiz the Starwars universe(English)",
+  "title": "Quiz the Starwars universe (English)",
   "description": "A quiz about Starwars universe",
   "difficulty": "EASY",
   "category": "FILM",
+  "questionCount": 10,
   "questionOrder": "RANDOM",
   "maxAnswerTime": 0,
   "allowBack": true,
   "allowReview": true,
-  "secretGoodAnwers": false,
+  "keepAnswersSecret": false,
   "published": true,
+  "publishDate": "2024-02-23T00:00:00Z",
   "user": {
     "id": 2,
     "login": "user"

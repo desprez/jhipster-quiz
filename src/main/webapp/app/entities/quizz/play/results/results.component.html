@@ -7,10 +7,10 @@
   </div>
   <p>You've completed the Quizz !</p>
 
-  <!-- <p>and congrats!, You got {{ attempt!.score }} out of {{ answersCount }}'</p>
+  <p>and congrats!, You got {{ attempt!.correctAnswerCount }} out of {{ quizz!.questionCount }}'</p>
 
-    <p>Total Question Attempted : {{ answersCount }}</p>
-    <p>Total Correct Answered : {{ attempt!.score }}</p> -->
-  <!-- <p>Total Wrong Answered : {{ inCorrectAnswer }}</p>
-            <p>Your Score : {{ points }} Points</p> -->
+  <p>Total Question Attempted : {{ answerCount }}</p>
+  <p>Total Correct Answered : {{ attempt!.correctAnswerCount }}</p>
+  <p>Total Wrong Answered : {{ attempt!.wrongAnswerCount }}</p>
+  <!--         <p>Your Score : {{ points }} Points</p> -->
 </div>

@@ -8,11 +8,13 @@
     "id": 2,
     "login": "user"
   },
+  "questionCount": 10,
+  "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "FIXED",
   "maxAnswerTime": 0,
   "allowBack": true,
   "allowReview": true,
-  "secretGoodAnwers": false,
+  "keepAnswersSecret": false,
   "questions": [
     {
       "statement": "Quand a été fondée l'entreprise IBM ?",

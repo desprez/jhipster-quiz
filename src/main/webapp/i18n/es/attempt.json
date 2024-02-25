@@ -18,7 +18,9 @@
         "title": "Attempt"
       },
       "id": "Id",
-      "score": "Score",
+      "correctAnswerCount": "Correct Answer Count",
+      "wrongAnswerCount": "Wrong Answer Count",
+      "unansweredCount": "Unanswered Count",
       "started": "Started",
       "ended": "Ended",
       "answers": "Answers",

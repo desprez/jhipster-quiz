@@ -10,6 +10,10 @@ enum DisplayOrder {
   RANDOM, FIXED
 }
 
+enum Period {
+  HOUR, DAY
+}
+
 entity Quizz {
   id UUID
   title String minlength(2) maxlength(100) required
@@ -20,9 +24,13 @@ entity Quizz {
   maxAnswerTime Integer
   allowBack Boolean required
   allowReview Boolean required
-  secretGoodAnwers Boolean required
+  keepAnswersSecret Boolean required
   image ImageBlob
   published Boolean required
+  publishDate Instant
+  attempsLimit Integer
+  attempsLimitPeriod Period
+  questionCount Integer
 }
 
 //@skipClient
@@ -43,7 +51,9 @@ entity Option {
 
 entity Attempt {
   id UUID
-  score Integer required min(0)
+  correctAnswercount Integer required min(0)
+  wrongAnswerCount Integer required min(0)
+  unansweredCount Integer required min(0)
   started Instant required
   ended Instant
 }
@@ -54,6 +64,7 @@ entity AttemptAnswer {
   id UUID
   started Instant
   ended Instant
+  correct Boolean
 }
 
 relationship OneToMany {

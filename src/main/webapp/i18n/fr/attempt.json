@@ -2,23 +2,25 @@
   "quizzApp": {
     "attempt": {
       "home": {
-        "title": "Attempts",
+        "title": "Tentatives",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Attempt",
-        "createOrEditLabel": "Créer ou éditer un Attempt",
-        "notFound": "Aucun Attempt trouvé"
+        "createLabel": "Créer une nouvelle Tentative",
+        "createOrEditLabel": "Créer ou éditer une Tentative",
+        "notFound": "Aucune tentative trouvée"
       },
-      "created": "Un nouveau Attempt a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Attempt avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Attempt avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Tentative a été créée avec l'identifiant {{ param }}",
+      "updated": "La Tentative avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "La Tentative avec l'identifiant {{ param }} a été supprimée",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Attempt {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Tentative {{ id }} ?"
       },
       "detail": {
-        "title": "Attempt"
+        "title": "Tentative"
       },
       "id": "Id",
-      "score": "Score",
+      "correctAnswerCount": "Nombre de réponse correctes",
+      "wrongAnswerCount": "Nombre de réponse incorrectes",
+      "unansweredCount": "Unanswered Count",
       "started": "Début",
       "ended": "Fin",
       "answers": "Réponses",

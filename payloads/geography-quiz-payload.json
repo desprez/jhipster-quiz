@@ -8,12 +8,13 @@
     "id": 2,
     "login": "user"
   },
-  "questionCount": null,
+  "questionCount": 11,
+  "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "FIXED",
   "maxAnswerTime": null,
   "allowBack": true,
   "allowReview": true,
-  "secretGoodAnwers": true,
+  "keepAnswersSecret": true,
   "image": null,
   "imageContentType": null,
   "questions": [

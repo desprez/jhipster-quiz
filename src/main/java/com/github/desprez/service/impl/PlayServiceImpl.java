@@ -60,14 +60,15 @@ public class PlayServiceImpl implements PlayService {
 
         Quizz quizz = quizzRepository.findOneWithQuestionRelationships(quizId).orElseThrow();
 
-        Attempt newAttempt = new Attempt().quizz(quizz).score(0).started(Instant.now().truncatedTo(ChronoUnit.SECONDS)); // Angular
-        // don't
-        // like
-        // miliseconds
+        Attempt newAttempt = new Attempt()
+            .quizz(quizz)
+            .correctAnswerCount(0)
+            .wrongAnswerCount(0)
+            .unansweredCount(0)
+            .started(Instant.now().truncatedTo(ChronoUnit.SECONDS)); // Angular  don't like miliseconds
 
-        log.debug("No user passed in, using current user: {}", SecurityUtils.getCurrentUserLogin().get());
-        String username = SecurityUtils.getCurrentUserLogin().get();
-        newAttempt.setUser(userRepository.findOneByLogin(username).get());
+        String username = getUsername();
+        newAttempt.setUser(userRepository.findOneByLogin(username).orElseThrow());
 
         List<Question> shuffleMe = new ArrayList<Question>(quizz.getQuestions());
         if (quizz.getQuestionOrder() != null && quizz.getQuestionOrder().equals(DisplayOrder.RANDOM)) {
@@ -81,13 +82,19 @@ public class PlayServiceImpl implements PlayService {
         return attemptMapper.toDto(attemptRepository.save(newAttempt));
     }
 
+    private String getUsername() {
+        String username = SecurityUtils.getCurrentUserLogin().orElseThrow();
+        log.debug("No user passed in, using current user: {}", username);
+        return username;
+    }
+
     @Override
     public AttemptDTO evaluate(AttemptDTO attemptDTO) {
         Attempt attempt = attemptMapper.toEntity(attemptDTO);
 
         Quizz existingQuizz = quizzRepository.findOneWithQuestionRelationships(attempt.getQuizz().getId()).orElseThrow();
 
-        int correctAnswercount = 0;
+        int correctAnswerCount = 0;
         int wrongAnswerCount = 0;
         int unansweredCount = 0;
 
@@ -103,13 +110,12 @@ public class PlayServiceImpl implements PlayService {
                         break;
                     }
                     if (checkIsCorrectAnswer(question, answer.getOption())) {
-                        correctAnswercount++;
-                        // answer.setCorrect();
+                        correctAnswerCount++;
+                        answer.correct(true);
                     } else {
                         wrongAnswerCount++;
-                        // answer.setCorrect();
+                        answer.correct(false);
                     }
-                    // answer.setCorrect()
                     break;
                 }
             }
@@ -117,12 +123,13 @@ public class PlayServiceImpl implements PlayService {
                 unansweredCount++;
             }
         }
-        attempt.score(correctAnswercount).ended(Instant.now().truncatedTo(ChronoUnit.SECONDS));
+        log.info("correctAnswerCount {}, wrongAnswerCount {}, unansweredCount {}", correctAnswerCount, wrongAnswerCount, unansweredCount);
+        attempt
+            .correctAnswerCount(correctAnswerCount)
+            .wrongAnswerCount(wrongAnswerCount)
+            .unansweredCount(unansweredCount)
+            .ended(Instant.now().truncatedTo(ChronoUnit.SECONDS));
 
-        log.info("correctAnswercount {}, wrongAnswerCount {}, unansweredCount {}", correctAnswercount, wrongAnswerCount, unansweredCount);
-        // attempt.setCorrectAnswerCount(correctAnswercount);
-        // attempt.setWrongAnswerCount(wrongAnswerCount);
-        // attempt.setUnansweredCount(unansweredCount);
         attempt = attemptRepository.save(attempt);
         return attemptMapper.toDto(attempt);
     }

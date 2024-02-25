@@ -15,99 +15,11 @@ import java.util.UUID;
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
 @JsonInclude(Include.NON_NULL)
-public class AttemptDTO implements Serializable {
+public class AttemptDTO extends AttemptBasicDTO {
 
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
-
-    @NotNull
-    @Min(value = 0)
-    private Integer score;
-
-    @NotNull
-    private Instant started;
-
-    private Instant ended;
-
-    private QuizzDTO quizz;
-
-    private UserDTO user;
-
     private Set<AttemptAnswerDTO> answers = new HashSet<>();
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public AttemptDTO score(Integer score) {
-        this.score = score;
-        return this;
-    }
-
-    public Instant getStarted() {
-        return started;
-    }
-
-    public void setStarted(Instant started) {
-        this.started = started;
-    }
-
-    public AttemptDTO started(Instant started) {
-        this.started = started;
-        return this;
-    }
-
-    public Instant getEnded() {
-        return ended;
-    }
-
-    public void setEnded(Instant ended) {
-        this.ended = ended;
-    }
-
-    public AttemptDTO ended(Instant ended) {
-        this.ended = ended;
-        return this;
-    }
-
-    public QuizzDTO getQuizz() {
-        return quizz;
-    }
-
-    public void setQuizz(QuizzDTO quizz) {
-        this.quizz = quizz;
-    }
-
-    public AttemptDTO quizz(QuizzDTO quizz) {
-        this.quizz = quizz;
-        return this;
-    }
-
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public void setUser(UserDTO user) {
-        this.user = user;
-    }
-
-    public AttemptDTO user(UserDTO user) {
-        this.user = user;
-        return this;
-    }
 
     public Set<AttemptAnswerDTO> getAnswers() {
         return answers;
@@ -143,7 +55,9 @@ public class AttemptDTO implements Serializable {
     public String toString() {
         return "AttemptDTO{" +
             "id='" + getId() + "'" +
-            ", score=" + getScore() +
+            ", correctAnswerCount=" + getCorrectAnswerCount() +
+            ", wrongAnswerCount=" + getWrongAnswerCount() +
+            ", unansweredCount=" + getUnansweredCount() +
             ", started='" + getStarted() + "'" +
             ", ended='" + getEnded() + "'" +
             ", quizz=" + getQuizz() +

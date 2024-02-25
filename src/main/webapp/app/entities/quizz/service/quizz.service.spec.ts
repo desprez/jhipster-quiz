@@ -4,10 +4,11 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { IQuizz } from '../quizz.model';
 import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../quizz.test-samples';
 
-import { QuizzService } from './quizz.service';
+import { QuizzService, RestQuizz } from './quizz.service';
 
-const requireRestSample: IQuizz = {
+const requireRestSample: RestQuizz = {
   ...sampleWithRequiredData,
+  publishDate: sampleWithRequiredData.publishDate?.toJSON(),
 };
 
 describe('Quizz Service', () => {

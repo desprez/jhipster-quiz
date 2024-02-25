@@ -12,7 +12,7 @@
   "maxAnswerTime": 0,
   "allowBack": true,
   "allowReview": true,
-  "secretGoodAnwers": false,
+  "keepAnswersSecret": false,
   "questions": [
     {
       "statement": "",

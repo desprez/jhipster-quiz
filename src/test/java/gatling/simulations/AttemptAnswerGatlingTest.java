@@ -76,7 +76,11 @@ public class AttemptAnswerGatlingTest extends Simulation {
                         .headers(headers_http_authenticated)
                         .body(
                             StringBody(
-                                "{" + "\"started\": \"2020-01-01T00:00:00.000Z\"" + ", \"ended\": \"2020-01-01T00:00:00.000Z\"" + "}"
+                                "{" +
+                                "\"started\": \"2020-01-01T00:00:00.000Z\"" +
+                                ", \"ended\": \"2020-01-01T00:00:00.000Z\"" +
+                                ", \"correct\": null" +
+                                "}"
                             )
                         )
                         .asJson()

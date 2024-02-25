@@ -1,7 +1,5 @@
 package com.github.desprez.service;
 
-// for static metamodels
-import com.github.desprez.domain.Question_;
 import com.github.desprez.domain.Quizz;
 import com.github.desprez.domain.Quizz_;
 import com.github.desprez.domain.User_;
@@ -10,7 +8,6 @@ import com.github.desprez.service.criteria.QuizzCriteria;
 import com.github.desprez.service.dto.QuizzBasicDTO;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.mapper.QuizzBasicMapper;
-import com.github.desprez.service.mapper.QuizzMapper;
 import jakarta.persistence.criteria.JoinType;
 import java.util.List;
 import org.slf4j.Logger;

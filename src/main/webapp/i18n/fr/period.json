@@ -1,0 +1,9 @@
+{
+  "quizzApp": {
+    "Period": {
+      "null": "",
+      "HOUR": "HOUR",
+      "DAY": "DAY"
+    }
+  }
+}

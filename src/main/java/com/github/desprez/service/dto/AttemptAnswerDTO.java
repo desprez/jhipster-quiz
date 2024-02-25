@@ -15,6 +15,8 @@ public class AttemptAnswerDTO {
 
     private Instant ended;
 
+    private Boolean correct;
+
     private QuestionDTO question;
 
     private OptionDTO option;
@@ -41,6 +43,14 @@ public class AttemptAnswerDTO {
 
     public void setEnded(Instant ended) {
         this.ended = ended;
+    }
+
+    public Boolean getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
     }
 
     public QuestionDTO getQuestion() {
@@ -82,8 +92,12 @@ public class AttemptAnswerDTO {
     // prettier-ignore
   @Override
   public String toString() {
-    return "AttemptAnswerDTO{" + "id='" + getId() + "'" + ", started='" + getStarted() + "'"
-        + ", ended='" + getEnded() + "'" + ", question='" + getQuestion() + "'" + ", option='"
+    return "AttemptAnswerDTO{" + "id='" + getId() + "'" 
+        + ", started='" + getStarted() + "'"
+        + ", ended='" + getEnded() + "'" 
+        + ", correct='" + getCorrect() + "'" 
+        + ", question='" + getQuestion() 
+        + "'" + ", option='"
         + getOption() + "'" + "}";
   }
 }

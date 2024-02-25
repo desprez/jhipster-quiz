@@ -38,8 +38,18 @@ public class Attempt implements Serializable {
 
     @NotNull
     @Min(value = 0)
-    @Column(name = "score", nullable = false)
-    private Integer score;
+    @Column(name = "correct_answer_count", nullable = false)
+    private Integer correctAnswerCount;
+
+    @NotNull
+    @Min(value = 0)
+    @Column(name = "wrong_answer_count", nullable = false)
+    private Integer wrongAnswerCount;
+
+    @NotNull
+    @Min(value = 0)
+    @Column(name = "unanswered_count", nullable = false)
+    private Integer unansweredCount;
 
     @NotNull
     @Column(name = "started", nullable = false)
@@ -77,17 +87,43 @@ public class Attempt implements Serializable {
         this.id = id;
     }
 
-    public Integer getScore() {
-        return this.score;
+    public Integer getCorrectAnswerCount() {
+        return this.correctAnswerCount;
     }
 
-    public Attempt score(Integer score) {
-        this.setScore(score);
+    public Attempt correctAnswerCount(Integer correctAnswerCount) {
+        this.setCorrectAnswerCount(correctAnswerCount);
         return this;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setCorrectAnswerCount(Integer correctAnswerCount) {
+        this.correctAnswerCount = correctAnswerCount;
+    }
+
+    public Integer getWrongAnswerCount() {
+        return this.wrongAnswerCount;
+    }
+
+    public Attempt wrongAnswerCount(Integer wrongAnswerCount) {
+        this.setWrongAnswerCount(wrongAnswerCount);
+        return this;
+    }
+
+    public void setWrongAnswerCount(Integer wrongAnswerCount) {
+        this.wrongAnswerCount = wrongAnswerCount;
+    }
+
+    public Integer getUnansweredCount() {
+        return this.unansweredCount;
+    }
+
+    public Attempt unansweredCount(Integer unansweredCount) {
+        this.setUnansweredCount(unansweredCount);
+        return this;
+    }
+
+    public void setUnansweredCount(Integer unansweredCount) {
+        this.unansweredCount = unansweredCount;
     }
 
     public Instant getStarted() {
@@ -197,7 +233,9 @@ public class Attempt implements Serializable {
     public String toString() {
         return "Attempt{" +
             "id=" + getId() +
-            ", score=" + getScore() +
+            ", correctAnswerCount=" + getCorrectAnswerCount() +
+            ", wrongAnswerCount=" + getWrongAnswerCount() +
+            ", unansweredCount=" + getUnansweredCount() +
             ", started='" + getStarted() + "'" +
             ", ended='" + getEnded() + "'" +
             "}";

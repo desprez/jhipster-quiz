@@ -1,5 +1,5 @@
 {
-  "title": "My first Quizz",
+  "title": "Mon premier Quizz (Français)",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis ipsum nisi, eu ullamcorper tortor suscipit eget. Donec hendrerit, justo blandit lobortis egestas, magna ex accumsan diam, sit amet molestie nisi diam id urna. Cras tortor mauris, dictum quis imperdiet ut, sollicitudin in quam. Mauris sit amet nisl sit amet felis dictum dapibus congue ac nisi. Ut ut justo eget neque placerat tempus nec ut velit. Integer mattis urna sed mi fringilla, vel pretium felis lobortis.",
   "difficulty": "EASY",
   "category": "GENERAL_KNOWLEDGE",
@@ -8,11 +8,13 @@
     "id": 2,
     "login": "user"
   },
+  "questionCount": 6,
+  "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "FIXED",
   "maxAnswerTime": 0,
   "allowBack": true,
   "allowReview": true,
-  "secretGoodAnwers": false,
+  "keepAnswersSecret": false,
   "questions": [
     {
       "statement": "Que mesure l'année lumière ?",

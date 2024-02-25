@@ -5,10 +5,12 @@ import { IUser } from 'app/entities/user/user.model';
 
 export interface IAttempt {
   id: string;
-  score?: number | null;
+  correctAnswerCount?: number | null;
+  wrongAnswerCount?: number | null;
+  unansweredCount?: number | null;
   started?: dayjs.Dayjs | null;
   ended?: dayjs.Dayjs | null;
-  answers?: Pick<IAttemptAnswer, 'id' | 'option'>[] | null;
+  answers?: Pick<IAttemptAnswer, 'id' | 'correct' | 'question' | 'option'>[] | null;
   quizz?: Pick<IQuizz, 'id' | 'title'> | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }

@@ -5,6 +5,7 @@ import com.github.desprez.repository.QuizzRepository;
 import com.github.desprez.repository.UserRepository;
 import com.github.desprez.service.QuizzServiceExtended;
 import com.github.desprez.service.mapper.QuizzMapper;
+import java.time.Instant;
 import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ public class QuizzServiceExtendedImpl extends QuizzServiceImpl implements QuizzS
         }
 
         existingQuizz.setPublished(true);
+        existingQuizz.publishDate(Instant.now());
         quizzRepository.save(existingQuizz);
     }
 }

@@ -16,6 +16,7 @@ import { UserService } from 'app/entities/user/user.service';
 import { Difficulty } from 'app/entities/enumerations/difficulty.model';
 import { Category } from 'app/entities/enumerations/category.model';
 import { DisplayOrder } from 'app/entities/enumerations/display-order.model';
+import { Period } from 'app/entities/enumerations/period.model';
 import { QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from './quizz-form.service';
@@ -32,6 +33,7 @@ export class QuizzUpdateComponent implements OnInit {
   difficultyValues = Object.keys(Difficulty);
   categoryValues = Object.keys(Category);
   displayOrderValues = Object.keys(DisplayOrder);
+  periodValues = Object.keys(Period);
 
   usersSharedCollection: IUser[] = [];
 

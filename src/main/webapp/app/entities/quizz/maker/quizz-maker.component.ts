@@ -16,6 +16,7 @@ import { UserService } from 'app/entities/user/user.service';
 import { Difficulty } from 'app/entities/enumerations/difficulty.model';
 import { Category } from 'app/entities/enumerations/category.model';
 import { DisplayOrder } from 'app/entities/enumerations/display-order.model';
+import { Period } from 'app/entities/enumerations/period.model';
 import { QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from '../update/quizz-form.service';
@@ -35,6 +36,7 @@ export class QuizzMakerComponent implements OnInit {
   difficultyValues = Object.keys(Difficulty);
   categoryValues = Object.keys(Category);
   displayOrderValues = Object.keys(DisplayOrder);
+  periodValues = Object.keys(Period);
 
   usersSharedCollection: IUser[] = [];
 
@@ -189,7 +191,7 @@ export class QuizzMakerComponent implements OnInit {
   }
 
   newOption(nextOptionIndex: number): IOption {
-    return { id: '', statement: '', index: nextOptionIndex, isCorrect: false };
+    return { id: '', statement: '', index: nextOptionIndex };
   }
 
   removeOption(questionIndex: number, optionIndex: number): void {
@@ -199,17 +201,17 @@ export class QuizzMakerComponent implements OnInit {
     this.getOptionsFormArray(questionIndex).removeAt(optionIndex);
   }
 
-  onCorrectRadioChange(questionIndex: number, optionIndex: number): void {
-    console.log('onCorrectRadioChange:' + questionIndex + ' ' + optionIndex);
-    this.getOptionsFormArray(questionIndex).value.forEach((option: IOption) => {
-      option.isCorrect = optionIndex === option.index;
-      console.log('option.isCorrect:' + option.isCorrect);
-      if (option.isCorrect) {
-        this.questions.controls[questionIndex].get('correctOptionIndex')?.setValue(option.index);
-        console.log('correctOptionIndex:' + option.index);
-      }
-    });
-  }
+  // onCorrectRadioChange(questionIndex: number, optionIndex: number): void {
+  //   console.log('onCorrectRadioChange:' + questionIndex + ' ' + optionIndex);
+  //   this.getOptionsFormArray(questionIndex).value.forEach((option: IOption) => {
+  //     option.isCorrect = optionIndex === option.index;
+  //     console.log('option.isCorrect:' + option.isCorrect);
+  //     if (option.isCorrect) {
+  //       this.questions.controls[questionIndex].get('correctOptionIndex')?.setValue(option.index);
+  //       console.log('correctOptionIndex:' + option.index);
+  //     }
+  //   });
+  // }
 
   getOptionIndex(questionIndex: number, optionIndex: number): number {
     return this.getOptionControls(questionIndex)[optionIndex].get('index')?.value;

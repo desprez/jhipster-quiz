@@ -12,6 +12,7 @@
       "id": "Id",
       "started": "Started",
       "ended": "Ended",
+      "correct": "Correct",
       "question": "Question",
       "option": "Option",
       "attempt": "Attempt"

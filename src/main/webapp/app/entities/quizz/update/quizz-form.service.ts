@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
+import dayjs from 'dayjs/esm';
+import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 import { IQuizz, NewQuizz } from '../quizz.model';
 import { IQuestion, NewQuestion } from 'app/entities/question/question.model';
 import { IOption, NewOption } from 'app/entities/option/option.model';
@@ -16,7 +18,18 @@ type PartialWithRequiredKeyOf<T extends { id: unknown }> = Partial<Omit<T, 'id'>
  */
 type QuizzFormGroupInput = IQuizz | PartialWithRequiredKeyOf<NewQuizz>;
 
-type QuizzFormDefaults = Pick<NewQuizz, 'id' | 'allowBack' | 'allowReview' | 'secretGoodAnwers' | 'published'>;
+/**
+ * Type that converts some properties for forms.
+ */
+type FormValueOf<T extends IQuizz | NewQuizz> = Omit<T, 'publishDate'> & {
+  publishDate?: string | null;
+};
+
+type QuizzFormRawValue = FormValueOf<IQuizz>;
+
+type NewQuizzFormRawValue = FormValueOf<NewQuizz>;
+
+type QuizzFormDefaults = Pick<NewQuizz, 'id' | 'allowBack' | 'allowReview' | 'keepAnswersSecret' | 'published' | 'publishDate'>;
 
 type OptionFormGroupContent = {
   id: FormControl<IOption['id'] | NewOption['id']>;
@@ -37,20 +50,24 @@ type QuestionFormGroupContent = {
 export type QuestionFormGroup = FormGroup<QuestionFormGroupContent>;
 
 type QuizzFormGroupContent = {
-  id: FormControl<IQuizz['id'] | NewQuizz['id']>;
-  title: FormControl<IQuizz['title']>;
-  description: FormControl<IQuizz['description']>;
-  difficulty: FormControl<IQuizz['difficulty']>;
-  category: FormControl<IQuizz['category']>;
-  questionOrder: FormControl<IQuizz['questionOrder']>;
-  maxAnswerTime: FormControl<IQuizz['maxAnswerTime']>;
-  allowBack: FormControl<IQuizz['allowBack']>;
-  allowReview: FormControl<IQuizz['allowReview']>;
-  secretGoodAnwers: FormControl<IQuizz['secretGoodAnwers']>;
-  image: FormControl<IQuizz['image']>;
-  imageContentType: FormControl<IQuizz['imageContentType']>;
-  published: FormControl<IQuizz['published']>;
-  user: FormControl<IQuizz['user']>;
+  id: FormControl<QuizzFormRawValue['id'] | NewQuizz['id']>;
+  title: FormControl<QuizzFormRawValue['title']>;
+  description: FormControl<QuizzFormRawValue['description']>;
+  difficulty: FormControl<QuizzFormRawValue['difficulty']>;
+  category: FormControl<QuizzFormRawValue['category']>;
+  questionOrder: FormControl<QuizzFormRawValue['questionOrder']>;
+  maxAnswerTime: FormControl<QuizzFormRawValue['maxAnswerTime']>;
+  allowBack: FormControl<QuizzFormRawValue['allowBack']>;
+  allowReview: FormControl<QuizzFormRawValue['allowReview']>;
+  keepAnswersSecret: FormControl<QuizzFormRawValue['keepAnswersSecret']>;
+  image: FormControl<QuizzFormRawValue['image']>;
+  imageContentType: FormControl<QuizzFormRawValue['imageContentType']>;
+  published: FormControl<QuizzFormRawValue['published']>;
+  publishDate: FormControl<QuizzFormRawValue['publishDate']>;
+  attempsLimit: FormControl<QuizzFormRawValue['attempsLimit']>;
+  attempsLimitPeriod: FormControl<QuizzFormRawValue['attempsLimitPeriod']>;
+  questionCount: FormControl<QuizzFormRawValue['questionCount']>;
+  user: FormControl<QuizzFormRawValue['user']>;
   questions: FormArray<FormGroup<QuestionFormGroupContent>>;
 };
 
@@ -61,11 +78,10 @@ export class QuizzFormService {
   constructor(private fb: FormBuilder) {}
 
   createQuizzFormGroup(quizz: QuizzFormGroupInput = { id: null }): QuizzFormGroup {
-    const quizzRawValue = {
+    const quizzRawValue = this.convertQuizzToQuizzRawValue({
       ...this.getFormDefaults(),
       ...quizz,
-    };
-    console.log('createQuizzFormGroup : ', quizzRawValue);
+    });
     return new FormGroup<QuizzFormGroupContent>({
       id: new FormControl(
         { value: quizzRawValue.id, disabled: true },
@@ -96,7 +112,7 @@ export class QuizzFormService {
       allowReview: new FormControl(quizzRawValue.allowReview, {
         validators: [Validators.required],
       }),
-      secretGoodAnwers: new FormControl(quizzRawValue.secretGoodAnwers, {
+      keepAnswersSecret: new FormControl(quizzRawValue.keepAnswersSecret, {
         validators: [Validators.required],
       }),
       image: new FormControl(quizzRawValue.image),
@@ -104,6 +120,10 @@ export class QuizzFormService {
       published: new FormControl(quizzRawValue.published, {
         validators: [Validators.required],
       }),
+      publishDate: new FormControl(quizzRawValue.publishDate),
+      attempsLimit: new FormControl(quizzRawValue.attempsLimit),
+      attempsLimitPeriod: new FormControl(quizzRawValue.attempsLimitPeriod),
+      questionCount: new FormControl(quizzRawValue.questionCount),
       user: new FormControl(quizzRawValue.user, {
         validators: [Validators.required],
       }),
@@ -132,45 +152,45 @@ export class QuizzFormService {
   }
 
   getQuizz(form: QuizzFormGroup): IQuizz | NewQuizz {
-    return form.getRawValue() as IQuizz | NewQuizz;
+    return this.convertQuizzRawValueToQuizz(form.getRawValue() as QuizzFormRawValue | NewQuizzFormRawValue);
   }
 
   resetForm(form: QuizzFormGroup, quizz: QuizzFormGroupInput): void {
-    const quizzRawValue = { ...this.getFormDefaults(), ...quizz };
+    const quizzRawValue = this.convertQuizzToQuizzRawValue({ ...this.getFormDefaults(), ...quizz });
     form.reset(
       {
         ...quizzRawValue,
         id: { value: quizzRawValue.id, disabled: true },
       } as any /* cast to workaround https://github.com/angular/angular/issues/46458 */,
     );
-
-    // if (!quizz.questions) {
-    //   quizz.questions = [];
-    //   quizz.questions.push({
-    //     id: '',
-    //     index: 1,
-    //     statement: '',
-    //     correctOptionIndex: 0,
-    //   });
-    // }
-    console.log(`resetForm quizz.questions`, quizz.questions);
-    // quizz.questions.map(question => {
-    //   (form.get('questions') as FormArray).push(
-    //     this.fb.group({
-    //       index: question.index,
-    //       statement: question.statement,
-    //     })
-    //   )
-    // })
   }
 
   private getFormDefaults(): QuizzFormDefaults {
+    const currentTime = dayjs();
+
     return {
       id: null,
       allowBack: false,
       allowReview: false,
-      secretGoodAnwers: false,
+      keepAnswersSecret: false,
       published: false,
+      publishDate: currentTime,
+    };
+  }
+
+  private convertQuizzRawValueToQuizz(rawQuizz: QuizzFormRawValue | NewQuizzFormRawValue): IQuizz | NewQuizz {
+    return {
+      ...rawQuizz,
+      publishDate: dayjs(rawQuizz.publishDate, DATE_TIME_FORMAT),
+    };
+  }
+
+  private convertQuizzToQuizzRawValue(
+    quizz: IQuizz | (Partial<NewQuizz> & QuizzFormDefaults),
+  ): QuizzFormRawValue | PartialWithRequiredKeyOf<NewQuizzFormRawValue> {
+    return {
+      ...quizz,
+      publishDate: quizz.publishDate ? quizz.publishDate.format(DATE_TIME_FORMAT) : undefined,
     };
   }
 }

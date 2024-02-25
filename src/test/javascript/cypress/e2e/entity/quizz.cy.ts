@@ -15,7 +15,7 @@ describe('Quizz e2e test', () => {
   const quizzPageUrlPattern = new RegExp('/quizz(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const quizzSample = {"title":"or lazy anenst","difficulty":"MEDIUM","category":"BOOKS","questionOrder":"FIXED","allowBack":true,"allowReview":true,"secretGoodAnwers":true,"published":false};
+  // const quizzSample = {"title":"dimly pish","difficulty":"EASY","category":"BOARD_GAMES","questionOrder":"FIXED","allowBack":false,"allowReview":true,"keepAnswersSecret":true,"published":true};
 
   let quizz;
   // let user;
@@ -218,20 +218,20 @@ describe('Quizz e2e test', () => {
     });
 
     it.skip('should create an instance of Quizz', () => {
-      cy.get(`[data-cy="title"]`).type('attitude');
-      cy.get(`[data-cy="title"]`).should('have.value', 'attitude');
+      cy.get(`[data-cy="title"]`).type('across proud unexpectedly');
+      cy.get(`[data-cy="title"]`).should('have.value', 'across proud unexpectedly');
 
-      cy.get(`[data-cy="description"]`).type('traveler unwelcome');
-      cy.get(`[data-cy="description"]`).should('have.value', 'traveler unwelcome');
+      cy.get(`[data-cy="description"]`).type('republican successfully');
+      cy.get(`[data-cy="description"]`).should('have.value', 'republican successfully');
 
-      cy.get(`[data-cy="difficulty"]`).select('EASY');
+      cy.get(`[data-cy="difficulty"]`).select('MEDIUM');
 
-      cy.get(`[data-cy="category"]`).select('SPORTS');
+      cy.get(`[data-cy="category"]`).select('MUSIC');
 
-      cy.get(`[data-cy="questionOrder"]`).select('FIXED');
+      cy.get(`[data-cy="questionOrder"]`).select('RANDOM');
 
-      cy.get(`[data-cy="maxAnswerTime"]`).type('12974');
-      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', '12974');
+      cy.get(`[data-cy="maxAnswerTime"]`).type('31943');
+      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', '31943');
 
       cy.get(`[data-cy="allowBack"]`).should('not.be.checked');
       cy.get(`[data-cy="allowBack"]`).click();
@@ -241,15 +241,27 @@ describe('Quizz e2e test', () => {
       cy.get(`[data-cy="allowReview"]`).click();
       cy.get(`[data-cy="allowReview"]`).should('be.checked');
 
-      cy.get(`[data-cy="secretGoodAnwers"]`).should('not.be.checked');
-      cy.get(`[data-cy="secretGoodAnwers"]`).click();
-      cy.get(`[data-cy="secretGoodAnwers"]`).should('be.checked');
+      cy.get(`[data-cy="keepAnswersSecret"]`).should('not.be.checked');
+      cy.get(`[data-cy="keepAnswersSecret"]`).click();
+      cy.get(`[data-cy="keepAnswersSecret"]`).should('be.checked');
 
       cy.setFieldImageAsBytesOfEntity('image', 'integration-test.png', 'image/png');
 
       cy.get(`[data-cy="published"]`).should('not.be.checked');
       cy.get(`[data-cy="published"]`).click();
       cy.get(`[data-cy="published"]`).should('be.checked');
+
+      cy.get(`[data-cy="publishDate"]`).type('2024-01-12T02:17');
+      cy.get(`[data-cy="publishDate"]`).blur();
+      cy.get(`[data-cy="publishDate"]`).should('have.value', '2024-01-12T02:17');
+
+      cy.get(`[data-cy="attempsLimit"]`).type('12918');
+      cy.get(`[data-cy="attempsLimit"]`).should('have.value', '12918');
+
+      cy.get(`[data-cy="attempsLimitPeriod"]`).select('HOUR');
+
+      cy.get(`[data-cy="questionCount"]`).type('29870');
+      cy.get(`[data-cy="questionCount"]`).should('have.value', '29870');
 
       cy.get(`[data-cy="user"]`).select(1);
 

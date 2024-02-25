@@ -5,6 +5,7 @@ import com.github.desprez.domain.enumeration.Difficulty;
 import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -38,6 +39,8 @@ public class QuizzBasicDTO {
     private String imageContentType;
 
     private Integer questionCount;
+
+    private Instant publishDate;
 
     public UUID getId() {
         return id;
@@ -118,6 +121,14 @@ public class QuizzBasicDTO {
 
     public void setQuestionCount(Integer questionCount) {
         this.questionCount = questionCount;
+    }
+
+    public Instant getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Instant publishDate) {
+        this.publishDate = publishDate;
     }
 
     @Override

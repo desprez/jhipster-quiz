@@ -11,7 +11,19 @@
       "fieldType": "UUID"
     },
     {
-      "fieldName": "score",
+      "fieldName": "correctAnswercount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "wrongAnswerCount",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "unansweredCount",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min"],
       "fieldValidateRulesMin": "0"

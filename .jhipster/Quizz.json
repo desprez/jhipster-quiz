@@ -56,7 +56,7 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "secretGoodAnwers",
+      "fieldName": "keepAnswersSecret",
       "fieldType": "Boolean",
       "fieldValidateRules": ["required"]
     },
@@ -69,6 +69,23 @@
       "fieldName": "published",
       "fieldType": "Boolean",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "publishDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "attempsLimit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "attempsLimitPeriod",
+      "fieldType": "Period",
+      "fieldValues": "HOUR,DAY"
+    },
+    {
+      "fieldName": "questionCount",
+      "fieldType": "Integer"
     }
   ],
   "jpaMetamodelFiltering": true,

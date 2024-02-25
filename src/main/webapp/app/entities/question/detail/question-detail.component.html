@@ -24,17 +24,24 @@
 
           <dt><span jhiTranslate="quizzApp.question.options">Options</span></dt>
           <dd>
-            <div class="option-buttons-container">
-              <ul *ngFor="let option of question!.options">
-                <li
-                  class="list-group-item d-flex flex-row mb-6 {{
-                    option.index === question.correctOptionIndex ? 'list-group-item-success' : ''
-                  }}"
-                >
-                  <span class="">{{ option.index }}</span
-                  >.
-                  {{ option.statement }}
-                </li>
+            <div>
+              <ul class="list-group">
+                @for (option of question.options; track $index) {
+                  <li
+                    class="list-group-item d-flex justify-content-between {{
+                      option.index === question.correctOptionIndex ? 'list-group-item-success' : ''
+                    }}"
+                  >
+                    <span class="">{{ $index | digitToLetter }}. {{ option.statement }}</span>
+                    <span>
+                      @if (option.index === question.correctOptionIndex) {
+                        <fa-icon icon="check" class="text-success"></fa-icon>
+                        <!-- } else {
+                      <fa-icon icon="times" class="ms-auto"></fa-icon> -->
+                      }
+                    </span>
+                  </li>
+                }
               </ul>
             </div>
           </dd>

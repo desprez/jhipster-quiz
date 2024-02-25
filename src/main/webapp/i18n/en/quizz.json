@@ -26,12 +26,15 @@
       "maxAnswerTime": "Max Answer Time",
       "allowBack": "Allow Back",
       "allowReview": "Allow Review",
-      "secretGoodAnwers": "Secret Good Anwers",
+      "keepAnswersSecret": "Keep Answers Secret",
       "image": "Image",
       "published": "Published",
+      "publishDate": "Publish Date",
+      "attempsLimit": "Attemps Limit",
+      "attempsLimitPeriod": "Attemps Limit Period",
+      "questionCount": "Questions#",
       "questions": "Questions",
       "user": "Author",
-      "questionCount": "Questions#",
       "play": "Play",
       "maker": {
         "question": {

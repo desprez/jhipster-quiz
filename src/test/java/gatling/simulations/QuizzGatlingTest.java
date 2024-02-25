@@ -85,9 +85,13 @@ public class QuizzGatlingTest extends Simulation {
                                 ", \"maxAnswerTime\": 0" +
                                 ", \"allowBack\": null" +
                                 ", \"allowReview\": null" +
-                                ", \"secretGoodAnwers\": null" +
+                                ", \"keepAnswersSecret\": null" +
                                 ", \"image\": null" +
                                 ", \"published\": null" +
+                                ", \"publishDate\": \"2020-01-01T00:00:00.000Z\"" +
+                                ", \"attempsLimit\": 0" +
+                                ", \"attempsLimitPeriod\": \"HOUR\"" +
+                                ", \"questionCount\": 0" +
                                 "}"
                             )
                         )

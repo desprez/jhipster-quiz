@@ -14,7 +14,13 @@
             <column name="id" type="${uuidType}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="score" type="integer">
+            <column name="correct_answer_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="wrong_answer_count" type="integer">
+                <constraints nullable="false" />
+            </column>
+            <column name="unanswered_count" type="integer">
                 <constraints nullable="false" />
             </column>
             <column name="started" type="${datetimeType}">
@@ -51,7 +57,9 @@
                   tableName="attempt"
                   usePreparedStatements="true">
             <column name="id" type="${uuidType}"/>
-            <column name="score" type="numeric"/>
+            <column name="correct_answercount" type="numeric"/>
+            <column name="wrong_answer_count" type="numeric"/>
+            <column name="unanswered_count" type="numeric"/>
             <column name="started" type="date"/>
             <column name="ended" type="date"/>
             <column name="quizz_id" type="${uuidType}"/>

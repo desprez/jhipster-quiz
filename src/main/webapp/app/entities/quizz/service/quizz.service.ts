@@ -2,12 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { map } from 'rxjs/operators';
+
+import dayjs from 'dayjs/esm';
+
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IQuizz, NewQuizz } from '../quizz.model';
 
 export type PartialUpdateQuizz = Partial<IQuizz> & Pick<IQuizz, 'id'>;
+
+type RestOf<T extends IQuizz | NewQuizz> = Omit<T, 'publishDate'> & {
+  publishDate?: string | null;
+};
+
+export type RestQuizz = RestOf<IQuizz>;
+
+export type NewRestQuizz = RestOf<NewQuizz>;
+
+export type PartialUpdateRestQuizz = RestOf<PartialUpdateQuizz>;
 
 export type EntityResponseType = HttpResponse<IQuizz>;
 export type EntityArrayResponseType = HttpResponse<IQuizz[]>;
@@ -22,24 +36,35 @@ export class QuizzService {
   ) {}
 
   create(quizz: NewQuizz): Observable<EntityResponseType> {
-    return this.http.post<IQuizz>(this.resourceUrl, quizz, { observe: 'response' });
+    const copy = this.convertDateFromClient(quizz);
+    return this.http.post<RestQuizz>(this.resourceUrl, copy, { observe: 'response' }).pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   update(quizz: IQuizz): Observable<EntityResponseType> {
-    return this.http.put<IQuizz>(`${this.resourceUrl}/${this.getQuizzIdentifier(quizz)}`, quizz, { observe: 'response' });
+    const copy = this.convertDateFromClient(quizz);
+    return this.http
+      .put<RestQuizz>(`${this.resourceUrl}/${this.getQuizzIdentifier(quizz)}`, copy, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   partialUpdate(quizz: PartialUpdateQuizz): Observable<EntityResponseType> {
-    return this.http.patch<IQuizz>(`${this.resourceUrl}/${this.getQuizzIdentifier(quizz)}`, quizz, { observe: 'response' });
+    const copy = this.convertDateFromClient(quizz);
+    return this.http
+      .patch<RestQuizz>(`${this.resourceUrl}/${this.getQuizzIdentifier(quizz)}`, copy, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   find(id: string): Observable<EntityResponseType> {
-    return this.http.get<IQuizz>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http
+      .get<RestQuizz>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IQuizz[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http
+      .get<RestQuizz[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
 
   delete(id: string): Observable<HttpResponse<{}>> {
@@ -72,5 +97,31 @@ export class QuizzService {
       return [...quizzesToAdd, ...quizzCollection];
     }
     return quizzCollection;
+  }
+
+  protected convertDateFromClient<T extends IQuizz | NewQuizz | PartialUpdateQuizz>(quizz: T): RestOf<T> {
+    return {
+      ...quizz,
+      publishDate: quizz.publishDate?.toJSON() ?? null,
+    };
+  }
+
+  protected convertDateFromServer(restQuizz: RestQuizz): IQuizz {
+    return {
+      ...restQuizz,
+      publishDate: restQuizz.publishDate ? dayjs(restQuizz.publishDate) : undefined,
+    };
+  }
+
+  protected convertResponseFromServer(res: HttpResponse<RestQuizz>): HttpResponse<IQuizz> {
+    return res.clone({
+      body: res.body ? this.convertDateFromServer(res.body) : null,
+    });
+  }
+
+  protected convertResponseArrayFromServer(res: HttpResponse<RestQuizz[]>): HttpResponse<IQuizz[]> {
+    return res.clone({
+      body: res.body ? res.body.map(item => this.convertDateFromServer(item)) : null,
+    });
   }
 }

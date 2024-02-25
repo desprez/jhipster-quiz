@@ -12,9 +12,10 @@
       "id": "Id",
       "started": "Début",
       "ended": "Fin",
+      "correct": "Correct",
       "question": "Question",
       "option": "Option",
-      "attempt": "Attempt"
+      "attempt": "Tentative"
     }
   }
 }
