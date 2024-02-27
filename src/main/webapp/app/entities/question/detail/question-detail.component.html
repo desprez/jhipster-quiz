@@ -26,14 +26,22 @@
           <dd>
             <div>
               <ul class="list-group">
-                <li
-                  *ngFor="let option of question!.options"
-                  class="list-group-item d-flex {{ option.index === question.correctOptionIndex ? 'list-group-item-success' : '' }}"
-                >
-                  <span class="">{{ option.index }}</span
-                  >.
-                  {{ option.statement }}
-                </li>
+                @for (option of question.options; track $index) {
+                  <li
+                    class="list-group-item d-flex justify-content-between {{
+                      option.index === question.correctOptionIndex ? 'list-group-item-success' : ''
+                    }}"
+                  >
+                    <span class="">{{ $index | digitToLetter }}. {{ option.statement }}</span>
+                    <span>
+                      @if (option.index === question.correctOptionIndex) {
+                        <fa-icon icon="check" class="text-success"></fa-icon>
+                        <!-- } else {
+                      <fa-icon icon="times" class="ms-auto"></fa-icon> -->
+                      }
+                    </span>
+                  </li>
+                }
               </ul>
             </div>
           </dd>

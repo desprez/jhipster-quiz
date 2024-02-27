@@ -1,1 +1,448 @@
-<p>quizz-maker works!</p>
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-quizz-heading" data-cy="QuizzCreateUpdateHeading" jhiTranslate="quizzApp.quizz.home.createOrEditLabel">
+        Create or edit a Quizz
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.id" for="field_id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          @if (editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)) {
+            <div>
+              @if (editForm.get('title')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('title')?.errors?.minlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }"
+                  >This field is required to be at least 2 characters.</small
+                >
+              }
+              @if (editForm.get('title')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }"
+                  >This field cannot be longer than 100 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.description" for="field_description">Description</label>
+          <textarea
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+            maxlength="500"
+            rows="3"
+          ></textarea>
+          @if (editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)) {
+            <div>
+              @if (editForm.get('description')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 500 }"
+                  >This field cannot be longer than 500 characters.</small
+                >
+              }
+            </div>
+          }
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.difficulty" for="field_difficulty">Difficulty</label>
+            <select class="form-control" name="difficulty" formControlName="difficulty" id="field_difficulty" data-cy="difficulty">
+              <option [ngValue]="null">{{ 'quizzApp.Difficulty.null' | translate }}</option>
+              @for (difficulty of difficultyValues; track $index) {
+                <option [value]="difficulty">{{ 'quizzApp.Difficulty.' + difficulty | translate }}</option>
+              }
+            </select>
+            @if (editForm.get('difficulty')!.invalid && (editForm.get('difficulty')!.dirty || editForm.get('difficulty')!.touched)) {
+              <div>
+                @if (editForm.get('difficulty')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.category" for="field_category">Category</label>
+            <select class="form-control" name="category" formControlName="category" id="field_category" data-cy="category">
+              <option [ngValue]="null">{{ 'quizzApp.Category.null' | translate }}</option>
+              @for (category of categoryValues; track $index) {
+                <option [value]="category">{{ 'quizzApp.Category.' + category | translate }}</option>
+              }
+            </select>
+            @if (editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)) {
+              <div>
+                @if (editForm.get('category')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.questionOrder" for="field_questionOrder">Question Order</label>
+            <select
+              class="form-control"
+              name="questionOrder"
+              formControlName="questionOrder"
+              id="field_questionOrder"
+              data-cy="questionOrder"
+            >
+              <option [ngValue]="null">{{ 'quizzApp.DisplayOrder.null' | translate }}</option>
+              @for (displayOrder of displayOrderValues; track $index) {
+                <option [value]="displayOrder">{{ 'quizzApp.DisplayOrder.' + displayOrder | translate }}</option>
+              }
+            </select>
+            @if (
+              editForm.get('questionOrder')!.invalid && (editForm.get('questionOrder')!.dirty || editForm.get('questionOrder')!.touched)
+            ) {
+              <div>
+                @if (editForm.get('questionOrder')?.errors?.required) {
+                  <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.maxAnswerTime" for="field_maxAnswerTime">Max Answer Time</label>
+            <input
+              type="number"
+              class="form-control"
+              name="maxAnswerTime"
+              id="field_maxAnswerTime"
+              data-cy="maxAnswerTime"
+              formControlName="maxAnswerTime"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.attempsLimit" for="field_attempsLimit">Attemps Limit</label>
+            <input
+              type="number"
+              class="form-control"
+              name="attempsLimit"
+              id="field_attempsLimit"
+              data-cy="attempsLimit"
+              formControlName="attempsLimit"
+            />
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.attempsLimitPeriod" for="field_attempsLimitPeriod"
+              >Attemps Limit Period</label
+            >
+            <select
+              class="form-control"
+              name="attempsLimitPeriod"
+              formControlName="attempsLimitPeriod"
+              id="field_attempsLimitPeriod"
+              data-cy="attempsLimitPeriod"
+            >
+              <option [ngValue]="null">{{ 'quizzApp.Period.null' | translate }}</option>
+              @for (period of periodValues; track $index) {
+                <option [value]="period">{{ 'quizzApp.Period.' + period | translate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.allowBack" for="field_allowBack">Allow Back</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="allowBack"
+            id="field_allowBack"
+            data-cy="allowBack"
+            formControlName="allowBack"
+          />
+          @if (editForm.get('allowBack')!.invalid && (editForm.get('allowBack')!.dirty || editForm.get('allowBack')!.touched)) {
+            <div>
+              @if (editForm.get('allowBack')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.allowReview" for="field_allowReview">Allow Review</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="allowReview"
+            id="field_allowReview"
+            data-cy="allowReview"
+            formControlName="allowReview"
+          />
+          @if (editForm.get('allowReview')!.invalid && (editForm.get('allowReview')!.dirty || editForm.get('allowReview')!.touched)) {
+            <div>
+              @if (editForm.get('allowReview')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.keepAnswersSecret" for="field_keepAnswersSecret"
+            >Keep Answers Secret</label
+          >
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="keepAnswersSecret"
+            id="field_keepAnswersSecret"
+            data-cy="keepAnswersSecret"
+            formControlName="keepAnswersSecret"
+          />
+          @if (
+            editForm.get('keepAnswersSecret')!.invalid &&
+            (editForm.get('keepAnswersSecret')!.dirty || editForm.get('keepAnswersSecret')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('keepAnswersSecret')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.image" for="field_image">Image</label>
+          <div>
+            @if (editForm.get('image')!.value) {
+              <img
+                [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
+                style="max-height: 100px"
+                alt="quizz image"
+              />
+            }
+            @if (editForm.get('image')!.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value!) }}</span>
+                <button
+                  type="button"
+                  (click)="clearInputImage('image', 'imageContentType', 'file_image')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_image"
+              data-cy="image"
+              (change)="setFileData($event, 'image', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imageContentType"
+            id="field_imageContentType"
+            formControlName="imageContentType"
+          />
+        </div>
+
+        <div class="form-check mb-3">
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.published" for="field_published">Published</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="published"
+            id="field_published"
+            data-cy="published"
+            formControlName="published"
+          />
+          @if (editForm.get('published')!.invalid && (editForm.get('published')!.dirty || editForm.get('published')!.touched)) {
+            <div>
+              @if (editForm.get('published')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user" [compareWith]="compareUser">
+            @if (!editForm.get('user')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['user'])!.invalid && (editForm.get(['user'])!.dirty || editForm.get(['user'])!.touched)) {
+          <div>
+            @if (editForm.get(['user'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- <div ngbAccordion [closeOthers]="true">
+        <ng-container formArrayName="questions">
+          @for (let question of questions; let i = index; let isFirst = first) {
+            <div ngbAccordionItem [collapsed]="!isFirst">
+              <h2 ngbAccordionHeader>
+                <button ngbAccordionButton>{{ question }}</button>
+              </h2>
+              <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                  <ng-template>
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
+                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+                    you probably haven't heard of them accusamus labore sustainable VHS.
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          }
+        </ng-container>
+      </div> -->
+
+      <div formArrayName="questions" div class="card text-white bg-primary mb-12">
+        <div *ngFor="let question of questions.controls; let i = index; trackBy: customTrackBy" class="card border-primary mb-12">
+          <div class="card-header">
+            <span class="text-primary">Question {{ i + 1 }}</span>
+            <!-- <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a> -->
+
+            <button class="btn btn-secondary" type="button" id="button-addon2" (click)="removeQuestion(i)" style="float: right">
+              <fa-icon icon="trash-alt"></fa-icon>
+            </button>
+          </div>
+
+          <div class="card-body" [formGroupName]="i">
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label class="form-label" jhiTranslate="quizzApp.question.statement" for="field_statement">Statement</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="field_question_statement"
+                  data-cy="statement"
+                  formControlName="statement"
+                  placeholder="{{ 'quizzApp.quizz.maker.question.placeholder' | translate }}"
+                />
+              </div>
+            </div>
+            <br />
+
+            <div formArrayName="options" *ngFor="let option of getOptionControls(i); let j = index">
+              <ng-container [formGroupName]="j">
+                <ng-container class="form-group" style="padding-left: 100px">
+                  <!-- <a *ngIf="getOptionControls(i).length > 1" (click)="removeOption(i, j)" style="cursor: default; float: right">X</a> -->
+                  <!-- <input type="text" class="form-control" placeholder="Enter option" formControlName="statement" /> -->
+
+                  <div class="input-group mb-3">
+                    <!-- <span class="input-group-text"><fa-icon icon="grip-vertical"></fa-icon></span> -->
+                    <div class="input-group-text">
+                      <!-- <input type="radio" [value]="getOptionIndex(i,j)" id="{{ 'field_correctOptionIndex' + i +'' + j}}" class="form-check-input mt-0"
+                      formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex{{ i }}"/> -->
+                      <!-- <input type="radio" [value]="j + 1" formControlName="correctOptionIndex" id="{{ 'field_correctOptionIndex' + i +''+ j}}" class="form-check-input mt-0"/> -->
+                    </div>
+                    <span class="input-group-text">{{ j + 1 }}</span>
+
+                    <input
+                      type="radio"
+                      id="{{ 'correctOptionIndex' + i + '' + j }}"
+                      [formControl]="getRadioBoundControl(i)"
+                      [value]="j + 1"
+                    />&nbsp;
+                    <!-- <input type="radio"  formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex" [value]="i" (change)="onCorrectRadioChange(i, j)"/>&nbsp; -->
+
+                    <!-- name="correctOptionIndex" formControlName="correctOptionIndex"  -->
+                    <!-- <input type="radio" [value]="j+1" formControlName="correctOptionIndex" name="correctOptionIndex" /> -->
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="field_option_statement"
+                      formControlName="statement"
+                      placeholder="{{ 'quizzApp.quizz.maker.option.placeholder' | translate }}"
+                    />
+                    <!-- <input type="text" formControlName="index" placeholder="Index"> -->
+                    <button
+                      *ngIf="getOptionControls(i).length > 1"
+                      class="btn btn-secondary"
+                      type="button"
+                      id="button-addon2"
+                      (click)="removeOption(i, j)"
+                    >
+                      <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <!-- <a class="pull-right" *ngIf="j == getOptionsFormArray(i).length - 1" (click)="addOption(i)" style="float: right">Option +</a> -->
+              <button type="button" *ngIf="j == getOptionsFormArray(i).length - 1" class="btn btn-secondary" (click)="addOption(i)">
+                <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.option.addButton">Add option</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <div class="margin-20">
+        <!-- <a (click)="addQuestion()" style="cursor: default; float: right"> New question + </a> -->
+        <button type="button" class="btn btn-secondary" (click)="addQuestion()">
+          <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.question.addButton">Add option</span>
+        </button>
+      </div>
+      <br />
+      <!-- <jhi-questions [questionsFormArray]="questions"></jhi-questions> -->
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+
+      <div class="margin-20">
+        <pre>form value: <br>{{editForm.value | json}}</pre>
+      </div>
+    </form>
+  </div>
+</div>

@@ -14,7 +14,9 @@ public class QuizzTestSamples {
             .id(UUID.fromString("23d8dc04-a48b-45d9-a01d-4b728f0ad4aa"))
             .title("title1")
             .description("description1")
-            .maxAnswerTime(1);
+            .maxAnswerTime(1)
+            .attempsLimit(1)
+            .questionCount(1);
     }
 
     public static Quizz getQuizzSample2() {
@@ -22,7 +24,9 @@ public class QuizzTestSamples {
             .id(UUID.fromString("ad79f240-3727-46c3-b89f-2cf6ebd74367"))
             .title("title2")
             .description("description2")
-            .maxAnswerTime(2);
+            .maxAnswerTime(2)
+            .attempsLimit(2)
+            .questionCount(2);
     }
 
     public static Quizz getQuizzRandomSampleGenerator() {
@@ -30,6 +34,8 @@ public class QuizzTestSamples {
             .id(UUID.randomUUID())
             .title(UUID.randomUUID().toString())
             .description(UUID.randomUUID().toString())
-            .maxAnswerTime(intCount.incrementAndGet());
+            .maxAnswerTime(intCount.incrementAndGet())
+            .attempsLimit(intCount.incrementAndGet())
+            .questionCount(intCount.incrementAndGet());
     }
 }

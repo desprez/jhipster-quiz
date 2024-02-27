@@ -5,11 +5,10 @@ describe('AttemptAnswer e2e test', () => {
   const attemptAnswerPageUrlPattern = new RegExp('/attempt-answer(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const attemptAnswerSample = { started: '2024-01-11T19:12:52.084Z' };
+  const attemptAnswerSample = {};
 
   let attemptAnswer;
   let question;
-  let option;
 
   beforeEach(() => {
     cy.login(username, password);
@@ -23,14 +22,6 @@ describe('AttemptAnswer e2e test', () => {
       body: { statement: 'uh-huh anti shocking', index: 5068, correctOptionIndex: 19617 },
     }).then(({ body }) => {
       question = body;
-    });
-    // create an instance at the required relationship entity:
-    cy.authenticatedRequest({
-      method: 'POST',
-      url: '/api/options',
-      body: { statement: 'where infuse', index: 5229 },
-    }).then(({ body }) => {
-      option = body;
     });
   });
 
@@ -49,7 +40,7 @@ describe('AttemptAnswer e2e test', () => {
 
     cy.intercept('GET', '/api/options', {
       statusCode: 200,
-      body: [option],
+      body: [],
     });
 
     cy.intercept('GET', '/api/attempts', {
@@ -76,14 +67,6 @@ describe('AttemptAnswer e2e test', () => {
         url: `/api/questions/${question.id}`,
       }).then(() => {
         question = undefined;
-      });
-    }
-    if (option) {
-      cy.authenticatedRequest({
-        method: 'DELETE',
-        url: `/api/options/${option.id}`,
-      }).then(() => {
-        option = undefined;
       });
     }
   });

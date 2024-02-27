@@ -38,7 +38,7 @@
             <column name="allow_review" type="boolean">
                 <constraints nullable="false" />
             </column>
-            <column name="secret_good_anwers" type="boolean">
+            <column name="keep_answers_secret" type="boolean">
                 <constraints nullable="false" />
             </column>
             <column name="image" type="${blobType}">
@@ -50,11 +50,24 @@
             <column name="published" type="boolean">
                 <constraints nullable="false" />
             </column>
+            <column name="publish_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="attemps_limit" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="attemps_limit_period" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="question_count" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="user_id" type="bigint">
                 <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="quizz" columnName="publish_date" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -86,6 +99,10 @@
             <column name="image" type="blob"/>
             <column name="image_content_type" type="string"/>
             <column name="published" type="boolean"/>
+            <column name="publish_date" type="date"/>
+            <column name="attemps_limit" type="numeric"/>
+            <column name="attemps_limit_period" type="string"/>
+            <column name="question_count" type="numeric"/>
             <column name="user_id" type="numeric"/>
         </loadData>
     </changeSet>

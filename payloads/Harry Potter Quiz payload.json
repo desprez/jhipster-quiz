@@ -1,0 +1,204 @@
+{
+  "title": "Harry Potter Quiz (English)",
+  "description": "A quiz about Harry Potter and his Wizard universe",
+  "difficulty": "HARD",
+  "category": "BOOKS",
+  "questionCount": 8,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "questionOrder": "RANDOM",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questions": [
+    {
+      "statement": "What house is known for its cunning and ambition at Hogwarts?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Hufflepuff",
+          "index": 1
+        },
+        {
+          "statement": "Ravenclaw",
+          "index": 2
+        },
+        {
+          "statement": "Gryffindor",
+          "index": 3
+        },
+        {
+          "statement": "Slytherin",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is the headmaster of Hogwarts during Harry's first year?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Professor McGonagall",
+          "index": 1
+        },
+        {
+          "statement": "Professor Snape",
+          "index": 2
+        },
+        {
+          "statement": "Professor Dumbledore",
+          "index": 3
+        },
+        {
+          "statement": "Professor Flitwick",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What magical creature serves the Weasley family at their home?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "House-elves",
+          "index": 1
+        },
+        {
+          "statement": "Hippogriffs",
+          "index": 2
+        },
+        {
+          "statement": "Thestrals",
+          "index": 3
+        },
+        {
+          "statement": "Phoenixes",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the core of Harry Potter's wand?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Phoenix feather",
+          "index": 1
+        },
+        {
+          "statement": "Unicorn hair",
+          "index": 2
+        },
+        {
+          "statement": "Dragon heartstring",
+          "index": 3
+        },
+        {
+          "statement": "Veela hair",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What magical object reveals the location of the Chamber of Secrets?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Marauder's Map",
+          "index": 1
+        },
+        {
+          "statement": "Sorcerer's Stone",
+          "index": 2
+        },
+        {
+          "statement": "Invisibility Cloak",
+          "index": 3
+        },
+        {
+          "statement": "Tom Riddle's diary",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is Dumbledore's first name?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Percival",
+          "index": 1
+        },
+        {
+          "statement": "Wulfric",
+          "index": 2
+        },
+        {
+          "statement": "Brian",
+          "index": 3
+        },
+        {
+          "statement": "Albus",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of Harry's owl?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Hedwig",
+          "index": 1
+        },
+        {
+          "statement": "Peeves",
+          "index": 2
+        },
+        {
+          "statement": "Nagini",
+          "index": 3
+        },
+        {
+          "statement": "Crosskshanks",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "How many Harry Potter books are there?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "1",
+          "index": 1
+        },
+        {
+          "statement": "4",
+          "index": 2
+        },
+        {
+          "statement": "6",
+          "index": 3
+        },
+        {
+          "statement": "7",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    }
+  ]
+}

@@ -15,7 +15,7 @@ describe('Attempt e2e test', () => {
   const attemptPageUrlPattern = new RegExp('/attempt(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  // const attemptSample = {"score":15292,"started":"2024-01-12T04:33:43.229Z"};
+  // const attemptSample = {"correctAnswerCount":16114,"wrongAnswerCount":31628,"unansweredCount":31896,"started":"2024-01-12T03:27:30.230Z"};
 
   let attempt;
   // let quizz;
@@ -31,7 +31,7 @@ describe('Attempt e2e test', () => {
     cy.authenticatedRequest({
       method: 'POST',
       url: '/api/quizzes',
-      body: {"title":"formal abaft unless","description":"survey circa","difficulty":"MEDIUM","category":"CELEBRITIES","questionOrder":"FIXED","maxAnswerTime":26004,"allowBack":true,"allowReview":true,"secretGoodAnwers":true,"image":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","imageContentType":"unknown","published":true},
+      body: {"title":"quaintly","description":"finally that moisturise","difficulty":"MEDIUM","category":"GENERAL_KNOWLEDGE","questionOrder":"RANDOM","maxAnswerTime":28020,"allowBack":false,"allowReview":true,"keepAnswersSecret":true,"image":"Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=","imageContentType":"unknown","published":true,"publishDate":"2024-01-12T14:09:34.925Z","attempsLimit":10829,"attempsLimitPeriod":"DAY","questionCount":11372},
     }).then(({ body }) => {
       quizz = body;
     });
@@ -241,16 +241,22 @@ describe('Attempt e2e test', () => {
     });
 
     it.skip('should create an instance of Attempt', () => {
-      cy.get(`[data-cy="score"]`).type('1664');
-      cy.get(`[data-cy="score"]`).should('have.value', '1664');
+      cy.get(`[data-cy="correctAnswerCount"]`).type('8546');
+      cy.get(`[data-cy="correctAnswerCount"]`).should('have.value', '8546');
 
-      cy.get(`[data-cy="started"]`).type('2024-01-12T02:14');
+      cy.get(`[data-cy="wrongAnswerCount"]`).type('19551');
+      cy.get(`[data-cy="wrongAnswerCount"]`).should('have.value', '19551');
+
+      cy.get(`[data-cy="unansweredCount"]`).type('26547');
+      cy.get(`[data-cy="unansweredCount"]`).should('have.value', '26547');
+
+      cy.get(`[data-cy="started"]`).type('2024-01-12T09:17');
       cy.get(`[data-cy="started"]`).blur();
-      cy.get(`[data-cy="started"]`).should('have.value', '2024-01-12T02:14');
+      cy.get(`[data-cy="started"]`).should('have.value', '2024-01-12T09:17');
 
-      cy.get(`[data-cy="ended"]`).type('2024-01-12T13:36');
+      cy.get(`[data-cy="ended"]`).type('2024-01-11T23:13');
       cy.get(`[data-cy="ended"]`).blur();
-      cy.get(`[data-cy="ended"]`).should('have.value', '2024-01-12T13:36');
+      cy.get(`[data-cy="ended"]`).should('have.value', '2024-01-11T23:13');
 
       cy.get(`[data-cy="quizz"]`).select(1);
       cy.get(`[data-cy="user"]`).select(1);

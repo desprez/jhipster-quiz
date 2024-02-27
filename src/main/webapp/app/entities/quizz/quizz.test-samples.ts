@@ -8,7 +8,7 @@ export const sampleWithRequiredData: IQuizz = {
   questionOrder: 'RANDOM',
   allowBack: true,
   allowReview: true,
-  secretGoodAnwers: true,
+  keepAnswersSecret: true,
   published: true,
 };
 
@@ -22,7 +22,7 @@ export const sampleWithPartialData: IQuizz = {
   maxAnswerTime: 13265,
   allowBack: false,
   allowReview: false,
-  secretGoodAnwers: true,
+  keepAnswersSecret: true,
   published: true,
 };
 
@@ -36,10 +36,14 @@ export const sampleWithFullData: IQuizz = {
   maxAnswerTime: 19982,
   allowBack: false,
   allowReview: true,
-  secretGoodAnwers: true,
+  keepAnswersSecret: true,
   image: '../fake-data/blob/hipster.png',
   imageContentType: 'unknown',
   published: true,
+  publishDate: dayjs('2024-01-12T04:40'),
+  attempsLimit: 30884,
+  attempsLimitPeriod: 'DAY',
+  questionCount: 20708,
 };
 
 export const sampleWithNewData: NewQuizz = {
@@ -49,7 +53,7 @@ export const sampleWithNewData: NewQuizz = {
   questionOrder: 'FIXED',
   allowBack: true,
   allowReview: true,
-  secretGoodAnwers: false,
+  keepAnswersSecret: false,
   published: true,
   id: null,
 };

@@ -26,12 +26,28 @@
       "maxAnswerTime": "Temps de réponse maximum",
       "allowBack": "Permettre le retour en arrière",
       "allowReview": "Permettre la revue",
-      "secretGoodAnwers": "Garder les bonnes réponses secrètes",
+      "keepAnswersSecret": "Garder les réponses coorectes secrètes",
       "image": "Image",
       "published": "Publié",
+      "publishDate": "Publish Date",
+      "attempsLimit": "Attemps Limit",
+      "attempsLimitPeriod": "Attemps Limit Period",
+      "questionCount": "Questions#",
       "questions": "Questions",
       "user": "Auteur",
-      "questionCount": "Questions#"
+      "play": "Play",
+      "maker": {
+        "question": {
+          "placeholder": "Entrer un intitulé de question",
+          "addButton": "Ajouter une question",
+          "removeButton": "Supprimer une question"
+        },
+        "option": {
+          "placeholder": "Entrer une option",
+          "addButton": "Ajouter une option",
+          "removeButton": "Supprimer une option"
+        }
+      }
     }
   }
 }

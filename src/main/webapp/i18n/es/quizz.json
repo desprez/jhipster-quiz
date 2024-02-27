@@ -15,23 +15,40 @@
         "question": "¿Seguro que quiere eliminar Quizz {{ id }}?"
       },
       "detail": {
-        "title": "Quizz"
+        "title": ""
       },
       "id": "Id",
-      "title": "Title",
-      "description": "Description",
-      "difficulty": "Difficulty",
-      "category": "Category",
-      "questionOrder": "Question Order",
-      "maxAnswerTime": "Max Answer Time",
-      "allowBack": "Allow Back",
-      "allowReview": "Allow Review",
-      "secretGoodAnwers": "Secret Good Anwers",
-      "image": "Image",
-      "published": "Published",
-      "questions": "Questions",
-      "user": "User",
-      "questionCount": "Questions#"
+      "title": "Título",
+      "description": "Descripción",
+      "difficulty": "Dificultad",
+      "category": "Categoría",
+      "questionOrder": "Orden de las preguntas",
+      "maxAnswerTime": "Tiempo máximo de respuesta",
+      "allowBack": "Permitir volver atrás",
+      "allowReview": "Permitir revisión",
+      "secretGoodAnwers": "Buenas respuestas secretas",
+      "image": "Imagen",
+      "published": "Publicado",
+      "publishDate": "Publish Date",
+      "attempsLimit": "Attemps Limit",
+      "attempsLimitPeriod": "Attemps Limit Period",
+      "questionCount": "Questions#",
+      "questions": "Preguntas",
+      "user": "Usuario",
+
+      "play": "Jugar",
+      "maker": {
+        "question": {
+          "placeholder": "Enter question statement",
+          "addButton": "",
+          "removeButton": "Remove question"
+        },
+        "option": {
+          "placeholder": "Enter option statement",
+          "addButton": "Add option",
+          "removeButton": "Remove option"
+        }
+      }
     }
   }
 }

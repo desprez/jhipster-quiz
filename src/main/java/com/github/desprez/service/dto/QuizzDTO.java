@@ -1,17 +1,20 @@
 package com.github.desprez.service.dto;
 
 import com.github.desprez.domain.enumeration.DisplayOrder;
-import jakarta.persistence.Lob;
+import com.github.desprez.domain.enumeration.Period;
 import jakarta.validation.constraints.NotNull;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A DTO for the {@link com.github.desprez.domain.Quizz} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
+//@JsonInclude(Include.NON_EMPTY)
 public class QuizzDTO extends QuizzBasicDTO {
+
+    private static final long serialVersionUID = 1L;
 
     @NotNull
     private DisplayOrder questionOrder;
@@ -25,14 +28,13 @@ public class QuizzDTO extends QuizzBasicDTO {
     private Boolean allowReview;
 
     @NotNull
-    private Boolean secretGoodAnwers;
+    private Boolean keepAnswersSecret;
 
-    @Lob
-    private byte[] image;
+    private Integer attempsLimit;
 
-    private String imageContentType;
+    private Period attempsLimitPeriod;
 
-    private Set<QuestionDTO> questions = new HashSet<>();
+    private List<QuestionDTO> questions = new ArrayList<>();
 
     public DisplayOrder getQuestionOrder() {
         return questionOrder;
@@ -66,35 +68,35 @@ public class QuizzDTO extends QuizzBasicDTO {
         this.allowReview = allowReview;
     }
 
-    public Boolean getSecretGoodAnwers() {
-        return secretGoodAnwers;
+    public Boolean getKeepAnswersSecret() {
+        return keepAnswersSecret;
     }
 
-    public void setSecretGoodAnwers(Boolean secretGoodAnwers) {
-        this.secretGoodAnwers = secretGoodAnwers;
+    public void setKeepAnswersSecret(Boolean keepAnswersSecret) {
+        this.keepAnswersSecret = keepAnswersSecret;
     }
 
-    public byte[] getImage() {
-        return image;
+    public Integer getAttempsLimit() {
+        return attempsLimit;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setAttempsLimit(Integer attempsLimit) {
+        this.attempsLimit = attempsLimit;
     }
 
-    public String getImageContentType() {
-        return imageContentType;
+    public Period getAttempsLimitPeriod() {
+        return attempsLimitPeriod;
     }
 
-    public void setImageContentType(String imageContentType) {
-        this.imageContentType = imageContentType;
+    public void setAttempsLimitPeriod(Period attempsLimitPeriod) {
+        this.attempsLimitPeriod = attempsLimitPeriod;
     }
 
-    public Set<QuestionDTO> getQuestions() {
+    public List<QuestionDTO> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<QuestionDTO> questions) {
+    public void setQuestions(List<QuestionDTO> questions) {
         this.questions = questions;
     }
 
@@ -132,9 +134,11 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", maxAnswerTime=" + getMaxAnswerTime() +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
-            ", secretGoodAnwers='" + getSecretGoodAnwers() + "'" +
-            ", image='" + getImage() + "'" +
+            ", keepAnswersSecret='" + getKeepAnswersSecret() + "'" +
             ", published='" + getPublished() + "'" +
+            ", attempsLimit=" + getAttempsLimit() +
+            ", attempsLimitPeriod='" + getAttempsLimitPeriod() + "'" +
+            ", questions='" + getQuestions() + "'" +
             ", user=" + getUser() +
             "}";
     }

@@ -25,12 +25,14 @@ public class AttemptAnswer implements Serializable {
     @Column(name = "id")
     private UUID id;
 
-    // @NotNull
-    @Column(name = "started", nullable = false)
+    @Column(name = "started")
     private Instant started;
 
     @Column(name = "ended")
     private Instant ended;
+
+    @Column(name = "correct")
+    private Boolean correct;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -85,6 +87,19 @@ public class AttemptAnswer implements Serializable {
 
     public void setEnded(Instant ended) {
         this.ended = ended;
+    }
+
+    public Boolean getCorrect() {
+        return this.correct;
+    }
+
+    public AttemptAnswer correct(Boolean correct) {
+        this.setCorrect(correct);
+        return this;
+    }
+
+    public void setCorrect(Boolean correct) {
+        this.correct = correct;
     }
 
     public Question getQuestion() {
@@ -152,6 +167,7 @@ public class AttemptAnswer implements Serializable {
             "id=" + getId() +
             ", started='" + getStarted() + "'" +
             ", ended='" + getEnded() + "'" +
+            ", correct='" + getCorrect() + "'" +
             "}";
     }
 }

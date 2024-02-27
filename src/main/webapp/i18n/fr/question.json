@@ -12,7 +12,7 @@
       "updated": "La Question avec l'identifiant {{ param }} a été mise à jour",
       "deleted": "La Question avec l'identifiant {{ param }} a été supprimée",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Question {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Question {{ id }} ?"
       },
       "detail": {
         "title": "Question"
@@ -20,7 +20,7 @@
       "id": "Id",
       "statement": "Intitulé",
       "index": "Index",
-      "correctOptionIndex": "Index de la bonne réponse",
+      "correctOptionIndex": "Index de la réponse correcte",
       "options": "Options",
       "quizz": "Quizz"
     }

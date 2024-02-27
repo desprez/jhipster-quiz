@@ -45,6 +45,9 @@ class AttemptAnswerResourceIT {
     private static final Instant DEFAULT_ENDED = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_ENDED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final Boolean DEFAULT_CORRECT = false;
+    private static final Boolean UPDATED_CORRECT = true;
+
     private static final String ENTITY_API_URL = "/api/attempt-answers";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -145,7 +148,8 @@ class AttemptAnswerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(attemptAnswer.getId().toString())))
             .andExpect(jsonPath("$.[*].started").value(hasItem(DEFAULT_STARTED.toString())))
-            .andExpect(jsonPath("$.[*].ended").value(hasItem(DEFAULT_ENDED.toString())));
+            .andExpect(jsonPath("$.[*].ended").value(hasItem(DEFAULT_ENDED.toString())))
+            .andExpect(jsonPath("$.[*].correct").value(hasItem(DEFAULT_CORRECT.booleanValue())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -178,7 +182,8 @@ class AttemptAnswerResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(attemptAnswer.getId().toString()))
             .andExpect(jsonPath("$.started").value(DEFAULT_STARTED.toString()))
-            .andExpect(jsonPath("$.ended").value(DEFAULT_ENDED.toString()));
+            .andExpect(jsonPath("$.ended").value(DEFAULT_ENDED.toString()))
+            .andExpect(jsonPath("$.correct").value(DEFAULT_CORRECT.booleanValue()));
     }
 
     @Test

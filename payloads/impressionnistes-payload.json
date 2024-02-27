@@ -1,0 +1,273 @@
+{
+  "title": "Les impressionnistes (Français)",
+  "description": "L'impressionnisme est un mouvement pictural apparu en France dans les années 1860 en opposition à l'art académique et visant à représenter le caractère éphémère de la lumière et ses effets sur les couleurs et les formes.",
+  "difficulty": "EASY",
+  "category": "ART",
+  "published": true,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "questionCount": 8,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "Qui est considéré comme le chef de file du mouvement impressionniste ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Paul Cézanne",
+          "index": 1
+        },
+        {
+          "statement": "Edgar Degas",
+          "index": 2
+        },
+        {
+          "statement": "Gustave Caillebotte",
+          "index": 3
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "En quelle année s'est tenu la première exposition impressionniste à Paris ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "1874",
+          "index": 1
+        },
+        {
+          "statement": "1832",
+          "index": 2
+        },
+        {
+          "statement": "1900",
+          "index": 3
+        },
+        {
+          "statement": "1850",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel artiste impressionniste est connu pour ses œuvres représentant des scènes de la vie quotidienne à la fin du XIXe siècle ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Edgar Degas",
+          "index": 1
+        },
+        {
+          "statement": "Pierre-Auguste Renoir",
+          "index": 2
+        },
+        {
+          "statement": "Georges Seurat",
+          "index": 3
+        },
+        {
+          "statement": "Camille Pissarro",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quel peintre impressionniste a réalisé la série des 'Meules' ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Berthe Morisot",
+          "index": 1
+        },
+        {
+          "statement": "Paul Cézanne",
+          "index": 2
+        },
+        {
+          "statement": "Édouard Manet",
+          "index": 3
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Parmi les artistes suivants, lequel n'est PAS associé au mouvement impressionniste ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Berthe Morisot",
+          "index": 1
+        },
+        {
+          "statement": "Gustave Courbet",
+          "index": 2
+        },
+        {
+          "statement": "Camille Pissarro",
+          "index": 3
+        },
+        {
+          "statement": "Mary Cassatt",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quel terme a été utilisé de manière péjorative pour la première fois pour décrire les œuvres des impressionnistes ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Néoclassicisme",
+          "index": 1
+        },
+        {
+          "statement": "Classicisme",
+          "index": 2
+        },
+        {
+          "statement": "Realisme",
+          "index": 3
+        },
+        {
+          "statement": "Impressionnisme",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel peintre impressionniste est connu pour ses séries de peintures sur la cathédrale de Rouen ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Gustave Caillebotte",
+          "index": 1
+        },
+        {
+          "statement": "Edgar Degas",
+          "index": 2
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 3
+        },
+        {
+          "statement": "Camille Pissarro",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom du café parisien où se réunissaient les artistes impressionnistes ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Café de Flore",
+          "index": 1
+        },
+        {
+          "statement": "Café Procope",
+          "index": 2
+        },
+        {
+          "statement": "Le Bateau Lavoir",
+          "index": 3
+        },
+        {
+          "statement": "Café de la Paix",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Qui a peint 'Nymphéas' ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Berthe Morisot",
+          "index": 1
+        },
+        {
+          "statement": "Edgar Degas",
+          "index": 2
+        },
+        {
+          "statement": "Mary Cassatt",
+          "index": 3
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel artiste impressionniste a réalisé la célèbre œuvre 'Impression, soleil levant' qui a donné son nom au mouvement ?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Paul Cézanne",
+          "index": 1
+        },
+        {
+          "statement": "Edgar Degas",
+          "index": 2
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 3
+        },
+        {
+          "statement": "Camille Pissarro",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel peintre impressionniste est connu pour ses séries de peintures sur les tournesols ?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Edgar Degas",
+          "index": 1
+        },
+        {
+          "statement": "Vincent van Gogh",
+          "index": 2
+        },
+        {
+          "statement": "Claude Monet",
+          "index": 3
+        },
+        {
+          "statement": "Camille Pissarro",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

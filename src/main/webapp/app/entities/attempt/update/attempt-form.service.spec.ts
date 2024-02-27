@@ -20,7 +20,9 @@ describe('Attempt Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            score: expect.any(Object),
+            correctAnswerCount: expect.any(Object),
+            wrongAnswerCount: expect.any(Object),
+            unansweredCount: expect.any(Object),
             started: expect.any(Object),
             ended: expect.any(Object),
             quizz: expect.any(Object),
@@ -35,7 +37,9 @@ describe('Attempt Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            score: expect.any(Object),
+            correctAnswerCount: expect.any(Object),
+            wrongAnswerCount: expect.any(Object),
+            unansweredCount: expect.any(Object),
             started: expect.any(Object),
             ended: expect.any(Object),
             quizz: expect.any(Object),

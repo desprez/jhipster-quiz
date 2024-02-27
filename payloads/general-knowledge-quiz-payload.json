@@ -1,0 +1,66 @@
+{
+  "title": "",
+  "description": "",
+  "difficulty": "EASY",
+  "category": "GENERAL_KNOWLEDGE",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionCount": 2,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "Prince Charles and Princess Diana of Britain announce their separation in .... ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "1990",
+          "index": 1
+        },
+        {
+          "statement": "1992",
+          "index": 2
+        },
+        {
+          "statement": "1996",
+          "index": 3
+        },
+        {
+          "statement": "1997",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Oscar Awards are conferred annually by",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Academy of Motion Pictures, arts and sciences, USA",
+          "index": 1
+        },
+        {
+          "statement": "Government of United States",
+          "index": 2
+        },
+        {
+          "statement": "Hollywood Foreign Press Association",
+          "index": 3
+        },
+        {
+          "statement": "None of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

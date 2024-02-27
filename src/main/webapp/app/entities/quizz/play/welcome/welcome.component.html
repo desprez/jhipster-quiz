@@ -1,0 +1,7 @@
+<div class="modal-body">
+  <jhi-alert-error></jhi-alert-error>
+  <p>{{ quizz.description }}</p>
+  @if (quizz.image) {
+    <img [src]="quizz.image" alt="quizz image" />
+  }
+</div>

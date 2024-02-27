@@ -32,7 +32,9 @@ type AttemptFormDefaults = Pick<NewAttempt, 'id' | 'started' | 'ended'>;
 
 type AttemptFormGroupContent = {
   id: FormControl<AttemptFormRawValue['id'] | NewAttempt['id']>;
-  score: FormControl<AttemptFormRawValue['score']>;
+  correctAnswerCount: FormControl<AttemptFormRawValue['correctAnswerCount']>;
+  wrongAnswerCount: FormControl<AttemptFormRawValue['wrongAnswerCount']>;
+  unansweredCount: FormControl<AttemptFormRawValue['unansweredCount']>;
   started: FormControl<AttemptFormRawValue['started']>;
   ended: FormControl<AttemptFormRawValue['ended']>;
   quizz: FormControl<AttemptFormRawValue['quizz']>;
@@ -56,7 +58,13 @@ export class AttemptFormService {
           validators: [Validators.required],
         },
       ),
-      score: new FormControl(attemptRawValue.score, {
+      correctAnswerCount: new FormControl(attemptRawValue.correctAnswerCount, {
+        validators: [Validators.required, Validators.min(0)],
+      }),
+      wrongAnswerCount: new FormControl(attemptRawValue.wrongAnswerCount, {
+        validators: [Validators.required, Validators.min(0)],
+      }),
+      unansweredCount: new FormControl(attemptRawValue.unansweredCount, {
         validators: [Validators.required, Validators.min(0)],
       }),
       started: new FormControl(attemptRawValue.started, {

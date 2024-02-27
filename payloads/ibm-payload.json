@@ -1,0 +1,250 @@
+{
+  "title": "IBM Quiz",
+  "description": "",
+  "difficulty": "EASY",
+  "category": "COMPUTERS",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionCount": 10,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "Quand a été fondée l'entreprise IBM ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "1911",
+          "index": 1
+        },
+        {
+          "statement": "1924",
+          "index": 2
+        },
+        {
+          "statement": "1980",
+          "index": 3
+        },
+        {
+          "statement": "2005",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Dans quelle ville se trouve le siège social d'IBM ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Armonk",
+          "index": 1
+        },
+        {
+          "statement": "New York",
+          "index": 2
+        },
+        {
+          "statement": "San Francisco",
+          "index": 3
+        },
+        {
+          "statement": "Boston",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel surnom est donné à IBM ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Microtech",
+          "index": 1
+        },
+        {
+          "statement": "Supercomputing",
+          "index": 2
+        },
+        {
+          "statement": "Tech Giant",
+          "index": 3
+        },
+        {
+          "statement": "Big Blue",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel pourcentage d'ordinateurs était produit par IBM dans les années 1960 et 1970 ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "60%",
+          "index": 1
+        },
+        {
+          "statement": "40%",
+          "index": 2
+        },
+        {
+          "statement": "20%",
+          "index": 3
+        },
+        {
+          "statement": "70%",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quelle division d'IBM a été vendue au groupe Lenovo en 2005 ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Division du stockage de données",
+          "index": 1
+        },
+        {
+          "statement": "Division de l'intelligence artificielle",
+          "index": 2
+        },
+        {
+          "statement": "Division des supercalculateurs",
+          "index": 3
+        },
+        {
+          "statement": "Division des ordinateurs personnels",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quelle est la principale activité d'IBM depuis les années 1990 ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Recherche en intelligence artificielle",
+          "index": 1
+        },
+        {
+          "statement": "Production de microprocesseurs",
+          "index": 2
+        },
+        {
+          "statement": "Service informatique",
+          "index": 3
+        },
+        {
+          "statement": "Fabrication de superordinateurs",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Combien de brevets détenait IBM en 2022 ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "50,000",
+          "index": 1
+        },
+        {
+          "statement": "100,000",
+          "index": 2
+        },
+        {
+          "statement": "150,000",
+          "index": 3
+        },
+        {
+          "statement": "15,000",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quelle innovation technologique n'a pas été réalisée par IBM ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Le lecteur de codes-barres UPC",
+          "index": 1
+        },
+        {
+          "statement": "La mémoire vive DRAM",
+          "index": 2
+        },
+        {
+          "statement": "Le système de base de données relationnelle",
+          "index": 3
+        },
+        {
+          "statement": "Le disque dur",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Combien d'employés travaillent pour IBM dans le monde en 2022 ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "100,000",
+          "index": 1
+        },
+        {
+          "statement": "50,000",
+          "index": 2
+        },
+        {
+          "statement": "297,900",
+          "index": 3
+        },
+        {
+          "statement": "200,000",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Dans quelle liste d'entreprises IBM est-elle présente ?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Nasdaq 100",
+          "index": 1
+        },
+        {
+          "statement": "FTSE 100",
+          "index": 2
+        },
+        {
+          "statement": "Dow Jones Industrial Average",
+          "index": 3
+        },
+        {
+          "statement": "S&P 500",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

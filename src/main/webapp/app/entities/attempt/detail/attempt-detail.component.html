@@ -15,9 +15,17 @@
           <dd>
             <span>{{ attempt.id }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.score">Score</span></dt>
+          <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
           <dd>
-            <span>{{ attempt.score }}</span>
+            <span>{{ attempt.correctAnswerCount }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.wrongAnswerCount">Wrong Answer Count</span></dt>
+          <dd>
+            <span>{{ attempt.wrongAnswerCount }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.unansweredCount">Unanswered Count</span></dt>
+          <dd>
+            <span>{{ attempt.unansweredCount }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.attempt.started">Started</span></dt>
           <dd>
@@ -43,10 +51,32 @@
           <dd>
             <div>
               <ul class="list-group">
-                <li *ngFor="let answer of attempt?.answers" class="list-group-item d-flex">
-                  <!-- <span class="">{{ question.index }}</span>. -->
-                  {{ answer.id }}
-                </li>
+                @for (answer of attempt.answers; track $index) {
+                  <h6 class="">{{ $index + 1 }}. {{ answer.question!.statement }}</h6>
+                  <li
+                    class="list-group-item d-flex justify-content-between {{
+                      answer.correct === true ? 'list-group-item-success' : 'list-group-item-danger'
+                    }}"
+                  >
+                    <span class="">{{ answer.option!.statement }}</span>
+                    <!-- <span style="float: right">
+                        @if (answer.correct === true ) {
+                          <fa-icon icon="check"></fa-icon>
+                        }
+                        @if (answer.correct === false ) {
+                          <fa-icon icon="times"></fa-icon>
+                        }
+                      </span> -->
+                    <span>
+                      <fa-icon
+                        [icon]="answer.correct === true ? 'check' : 'times'"
+                        aria-hidden="true"
+                        class="{{ answer.correct === true ? 'text-success' : 'text-danger' }}"
+                      ></fa-icon>
+                    </span>
+                    <br />
+                  </li>
+                }
               </ul>
             </div>
           </dd>

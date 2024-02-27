@@ -46,6 +46,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="correct">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attemptAnswer.correct">Correct</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="question.statement">
               <div class="d-flex">
                 <span jhiTranslate="quizzApp.attemptAnswer.question">Question</span>
@@ -75,6 +82,7 @@
               </td>
               <td>{{ attemptAnswer.started | formatMediumDatetime }}</td>
               <td>{{ attemptAnswer.ended | formatMediumDatetime }}</td>
+              <td>{{ attemptAnswer.correct }}</td>
               <td>
                 @if (attemptAnswer.question) {
                   <div>

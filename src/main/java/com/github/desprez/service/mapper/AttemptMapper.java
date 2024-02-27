@@ -6,12 +6,16 @@ import com.github.desprez.domain.User;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.dto.UserDTO;
-import org.mapstruct.*;
+import org.mapstruct.BeanMapping;
+import org.mapstruct.InjectionStrategy;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 /**
  * Mapper for the entity {@link Attempt} and its DTO {@link AttemptDTO}.
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = AttemptAnswerMapper.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface AttemptMapper extends EntityMapper<AttemptDTO, Attempt> {
     @Mapping(target = "quizz", source = "quizz", qualifiedByName = "quizzTitle")
     @Mapping(target = "user", source = "user", qualifiedByName = "userLogin")

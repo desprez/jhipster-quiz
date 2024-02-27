@@ -1,0 +1,64 @@
+{
+  "title": "",
+  "description": "",
+  "difficulty": "EASY",
+  "category": "GENERAL_KNOWLEDGE",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "",
+      "index": 2,
+      "options": [
+        {
+          "statement": "",
+          "index": 1
+        },
+        {
+          "statement": "",
+          "index": 2
+        },
+        {
+          "statement": "",
+          "index": 3
+        },
+        {
+          "statement": "",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "",
+      "index": 2,
+      "options": [
+        {
+          "statement": "",
+          "index": 1
+        },
+        {
+          "statement": "",
+          "index": 2
+        },
+        {
+          "statement": "",
+          "index": 3
+        },
+        {
+          "statement": "",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

@@ -7,17 +7,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.github.desprez.IntegrationTest;
+import com.github.desprez.domain.Option;
 import com.github.desprez.domain.Question;
 import com.github.desprez.domain.Quizz;
 import com.github.desprez.domain.User;
 import com.github.desprez.domain.enumeration.Category;
 import com.github.desprez.domain.enumeration.Difficulty;
 import com.github.desprez.domain.enumeration.DisplayOrder;
+import com.github.desprez.domain.enumeration.Period;
 import com.github.desprez.repository.QuizzRepository;
 import com.github.desprez.service.QuizzService;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.mapper.QuizzMapper;
 import jakarta.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -70,8 +74,8 @@ class QuizzResourceIT {
     private static final Boolean DEFAULT_ALLOW_REVIEW = false;
     private static final Boolean UPDATED_ALLOW_REVIEW = true;
 
-    private static final Boolean DEFAULT_SECRET_GOOD_ANWERS = false;
-    private static final Boolean UPDATED_SECRET_GOOD_ANWERS = true;
+    private static final Boolean DEFAULT_KEEP_ANSWERS_SECRET = false;
+    private static final Boolean UPDATED_KEEP_ANSWERS_SECRET = true;
 
     private static final byte[] DEFAULT_IMAGE = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_IMAGE = TestUtil.createByteArray(1, "1");
@@ -80,6 +84,20 @@ class QuizzResourceIT {
 
     private static final Boolean DEFAULT_PUBLISHED = false;
     private static final Boolean UPDATED_PUBLISHED = true;
+
+    private static final Instant DEFAULT_PUBLISH_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PUBLISH_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Integer DEFAULT_ATTEMPS_LIMIT = 1;
+    private static final Integer UPDATED_ATTEMPS_LIMIT = 2;
+    private static final Integer SMALLER_ATTEMPS_LIMIT = 1 - 1;
+
+    private static final Period DEFAULT_ATTEMPS_LIMIT_PERIOD = Period.HOUR;
+    private static final Period UPDATED_ATTEMPS_LIMIT_PERIOD = Period.DAY;
+
+    private static final Integer DEFAULT_QUESTION_COUNT = 1;
+    private static final Integer UPDATED_QUESTION_COUNT = 2;
+    private static final Integer SMALLER_QUESTION_COUNT = 1 - 1;
 
     private static final String ENTITY_API_URL = "/api/quizzes";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -120,10 +138,28 @@ class QuizzResourceIT {
             .maxAnswerTime(DEFAULT_MAX_ANSWER_TIME)
             .allowBack(DEFAULT_ALLOW_BACK)
             .allowReview(DEFAULT_ALLOW_REVIEW)
-            .secretGoodAnwers(DEFAULT_SECRET_GOOD_ANWERS)
+            .keepAnswersSecret(DEFAULT_KEEP_ANSWERS_SECRET)
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
-            .published(DEFAULT_PUBLISHED);
+            .published(DEFAULT_PUBLISHED)
+            .publishDate(DEFAULT_PUBLISH_DATE)
+            .attempsLimit(DEFAULT_ATTEMPS_LIMIT)
+            .attempsLimitPeriod(DEFAULT_ATTEMPS_LIMIT_PERIOD)
+            .questionCount(DEFAULT_QUESTION_COUNT)
+            .addQuestions(
+                new Question()
+                    .statement("question1")
+                    .correctOptionIndex(1)
+                    .addOptions(new Option().statement("A"))
+                    .addOptions(new Option().statement("B"))
+            )
+            .addQuestions(
+                new Question()
+                    .statement("question2")
+                    .correctOptionIndex(2)
+                    .addOptions(new Option().statement("C"))
+                    .addOptions(new Option().statement("D"))
+            );
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
@@ -148,10 +184,14 @@ class QuizzResourceIT {
             .maxAnswerTime(UPDATED_MAX_ANSWER_TIME)
             .allowBack(UPDATED_ALLOW_BACK)
             .allowReview(UPDATED_ALLOW_REVIEW)
-            .secretGoodAnwers(UPDATED_SECRET_GOOD_ANWERS)
+            .keepAnswersSecret(UPDATED_KEEP_ANSWERS_SECRET)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .published(UPDATED_PUBLISHED);
+            .published(UPDATED_PUBLISHED)
+            .publishDate(UPDATED_PUBLISH_DATE)
+            .attempsLimit(UPDATED_ATTEMPS_LIMIT)
+            .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
+            .questionCount(UPDATED_QUESTION_COUNT);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
@@ -187,10 +227,14 @@ class QuizzResourceIT {
         assertThat(testQuizz.getMaxAnswerTime()).isEqualTo(DEFAULT_MAX_ANSWER_TIME);
         assertThat(testQuizz.getAllowBack()).isEqualTo(DEFAULT_ALLOW_BACK);
         assertThat(testQuizz.getAllowReview()).isEqualTo(DEFAULT_ALLOW_REVIEW);
-        assertThat(testQuizz.getSecretGoodAnwers()).isEqualTo(DEFAULT_SECRET_GOOD_ANWERS);
+        assertThat(testQuizz.getKeepAnswersSecret()).isEqualTo(DEFAULT_KEEP_ANSWERS_SECRET);
         assertThat(testQuizz.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testQuizz.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testQuizz.getPublished()).isEqualTo(DEFAULT_PUBLISHED);
+        assertThat(testQuizz.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
+        assertThat(testQuizz.getAttempsLimit()).isEqualTo(DEFAULT_ATTEMPS_LIMIT);
+        assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(DEFAULT_ATTEMPS_LIMIT_PERIOD);
+        assertThat(testQuizz.getQuestionCount()).isEqualTo(DEFAULT_QUESTION_COUNT);
     }
 
     @Test
@@ -322,10 +366,10 @@ class QuizzResourceIT {
 
     @Test
     @Transactional
-    void checkSecretGoodAnwersIsRequired() throws Exception {
+    void checkKeepAnswersSecretIsRequired() throws Exception {
         int databaseSizeBeforeTest = quizzRepository.findAll().size();
         // set the field null
-        quizz.setSecretGoodAnwers(null);
+        quizz.setKeepAnswersSecret(null);
 
         // Create the Quizz, which fails.
         QuizzDTO quizzDTO = quizzMapper.toDto(quizz);
@@ -376,10 +420,14 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
             .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
             .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
-            .andExpect(jsonPath("$.[*].secretGoodAnwers").value(hasItem(DEFAULT_SECRET_GOOD_ANWERS.booleanValue())))
+            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_IMAGE))))
-            .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())));
+            .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
+            .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
+            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
+            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
+            .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -419,10 +467,14 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.maxAnswerTime").value(DEFAULT_MAX_ANSWER_TIME))
             .andExpect(jsonPath("$.allowBack").value(DEFAULT_ALLOW_BACK.booleanValue()))
             .andExpect(jsonPath("$.allowReview").value(DEFAULT_ALLOW_REVIEW.booleanValue()))
-            .andExpect(jsonPath("$.secretGoodAnwers").value(DEFAULT_SECRET_GOOD_ANWERS.booleanValue()))
+            .andExpect(jsonPath("$.keepAnswersSecret").value(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64.getEncoder().encodeToString(DEFAULT_IMAGE)))
-            .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()));
+            .andExpect(jsonPath("$.published").value(DEFAULT_PUBLISHED.booleanValue()))
+            .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
+            .andExpect(jsonPath("$.attempsLimit").value(DEFAULT_ATTEMPS_LIMIT))
+            .andExpect(jsonPath("$.attempsLimitPeriod").value(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString()))
+            .andExpect(jsonPath("$.questionCount").value(DEFAULT_QUESTION_COUNT));
     }
 
     @Test
@@ -855,41 +907,41 @@ class QuizzResourceIT {
 
     @Test
     @Transactional
-    void getAllQuizzesBySecretGoodAnwersIsEqualToSomething() throws Exception {
+    void getAllQuizzesByKeepAnswersSecretIsEqualToSomething() throws Exception {
         // Initialize the database
         quizzRepository.saveAndFlush(quizz);
 
-        // Get all the quizzList where secretGoodAnwers equals to DEFAULT_SECRET_GOOD_ANWERS
-        defaultQuizzShouldBeFound("secretGoodAnwers.equals=" + DEFAULT_SECRET_GOOD_ANWERS);
+        // Get all the quizzList where keepAnswersSecret equals to DEFAULT_KEEP_ANSWERS_SECRET
+        defaultQuizzShouldBeFound("keepAnswersSecret.equals=" + DEFAULT_KEEP_ANSWERS_SECRET);
 
-        // Get all the quizzList where secretGoodAnwers equals to UPDATED_SECRET_GOOD_ANWERS
-        defaultQuizzShouldNotBeFound("secretGoodAnwers.equals=" + UPDATED_SECRET_GOOD_ANWERS);
+        // Get all the quizzList where keepAnswersSecret equals to UPDATED_KEEP_ANSWERS_SECRET
+        defaultQuizzShouldNotBeFound("keepAnswersSecret.equals=" + UPDATED_KEEP_ANSWERS_SECRET);
     }
 
     @Test
     @Transactional
-    void getAllQuizzesBySecretGoodAnwersIsInShouldWork() throws Exception {
+    void getAllQuizzesByKeepAnswersSecretIsInShouldWork() throws Exception {
         // Initialize the database
         quizzRepository.saveAndFlush(quizz);
 
-        // Get all the quizzList where secretGoodAnwers in DEFAULT_SECRET_GOOD_ANWERS or UPDATED_SECRET_GOOD_ANWERS
-        defaultQuizzShouldBeFound("secretGoodAnwers.in=" + DEFAULT_SECRET_GOOD_ANWERS + "," + UPDATED_SECRET_GOOD_ANWERS);
+        // Get all the quizzList where keepAnswersSecret in DEFAULT_KEEP_ANSWERS_SECRET or UPDATED_KEEP_ANSWERS_SECRET
+        defaultQuizzShouldBeFound("keepAnswersSecret.in=" + DEFAULT_KEEP_ANSWERS_SECRET + "," + UPDATED_KEEP_ANSWERS_SECRET);
 
-        // Get all the quizzList where secretGoodAnwers equals to UPDATED_SECRET_GOOD_ANWERS
-        defaultQuizzShouldNotBeFound("secretGoodAnwers.in=" + UPDATED_SECRET_GOOD_ANWERS);
+        // Get all the quizzList where keepAnswersSecret equals to UPDATED_KEEP_ANSWERS_SECRET
+        defaultQuizzShouldNotBeFound("keepAnswersSecret.in=" + UPDATED_KEEP_ANSWERS_SECRET);
     }
 
     @Test
     @Transactional
-    void getAllQuizzesBySecretGoodAnwersIsNullOrNotNull() throws Exception {
+    void getAllQuizzesByKeepAnswersSecretIsNullOrNotNull() throws Exception {
         // Initialize the database
         quizzRepository.saveAndFlush(quizz);
 
-        // Get all the quizzList where secretGoodAnwers is not null
-        defaultQuizzShouldBeFound("secretGoodAnwers.specified=true");
+        // Get all the quizzList where keepAnswersSecret is not null
+        defaultQuizzShouldBeFound("keepAnswersSecret.specified=true");
 
-        // Get all the quizzList where secretGoodAnwers is null
-        defaultQuizzShouldNotBeFound("secretGoodAnwers.specified=false");
+        // Get all the quizzList where keepAnswersSecret is null
+        defaultQuizzShouldNotBeFound("keepAnswersSecret.specified=false");
     }
 
     @Test
@@ -929,6 +981,266 @@ class QuizzResourceIT {
 
         // Get all the quizzList where published is null
         defaultQuizzShouldNotBeFound("published.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByPublishDateIsEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where publishDate equals to DEFAULT_PUBLISH_DATE
+        defaultQuizzShouldBeFound("publishDate.equals=" + DEFAULT_PUBLISH_DATE);
+
+        // Get all the quizzList where publishDate equals to UPDATED_PUBLISH_DATE
+        defaultQuizzShouldNotBeFound("publishDate.equals=" + UPDATED_PUBLISH_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByPublishDateIsInShouldWork() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where publishDate in DEFAULT_PUBLISH_DATE or UPDATED_PUBLISH_DATE
+        defaultQuizzShouldBeFound("publishDate.in=" + DEFAULT_PUBLISH_DATE + "," + UPDATED_PUBLISH_DATE);
+
+        // Get all the quizzList where publishDate equals to UPDATED_PUBLISH_DATE
+        defaultQuizzShouldNotBeFound("publishDate.in=" + UPDATED_PUBLISH_DATE);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByPublishDateIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where publishDate is not null
+        defaultQuizzShouldBeFound("publishDate.specified=true");
+
+        // Get all the quizzList where publishDate is null
+        defaultQuizzShouldNotBeFound("publishDate.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit equals to DEFAULT_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.equals=" + DEFAULT_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit equals to UPDATED_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.equals=" + UPDATED_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsInShouldWork() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit in DEFAULT_ATTEMPS_LIMIT or UPDATED_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.in=" + DEFAULT_ATTEMPS_LIMIT + "," + UPDATED_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit equals to UPDATED_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.in=" + UPDATED_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit is not null
+        defaultQuizzShouldBeFound("attempsLimit.specified=true");
+
+        // Get all the quizzList where attempsLimit is null
+        defaultQuizzShouldNotBeFound("attempsLimit.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit is greater than or equal to DEFAULT_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.greaterThanOrEqual=" + DEFAULT_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit is greater than or equal to UPDATED_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.greaterThanOrEqual=" + UPDATED_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsLessThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit is less than or equal to DEFAULT_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.lessThanOrEqual=" + DEFAULT_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit is less than or equal to SMALLER_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.lessThanOrEqual=" + SMALLER_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsLessThanSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit is less than DEFAULT_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.lessThan=" + DEFAULT_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit is less than UPDATED_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.lessThan=" + UPDATED_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitIsGreaterThanSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimit is greater than DEFAULT_ATTEMPS_LIMIT
+        defaultQuizzShouldNotBeFound("attempsLimit.greaterThan=" + DEFAULT_ATTEMPS_LIMIT);
+
+        // Get all the quizzList where attempsLimit is greater than SMALLER_ATTEMPS_LIMIT
+        defaultQuizzShouldBeFound("attempsLimit.greaterThan=" + SMALLER_ATTEMPS_LIMIT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitPeriodIsEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimitPeriod equals to DEFAULT_ATTEMPS_LIMIT_PERIOD
+        defaultQuizzShouldBeFound("attempsLimitPeriod.equals=" + DEFAULT_ATTEMPS_LIMIT_PERIOD);
+
+        // Get all the quizzList where attempsLimitPeriod equals to UPDATED_ATTEMPS_LIMIT_PERIOD
+        defaultQuizzShouldNotBeFound("attempsLimitPeriod.equals=" + UPDATED_ATTEMPS_LIMIT_PERIOD);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitPeriodIsInShouldWork() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimitPeriod in DEFAULT_ATTEMPS_LIMIT_PERIOD or UPDATED_ATTEMPS_LIMIT_PERIOD
+        defaultQuizzShouldBeFound("attempsLimitPeriod.in=" + DEFAULT_ATTEMPS_LIMIT_PERIOD + "," + UPDATED_ATTEMPS_LIMIT_PERIOD);
+
+        // Get all the quizzList where attempsLimitPeriod equals to UPDATED_ATTEMPS_LIMIT_PERIOD
+        defaultQuizzShouldNotBeFound("attempsLimitPeriod.in=" + UPDATED_ATTEMPS_LIMIT_PERIOD);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByAttempsLimitPeriodIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where attempsLimitPeriod is not null
+        defaultQuizzShouldBeFound("attempsLimitPeriod.specified=true");
+
+        // Get all the quizzList where attempsLimitPeriod is null
+        defaultQuizzShouldNotBeFound("attempsLimitPeriod.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount equals to DEFAULT_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.equals=" + DEFAULT_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount equals to UPDATED_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.equals=" + UPDATED_QUESTION_COUNT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsInShouldWork() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount in DEFAULT_QUESTION_COUNT or UPDATED_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.in=" + DEFAULT_QUESTION_COUNT + "," + UPDATED_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount equals to UPDATED_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.in=" + UPDATED_QUESTION_COUNT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount is not null
+        defaultQuizzShouldBeFound("questionCount.specified=true");
+
+        // Get all the quizzList where questionCount is null
+        defaultQuizzShouldNotBeFound("questionCount.specified=false");
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsGreaterThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount is greater than or equal to DEFAULT_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.greaterThanOrEqual=" + DEFAULT_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount is greater than or equal to UPDATED_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.greaterThanOrEqual=" + UPDATED_QUESTION_COUNT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsLessThanOrEqualToSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount is less than or equal to DEFAULT_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.lessThanOrEqual=" + DEFAULT_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount is less than or equal to SMALLER_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.lessThanOrEqual=" + SMALLER_QUESTION_COUNT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsLessThanSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount is less than DEFAULT_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.lessThan=" + DEFAULT_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount is less than UPDATED_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.lessThan=" + UPDATED_QUESTION_COUNT);
+    }
+
+    @Test
+    @Transactional
+    void getAllQuizzesByQuestionCountIsGreaterThanSomething() throws Exception {
+        // Initialize the database
+        quizzRepository.saveAndFlush(quizz);
+
+        // Get all the quizzList where questionCount is greater than DEFAULT_QUESTION_COUNT
+        defaultQuizzShouldNotBeFound("questionCount.greaterThan=" + DEFAULT_QUESTION_COUNT);
+
+        // Get all the quizzList where questionCount is greater than SMALLER_QUESTION_COUNT
+        defaultQuizzShouldBeFound("questionCount.greaterThan=" + SMALLER_QUESTION_COUNT);
     }
 
     @Test
@@ -992,10 +1304,14 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
             .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
             .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
-            .andExpect(jsonPath("$.[*].secretGoodAnwers").value(hasItem(DEFAULT_SECRET_GOOD_ANWERS.booleanValue())))
+            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_IMAGE))))
-            .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())));
+            .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
+            .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
+            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
+            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
+            .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
 
         // Check, that the count call also returns 1
         restQuizzMockMvc
@@ -1052,10 +1368,14 @@ class QuizzResourceIT {
             .maxAnswerTime(UPDATED_MAX_ANSWER_TIME)
             .allowBack(UPDATED_ALLOW_BACK)
             .allowReview(UPDATED_ALLOW_REVIEW)
-            .secretGoodAnwers(UPDATED_SECRET_GOOD_ANWERS)
+            .keepAnswersSecret(UPDATED_KEEP_ANSWERS_SECRET)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .published(UPDATED_PUBLISHED);
+            .published(UPDATED_PUBLISHED)
+            .publishDate(UPDATED_PUBLISH_DATE)
+            .attempsLimit(UPDATED_ATTEMPS_LIMIT)
+            .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
+            .questionCount(UPDATED_QUESTION_COUNT);
         QuizzDTO quizzDTO = quizzMapper.toDto(updatedQuizz);
 
         restQuizzMockMvc
@@ -1078,10 +1398,14 @@ class QuizzResourceIT {
         assertThat(testQuizz.getMaxAnswerTime()).isEqualTo(UPDATED_MAX_ANSWER_TIME);
         assertThat(testQuizz.getAllowBack()).isEqualTo(UPDATED_ALLOW_BACK);
         assertThat(testQuizz.getAllowReview()).isEqualTo(UPDATED_ALLOW_REVIEW);
-        assertThat(testQuizz.getSecretGoodAnwers()).isEqualTo(UPDATED_SECRET_GOOD_ANWERS);
+        assertThat(testQuizz.getKeepAnswersSecret()).isEqualTo(UPDATED_KEEP_ANSWERS_SECRET);
         assertThat(testQuizz.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testQuizz.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testQuizz.getPublished()).isEqualTo(UPDATED_PUBLISHED);
+        assertThat(testQuizz.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
+        assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
+        assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
+        assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
     }
 
     @Test
@@ -1166,7 +1490,10 @@ class QuizzResourceIT {
             .difficulty(UPDATED_DIFFICULTY)
             .questionOrder(UPDATED_QUESTION_ORDER)
             .allowBack(UPDATED_ALLOW_BACK)
-            .secretGoodAnwers(UPDATED_SECRET_GOOD_ANWERS);
+            .keepAnswersSecret(UPDATED_KEEP_ANSWERS_SECRET)
+            .attempsLimit(UPDATED_ATTEMPS_LIMIT)
+            .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
+            .questionCount(UPDATED_QUESTION_COUNT);
 
         restQuizzMockMvc
             .perform(
@@ -1188,10 +1515,14 @@ class QuizzResourceIT {
         assertThat(testQuizz.getMaxAnswerTime()).isEqualTo(DEFAULT_MAX_ANSWER_TIME);
         assertThat(testQuizz.getAllowBack()).isEqualTo(UPDATED_ALLOW_BACK);
         assertThat(testQuizz.getAllowReview()).isEqualTo(DEFAULT_ALLOW_REVIEW);
-        assertThat(testQuizz.getSecretGoodAnwers()).isEqualTo(UPDATED_SECRET_GOOD_ANWERS);
+        assertThat(testQuizz.getKeepAnswersSecret()).isEqualTo(UPDATED_KEEP_ANSWERS_SECRET);
         assertThat(testQuizz.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testQuizz.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testQuizz.getPublished()).isEqualTo(DEFAULT_PUBLISHED);
+        assertThat(testQuizz.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
+        assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
+        assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
+        assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
     }
 
     @Test
@@ -1215,10 +1546,14 @@ class QuizzResourceIT {
             .maxAnswerTime(UPDATED_MAX_ANSWER_TIME)
             .allowBack(UPDATED_ALLOW_BACK)
             .allowReview(UPDATED_ALLOW_REVIEW)
-            .secretGoodAnwers(UPDATED_SECRET_GOOD_ANWERS)
+            .keepAnswersSecret(UPDATED_KEEP_ANSWERS_SECRET)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .published(UPDATED_PUBLISHED);
+            .published(UPDATED_PUBLISHED)
+            .publishDate(UPDATED_PUBLISH_DATE)
+            .attempsLimit(UPDATED_ATTEMPS_LIMIT)
+            .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
+            .questionCount(UPDATED_QUESTION_COUNT);
 
         restQuizzMockMvc
             .perform(
@@ -1240,10 +1575,14 @@ class QuizzResourceIT {
         assertThat(testQuizz.getMaxAnswerTime()).isEqualTo(UPDATED_MAX_ANSWER_TIME);
         assertThat(testQuizz.getAllowBack()).isEqualTo(UPDATED_ALLOW_BACK);
         assertThat(testQuizz.getAllowReview()).isEqualTo(UPDATED_ALLOW_REVIEW);
-        assertThat(testQuizz.getSecretGoodAnwers()).isEqualTo(UPDATED_SECRET_GOOD_ANWERS);
+        assertThat(testQuizz.getKeepAnswersSecret()).isEqualTo(UPDATED_KEEP_ANSWERS_SECRET);
         assertThat(testQuizz.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testQuizz.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testQuizz.getPublished()).isEqualTo(UPDATED_PUBLISHED);
+        assertThat(testQuizz.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
+        assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
+        assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
+        assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
     }
 
     @Test

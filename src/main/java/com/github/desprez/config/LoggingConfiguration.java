@@ -1,6 +1,8 @@
 package com.github.desprez.config;
 
-import static tech.jhipster.config.logging.LoggingUtils.*;
+import static tech.jhipster.config.logging.LoggingUtils.addContextListener;
+import static tech.jhipster.config.logging.LoggingUtils.addJsonConsoleAppender;
+import static tech.jhipster.config.logging.LoggingUtils.addLogstashTcpSocketAppender;
 
 import ch.qos.logback.classic.LoggerContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,7 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import tech.jhipster.config.JHipsterProperties;
 
 /*
@@ -43,5 +47,16 @@ public class LoggingConfiguration {
         if (loggingProperties.isUseJsonFormat() || logstashProperties.isEnabled()) {
             addContextListener(context, customFields, loggingProperties);
         }
+    }
+
+    @Bean
+    public CommonsRequestLoggingFilter logFilter() {
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+        filter.setIncludeQueryString(true);
+        filter.setIncludePayload(true);
+        filter.setMaxPayloadLength(10000);
+        filter.setIncludeHeaders(false);
+        filter.setAfterMessagePrefix("REQUEST DATA: ");
+        return filter;
     }
 }

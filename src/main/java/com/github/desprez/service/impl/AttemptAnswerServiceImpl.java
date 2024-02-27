@@ -53,6 +53,9 @@ public class AttemptAnswerServiceImpl implements AttemptAnswerService {
                 if (attemptAnswer.getEnded() != null) {
                     existingAttemptAnswer.setEnded(attemptAnswer.getEnded());
                 }
+                if (attemptAnswer.getCorrect() != null) {
+                    existingAttemptAnswer.setCorrect(attemptAnswer.getCorrect());
+                }
 
                 return existingAttemptAnswer;
             })

@@ -26,9 +26,9 @@ public class QuizzServiceImpl implements QuizzService {
 
     private final Logger log = LoggerFactory.getLogger(QuizzServiceImpl.class);
 
-    private final QuizzRepository quizzRepository;
+    protected final QuizzRepository quizzRepository;
 
-    private final QuizzMapper quizzMapper;
+    protected final QuizzMapper quizzMapper;
 
     private final UserRepository userRepository;
 
@@ -43,18 +43,25 @@ public class QuizzServiceImpl implements QuizzService {
         log.debug("Request to save Quizz : {}", quizzDTO);
         Quizz quizz = quizzMapper.toEntity(quizzDTO);
         if (!SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.ADMIN)) {
-            log.debug("No user passed in, using current user: {}", SecurityUtils.getCurrentUserLogin().get());
-            String username = SecurityUtils.getCurrentUserLogin().get();
-            quizz.setUser(userRepository.findOneByLogin(username).get());
+            String username = getUsername();
+            quizz.setUser(userRepository.findOneByLogin(username).orElseThrow());
         }
+        quizz.setQuestionCount(quizz.getQuestions().size());
         quizz = quizzRepository.save(quizz);
         return quizzMapper.toDto(quizz);
+    }
+
+    private String getUsername() {
+        String username = SecurityUtils.getCurrentUserLogin().orElseThrow();
+        log.debug("No user passed in, using current user: {}", username);
+        return username;
     }
 
     @Override
     public QuizzDTO update(QuizzDTO quizzDTO) {
         log.debug("Request to update Quizz : {}", quizzDTO);
         Quizz quizz = quizzMapper.toEntity(quizzDTO);
+        quizz.setQuestionCount(quizz.getQuestions().size());
         quizz = quizzRepository.save(quizz);
         return quizzMapper.toDto(quizz);
     }

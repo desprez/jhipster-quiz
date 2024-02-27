@@ -26,13 +26,28 @@
       "maxAnswerTime": "Max Answer Time",
       "allowBack": "Allow Back",
       "allowReview": "Allow Review",
-      "secretGoodAnwers": "Secret Good Anwers",
+      "keepAnswersSecret": "Keep Answers Secret",
       "image": "Image",
       "published": "Published",
-      "questions": "Questions",
-      "user": "User",
+      "publishDate": "Publish Date",
+      "attempsLimit": "Attemps Limit",
+      "attempsLimitPeriod": "Attemps Limit Period",
       "questionCount": "Questions#",
-      "play": "Play"
+      "questions": "Questions",
+      "user": "Author",
+      "play": "Play",
+      "maker": {
+        "question": {
+          "placeholder": "Enter question statement",
+          "addButton": "Add question",
+          "removeButton": "Remove question"
+        },
+        "option": {
+          "placeholder": "Enter option statement",
+          "addButton": "Add option",
+          "removeButton": "Remove option"
+        }
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 package com.github.desprez.service;
 
+import com.github.desprez.service.dto.AttemptBasicDTO;
 import com.github.desprez.service.dto.AttemptDTO;
 import java.util.Optional;
 import java.util.UUID;
@@ -40,7 +41,7 @@ public interface AttemptService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<AttemptDTO> findAll(Pageable pageable);
+    Page<AttemptBasicDTO> findAll(Pageable pageable);
 
     /**
      * Get all the attempts with eager load of many-to-many relationships.
@@ -48,7 +49,7 @@ public interface AttemptService {
      * @param pageable the pagination information.
      * @return the list of entities.
      */
-    Page<AttemptDTO> findAllWithEagerRelationships(Pageable pageable);
+    Page<AttemptBasicDTO> findAllWithEagerRelationships(Pageable pageable);
 
     /**
      * Get the "id" attempt.

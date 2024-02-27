@@ -43,8 +43,14 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AttemptResourceIT {
 
-    private static final Integer DEFAULT_SCORE = 0;
-    private static final Integer UPDATED_SCORE = 1;
+    private static final Integer DEFAULT_CORRECT_ANSWER_COUNT = 0;
+    private static final Integer UPDATED_CORRECT_ANSWER_COUNT = 1;
+
+    private static final Integer DEFAULT_WRONG_ANSWER_COUNT = 0;
+    private static final Integer UPDATED_WRONG_ANSWER_COUNT = 1;
+
+    private static final Integer DEFAULT_UNANSWERED_COUNT = 0;
+    private static final Integer UPDATED_UNANSWERED_COUNT = 1;
 
     private static final Instant DEFAULT_STARTED = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_STARTED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -82,7 +88,12 @@ class AttemptResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Attempt createEntity(EntityManager em) {
-        Attempt attempt = new Attempt().score(DEFAULT_SCORE).started(DEFAULT_STARTED).ended(DEFAULT_ENDED);
+        Attempt attempt = new Attempt()
+            .correctAnswerCount(DEFAULT_CORRECT_ANSWER_COUNT)
+            .wrongAnswerCount(DEFAULT_WRONG_ANSWER_COUNT)
+            .unansweredCount(DEFAULT_UNANSWERED_COUNT)
+            .started(DEFAULT_STARTED)
+            .ended(DEFAULT_ENDED);
         // Add required entity
         Quizz quizz;
         if (TestUtil.findAll(em, Quizz.class).isEmpty()) {
@@ -108,7 +119,12 @@ class AttemptResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Attempt createUpdatedEntity(EntityManager em) {
-        Attempt attempt = new Attempt().score(UPDATED_SCORE).started(UPDATED_STARTED).ended(UPDATED_ENDED);
+        Attempt attempt = new Attempt()
+            .correctAnswerCount(UPDATED_CORRECT_ANSWER_COUNT)
+            .wrongAnswerCount(UPDATED_WRONG_ANSWER_COUNT)
+            .unansweredCount(UPDATED_UNANSWERED_COUNT)
+            .started(UPDATED_STARTED)
+            .ended(UPDATED_ENDED);
         // Add required entity
         Quizz quizz;
         if (TestUtil.findAll(em, Quizz.class).isEmpty()) {
@@ -146,7 +162,9 @@ class AttemptResourceIT {
         List<Attempt> attemptList = attemptRepository.findAll();
         assertThat(attemptList).hasSize(databaseSizeBeforeCreate + 1);
         Attempt testAttempt = attemptList.get(attemptList.size() - 1);
-        assertThat(testAttempt.getScore()).isEqualTo(DEFAULT_SCORE);
+        assertThat(testAttempt.getCorrectAnswerCount()).isEqualTo(DEFAULT_CORRECT_ANSWER_COUNT);
+        assertThat(testAttempt.getWrongAnswerCount()).isEqualTo(DEFAULT_WRONG_ANSWER_COUNT);
+        assertThat(testAttempt.getUnansweredCount()).isEqualTo(DEFAULT_UNANSWERED_COUNT);
         assertThat(testAttempt.getStarted()).isEqualTo(DEFAULT_STARTED);
         assertThat(testAttempt.getEnded()).isEqualTo(DEFAULT_ENDED);
     }
@@ -172,10 +190,46 @@ class AttemptResourceIT {
 
     @Test
     @Transactional
-    void checkScoreIsRequired() throws Exception {
+    void checkCorrectAnswercountIsRequired() throws Exception {
         int databaseSizeBeforeTest = attemptRepository.findAll().size();
         // set the field null
-        attempt.setScore(null);
+        attempt.setCorrectAnswerCount(null);
+
+        // Create the Attempt, which fails.
+        AttemptDTO attemptDTO = attemptMapper.toDto(attempt);
+
+        restAttemptMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(attemptDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Attempt> attemptList = attemptRepository.findAll();
+        assertThat(attemptList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkWrongAnswerCountIsRequired() throws Exception {
+        int databaseSizeBeforeTest = attemptRepository.findAll().size();
+        // set the field null
+        attempt.setWrongAnswerCount(null);
+
+        // Create the Attempt, which fails.
+        AttemptDTO attemptDTO = attemptMapper.toDto(attempt);
+
+        restAttemptMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(attemptDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Attempt> attemptList = attemptRepository.findAll();
+        assertThat(attemptList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    void checkUnansweredCountIsRequired() throws Exception {
+        int databaseSizeBeforeTest = attemptRepository.findAll().size();
+        // set the field null
+        attempt.setUnansweredCount(null);
 
         // Create the Attempt, which fails.
         AttemptDTO attemptDTO = attemptMapper.toDto(attempt);
@@ -218,7 +272,9 @@ class AttemptResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(attempt.getId().toString())))
-            .andExpect(jsonPath("$.[*].score").value(hasItem(DEFAULT_SCORE)))
+            .andExpect(jsonPath("$.[*].correctAnswerCount").value(hasItem(DEFAULT_CORRECT_ANSWER_COUNT)))
+            .andExpect(jsonPath("$.[*].wrongAnswerCount").value(hasItem(DEFAULT_WRONG_ANSWER_COUNT)))
+            .andExpect(jsonPath("$.[*].unansweredCount").value(hasItem(DEFAULT_UNANSWERED_COUNT)))
             .andExpect(jsonPath("$.[*].started").value(hasItem(DEFAULT_STARTED.toString())))
             .andExpect(jsonPath("$.[*].ended").value(hasItem(DEFAULT_ENDED.toString())));
     }
@@ -252,7 +308,9 @@ class AttemptResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(attempt.getId().toString()))
-            .andExpect(jsonPath("$.score").value(DEFAULT_SCORE))
+            .andExpect(jsonPath("$.correctAnswerCount").value(DEFAULT_CORRECT_ANSWER_COUNT))
+            .andExpect(jsonPath("$.wrongAnswerCount").value(DEFAULT_WRONG_ANSWER_COUNT))
+            .andExpect(jsonPath("$.unansweredCount").value(DEFAULT_UNANSWERED_COUNT))
             .andExpect(jsonPath("$.started").value(DEFAULT_STARTED.toString()))
             .andExpect(jsonPath("$.ended").value(DEFAULT_ENDED.toString()));
     }
@@ -276,7 +334,12 @@ class AttemptResourceIT {
         Attempt updatedAttempt = attemptRepository.findById(attempt.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedAttempt are not directly saved in db
         em.detach(updatedAttempt);
-        updatedAttempt.score(UPDATED_SCORE).started(UPDATED_STARTED).ended(UPDATED_ENDED);
+        updatedAttempt
+            .correctAnswerCount(UPDATED_CORRECT_ANSWER_COUNT)
+            .wrongAnswerCount(UPDATED_WRONG_ANSWER_COUNT)
+            .unansweredCount(UPDATED_UNANSWERED_COUNT)
+            .started(UPDATED_STARTED)
+            .ended(UPDATED_ENDED);
         AttemptDTO attemptDTO = attemptMapper.toDto(updatedAttempt);
 
         restAttemptMockMvc
@@ -291,7 +354,9 @@ class AttemptResourceIT {
         List<Attempt> attemptList = attemptRepository.findAll();
         assertThat(attemptList).hasSize(databaseSizeBeforeUpdate);
         Attempt testAttempt = attemptList.get(attemptList.size() - 1);
-        assertThat(testAttempt.getScore()).isEqualTo(UPDATED_SCORE);
+        assertThat(testAttempt.getCorrectAnswerCount()).isEqualTo(UPDATED_CORRECT_ANSWER_COUNT);
+        assertThat(testAttempt.getWrongAnswerCount()).isEqualTo(UPDATED_WRONG_ANSWER_COUNT);
+        assertThat(testAttempt.getUnansweredCount()).isEqualTo(UPDATED_UNANSWERED_COUNT);
         assertThat(testAttempt.getStarted()).isEqualTo(UPDATED_STARTED);
         assertThat(testAttempt.getEnded()).isEqualTo(UPDATED_ENDED);
     }
@@ -373,7 +438,10 @@ class AttemptResourceIT {
         Attempt partialUpdatedAttempt = new Attempt();
         partialUpdatedAttempt.setId(attempt.getId());
 
-        partialUpdatedAttempt.score(UPDATED_SCORE).started(UPDATED_STARTED);
+        partialUpdatedAttempt
+            .correctAnswerCount(UPDATED_CORRECT_ANSWER_COUNT)
+            .wrongAnswerCount(UPDATED_WRONG_ANSWER_COUNT)
+            .ended(UPDATED_ENDED);
 
         restAttemptMockMvc
             .perform(
@@ -387,9 +455,11 @@ class AttemptResourceIT {
         List<Attempt> attemptList = attemptRepository.findAll();
         assertThat(attemptList).hasSize(databaseSizeBeforeUpdate);
         Attempt testAttempt = attemptList.get(attemptList.size() - 1);
-        assertThat(testAttempt.getScore()).isEqualTo(UPDATED_SCORE);
-        assertThat(testAttempt.getStarted()).isEqualTo(UPDATED_STARTED);
-        assertThat(testAttempt.getEnded()).isEqualTo(DEFAULT_ENDED);
+        assertThat(testAttempt.getCorrectAnswerCount()).isEqualTo(UPDATED_CORRECT_ANSWER_COUNT);
+        assertThat(testAttempt.getWrongAnswerCount()).isEqualTo(UPDATED_WRONG_ANSWER_COUNT);
+        assertThat(testAttempt.getUnansweredCount()).isEqualTo(DEFAULT_UNANSWERED_COUNT);
+        assertThat(testAttempt.getStarted()).isEqualTo(DEFAULT_STARTED);
+        assertThat(testAttempt.getEnded()).isEqualTo(UPDATED_ENDED);
     }
 
     @Test
@@ -404,7 +474,12 @@ class AttemptResourceIT {
         Attempt partialUpdatedAttempt = new Attempt();
         partialUpdatedAttempt.setId(attempt.getId());
 
-        partialUpdatedAttempt.score(UPDATED_SCORE).started(UPDATED_STARTED).ended(UPDATED_ENDED);
+        partialUpdatedAttempt
+            .correctAnswerCount(UPDATED_CORRECT_ANSWER_COUNT)
+            .wrongAnswerCount(UPDATED_WRONG_ANSWER_COUNT)
+            .unansweredCount(UPDATED_UNANSWERED_COUNT)
+            .started(UPDATED_STARTED)
+            .ended(UPDATED_ENDED);
 
         restAttemptMockMvc
             .perform(
@@ -418,7 +493,9 @@ class AttemptResourceIT {
         List<Attempt> attemptList = attemptRepository.findAll();
         assertThat(attemptList).hasSize(databaseSizeBeforeUpdate);
         Attempt testAttempt = attemptList.get(attemptList.size() - 1);
-        assertThat(testAttempt.getScore()).isEqualTo(UPDATED_SCORE);
+        assertThat(testAttempt.getCorrectAnswerCount()).isEqualTo(UPDATED_CORRECT_ANSWER_COUNT);
+        assertThat(testAttempt.getWrongAnswerCount()).isEqualTo(UPDATED_WRONG_ANSWER_COUNT);
+        assertThat(testAttempt.getUnansweredCount()).isEqualTo(UPDATED_UNANSWERED_COUNT);
         assertThat(testAttempt.getStarted()).isEqualTo(UPDATED_STARTED);
         assertThat(testAttempt.getEnded()).isEqualTo(UPDATED_ENDED);
     }

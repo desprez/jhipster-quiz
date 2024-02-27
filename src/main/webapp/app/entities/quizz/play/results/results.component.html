@@ -1,0 +1,16 @@
+<div class="modal-body">
+  <jhi-alert-error></jhi-alert-error>
+
+  <div>
+    <jhi-circle-progress [value]="progress"></jhi-circle-progress>
+    <br />
+  </div>
+  <p>You've completed the Quizz !</p>
+
+  <p>and congrats!, You got {{ attempt!.correctAnswerCount }} out of {{ quizz!.questionCount }}'</p>
+
+  <p>Total Question Attempted : {{ answerCount }}</p>
+  <p>Total Correct Answered : {{ attempt!.correctAnswerCount }}</p>
+  <p>Total Wrong Answered : {{ attempt!.wrongAnswerCount }}</p>
+  <!--         <p>Your Score : {{ points }} Points</p> -->
+</div>

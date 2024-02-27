@@ -1,0 +1,273 @@
+{
+  "title": "Super Heroes Quiz (English)",
+  "description": "A quiz about super heroes",
+  "difficulty": "EASY",
+  "category": "COMICS",
+  "questionOrder": "RANDOM",
+  "questionCount": 11,
+  "published": false,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "secretGoodAnwers": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questions": [
+    {
+      "statement": "What is Batman's real name?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Bruce Banner",
+          "index": 1
+        },
+        {
+          "statement": "Clark Kent",
+          "index": 2
+        },
+        {
+          "statement": "Bruce Wayne",
+          "index": 3
+        },
+        {
+          "statement": "Peter Parker",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which superhero is known as the 'Man of Steel'?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Spider-Man",
+          "index": 1
+        },
+        {
+          "statement": "Iron Man",
+          "index": 2
+        },
+        {
+          "statement": "Superman",
+          "index": 3
+        },
+        {
+          "statement": "Captain America",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who is the alter ego of Wonder Woman?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Diana Prince",
+          "index": 1
+        },
+        {
+          "statement": "Selina Kyle",
+          "index": 2
+        },
+        {
+          "statement": "Carol Danvers",
+          "index": 3
+        },
+        {
+          "statement": "Natasha Romanoff",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which superhero is known for using a shield made of vibranium?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Thor",
+          "index": 1
+        },
+        {
+          "statement": "Captain America",
+          "index": 2
+        },
+        {
+          "statement": "Iron Man",
+          "index": 3
+        },
+        {
+          "statement": "Black Panther",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Who is the fastest man alive in the DC universe?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Flash",
+          "index": 1
+        },
+        {
+          "statement": "Quicksilver",
+          "index": 2
+        },
+        {
+          "statement": "Speedy",
+          "index": 3
+        },
+        {
+          "statement": "Dash",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Who is the alter ego of the Hulk?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Bruce Banner",
+          "index": 1
+        },
+        {
+          "statement": "Tony Stark",
+          "index": 2
+        },
+        {
+          "statement": "Steve Rogers",
+          "index": 3
+        },
+        {
+          "statement": "Peter Parker",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which superhero is also known as the 'Caped Crusader'?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Spider-Man",
+          "index": 1
+        },
+        {
+          "statement": "Batman",
+          "index": 2
+        },
+        {
+          "statement": "Green Lantern",
+          "index": 3
+        },
+        {
+          "statement": "Thor",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the real name of the superhero 'The Flash'?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Barry Allen",
+          "index": 1
+        },
+        {
+          "statement": "Wally West",
+          "index": 2
+        },
+        {
+          "statement": "Hal Jordan",
+          "index": 3
+        },
+        {
+          "statement": "Bruce Wayne",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Who is the archenemy of Spider-Man?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Green Goblin",
+          "index": 1
+        },
+        {
+          "statement": "Lex Luthor",
+          "index": 2
+        },
+        {
+          "statement": "Joker",
+          "index": 3
+        },
+        {
+          "statement": "Venom",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What superhero team does Wolverine belong to?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "The Avengers",
+          "index": 1
+        },
+        {
+          "statement": "X-Men",
+          "index": 2
+        },
+        {
+          "statement": "Fantastic Four",
+          "index": 3
+        },
+        {
+          "statement": "Justice League",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which superhero possesses the ability to control and manipulate the weather?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Storm",
+          "index": 1
+        },
+        {
+          "statement": "Wonder Woman",
+          "index": 2
+        },
+        {
+          "statement": "Cyclops",
+          "index": 3
+        },
+        {
+          "statement": "Black Panther",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

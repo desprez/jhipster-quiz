@@ -12,12 +12,15 @@
     },
     {
       "fieldName": "started",
-      "fieldType": "Instant",
-      "fieldValidateRules": ["required"]
+      "fieldType": "Instant"
     },
     {
       "fieldName": "ended",
       "fieldType": "Instant"
+    },
+    {
+      "fieldName": "correct",
+      "fieldType": "Boolean"
     }
   ],
   "name": "AttemptAnswer",
@@ -35,8 +38,7 @@
       "otherEntityName": "option",
       "relationshipName": "option",
       "relationshipSide": "left",
-      "relationshipType": "many-to-one",
-      "relationshipValidateRules": "required"
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no",

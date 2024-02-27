@@ -8,28 +8,35 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <h2 jhiTranslate="home.play.heading">Have fun</h2>
+      <h2 jhiTranslate="home.play.heading">Have fun with Quizz !</h2>
       <p jhiTranslate="home.play.paragraph">
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-        fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        With <strong>Quizz</strong>, and play them on your phone, tablet, or computer and it's FREE.<br />With Quizz you have access to
+        thousands of games shared by other users.
       </p>
-      <p><a jhiTranslate="home.play.button" class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <p><a jhiTranslate="home.play.button" class="btn btn-primary" href="#" role="button">Choose a quiz</a></p>
     </div>
     <div class="col-md-4">
       <h2 jhiTranslate="home.make.heading">Create an awesome quiz in minutes</h2>
       <p jhiTranslate="home.make.paragraph">
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-        fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+        <strong>Quizz</strong> is the easiest way to make quizzes and it's FREE. <br />Make a quiz to engage students in a classroom, train
+        employees at work, or play trivia with friends. <br />Fill the quiz form with title, choose optionn for your quiz and enter your
+        questions and mark the correct answer, publish and Voila ! your quiz is imediately playable
       </p>
-      <p><a jhiTranslate="home.make.button" class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <!-- <p><a jhiTranslate="home.make.button" class="btn btn-primary" href="#" role="button">Make a quiz</a></p> -->
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quizz"
+        [routerLink]="['/quizz/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="quizzApp.quizz.home.createLabel">Create a new Quizz</span>
+      </button>
     </div>
     <div class="col-md-4">
       <h2 jhiTranslate="home.share.heading">Share with your friends</h2>
-      <p jhiTranslate="home.share.paragraph">
-        Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-      </p>
-      <p><a jhiTranslate="home.share.button" class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <p jhiTranslate="home.share.paragraph">With your friends, your colleagues or your students...</p>
+      <p><a jhiTranslate="home.share.button" class="btn btn-primary" href="#" role="button">Available soon</a></p>
     </div>
   </div>
 

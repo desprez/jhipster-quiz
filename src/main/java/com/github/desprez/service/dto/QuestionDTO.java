@@ -1,11 +1,14 @@
 package com.github.desprez.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+@JsonInclude(Include.NON_EMPTY)
 public class QuestionDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;

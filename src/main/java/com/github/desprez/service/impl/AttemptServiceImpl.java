@@ -3,7 +3,9 @@ package com.github.desprez.service.impl;
 import com.github.desprez.domain.Attempt;
 import com.github.desprez.repository.AttemptRepository;
 import com.github.desprez.service.AttemptService;
+import com.github.desprez.service.dto.AttemptBasicDTO;
 import com.github.desprez.service.dto.AttemptDTO;
+import com.github.desprez.service.mapper.AttemptBasicMapper;
 import com.github.desprez.service.mapper.AttemptMapper;
 import java.util.Optional;
 import java.util.UUID;
@@ -27,9 +29,12 @@ public class AttemptServiceImpl implements AttemptService {
 
     private final AttemptMapper attemptMapper;
 
-    public AttemptServiceImpl(AttemptRepository attemptRepository, AttemptMapper attemptMapper) {
+    private final AttemptBasicMapper attemptBasicMapper;
+
+    public AttemptServiceImpl(AttemptRepository attemptRepository, AttemptMapper attemptMapper, AttemptBasicMapper attemptBasicMapper) {
         this.attemptRepository = attemptRepository;
         this.attemptMapper = attemptMapper;
+        this.attemptBasicMapper = attemptBasicMapper;
     }
 
     @Override
@@ -65,13 +70,13 @@ public class AttemptServiceImpl implements AttemptService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<AttemptDTO> findAll(Pageable pageable) {
+    public Page<AttemptBasicDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Attempts");
-        return attemptRepository.findAll(pageable).map(attemptMapper::toDto);
+        return attemptRepository.findAll(pageable).map(attemptBasicMapper::toDto);
     }
 
-    public Page<AttemptDTO> findAllWithEagerRelationships(Pageable pageable) {
-        return attemptRepository.findAllWithEagerRelationships(pageable).map(attemptMapper::toDto);
+    public Page<AttemptBasicDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return attemptRepository.findAllWithEagerRelationships(pageable).map(attemptBasicMapper::toDto);
     }
 
     @Override

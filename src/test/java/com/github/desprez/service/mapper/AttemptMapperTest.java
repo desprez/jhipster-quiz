@@ -8,6 +8,6 @@ class AttemptMapperTest {
 
     @BeforeEach
     public void setUp() {
-        attemptMapper = new AttemptMapperImpl();
+        attemptMapper = new AttemptMapperImpl(new AttemptAnswerMapperImpl());
     }
 }

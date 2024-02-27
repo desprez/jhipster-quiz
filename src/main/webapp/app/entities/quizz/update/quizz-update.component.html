@@ -134,6 +134,38 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.attempsLimit" for="field_attempsLimit">Attemps Limit</label>
+            <input
+              type="number"
+              class="form-control"
+              name="attempsLimit"
+              id="field_attempsLimit"
+              data-cy="attempsLimit"
+              formControlName="attempsLimit"
+            />
+          </div>
+
+          <div class="col mb-3">
+            <label class="form-label" jhiTranslate="quizzApp.quizz.attempsLimitPeriod" for="field_attempsLimitPeriod"
+              >Attemps Limit Period</label
+            >
+            <select
+              class="form-control"
+              name="attempsLimitPeriod"
+              formControlName="attempsLimitPeriod"
+              id="field_attempsLimitPeriod"
+              data-cy="attempsLimitPeriod"
+            >
+              <option [ngValue]="null">{{ 'quizzApp.Period.null' | translate }}</option>
+              @for (period of periodValues; track $index) {
+                <option [value]="period">{{ 'quizzApp.Period.' + period | translate }}</option>
+              }
+            </select>
+          </div>
+        </div>
+
         <div class="form-check mb-3">
           <label class="form-check-label" jhiTranslate="quizzApp.quizz.allowBack" for="field_allowBack">Allow Back</label>
           <input
@@ -173,23 +205,23 @@
         </div>
 
         <div class="form-check mb-3">
-          <label class="form-check-label" jhiTranslate="quizzApp.quizz.secretGoodAnwers" for="field_secretGoodAnwers"
-            >Secret Good Anwers</label
+          <label class="form-check-label" jhiTranslate="quizzApp.quizz.keepAnswersSecret" for="field_secretGoodAnwers"
+            >Keep Answers Secret</label
           >
           <input
             type="checkbox"
             class="form-check-input"
-            name="secretGoodAnwers"
-            id="field_secretGoodAnwers"
-            data-cy="secretGoodAnwers"
-            formControlName="secretGoodAnwers"
+            name="keepAnswersSecret"
+            id="field_keepAnswersSecret"
+            data-cy="keepAnswersSecret"
+            formControlName="keepAnswersSecret"
           />
           @if (
-            editForm.get('secretGoodAnwers')!.invalid &&
-            (editForm.get('secretGoodAnwers')!.dirty || editForm.get('secretGoodAnwers')!.touched)
+            editForm.get('keepAnswersSecret')!.invalid &&
+            (editForm.get('keepAnswersSecret')!.dirty || editForm.get('keepAnswersSecret')!.touched)
           ) {
             <div>
-              @if (editForm.get('secretGoodAnwers')?.errors?.required) {
+              @if (editForm.get('keepAnswersSecret')?.errors?.required) {
                 <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
               }
             </div>

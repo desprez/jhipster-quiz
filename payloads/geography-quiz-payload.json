@@ -1,0 +1,275 @@
+{
+  "title": "A geography quiz",
+  "description": null,
+  "difficulty": "MEDIUM",
+  "category": "GEOGRAPHY",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionCount": 11,
+  "publishDate": "2024-02-23T00:00:00Z",
+  "questionOrder": "FIXED",
+  "maxAnswerTime": null,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": true,
+  "image": null,
+  "imageContentType": null,
+  "questions": [
+    {
+      "statement": "What is the capital city of China?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Beijing",
+          "index": 1
+        },
+        {
+          "statement": "Shanghai",
+          "index": 2
+        },
+        {
+          "statement": "Guangzhou",
+          "index": 3
+        },
+        {
+          "statement": "Tokyo",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Oslo is the capital of",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Denmark",
+          "index": 1
+        },
+        {
+          "statement": "Finland",
+          "index": 2
+        },
+        {
+          "statement": "Norway",
+          "index": 3
+        },
+        {
+          "statement": "Australia",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Belgrade is the capital of",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Serbia",
+          "index": 1
+        },
+        {
+          "statement": "Palestine",
+          "index": 2
+        },
+        {
+          "statement": "Croatia",
+          "index": 3
+        },
+        {
+          "statement": "Bulgaria",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Portugal is bordered by what other country?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "France",
+          "index": 1
+        },
+        {
+          "statement": "Italy",
+          "index": 2
+        },
+        {
+          "statement": "Spain",
+          "index": 3
+        },
+        {
+          "statement": "China",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What body of water separates Saudi Arabia from Africa?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Indian Ocean",
+          "index": 1
+        },
+        {
+          "statement": "Pacific Ocean",
+          "index": 2
+        },
+        {
+          "statement": "Bass strait",
+          "index": 3
+        },
+        {
+          "statement": "Red Sea",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the only sea on Earth with no coastline?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Sargasso Sea",
+          "index": 1
+        },
+        {
+          "statement": "Red Sea",
+          "index": 2
+        },
+        {
+          "statement": "Pacific Ocean",
+          "index": 3
+        },
+        {
+          "statement": "Caspian",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the most populer city in the world?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "New York",
+          "index": 1
+        },
+        {
+          "statement": "Tokyo",
+          "index": 2
+        },
+        {
+          "statement": "Jakarta",
+          "index": 3
+        },
+        {
+          "statement": "Manila",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which country has the greatest surface area?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "United States",
+          "index": 1
+        },
+        {
+          "statement": "Russia",
+          "index": 2
+        },
+        {
+          "statement": "Australia",
+          "index": 3
+        },
+        {
+          "statement": "Canada",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "How many continents are there?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "5",
+          "index": 1
+        },
+        {
+          "statement": "6",
+          "index": 2
+        },
+        {
+          "statement": "7",
+          "index": 3
+        },
+        {
+          "statement": "8",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which lake is the worlds largest lake?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Superior",
+          "index": 1
+        },
+        {
+          "statement": "Victoria",
+          "index": 2
+        },
+        {
+          "statement": "Huron",
+          "index": 3
+        },
+        {
+          "statement": "Michigan",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Whet is the capital city of France?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "New york",
+          "index": 1
+        },
+        {
+          "statement": "London",
+          "index": 2
+        },
+        {
+          "statement": "Paris",
+          "index": 3
+        },
+        {
+          "statement": "Dublin",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    }
+  ]
+}

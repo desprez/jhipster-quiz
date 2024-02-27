@@ -23,6 +23,10 @@
           <dd>
             <span>{{ attemptAnswer.ended | formatMediumDatetime }}</span>
           </dd>
+          <dt><span jhiTranslate="quizzApp.attemptAnswer.correct">Correct</span></dt>
+          <dd>
+            <span>{{ attemptAnswer.correct }}</span>
+          </dd>
           <dt><span jhiTranslate="quizzApp.attemptAnswer.question">Question</span></dt>
           <dd>
             @if (attemptAnswer.question) {
