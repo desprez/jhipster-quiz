@@ -11,8 +11,8 @@
         <jhi-alert></jhi-alert>
 
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="quizzApp.quizz.id">Id</span></dt>
-          <dd>
+          <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="quizzApp.quizz.id">Id</span></dt>
+          <dd *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <span>{{ quizz.id }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.title">Title</span></dt>
@@ -104,10 +104,11 @@
         <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
-
-        <button type="button" [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary">
-          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-        </button>
+        @if (quizz && !quizz.published) {
+          <button type="button" [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary">
+            <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+          </button>
+        }
       </div>
     }
   </div>

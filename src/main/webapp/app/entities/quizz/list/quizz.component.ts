@@ -18,6 +18,7 @@ import { QuizzDeleteDialogComponent } from '../delete/quizz-delete-dialog.compon
 import { EntityArrayResponseType, QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzPlayComponent } from '../play/quizz-play.component';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 @Component({
   standalone: true,
@@ -33,6 +34,7 @@ import { QuizzPlayComponent } from '../play/quizz-play.component';
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
     InfiniteScrollModule,
+    HasAnyAuthorityDirective,
   ],
 })
 export class QuizzComponent implements OnInit {

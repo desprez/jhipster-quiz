@@ -1,19 +1,17 @@
 package com.github.desprez.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.github.desprez.domain.enumeration.DisplayOrder;
 import com.github.desprez.domain.enumeration.Period;
 import jakarta.validation.constraints.NotNull;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * A DTO for the {@link com.github.desprez.domain.Quizz} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@JsonInclude(Include.NON_EMPTY)
+//@JsonInclude(Include.NON_EMPTY)
 public class QuizzDTO extends QuizzBasicDTO {
 
     private static final long serialVersionUID = 1L;
@@ -36,7 +34,7 @@ public class QuizzDTO extends QuizzBasicDTO {
 
     private Period attempsLimitPeriod;
 
-    private Set<QuestionDTO> questions = new HashSet<>();
+    private List<QuestionDTO> questions = new ArrayList<>();
 
     public DisplayOrder getQuestionOrder() {
         return questionOrder;
@@ -94,11 +92,11 @@ public class QuizzDTO extends QuizzBasicDTO {
         this.attempsLimitPeriod = attempsLimitPeriod;
     }
 
-    public Set<QuestionDTO> getQuestions() {
+    public List<QuestionDTO> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<QuestionDTO> questions) {
+    public void setQuestions(List<QuestionDTO> questions) {
         this.questions = questions;
     }
 
