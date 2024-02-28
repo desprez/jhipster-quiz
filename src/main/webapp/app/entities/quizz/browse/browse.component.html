@@ -38,60 +38,12 @@
                   <span class="d-none d-md-inline" jhiTranslate="quizzApp.quizz.play">Play</span>
                 </a>
               }
-              @if (quizz && !quizz.published) {
-                <a [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                  <fa-icon icon="pencil-alt"></fa-icon>
-                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                </a>
-              }
               <p>
                 <small class="text-muted"><span jhiTranslate="quizzApp.quizz.user">User</span>:{{ quizz.user?.login }}</small>
               </p>
             </div>
           </div>
         </div>
-        <!-- 
-              <tr data-cy="entityTable">
-                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                  <a [routerLink]="['/quizz', quizz.id, 'view']">{{ quizz.id }}</a>
-                </td>
-                <td>{{ quizz.title }}</td>
-                <td>{{ quizz.description }}</td>
-                <td jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</td>
-                <td jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</td>
-                <td>{{ quizz.questionCount }}</td>
-                <td>{{ quizz.published }}</td>
-                <td>
-                  {{ quizz.user?.login }}
-                </td>
-                <td class="text-end">
-                  <div class="btn-group">
-                    <a [routerLink]="['/quizz', quizz.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                      <fa-icon icon="eye"></fa-icon>
-                      <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                    </a>
-                    @if (quizz && !quizz.published) {
-                      <a [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                        <fa-icon icon="pencil-alt"></fa-icon>
-                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                      </a>
-                    }
-                    @if (quizz && quizz.published) {
-                      <a [routerLink]="['/quizz', quizz.id, 'play']" class="btn btn-primary btn-sm" data-cy="entityPlayButton">
-                        <fa-icon icon="play"></fa-icon>
-                        <span class="d-none d-md-inline" jhiTranslate="quizzApp.quizz.play">Play</span>
-                      </a>
-                    }
-                    @if (quizz && !quizz.published) {
-                      <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                        <fa-icon icon="times"></fa-icon>
-                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                      </button>
-                    }
-                  </div>
-                </td>
-              </tr>
-            -->
       }
     </div>
   }
