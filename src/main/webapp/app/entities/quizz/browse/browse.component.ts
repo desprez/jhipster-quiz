@@ -14,7 +14,6 @@ import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/conf
 import { DataUtils } from 'app/core/util/data-util.service';
 import { ParseLinks } from 'app/core/util/parse-links.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { QuizzDeleteDialogComponent } from '../delete/quizz-delete-dialog.component';
 import { EntityArrayResponseType, QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzPlayComponent } from '../play/quizz-play.component';
@@ -81,22 +80,6 @@ export class BrowseComponent implements OnInit {
 
   openFile(base64String: string, contentType: string | null | undefined): void {
     return this.dataUtils.openFile(base64String, contentType);
-  }
-
-  delete(quizz: IQuizz): void {
-    const modalRef = this.modalService.open(QuizzDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.quizz = quizz;
-    // unsubscribe not needed because closed completes on modal close
-    modalRef.closed
-      .pipe(
-        filter(reason => reason === ITEM_DELETED_EVENT),
-        switchMap(() => this.loadFromBackendWithRouteInformations()),
-      )
-      .subscribe({
-        next: (res: EntityArrayResponseType) => {
-          this.onResponseSuccess(res);
-        },
-      });
   }
 
   play(quizz: IQuizz): void {
@@ -185,6 +168,7 @@ export class BrowseComponent implements OnInit {
       size: this.itemsPerPage,
       eagerload: true,
       sort: this.getSortQueryParam(predicate, ascending),
+      ...{ 'published.equals': 'true' },
     };
     return this.quizzService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
   }

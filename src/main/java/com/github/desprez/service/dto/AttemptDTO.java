@@ -39,15 +39,15 @@ public class AttemptDTO extends AttemptBasicDTO {
         }
 
         AttemptDTO attemptDTO = (AttemptDTO) o;
-        if (this.id == null) {
+        if (this.getId() == null) {
             return false;
         }
-        return Objects.equals(this.id, attemptDTO.id);
+        return Objects.equals(this.getId(), attemptDTO.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id);
+        return Objects.hash(this.getId());
     }
 
     // prettier-ignore

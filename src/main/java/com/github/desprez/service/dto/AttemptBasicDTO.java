@@ -18,7 +18,7 @@ public class AttemptBasicDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
+    protected UUID id;
 
     @NotNull
     @Min(value = 0)
