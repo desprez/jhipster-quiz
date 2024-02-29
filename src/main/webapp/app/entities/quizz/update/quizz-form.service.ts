@@ -132,7 +132,6 @@ export class QuizzFormService {
   }
 
   initQuestion(questionRawValue: IQuestion): QuestionFormGroup {
-    console.log('initQuestion', questionRawValue);
     return new FormGroup<QuestionFormGroupContent>({
       id: new FormControl({ value: questionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
       statement: new FormControl(questionRawValue.statement, { validators: [Validators.required] }),
@@ -143,7 +142,6 @@ export class QuizzFormService {
   }
 
   initOption(optionRawValue: IOption): OptionFormGroup {
-    console.log('initOption', optionRawValue);
     return new FormGroup<OptionFormGroupContent>({
       id: new FormControl({ value: optionRawValue.id, disabled: true }, { nonNullable: true, validators: [Validators.required] }),
       statement: new FormControl(optionRawValue.statement, { validators: [Validators.required] }),
@@ -174,7 +172,7 @@ export class QuizzFormService {
       allowReview: false,
       keepAnswersSecret: false,
       published: false,
-      publishDate: currentTime,
+      // publishDate: currentTime, filled only by according service
     };
   }
 

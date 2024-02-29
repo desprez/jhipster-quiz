@@ -157,7 +157,6 @@ export class QuizzMakerComponent implements OnInit {
   }
 
   get questions(): FormArray {
-    console.log('get questions:' + this.editForm.get('questions')?.value);
     return this.editForm.get('questions') as FormArray;
   }
 
@@ -200,18 +199,6 @@ export class QuizzMakerComponent implements OnInit {
     }
     this.getOptionsFormArray(questionIndex).removeAt(optionIndex);
   }
-
-  // onCorrectRadioChange(questionIndex: number, optionIndex: number): void {
-  //   console.log('onCorrectRadioChange:' + questionIndex + ' ' + optionIndex);
-  //   this.getOptionsFormArray(questionIndex).value.forEach((option: IOption) => {
-  //     option.isCorrect = optionIndex === option.index;
-  //     console.log('option.isCorrect:' + option.isCorrect);
-  //     if (option.isCorrect) {
-  //       this.questions.controls[questionIndex].get('correctOptionIndex')?.setValue(option.index);
-  //       console.log('correctOptionIndex:' + option.index);
-  //     }
-  //   });
-  // }
 
   getOptionIndex(questionIndex: number, optionIndex: number): number {
     return this.getOptionControls(questionIndex)[optionIndex].get('index')?.value;
