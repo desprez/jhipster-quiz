@@ -20,15 +20,14 @@ import { Period } from 'app/entities/enumerations/period.model';
 import { QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from '../update/quizz-form.service';
-import { IQuestion } from 'app/entities/question/question.model';
-import { IOption } from 'app/entities/option/option.model';
+import { QuestionMakerComponent } from './question-maker/question-maker.component';
 
 @Component({
   standalone: true,
   selector: 'jhi-quizz-maker',
   templateUrl: './quizz-maker.component.html',
   styleUrl: './quizz-maker.component.scss',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective, QuestionMakerComponent],
 })
 export class QuizzMakerComponent implements OnInit {
   isSaving = false;
@@ -132,6 +131,10 @@ export class QuizzMakerComponent implements OnInit {
     this.usersSharedCollection = this.userService.addUserToCollectionIfMissing<IUser>(this.usersSharedCollection, quizz.user);
   }
 
+  get questions(): FormArray {
+    return this.editForm.get('questions') as FormArray;
+  }
+
   setQuestions(quizz: IQuizz): void {
     if (quizz.questions) {
       quizz.questions.forEach(question => {
@@ -146,65 +149,5 @@ export class QuizzMakerComponent implements OnInit {
       .pipe(map((res: HttpResponse<IUser[]>) => res.body ?? []))
       .pipe(map((users: IUser[]) => this.userService.addUserToCollectionIfMissing<IUser>(users, this.quizz?.user)))
       .subscribe((users: IUser[]) => (this.usersSharedCollection = users));
-  }
-
-  getRadioBoundControl(questionIndex: number) {
-    return this.questions.controls[questionIndex].get('correctOptionIndex') as FormControl;
-  }
-
-  getRadioBoundProperty(questionIndex: number): number {
-    return this.questions.controls[questionIndex].get('correctOptionIndex')?.value;
-  }
-
-  get questions(): FormArray {
-    return this.editForm.get('questions') as FormArray;
-  }
-
-  getOptionsFormArray(questionIndex: number): FormArray {
-    return this.questions.controls[questionIndex].get('options') as FormArray;
-  }
-
-  getOptionControls(questionIndex: number) {
-    return this.getOptionsFormArray(questionIndex).controls;
-  }
-
-  addQuestion(): void {
-    const nextQuestionIndex = this.questions.length + 1;
-    const newQuestion: IQuestion = {
-      id: '',
-      statement: '',
-      index: nextQuestionIndex,
-      correctOptionIndex: 1,
-      options: [this.newOption(1), this.newOption(2)],
-    };
-    this.questions.push(this.quizzFormService.initQuestion(newQuestion));
-  }
-
-  removeQuestion(questionIndex: number): void {
-    this.questions.removeAt(questionIndex);
-  }
-
-  addOption(questionIndex: number): void {
-    const option = this.newOption(this.getOptionsFormArray(questionIndex).length + 1);
-    this.getOptionsFormArray(questionIndex).push(this.quizzFormService.initOption(option));
-  }
-
-  newOption(nextOptionIndex: number): IOption {
-    return { id: '', statement: '', index: nextOptionIndex };
-  }
-
-  removeOption(questionIndex: number, optionIndex: number): void {
-    if (this.getOptionIndex(questionIndex, optionIndex) === this.getRadioBoundProperty(questionIndex)) {
-      this.getRadioBoundControl(questionIndex).setValue(1);
-    }
-    this.getOptionsFormArray(questionIndex).removeAt(optionIndex);
-  }
-
-  getOptionIndex(questionIndex: number, optionIndex: number): number {
-    return this.getOptionControls(questionIndex)[optionIndex].get('index')?.value;
-  }
-
-  customTrackBy(index: number, obj: any): any {
-    return index;
   }
 }
