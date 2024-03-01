@@ -1,0 +1,254 @@
+{
+  "title": "Video games Quizz",
+  "description": "A quizz about famous video games",
+  "difficulty": "MEDIUM",
+  "category": "VIDEO_GAMES",
+  "published": false,
+  "user": {
+    "id": 1,
+    "login": "admin"
+  },
+  "image": null,
+  "imageContentType": null,
+  "questionCount": 10,
+  "publishDate": null,
+  "questionOrder": "FIXED",
+  "maxAnswerTime": null,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": true,
+  "attempsLimit": null,
+  "attempsLimitPeriod": null,
+  "questions": [
+    {
+      "statement": "In the video game 'The Legend of Zelda: Breath of the Wild,' what is the name of the main character?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Ganondorf",
+          "index": 1
+        },
+        {
+          "statement": "Link",
+          "index": 2
+        },
+        {
+          "statement": "Zelda",
+          "index": 3
+        },
+        {
+          "statement": "Epona",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which of the following is not a popular gaming console released by Sony?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Xbox",
+          "index": 1
+        },
+        {
+          "statement": "PlayStation 2",
+          "index": 2
+        },
+        {
+          "statement": "PlayStation 3",
+          "index": 3
+        },
+        {
+          "statement": "PlayStation",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of the Italian plumber who is the main character in the iconic video game series created by Nintendo?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Mario",
+          "index": 1
+        },
+        {
+          "statement": "Luigi",
+          "index": 2
+        },
+        {
+          "statement": "Donkey Kong",
+          "index": 3
+        },
+        {
+          "statement": "Yoshi",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which of the following game genres is 'Fortnite' classified as?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Battle Royale",
+          "index": 1
+        },
+        {
+          "statement": "Role-Playing",
+          "index": 2
+        },
+        {
+          "statement": "Racing",
+          "index": 3
+        },
+        {
+          "statement": "Simulation",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "In the game 'Minecraft,' what is used to craft items and build structures?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Iron",
+          "index": 1
+        },
+        {
+          "statement": "Wood",
+          "index": 2
+        },
+        {
+          "statement": "Gold",
+          "index": 3
+        },
+        {
+          "statement": "Diamonds",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the main objective in the game 'Among Us'?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Build a virtual world",
+          "index": 1
+        },
+        {
+          "statement": "Solve puzzles",
+          "index": 2
+        },
+        {
+          "statement": "Complete tasks on a spaceship",
+          "index": 3
+        },
+        {
+          "statement": "Survive on an island",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which video game series features a character named Master Chief?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Grand Theft Auto",
+          "index": 1
+        },
+        {
+          "statement": "Call of Duty",
+          "index": 2
+        },
+        {
+          "statement": "Halo",
+          "index": 3
+        },
+        {
+          "statement": "Assassin's Creed",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "In the game 'Pokémon,' which of the following types is super effective against Water-type Pokémon?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Electric",
+          "index": 1
+        },
+        {
+          "statement": "Rock",
+          "index": 2
+        },
+        {
+          "statement": "Grass",
+          "index": 3
+        },
+        {
+          "statement": "Fire",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What does FPS stand for in the context of video games?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Fantasy Power Score",
+          "index": 1
+        },
+        {
+          "statement": "Final Player Standing",
+          "index": 2
+        },
+        {
+          "statement": "First-Person Shooter",
+          "index": 3
+        },
+        {
+          "statement": "Frames Per Second",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of the main antagonist in the game 'Portal'?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Wheatley",
+          "index": 1
+        },
+        {
+          "statement": "Cave Johnson",
+          "index": 2
+        },
+        {
+          "statement": "GLaDOS",
+          "index": 3
+        },
+        {
+          "statement": "Chell",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    }
+  ]
+}
