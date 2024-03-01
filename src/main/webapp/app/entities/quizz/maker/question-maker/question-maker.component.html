@@ -1,0 +1,40 @@
+<div formArrayName="questions" div class="card text-white bg-primary mb-12">
+  <div *ngFor="let question of questions.controls; let i = index; trackBy: customTrackBy" class="card border-primary mb-12">
+    <div class="card-header">
+      <span class="text-primary">Question {{ i + 1 }}</span>
+
+      <button class="btn btn-secondary" type="button" id="button-addon2" (click)="removeQuestion(i)" style="float: right">
+        <fa-icon icon="trash-alt"></fa-icon>
+      </button>
+    </div>
+
+    <div class="card-body" [formGroupName]="i">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label class="form-label" jhiTranslate="quizzApp.question.statement" for="field_statement">Statement</label>
+          <input
+            type="text"
+            class="form-control"
+            id="field_question_statement"
+            data-cy="statement"
+            formControlName="statement"
+            placeholder="{{ 'quizzApp.quizz.maker.question.placeholder' | translate }}"
+          />
+        </div>
+      </div>
+      <br />
+
+      <jhi-option-maker
+        [formArray]="getOptions(i)"
+        [correctOptionIndex]="getCorrectOptionIndex(i)"
+        (onSelectOption)="updateCorrectIndex($event)"
+      ></jhi-option-maker>
+    </div>
+  </div>
+  <br />
+</div>
+<div class="margin-20">
+  <button type="button" class="btn btn-secondary" (click)="addQuestion()">
+    <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.question.addButton">Add option</span>
+  </button>
+</div>

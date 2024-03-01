@@ -1,0 +1,26 @@
+<div *ngFor="let option of formArray.controls; let j = index">
+  <ng-container [formGroup]="getGroup(j)">
+    <ng-container class="form-group" style="padding-left: 100px">
+      <div class="input-group mb-3">
+        <span class="input-group-text">{{ j + 1 }}</span>
+
+        <input type="radio" id="{{ 'correctOptionIndex' + j }}" [formControl]="correctOptionIndexControl" [value]="j + 1" />&nbsp;&nbsp;
+
+        <input
+          type="text"
+          class="form-control"
+          id="field_option_statement"
+          formControlName="statement"
+          placeholder="{{ 'quizzApp.quizz.maker.option.placeholder' | translate }}"
+        />
+
+        <button *ngIf="formArray.length > 1" class="btn btn-secondary" type="button" id="button-addon2" (click)="removeOption(j)">
+          <fa-icon icon="trash-alt"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+  <button type="button" *ngIf="j == formArray.length - 1" class="btn btn-secondary" (click)="addOption()">
+    <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.option.addButton">Add option</span>
+  </button>
+</div>
