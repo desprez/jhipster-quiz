@@ -1,0 +1,254 @@
+{
+  "title": "Famous Inventors",
+  "description": null,
+  "difficulty": "MEDIUM",
+  "category": "GADGETS",
+  "published": false,
+  "user": {
+    "id": 1,
+    "login": "admin"
+  },
+  "image": null,
+  "imageContentType": null,
+  "questionCount": 10,
+  "publishDate": null,
+  "questionOrder": "RANDOM",
+  "maxAnswerTime": null,
+  "allowBack": false,
+  "allowReview": false,
+  "keepAnswersSecret": false,
+  "attempsLimit": null,
+  "attempsLimitPeriod": null,
+  "questions": [
+    {
+      "statement": "Who is credited with inventing the telephone?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Thomas Edison",
+          "index": 1
+        },
+        {
+          "statement": "Alexander Graham Bell",
+          "index": 2
+        },
+        {
+          "statement": "Albert Einstein",
+          "index": 3
+        },
+        {
+          "statement": "Nikola Tesla",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "The inventor of the first practical sewing machine is:",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Nikola Tesla",
+          "index": 1
+        },
+        {
+          "statement": "Elias Howe",
+          "index": 2
+        },
+        {
+          "statement": "Isaac Singer",
+          "index": 3
+        },
+        {
+          "statement": "Thomas Edison",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Who is credited with inventing the first commercially successful typewriter?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Eli Whitney",
+          "index": 1
+        },
+        {
+          "statement": "Samuel Morse",
+          "index": 2
+        },
+        {
+          "statement": "Christopher Latham Sholes",
+          "index": 3
+        },
+        {
+          "statement": "Benjamin Franklin",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who is the inventor of Penicillin, the first antibiotic drug?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Louis Pasteur",
+          "index": 1
+        },
+        {
+          "statement": "Jonas Salk",
+          "index": 2
+        },
+        {
+          "statement": "Robert Koch",
+          "index": 3
+        },
+        {
+          "statement": "Alexander Fleming",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "The inventor of the World Wide Web is:",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Mark Zuckerberg",
+          "index": 1
+        },
+        {
+          "statement": "Steve Jobs",
+          "index": 2
+        },
+        {
+          "statement": "Bill Gates",
+          "index": 3
+        },
+        {
+          "statement": "Tim Berners-Lee",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is known for the invention of the television?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Thomas Edison",
+          "index": 1
+        },
+        {
+          "statement": "Nikola Tesla",
+          "index": 2
+        },
+        {
+          "statement": "Philo Farnsworth",
+          "index": 3
+        },
+        {
+          "statement": "Guglielmo Marconi",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which inventor is most famously associated with the development of the light spectrum?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Nikola Tesla",
+          "index": 1
+        },
+        {
+          "statement": "Albert Einstein",
+          "index": 2
+        },
+        {
+          "statement": "Thomas Edison",
+          "index": 3
+        },
+        {
+          "statement": "Isaac Newton",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Which inventor is associated with the creation of the light bulb?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Alexander Fleming",
+          "index": 1
+        },
+        {
+          "statement": "Nikola Tesla",
+          "index": 2
+        },
+        {
+          "statement": "Thomas Edison",
+          "index": 3
+        },
+        {
+          "statement": "Marie Curie ",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who is recognized as the inventor of the telephone answering machine?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Thomas Edison",
+          "index": 1
+        },
+        {
+          "statement": "Alexander Graham Bell",
+          "index": 2
+        },
+        {
+          "statement": "Valdemar Poulsen",
+          "index": 3
+        },
+        {
+          "statement": "Steve Wozniak",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who invented the first practical electric battery?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Thomas Edison",
+          "index": 1
+        },
+        {
+          "statement": "Alessandro Volta",
+          "index": 2
+        },
+        {
+          "statement": "Benjamin Franklin ",
+          "index": 3
+        },
+        {
+          "statement": "Michael Faraday",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

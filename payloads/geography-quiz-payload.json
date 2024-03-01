@@ -1,6 +1,6 @@
 {
   "title": "A geography quiz",
-  "description": null,
+  "description": "Around the word, various question about countries, cities, ...",
   "difficulty": "MEDIUM",
   "category": "GEOGRAPHY",
   "published": false,
@@ -8,9 +8,9 @@
     "id": 2,
     "login": "user"
   },
-  "questionCount": 11,
+  "questionCount": 12,
   "publishDate": "2024-02-23T00:00:00Z",
-  "questionOrder": "FIXED",
+  "questionOrder": "RANDOM",
   "maxAnswerTime": null,
   "allowBack": true,
   "allowReview": true,
@@ -249,7 +249,7 @@
       "correctOptionIndex": 1
     },
     {
-      "statement": "Whet is the capital city of France?",
+      "statement": "What is the capital city of France?",
       "index": 11,
       "options": [
         {
@@ -270,6 +270,29 @@
         }
       ],
       "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of the bridge that spans the East River in New York and was the first to use steel for cable wire?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "The Golden Gate Bridge",
+          "index": 1
+        },
+        {
+          "statement": "The Brooklyn Bridge",
+          "index": 2
+        },
+        {
+          "statement": "Tower Bridge",
+          "index": 3
+        },
+        {
+          "statement": "George Washington Bridge",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
     }
   ]
 }
