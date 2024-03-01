@@ -11,7 +11,7 @@
         @if (editForm.controls.id.value !== null) {
           <div class="mb-3" *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <label class="form-label" jhiTranslate="quizzApp.quizz.id" for="field_id">Id</label>
-            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+            <input type="text" class="form-control-plaintext" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
           </div>
         }
 

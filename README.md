@@ -24,7 +24,7 @@ This application was generated using JHipster 8.1.0, you can find documentation 
   - [x] Change Quizz & Question entities JPA mapping to allow cascade
   - [x] Add repository **findOneWithQuestionRelationships()**
   - [x] Change Quizz & Question pages to display children entities.
-- [ ] Show technical ids for admin user only (UI)
+- [x] Show technical ids for admin user only (UI)
 - [ ] Forbid published Quizz to be updated or deleted
   - [x] In the UI
   - [ ] by API

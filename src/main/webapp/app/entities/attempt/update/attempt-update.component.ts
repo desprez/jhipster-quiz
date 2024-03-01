@@ -14,12 +14,13 @@ import { UserService } from 'app/entities/user/user.service';
 import { AttemptService } from '../service/attempt.service';
 import { IAttempt } from '../attempt.model';
 import { AttemptFormService, AttemptFormGroup } from './attempt-form.service';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 @Component({
   standalone: true,
   selector: 'jhi-attempt-update',
   templateUrl: './attempt-update.component.html',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
 })
 export class AttemptUpdateComponent implements OnInit {
   isSaving = false;

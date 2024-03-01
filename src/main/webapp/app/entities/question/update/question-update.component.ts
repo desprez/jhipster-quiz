@@ -12,12 +12,13 @@ import { QuizzService } from 'app/entities/quizz/service/quizz.service';
 import { IQuestion } from '../question.model';
 import { QuestionService } from '../service/question.service';
 import { QuestionFormService, QuestionFormGroup } from './question-form.service';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 @Component({
   standalone: true,
   selector: 'jhi-question-update',
   templateUrl: './question-update.component.html',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
 })
 export class QuestionUpdateComponent implements OnInit {
   isSaving = false;
