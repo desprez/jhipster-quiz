@@ -15,6 +15,18 @@
           <dd>
             <span>{{ attempt.id }}</span>
           </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.user">User</span></dt>
+          <dd>
+            <span>{{ attempt.user?.login }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
+          <dd>
+            @if (attempt.quizz) {
+              <div>
+                <a [routerLink]="['/quizz', attempt.quizz.id, 'view']">{{ attempt.quizz.title }}</a>
+              </div>
+            }
+          </dd>
           <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
           <dd>
             <span>{{ attempt.correctAnswerCount }}</span>
@@ -27,25 +39,9 @@
           <dd>
             <span>{{ attempt.unansweredCount }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.started">Started</span></dt>
+          <dt><span jhiTranslate="quizzApp.attempt.duration">Duration</span></dt>
           <dd>
-            <span>{{ attempt.started | formatMediumDatetime }}</span>
-          </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.ended">Ended</span></dt>
-          <dd>
-            <span>{{ attempt.ended | formatMediumDatetime }}</span>
-          </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
-          <dd>
-            @if (attempt.quizz) {
-              <div>
-                <a [routerLink]="['/quizz', attempt.quizz.id, 'view']">{{ attempt.quizz.title }}</a>
-              </div>
-            }
-          </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.user">User</span></dt>
-          <dd>
-            <span>{{ attempt.user?.login }}</span>
+            <span>{{ attempt.ended!.diff(attempt.started) | duration }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.attempt.answers">Questions</span></dt>
           <dd>

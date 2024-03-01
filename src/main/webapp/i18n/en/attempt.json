@@ -23,9 +23,11 @@
       "unansweredCount": "Unanswered Count",
       "started": "Started",
       "ended": "Ended",
+      "date": "Date",
+      "duration": "Duration",
       "answers": "Answers",
       "quizz": "Quizz",
-      "user": "User"
+      "user": "Player"
     }
   }
 }

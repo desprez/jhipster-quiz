@@ -18,11 +18,13 @@
         "title": "Tentative"
       },
       "id": "Id",
-      "correctAnswerCount": "Nombre de réponse correctes",
-      "wrongAnswerCount": "Nombre de réponse incorrectes",
-      "unansweredCount": "Unanswered Count",
+      "correctAnswerCount": "Nombre de réponses correctes",
+      "wrongAnswerCount": "Nombre de réponses incorrectes",
+      "unansweredCount": "Non répondues",
       "started": "Début",
       "ended": "Fin",
+      "date": "Date",
+      "duration": "Durée",
       "answers": "Réponses",
       "quizz": "Quizz",
       "user": "Joueur"

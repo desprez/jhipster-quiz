@@ -2,30 +2,32 @@
   "quizzApp": {
     "attempt": {
       "home": {
-        "title": "Attempts",
+        "title": "Intentars",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Attempt",
-        "createOrEditLabel": "Crear o editar Attempt",
-        "notFound": "Ningún Attempts encontrado"
+        "createLabel": "Crear nuevo Intentar",
+        "createOrEditLabel": "Crear o editar Intentar",
+        "notFound": "Ningún Intentars encontrado"
       },
-      "created": "Un nuevo Attempt ha sido creado con el identificador {{ param }}",
-      "updated": "Un Attempt ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Attempt ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Intentar ha sido creado con el identificador {{ param }}",
+      "updated": "Un Intentar ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Intentar ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Attempt {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Intentar {{ id }}?"
       },
       "detail": {
-        "title": "Attempt"
+        "title": "Intentar"
       },
       "id": "Id",
-      "correctAnswerCount": "Correct Answer Count",
-      "wrongAnswerCount": "Wrong Answer Count",
-      "unansweredCount": "Unanswered Count",
-      "started": "Started",
-      "ended": "Ended",
-      "answers": "Answers",
+      "correctAnswerCount": "Recuento de respuestas correctas",
+      "wrongAnswerCount": "Recuento de respuestas incorrectas",
+      "unansweredCount": "Conteo sin respuesta",
+      "started": "Comenzó",
+      "ended": "Terminado",
+      "date": "Fecha",
+      "duration": "Duración",
+      "answers": "Respuestas",
       "quizz": "Quizz",
-      "user": "User"
+      "user": "Jugador"
     }
   }
 }

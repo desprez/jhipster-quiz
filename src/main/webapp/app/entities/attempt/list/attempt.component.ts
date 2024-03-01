@@ -6,7 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import SharedModule from 'app/shared/shared.module';
 import { SortDirective, SortByDirective } from 'app/shared/sort';
-import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
+import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe, DateAsAgoPipe } from 'app/shared/date';
 import { ItemCountComponent } from 'app/shared/pagination';
 import { FormsModule } from '@angular/forms';
 
@@ -30,6 +30,7 @@ import { AttemptDeleteDialogComponent } from '../delete/attempt-delete-dialog.co
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
     ItemCountComponent,
+    DateAsAgoPipe,
   ],
 })
 export class AttemptComponent implements OnInit {
