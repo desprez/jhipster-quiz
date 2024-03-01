@@ -8,7 +8,7 @@
     "id": 2,
     "login": "user"
   },
-  "questionCount": 12,
+  "questionCount": 13,
   "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "RANDOM",
   "maxAnswerTime": null,
@@ -293,6 +293,29 @@
         }
       ],
       "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which is the only continent in the word without a desert ?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "North America",
+          "index": 1
+        },
+        {
+          "statement": "Asia",
+          "index": 2
+        },
+        {
+          "statement": "Europe",
+          "index": 3
+        },
+        {
+          "statement": "Africa",
+          "index": 3
+        }
+      ],
+      "correctOptionIndex": 3
     }
   ]
 }
