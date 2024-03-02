@@ -26,27 +26,31 @@ This application was generated using JHipster 8.1.0, you can find documentation 
   - [x] Change Quizz & Question pages to display children entities.
 - [x] Show technical ids for admin user only (UI)
 - [ ] Forbid published Quizz to be updated or deleted
-  - [x] In the UI
+  - [ ] In the UI (with guard)
   - [ ] by API
 - [x] Add new Angular Quizz/PlayComponent as the board game.
   > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component play
   - [ ] Add calls to this component in Quizz list, Quizz Card, Quizz Detail
-  - [ ] Create Attempt when Quizz start
-  - [ ] Create AttemptAnswser for each Question answered
-  - [ ] Compute Attempt score when Quizz ends
-  - [ ] Add progress bar
-  - [ ] Add optional Timer if Quizz timed
+  - [x] Create Attempt when Quizz start
+  - [x] Create AttemptAnswser for each Question answered
+  - [x] Compute Attempt score when Quizz ends
+  - [x] Add progress bar
+  - [x] Add optional Timer if Quizz timed
   - [ ] Add optional Review if Quizz reviewable
   - [ ] Redirect to Attempt Page when Quizz finish
 - [x] Add Questions count in quizz lists and Cards
-- [ ] Add new Angular Quizz/MakerComponent to make a Quizz in one page.
+- [x] Add new Angular Quizz/MakerComponent to make a Quizz in one page.
   > jh8-quizz\src\main\webapp\app\entities\quizz>ng generate component maker
   - [ ] Add Drag & Drop feature
     > npm install --save @angular/cdk @angular/animations
     - [ ] to reorder Questions
     - [ ] to reorder Answers
+- [x] Add New Round progress Bar to display score
+  > npm install angular-svg-round-progressbar --save
+  - [x] for AttemptDetail page
+  - [x] for Play Results page
 - [ ] Add new Angular BrowseComponent to browse published Quizz (ready to play only)
-  - [ ] Add surrounded API
+  - [x] Add surrounded API
 - [ ] Add new Angular MyQuizzComponent to list Quizz by authenticated users
   - [ ] Add surrounded API
 - [ ] Add new Angular MyScoreComponent to display Quizz attemps by authenticated users
