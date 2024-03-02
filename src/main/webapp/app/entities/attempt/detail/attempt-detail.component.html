@@ -9,18 +9,11 @@
         <jhi-alert-error></jhi-alert-error>
 
         <jhi-alert></jhi-alert>
-        <div class="d-flex justify-content-center">
-          <!-- <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" /> -->
-          <jhi-circle-progress [value]="current"></jhi-circle-progress>
-        </div>
+
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="quizzApp.attempt.id">Id</span></dt>
           <dd>
             <span>{{ attempt.id }}</span>
-          </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.user">User</span></dt>
-          <dd>
-            <span>{{ attempt.user?.login }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
           <dd>
@@ -30,7 +23,17 @@
               </div>
             }
           </dd>
-
+          <dt><span jhiTranslate="quizzApp.attempt.user">Player</span></dt>
+          <dd>
+            <span>{{ attempt.user?.login }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.score">Score</span></dt>
+          <dd>
+            <div class="progress-percentage-wrapper">
+              <div class="progress-percentage ng-cloak">{{ current! / max! | percent }}</div>
+              <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" [color]="'#fa6f04'" />
+            </div>
+          </dd>
           <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
           <dd>
             <span>{{ attempt.correctAnswerCount }}</span>
