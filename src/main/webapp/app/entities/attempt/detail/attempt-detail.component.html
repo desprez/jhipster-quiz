@@ -15,10 +15,6 @@
           <dd>
             <span>{{ attempt.id }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.user">User</span></dt>
-          <dd>
-            <span>{{ attempt.user?.login }}</span>
-          </dd>
           <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
           <dd>
             @if (attempt.quizz) {
@@ -26,6 +22,17 @@
                 <a [routerLink]="['/quizz', attempt.quizz.id, 'view']">{{ attempt.quizz.title }}</a>
               </div>
             }
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.user">Player</span></dt>
+          <dd>
+            <span>{{ attempt.user?.login }}</span>
+          </dd>
+          <dt><span jhiTranslate="quizzApp.attempt.score">Score</span></dt>
+          <dd>
+            <div class="progress-percentage-wrapper">
+              <div class="progress-percentage ng-cloak">{{ current! / max! | percent }}</div>
+              <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" [color]="'#fa6f04'" />
+            </div>
           </dd>
           <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
           <dd>
