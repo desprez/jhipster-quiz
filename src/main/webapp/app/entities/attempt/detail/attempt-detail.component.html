@@ -9,7 +9,10 @@
         <jhi-alert-error></jhi-alert-error>
 
         <jhi-alert></jhi-alert>
-
+        <div class="d-flex justify-content-center">
+          <!-- <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" /> -->
+          <jhi-circle-progress [value]="current"></jhi-circle-progress>
+        </div>
         <dl class="row-md jh-entity-details">
           <dt><span jhiTranslate="quizzApp.attempt.id">Id</span></dt>
           <dd>
@@ -27,6 +30,7 @@
               </div>
             }
           </dd>
+
           <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
           <dd>
             <span>{{ attempt.correctAnswerCount }}</span>
