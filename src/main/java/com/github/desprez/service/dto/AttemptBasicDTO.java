@@ -71,7 +71,7 @@ public class AttemptBasicDTO implements Serializable {
     }
 
     public AttemptBasicDTO wrongAnswerCount(Integer wrongAnswerCount) {
-        this.wrongAnswerCount = correctAnswerCount;
+        this.wrongAnswerCount = wrongAnswerCount;
         return this;
     }
 
