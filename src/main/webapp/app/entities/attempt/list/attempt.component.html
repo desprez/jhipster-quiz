@@ -112,7 +112,7 @@
               <td>{{ attempt.correctAnswerCount }}</td>
               <td>{{ attempt.wrongAnswerCount }}</td>
               <td>{{ attempt.unansweredCount }}</td>
-              <td>{{ attempt.started | dateAsAgo }}</td>
+              <td>{{ attempt.started | dayJS: 'fromNow' }}</td>
               <td>{{ attempt.ended!.diff(attempt.started) | duration }}</td>
               <td class="text-end">
                 <div class="btn-group">

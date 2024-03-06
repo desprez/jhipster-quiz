@@ -1,4 +1,4 @@
 export { default as DurationPipe } from './duration.pipe';
 export { default as FormatMediumDatePipe } from './format-medium-date.pipe';
 export { default as FormatMediumDatetimePipe } from './format-medium-datetime.pipe';
-export { default as DateAsAgoPipe } from './date-as-ago.pipe';
+export { default as DayJSPipe } from './day-js.pipe';
