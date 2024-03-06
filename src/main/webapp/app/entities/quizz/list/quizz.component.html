@@ -128,7 +128,7 @@
                   @if (quizz && quizz.published) {
                     <a [routerLink]="['/quizz', quizz.id, 'play']" class="btn btn-primary btn-sm" data-cy="entityPlayButton">
                       <fa-icon icon="play"></fa-icon>
-                      <span class="d-none d-md-inline" jhiTranslate="quizzApp.quizz.play">Play</span>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.play">Play</span>
                     </a>
                   }
                   @if (quizz && !quizz.published) {

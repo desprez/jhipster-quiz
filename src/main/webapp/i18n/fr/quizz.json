@@ -29,13 +29,25 @@
       "keepAnswersSecret": "Garder les réponses coorectes secrètes",
       "image": "Image",
       "published": "Publié",
-      "publishDate": "Publish Date",
-      "attempsLimit": "Attemps Limit",
-      "attempsLimitPeriod": "Attemps Limit Period",
+      "publishDate": "Date de publication",
+      "attempsLimit": "Tentatives max",
+      "attempsLimitPeriod": "Rériode de tentatives max",
       "questionCount": "Questions#",
       "questions": "Questions",
       "user": "Auteur",
-      "play": "Play",
+      "limitedTime": "Temps limité",
+      "unlimitedTime": "Sans limite de temps",
+      "play": {
+        "result": {
+          "completed": "Vous avez terminé le Quiz ! ",
+          "congratutations": "et félicitations !, vous avez obtenu {{ current }} sur {{ max }}",
+          "totalQuestionAttempted": "Nombre total de questions tentées",
+          "totalQuestionAnswered": "Total de réponses correctes",
+          "totalWrongAnswered": "Total  de réponses incorrectes",
+          "failed": "Vous avez échoué au Quiz !",
+          "goodLuck": "Bonne chance la prochaine fois !"
+        }
+      },
       "maker": {
         "question": {
           "placeholder": "Entrer un intitulé de question",

@@ -35,7 +35,19 @@
       "questionCount": "Questions#",
       "questions": "Questions",
       "user": "Author",
-      "play": "Play",
+      "limitedTime": "Limited Time",
+      "unlimitedTime": "Unlimited Time",
+      "play": {
+        "result": {
+          "completed": "You've completed the Quizz !",
+          "congratutations": "and congrats!, You got {{ current }} out of {{ max }}",
+          "totalQuestionAttempted": "Total Question Attempted",
+          "totalQuestionAnswered": "Total Correct Answered",
+          "totalWrongAnswered": "Total Wrong Answered",
+          "failed": "You've failed the Quizz !",
+          "goodLuck": "Good luck next time!"
+        }
+      },
       "maker": {
         "question": {
           "placeholder": "Enter question statement",

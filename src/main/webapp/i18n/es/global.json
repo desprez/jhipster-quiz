@@ -105,6 +105,7 @@
       "save": "Guardar",
       "view": "Vista",
       "show": "Show {{otherEntity}}",
+      "play": "Start Quizz",
       "close": "Cerrar",
       "previous": "Anterior",
       "next": "Siguiente",
