@@ -3,6 +3,7 @@ package com.github.desprez.service.impl;
 import com.github.desprez.domain.Question;
 import com.github.desprez.repository.QuestionRepository;
 import com.github.desprez.service.QuestionService;
+import com.github.desprez.web.client.OpenDBRestClient;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,8 +23,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepository;
 
-    public QuestionServiceImpl(QuestionRepository questionRepository) {
+    private final OpenDBRestClient openDBRestClient;
+
+    public QuestionServiceImpl(QuestionRepository questionRepository, OpenDBRestClient openDBRestClient) {
         this.questionRepository = questionRepository;
+        this.openDBRestClient = openDBRestClient;
     }
 
     @Override
@@ -83,5 +87,10 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Integer countByQuizzId(UUID quizzId) {
         return questionRepository.countByQuizzId(quizzId);
+    }
+
+    @Override
+    public List<Question> suggest(Integer amount, Integer category, String difficulty) {
+        return openDBRestClient.getQuizzFromOpenDB(amount, category, difficulty);
     }
 }

@@ -172,4 +172,19 @@ public class QuestionResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    /**
+     * {@code GET  /questions} : get all the questions.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of questions in body.
+     */
+    @GetMapping("/suggestions")
+    public List<Question> suggestQuestions(
+        @RequestParam(name = "amount") Integer amount,
+        @RequestParam(name = "category") Integer category,
+        @RequestParam(name = "difficulty") String difficulty
+    ) {
+        log.debug("REST request to suggest Questions from OpenDB");
+        return questionService.suggest(amount, category, difficulty);
+    }
 }

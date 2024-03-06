@@ -57,8 +57,17 @@ public interface QuestionService {
 
     /**
      *
-     * @param id
+     * @param id the id of the entity.
      * @return
      */
     Integer countByQuizzId(UUID id);
+
+    /**
+     * Find Questions from OpenDB according to the parameters
+     * @param amount
+     * @param category
+     * @param difficulty
+     * @return List of Questions
+     */
+    List<Question> suggest(Integer amount, Integer category, String difficulty);
 }
