@@ -3,7 +3,7 @@
   "description": "A quiz about Starwars universe",
   "difficulty": "EASY",
   "category": "FILM",
-  "questionCount": 10,
+  "questionCount": 12,
   "questionOrder": "RANDOM",
   "maxAnswerTime": 0,
   "allowBack": true,
@@ -245,6 +245,44 @@
         }
       ],
       "correctOptionIndex": 1
+    },
+    {
+      "statement": "When does &quot;Rogue One: A Star Wars Story&quot; take place chronologically in the series?",
+      "index": 11,
+      "correctOptionIndex": 4,
+      "options": [
+        {
+          "statement": "Between Episode 4 and 5",
+          "index": 1
+        },
+        {
+          "statement": "After Episode 6",
+          "index": 2
+        },
+        {
+          "statement": "Before Episode 1",
+          "index": 3
+        },
+        {
+          "statement": "Between Episode 3 and 4",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "In the original Star Wars trilogy, David Prowse was the actor who physically portrayed Darth Vader.",
+      "index": 12,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ]
     }
   ]
 }

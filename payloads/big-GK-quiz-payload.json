@@ -1,0 +1,702 @@
+{
+  "title": "",
+  "description": "",
+  "difficulty": "EASY",
+  "category": "GENERAL_KNOWLEDGE",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "Which animal is known as the 'Ship of the Desert'?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Camel",
+          "index": 1
+        },
+        {
+          "statement": "Horse",
+          "index": 2
+        },
+        {
+          "statement": "Elephant",
+          "index": 3
+        },
+        {
+          "statement": "Dog",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The adult has 34 teeth in total",
+      "index": 2,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "How many consonants are there in the English alphabet?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "28",
+          "index": 1
+        },
+        {
+          "statement": "31",
+          "index": 2
+        },
+        {
+          "statement": "21",
+          "index": 3
+        },
+        {
+          "statement": "23",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Barometer is used to measure Atmospheric Pressure.",
+      "index": 4,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which animal is known as the king of the jungle?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Hyena",
+          "index": 1
+        },
+        {
+          "statement": "Fox",
+          "index": 2
+        },
+        {
+          "statement": "Lion",
+          "index": 3
+        },
+        {
+          "statement": "Elephant",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Valentina Tereshkova was the first woman to go into space.",
+      "index": 6,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which colour symbolises peace?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "White",
+          "index": 1
+        },
+        {
+          "statement": "Blue",
+          "index": 2
+        },
+        {
+          "statement": "Yellow",
+          "index": 3
+        },
+        {
+          "statement": "Purple",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Plants absorbs Oxygen",
+      "index": 8,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which place is known as the Roof of the World?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "New York   ",
+          "index": 1
+        },
+        {
+          "statement": "Beijing",
+          "index": 2
+        },
+        {
+          "statement": "Tibet",
+          "index": 3
+        },
+        {
+          "statement": "Paris",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Metre per second is the unit of Speed.",
+      "index": 10,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which is the longest river on the Earth?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Yangtze River",
+          "index": 1
+        },
+        {
+          "statement": "Amur River",
+          "index": 2
+        },
+        {
+          "statement": "Amazon River",
+          "index": 3
+        },
+        {
+          "statement": "Nile",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "There are 200 bones in the Human Body.",
+      "index": 12,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which is the smallest bone in the human body?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "Femur",
+          "index": 1
+        },
+        {
+          "statement": "Stapes",
+          "index": 2
+        },
+        {
+          "statement": "Carpals",
+          "index": 3
+        },
+        {
+          "statement": "Tailbone",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Photosynthesis helps the plants to make their own food.",
+      "index": 14,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which country is known as the Land of the Rising Sun?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "Malaysia   ",
+          "index": 1
+        },
+        {
+          "statement": "Japan",
+          "index": 2
+        },
+        {
+          "statement": "Korea",
+          "index": 3
+        },
+        {
+          "statement": "China",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Jupiter is the largest planet in our solar system?",
+      "index": 16,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "How many millimetres are there in a centimetre?",
+      "index": 17,
+      "options": [
+        {
+          "statement": "10mm",
+          "index": 1
+        },
+        {
+          "statement": "1000mm",
+          "index": 2
+        },
+        {
+          "statement": "100mm",
+          "index": 3
+        },
+        {
+          "statement": "1024mm",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Mars is known for its beautiful rings",
+      "index": 18,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is a natural satellite of Earth?",
+      "index": 19,
+      "options": [
+        {
+          "statement": "Jupiter",
+          "index": 1
+        },
+        {
+          "statement": "Moon",
+          "index": 2
+        },
+        {
+          "statement": "Saturn",
+          "index": 3
+        },
+        {
+          "statement": "Mercury",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "A rainbow has five colours",
+      "index": 20,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which planet is known as the 'Red Planet'?",
+      "index": 21,
+      "options": [
+        {
+          "statement": "Venus",
+          "index": 1
+        },
+        {
+          "statement": "Jupiter",
+          "index": 2
+        },
+        {
+          "statement": "Saturn",
+          "index": 3
+        },
+        {
+          "statement": "Mars",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The Great Wall of China is visible from space.",
+      "index": 22,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the capital city of France?",
+      "index": 23,
+      "options": [
+        {
+          "statement": "Rome",
+          "index": 1
+        },
+        {
+          "statement": "Berlin",
+          "index": 2
+        },
+        {
+          "statement": "Madrid",
+          "index": 3
+        },
+        {
+          "statement": "Paris",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The Amazon Rainforest produces 20% of the world's oxygen.",
+      "index": 24,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Who wrote the play 'Romeo and Juliet'?",
+      "index": 25,
+      "options": [
+        {
+          "statement": "Charles Dickens",
+          "index": 1
+        },
+        {
+          "statement": "Jane Austen",
+          "index": 2
+        },
+        {
+          "statement": "William Shakespeare",
+          "index": 3
+        },
+        {
+          "statement": "Mark Twain",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The currency of Japan is the Yuan.",
+      "index": 26,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the largest mammal in the world?",
+      "index": 27,
+      "options": [
+        {
+          "statement": "Polar Bear   ",
+          "index": 1
+        },
+        {
+          "statement": "Blue Whale",
+          "index": 2
+        },
+        {
+          "statement": "Elephant",
+          "index": 3
+        },
+        {
+          "statement": "Giraffe",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The Earth is the only planet in our solar system that rotates clockwise.",
+      "index": 28,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the largest ocean on Earth?",
+      "index": 29,
+      "options": [
+        {
+          "statement": "Atlantic Ocean",
+          "index": 1
+        },
+        {
+          "statement": "Pacific Ocean",
+          "index": 2
+        },
+        {
+          "statement": "Indian Ocean",
+          "index": 3
+        },
+        {
+          "statement": "Arctic Ocean",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Mount Everest is located in the Himalayas.",
+      "index": 30,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "In what year did Christopher Columbus first reach the Americas?",
+      "index": 31,
+      "options": [
+        {
+          "statement": "1776",
+          "index": 1
+        },
+        {
+          "statement": "1620",
+          "index": 2
+        },
+        {
+          "statement": "1515",
+          "index": 3
+        },
+        {
+          "statement": "1492",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The Great Barrier Reef is the world's largest coral reef system.",
+      "index": 32,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which gas is most abundant in the Earth's atmosphere?",
+      "index": 33,
+      "options": [
+        {
+          "statement": "Nitrogen",
+          "index": 1
+        },
+        {
+          "statement": "Hydrogen",
+          "index": 2
+        },
+        {
+          "statement": "Oxygen",
+          "index": 3
+        },
+        {
+          "statement": "Carbon Dioxide",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "The Eiffel Tower is taller than the Statue of Liberty.",
+      "index": 34,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Who is the author of the Harry Potter book series?",
+      "index": 35,
+      "options": [
+        {
+          "statement": "Suzanne Collins",
+          "index": 1
+        },
+        {
+          "statement": "George R.R. Martin",
+          "index": 2
+        },
+        {
+          "statement": "J.K. Rowling",
+          "index": 3
+        },
+        {
+          "statement": "J.R.R. Tolkien",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "The currency of South Korea is the Yen.",
+      "index": 36,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

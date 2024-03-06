@@ -3,7 +3,7 @@
   "description": "A quiz about Harry Potter and his Wizard universe",
   "difficulty": "HARD",
   "category": "BOOKS",
-  "questionCount": 8,
+  "questionCount": 9,
   "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "RANDOM",
   "maxAnswerTime": 0,
@@ -199,6 +199,29 @@
         }
       ],
       "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is the author of the Harry Potter book series?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Suzanne Collins",
+          "index": 1
+        },
+        {
+          "statement": "George R.R. Martin",
+          "index": 2
+        },
+        {
+          "statement": "J.K. Rowling",
+          "index": 3
+        },
+        {
+          "statement": "J.R.R. Tolkien",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
     }
   ]
 }

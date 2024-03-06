@@ -1,0 +1,248 @@
+{
+  "title": "Films",
+  "description": "",
+  "difficulty": "MEDIUM",
+  "category": "FILM",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "In the Mad Max franchise, what type of car is the Pursuit Special driven by Max?",
+      "index": 1,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "Ford Falcon",
+          "index": 1
+        },
+        {
+          "statement": "Chrysler Valiant Charger",
+          "index": 2
+        },
+        {
+          "statement": "Pontiac Firebird",
+          "index": 3
+        },
+        {
+          "statement": "Holden Monaro",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Which movie of film director Stanley Kubrick is known to be an adaptation of a Stephen King novel?",
+      "index": 2,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "The Shining",
+          "index": 1
+        },
+        {
+          "statement": "Eyes Wide Shut",
+          "index": 2
+        },
+        {
+          "statement": " Dr. Strangelove ",
+          "index": 3
+        },
+        {
+          "statement": "2001: A Space Odyssey",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Johnny Depp made his big-screen acting debut in which film?",
+      "index": 3,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Friday the 13th",
+          "index": 1
+        },
+        {
+          "statement": "A Nightmare on Elm Street",
+          "index": 2
+        },
+        {
+          "statement": "Halloween",
+          "index": 3
+        },
+        {
+          "statement": "My Bloody Valentine",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "In Mulan (1998), who is the leader of the Huns?",
+      "index": 4,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Fa Zhou",
+          "index": 1
+        },
+        {
+          "statement": "Shan Yu",
+          "index": 2
+        },
+        {
+          "statement": "Chien-Po",
+          "index": 3
+        },
+        {
+          "statement": "Li Shang",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Brendan Fraser starred in the following movies, except which one?",
+      "index": 5,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Monkeybone",
+          "index": 1
+        },
+        {
+          "statement": "Titanic",
+          "index": 2
+        },
+        {
+          "statement": "Mrs. Winterbourne",
+          "index": 3
+        },
+        {
+          "statement": "Encino Man",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "What is the birth name of Michael Keaton?",
+      "index": 6,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "Michael Douglas",
+          "index": 1
+        },
+        {
+          "statement": "Michael Richards",
+          "index": 2
+        },
+        {
+          "statement": "Michael Fox",
+          "index": 3
+        },
+        {
+          "statement": "Michael Kane",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "In the 1994 movie &quot;Speed&quot;, what is the minimum speed the bus must go to prevent to bomb from exploding?",
+      "index": 7,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "40 mph",
+          "index": 1
+        },
+        {
+          "statement": "50 mph",
+          "index": 2
+        },
+        {
+          "statement": "60 mph",
+          "index": 3
+        },
+        {
+          "statement": "70 mph",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "In what year was the movie &quot;Police Academy&quot; released?",
+      "index": 8,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "1984",
+          "index": 1
+        },
+        {
+          "statement": "1983",
+          "index": 2
+        },
+        {
+          "statement": "1986",
+          "index": 3
+        },
+        {
+          "statement": "1985",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "What is the correct spelling of the protagonist of the book in The NeverEnding Story (1984)?",
+      "index": 9,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Atraiyu",
+          "index": 1
+        },
+        {
+          "statement": "Atreyu",
+          "index": 2
+        },
+        {
+          "statement": "Atrayu",
+          "index": 3
+        },
+        {
+          "statement": "Atraeyu",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "What is the name of the villian in the 2015 Russian-American Sci-Fi Movie &quot;Hardcore Henry&quot;?",
+      "index": 10,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Henry",
+          "index": 1
+        },
+        {
+          "statement": "Akan",
+          "index": 2
+        },
+        {
+          "statement": "Jimmy",
+          "index": 3
+        },
+        {
+          "statement": "Estelle",
+          "index": 4
+        }
+      ]
+    }
+  ]
+}
