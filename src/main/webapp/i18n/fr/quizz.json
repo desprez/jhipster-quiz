@@ -12,7 +12,8 @@
       "updated": "Le Quizz avec l'identifiant {{ param }} a été mis à jour",
       "deleted": "Le Quizz avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Quizz {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer le Quizz {{ id }} ?",
+        "warning": "Toutes les informations associées à ce Quiz seront définitivement supprimées. Cette opération ne peut pas être annulée."
       },
       "detail": {
         "title": "Quizz"

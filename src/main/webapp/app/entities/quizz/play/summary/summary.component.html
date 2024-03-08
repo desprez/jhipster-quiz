@@ -1,3 +1,5 @@
-<!-- <div class="col-4 cursor-pointer" *ngFor="let question of quiz.questions; let index = index;">
-    <div (click)="goTo(index)" class="p-3 mb-2 {{ isAnswered(question) == 'Answered'? 'bg-info': 'bg-warning' }}">{{index + 1}}. {{ isAnswered(question) }}</div>
-</div> -->
+<div class="col-4 cursor-pointer">
+  @for (answer of attempt.answers; track answer.id; let idx = $index) {
+    <div (click)="goTo(idx)" class="p-3 mb-2 {{ isAnswered(answer) == 'Answered' ? 'bg-info' : 'bg-warning' }}">{{ idx + 1 }}</div>
+  }
+</div>

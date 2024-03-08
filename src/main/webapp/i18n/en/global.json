@@ -107,6 +107,7 @@
       "save": "Save",
       "view": "View",
       "show": "Show {{otherEntity}}",
+      "publish": "Publish",
       "play": "Start Quizz",
       "close": "Close",
       "previous": "Previous",

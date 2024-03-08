@@ -8,12 +8,18 @@
     </div>
     <br />
   </div>
-  <h6>You've completed the Quizz !</h6>
 
-  <p>and congrats!, You got {{ current }} out of {{ max }}'</p>
+  <h6><span jhiTranslate="quizzApp.quizz.play.result.completed">You've completed the Quizz !</span></h6>
 
-  <p>Total Question Attempted : {{ answered }}</p>
-  <p>Total Correct Answered : {{ attempt!.correctAnswerCount }}</p>
-  <p>Total Wrong Answered : {{ attempt!.wrongAnswerCount }}</p>
-  <!--         <p>Your Score : {{ points }} Points</p> -->
+  <p>
+    <span jhiTranslate="quizzApp.quizz.play.result.congratutations" [translateValues]="{ current: current, max: max }"
+      >and congrats!, You got {{ current }} out of {{ max }}'</span
+    >
+  </p>
+
+  <p><span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAttempted">Total Question Attempted</span>{{ answered }}</p>
+  <p>
+    <span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAnswered">Total Correct Answered</span>{{ attempt!.correctAnswerCount }}
+  </p>
+  <p><span jhiTranslate="quizzApp.quizz.play.result.totalWrongAnswered">Total Wrong Answered</span>{{ attempt!.wrongAnswerCount }}</p>
 </div>

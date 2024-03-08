@@ -64,6 +64,18 @@ export class QuizzPlayComponent {
     this.mode = PlayMode.PLAYING;
   }
 
+  displaySummary(): void {
+    if (this.quizz.allowReview) {
+      this.mode = PlayMode.SUMMARY;
+    } else {
+      this.displayResult();
+    }
+  }
+
+  goto(index: number): void {
+    this.mode = PlayMode.PLAYING;
+  }
+
   displayResult(): void {
     if (this.newAttempt) {
       this.playService.evaluate(this.newAttempt).subscribe({

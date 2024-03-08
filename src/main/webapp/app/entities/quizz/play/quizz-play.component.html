@@ -23,12 +23,12 @@
   }
   @case (PlayModeEnum.PLAYING) {
     @if (newAttempt) {
-      <jhi-questions [quizz]="quizz" [attempt]="newAttempt" (onNextStep)="displayResult()"></jhi-questions>
+      <jhi-questions [quizz]="quizz" [attempt]="newAttempt" (onNextStep)="displaySummary()"></jhi-questions>
     }
   }
-  <!-- @case (PlayModeEnum.SUMMARY) {
-    <jhi-sumary [quizz]="quizz" [attempt]="attempt"></jhi-sumary>
-  } -->
+  @case (PlayModeEnum.SUMMARY) {
+    <jhi-summary [attempt]="newAttempt" (onNextStep)="goto($event)"></jhi-summary>
+  }
   @case (PlayModeEnum.RESULTS) {
     <jhi-results [quizz]="quizz" [attempt]="newAttempt"></jhi-results>
 

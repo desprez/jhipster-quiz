@@ -12,7 +12,8 @@
       "updated": "Un Quizz ha sido actualizado con el identificador {{ param }}",
       "deleted": "Un Quizz ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Quizz {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Quizz {{ id }}?",
+        "warning": "Toda la información asociada a este cuestionario se eliminará permanentemente. Esta operación no se puede deshacer."
       },
       "detail": {
         "title": ""

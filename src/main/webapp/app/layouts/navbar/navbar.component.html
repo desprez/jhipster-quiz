@@ -37,6 +37,14 @@
           </a>
         </li>
         @if (account !== null) {
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/quizz" (click)="collapseNavbar()">
+              <span>
+                <fa-icon icon="check-double"></fa-icon>
+                <span jhiTranslate="global.menu.myquizzes">my Quizzes</span>
+              </span>
+            </a>
+          </li>
           <li
             *jhiHasAnyAuthority="'ROLE_ADMIN'"
             ngbDropdown

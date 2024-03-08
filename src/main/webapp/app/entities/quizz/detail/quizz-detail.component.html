@@ -94,7 +94,7 @@
                 <li *ngFor="let question of quizz!.questions" class="list-group-item d-flex">
                   <span class="">{{ question.index }}</span
                   >.
-                  {{ question.statement }}
+                  <span [innerHTML]="question.statement"></span>
                 </li>
               </ul>
             </div>
@@ -107,6 +107,11 @@
         @if (quizz && !quizz.published) {
           <button type="button" [routerLink]="['/quizz', quizz.id, 'edit']" class="btn btn-primary">
             <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+          </button>
+        }
+        @if (quizz && !quizz.published) {
+          <button type="submit" (click)="publish()" class="btn btn-info" data-cy="entityDetailsPublishButton">
+            <fa-icon icon="rocket"></fa-icon>&nbsp;<span jhiTranslate="entity.action.publish">Back</span>
           </button>
         }
       </div>

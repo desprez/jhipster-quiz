@@ -108,8 +108,14 @@
               <td>{{ quizz.description }}</td>
               <td jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</td>
               <td jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</td>
-              <td>{{ quizz.questionCount }}</td>
-              <td>{{ quizz.published }}</td>
+              <td class="text-center">{{ quizz.questionCount }}</td>
+              <td class="text-center">
+                <fa-icon
+                  [icon]="quizz.published ? 'check' : 'times'"
+                  aria-hidden="true"
+                  class="{{ quizz.published ? 'text-success' : 'text-danger' }}"
+                ></fa-icon>
+              </td>
               <td>
                 {{ quizz.user?.login }}
               </td>
