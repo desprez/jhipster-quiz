@@ -85,7 +85,11 @@ public class QuizzServiceImpl implements QuizzService {
     @Transactional(readOnly = true)
     public Page<QuizzDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Quizzes");
-        return quizzRepository.findAll(pageable).map(quizzMapper::toDto);
+        if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.ADMIN)) {
+            return quizzRepository.findAll(pageable).map(quizzMapper::toDto);
+        } else {
+            return quizzRepository.findByUserIsCurrentUser(pageable);
+        }
     }
 
     public Page<QuizzDTO> findAllWithEagerRelationships(Pageable pageable) {

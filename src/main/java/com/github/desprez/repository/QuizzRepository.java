@@ -1,6 +1,7 @@
 package com.github.desprez.repository;
 
 import com.github.desprez.domain.Quizz;
+import com.github.desprez.service.dto.QuizzDTO;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,4 +42,7 @@ public interface QuizzRepository extends JpaRepository<Quizz, UUID>, JpaSpecific
 
     @Query("select quizz from Quizz quizz left join fetch quizz.user left join fetch quizz.questions questions where quizz.id =:id")
     Optional<Quizz> findOneWithQuestionRelationships(@Param("id") UUID id);
+
+    @Query("select quizz from Quizz quizz where quizz.user.login = ?#{principal.username}")
+    Page<QuizzDTO> findByUserIsCurrentUser(Pageable pageable);
 }
