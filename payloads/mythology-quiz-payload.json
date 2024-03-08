@@ -1,0 +1,480 @@
+{
+  "title": "A quiz about Mythology",
+  "description": "",
+  "difficulty": "EASY",
+  "category": "MYTHOLOGY",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": 0,
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "In Greek mythology, who is the king of the gods?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Poseidon",
+          "index": 1
+        },
+        {
+          "statement": "Hades",
+          "index": 2
+        },
+        {
+          "statement": "Zeus",
+          "index": 3
+        },
+        {
+          "statement": "Apollo",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which Norse god is known as the god of thunder?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Odin",
+          "index": 1
+        },
+        {
+          "statement": "Loki",
+          "index": 2
+        },
+        {
+          "statement": "Thor",
+          "index": 3
+        },
+        {
+          "statement": "Freyr",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "In Hindu mythology, which deity is known as the destroyer of evil forces?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Lakshmi",
+          "index": 1
+        },
+        {
+          "statement": "Vishnu",
+          "index": 2
+        },
+        {
+          "statement": "Shiva",
+          "index": 3
+        },
+        {
+          "statement": "Saraswati",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Who is the goddess of love and beauty in Roman mythology?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Diana",
+          "index": 1
+        },
+        {
+          "statement": "Venus",
+          "index": 2
+        },
+        {
+          "statement": "Juno",
+          "index": 3
+        },
+        {
+          "statement": "Minerva",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Which of the following creatures is known for its ability to turn those who look into its eyes into stone in Greek mythology?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Medusa",
+          "index": 1
+        },
+        {
+          "statement": "Hydra",
+          "index": 2
+        },
+        {
+          "statement": "Chimera",
+          "index": 3
+        },
+        {
+          "statement": "Siren",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which mythological creature is often depicted as a lion with the head of a human in Ancient Egypt?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Osiris",
+          "index": 1
+        },
+        {
+          "statement": "Horus",
+          "index": 2
+        },
+        {
+          "statement": "Anubis",
+          "index": 3
+        },
+        {
+          "statement": "Sphinx",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "In Norse mythology, which creature is known for causing the destruction of the world in the event of Ragnarok?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Hela",
+          "index": 1
+        },
+        {
+          "statement": "Jormungandr",
+          "index": 2
+        },
+        {
+          "statement": "Sleipnir",
+          "index": 3
+        },
+        {
+          "statement": "Fenrir",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Which Greek hero is known for his superhuman strength and completing the Twelve Labors?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Perseus",
+          "index": 1
+        },
+        {
+          "statement": "Theseus",
+          "index": 2
+        },
+        {
+          "statement": "Heracles",
+          "index": 3
+        },
+        {
+          "statement": "Achilles",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "In Chinese mythology, who is the monkey king with extraordinary strength and agility?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Sun Wukong",
+          "index": 1
+        },
+        {
+          "statement": "Guan Yu",
+          "index": 2
+        },
+        {
+          "statement": "Nuwa",
+          "index": 3
+        },
+        {
+          "statement": "Nezha",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Which Hindu epic tells the story of the prince Rama and his quest to rescue his wife Sita?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Mahabharata",
+          "index": 1
+        },
+        {
+          "statement": "Ramayana",
+          "index": 2
+        },
+        {
+          "statement": "Upanishads",
+          "index": 3
+        },
+        {
+          "statement": "Vedas",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "id": null,
+      "statement": "This Greek goddess&#039;s name was chosen for the dwarf planet responsible for discord on Pluto&#039;s classification amongst astronomers.",
+      "index": 11,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "Dysnomia",
+          "index": 1
+        },
+        {
+          "statement": "Charon",
+          "index": 2
+        },
+        {
+          "statement": "Eris",
+          "index": 3
+        },
+        {
+          "statement": "Ceres",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "In most traditions, who was the wife of Zeus?",
+      "index": 12,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "Aphrodite",
+          "index": 1
+        },
+        {
+          "statement": "Hestia",
+          "index": 2
+        },
+        {
+          "statement": "Hera",
+          "index": 3
+        },
+        {
+          "statement": "Athena",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "What mytological creatures have women&#039;s faces and vultures&#039; bodies?",
+      "index": 13,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Mermaids",
+          "index": 1
+        },
+        {
+          "statement": "Harpies",
+          "index": 2
+        },
+        {
+          "statement": "Nymph",
+          "index": 3
+        },
+        {
+          "statement": "Lilith",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "How many heads does Cerberus have?",
+      "index": 14,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "3",
+          "index": 1
+        },
+        {
+          "statement": "5",
+          "index": 2
+        },
+        {
+          "statement": "1",
+          "index": 3
+        },
+        {
+          "statement": "2",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "The ancient Roman god of war was commonly known as which of the following?",
+      "index": 15,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Ares",
+          "index": 1
+        },
+        {
+          "statement": "Mars",
+          "index": 2
+        },
+        {
+          "statement": "Jupiter",
+          "index": 3
+        },
+        {
+          "statement": "Juno",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "Who was the only god from Greece who did not get a name change in Rome?",
+      "index": 16,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Zeus",
+          "index": 1
+        },
+        {
+          "statement": "Apollo",
+          "index": 2
+        },
+        {
+          "statement": "Demeter",
+          "index": 3
+        },
+        {
+          "statement": "Athena",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "In Norse mythology, Thor once dressed as a woman.",
+      "index": 17,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?",
+      "index": 18,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "Orpheus",
+          "index": 1
+        },
+        {
+          "statement": "Daedalus",
+          "index": 2
+        },
+        {
+          "statement": "Perseus",
+          "index": 3
+        },
+        {
+          "statement": "Hercules",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "The Nike apparel and footwear brand takes it&#039;s name from the Greek goddess of what?",
+      "index": 19,
+      "correctOptionIndex": 4,
+      "options": [
+        {
+          "statement": "Honor",
+          "index": 1
+        },
+        {
+          "statement": "Strength",
+          "index": 2
+        },
+        {
+          "statement": "Courage",
+          "index": 3
+        },
+        {
+          "statement": "Victory",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "id": null,
+      "statement": "Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?",
+      "index": 20,
+      "correctOptionIndex": 4,
+      "options": [
+        {
+          "statement": "Castor",
+          "index": 1
+        },
+        {
+          "statement": "Odysseus",
+          "index": 2
+        },
+        {
+          "statement": "Daedalus",
+          "index": 3
+        },
+        {
+          "statement": "Jason",
+          "index": 4
+        }
+      ]
+    }
+  ]
+}
