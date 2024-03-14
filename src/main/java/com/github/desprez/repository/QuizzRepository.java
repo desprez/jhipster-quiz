@@ -44,5 +44,5 @@ public interface QuizzRepository extends JpaRepository<Quizz, UUID>, JpaSpecific
     Optional<Quizz> findOneWithQuestionRelationships(@Param("id") UUID id);
 
     @Query("select quizz from Quizz quizz where quizz.user.login = ?#{principal.username}")
-    Page<QuizzDTO> findByUserIsCurrentUser(Pageable pageable);
+    Page<Quizz> findByUserIsCurrentUser(Pageable pageable);
 }

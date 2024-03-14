@@ -88,7 +88,7 @@ public class QuizzServiceImpl implements QuizzService {
         if (SecurityUtils.hasCurrentUserThisAuthority(AuthoritiesConstants.ADMIN)) {
             return quizzRepository.findAll(pageable).map(quizzMapper::toDto);
         } else {
-            return quizzRepository.findByUserIsCurrentUser(pageable);
+            return quizzRepository.findByUserIsCurrentUser(pageable).map(quizzMapper::toDto);
         }
     }
 

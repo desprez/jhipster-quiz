@@ -120,10 +120,19 @@ public class QuizzQueryService extends QueryService<Quizz> {
                 specification = specification.and(buildSpecification(criteria.getCategory(), Quizz_.category));
             }
 
+            if (criteria.getMaxAnswerTime() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getMaxAnswerTime(), Quizz_.maxAnswerTime));
+            }
             if (criteria.getPublished() != null) {
                 specification = specification.and(buildSpecification(criteria.getPublished(), Quizz_.published));
             }
+            if (criteria.getPublishDate() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getPublishDate(), Quizz_.publishDate));
+            }
 
+            if (criteria.getQuestionCount() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getQuestionCount(), Quizz_.questionCount));
+            }
             if (criteria.getUserId() != null) {
                 specification =
                     specification.and(

@@ -149,16 +149,18 @@ class QuizzResourceIT {
             .addQuestions(
                 new Question()
                     .statement("question1")
+                    .index(1)
                     .correctOptionIndex(1)
-                    .addOptions(new Option().statement("A"))
-                    .addOptions(new Option().statement("B"))
+                    .addOptions(new Option().statement("A").index(1))
+                    .addOptions(new Option().statement("B").index(2))
             )
             .addQuestions(
                 new Question()
                     .statement("question2")
+                    .index(2)
                     .correctOptionIndex(2)
-                    .addOptions(new Option().statement("C"))
-                    .addOptions(new Option().statement("D"))
+                    .addOptions(new Option().statement("C").index(1))
+                    .addOptions(new Option().statement("D").index(2))
             );
         // Add required entity
         User user = UserResourceIT.createEntity(em);
@@ -234,7 +236,7 @@ class QuizzResourceIT {
         assertThat(testQuizz.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
         assertThat(testQuizz.getAttempsLimit()).isEqualTo(DEFAULT_ATTEMPS_LIMIT);
         assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(DEFAULT_ATTEMPS_LIMIT_PERIOD);
-        assertThat(testQuizz.getQuestionCount()).isEqualTo(DEFAULT_QUESTION_COUNT);
+        assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
     }
 
     @Test
@@ -416,17 +418,17 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
-            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
+            //            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
             .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
-            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
-            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
-            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
-            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
-            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
+            //            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
+            //            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
             .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
     }
 
@@ -699,45 +701,6 @@ class QuizzResourceIT {
 
     @Test
     @Transactional
-    void getAllQuizzesByQuestionOrderIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where questionOrder equals to DEFAULT_QUESTION_ORDER
-        defaultQuizzShouldBeFound("questionOrder.equals=" + DEFAULT_QUESTION_ORDER);
-
-        // Get all the quizzList where questionOrder equals to UPDATED_QUESTION_ORDER
-        defaultQuizzShouldNotBeFound("questionOrder.equals=" + UPDATED_QUESTION_ORDER);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByQuestionOrderIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where questionOrder in DEFAULT_QUESTION_ORDER or UPDATED_QUESTION_ORDER
-        defaultQuizzShouldBeFound("questionOrder.in=" + DEFAULT_QUESTION_ORDER + "," + UPDATED_QUESTION_ORDER);
-
-        // Get all the quizzList where questionOrder equals to UPDATED_QUESTION_ORDER
-        defaultQuizzShouldNotBeFound("questionOrder.in=" + UPDATED_QUESTION_ORDER);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByQuestionOrderIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where questionOrder is not null
-        defaultQuizzShouldBeFound("questionOrder.specified=true");
-
-        // Get all the quizzList where questionOrder is null
-        defaultQuizzShouldNotBeFound("questionOrder.specified=false");
-    }
-
-    @Test
-    @Transactional
     void getAllQuizzesByMaxAnswerTimeIsEqualToSomething() throws Exception {
         // Initialize the database
         quizzRepository.saveAndFlush(quizz);
@@ -829,123 +792,6 @@ class QuizzResourceIT {
 
     @Test
     @Transactional
-    void getAllQuizzesByAllowBackIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowBack equals to DEFAULT_ALLOW_BACK
-        defaultQuizzShouldBeFound("allowBack.equals=" + DEFAULT_ALLOW_BACK);
-
-        // Get all the quizzList where allowBack equals to UPDATED_ALLOW_BACK
-        defaultQuizzShouldNotBeFound("allowBack.equals=" + UPDATED_ALLOW_BACK);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAllowBackIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowBack in DEFAULT_ALLOW_BACK or UPDATED_ALLOW_BACK
-        defaultQuizzShouldBeFound("allowBack.in=" + DEFAULT_ALLOW_BACK + "," + UPDATED_ALLOW_BACK);
-
-        // Get all the quizzList where allowBack equals to UPDATED_ALLOW_BACK
-        defaultQuizzShouldNotBeFound("allowBack.in=" + UPDATED_ALLOW_BACK);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAllowBackIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowBack is not null
-        defaultQuizzShouldBeFound("allowBack.specified=true");
-
-        // Get all the quizzList where allowBack is null
-        defaultQuizzShouldNotBeFound("allowBack.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAllowReviewIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowReview equals to DEFAULT_ALLOW_REVIEW
-        defaultQuizzShouldBeFound("allowReview.equals=" + DEFAULT_ALLOW_REVIEW);
-
-        // Get all the quizzList where allowReview equals to UPDATED_ALLOW_REVIEW
-        defaultQuizzShouldNotBeFound("allowReview.equals=" + UPDATED_ALLOW_REVIEW);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAllowReviewIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowReview in DEFAULT_ALLOW_REVIEW or UPDATED_ALLOW_REVIEW
-        defaultQuizzShouldBeFound("allowReview.in=" + DEFAULT_ALLOW_REVIEW + "," + UPDATED_ALLOW_REVIEW);
-
-        // Get all the quizzList where allowReview equals to UPDATED_ALLOW_REVIEW
-        defaultQuizzShouldNotBeFound("allowReview.in=" + UPDATED_ALLOW_REVIEW);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAllowReviewIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where allowReview is not null
-        defaultQuizzShouldBeFound("allowReview.specified=true");
-
-        // Get all the quizzList where allowReview is null
-        defaultQuizzShouldNotBeFound("allowReview.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByKeepAnswersSecretIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where keepAnswersSecret equals to DEFAULT_KEEP_ANSWERS_SECRET
-        defaultQuizzShouldBeFound("keepAnswersSecret.equals=" + DEFAULT_KEEP_ANSWERS_SECRET);
-
-        // Get all the quizzList where keepAnswersSecret equals to UPDATED_KEEP_ANSWERS_SECRET
-        defaultQuizzShouldNotBeFound("keepAnswersSecret.equals=" + UPDATED_KEEP_ANSWERS_SECRET);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByKeepAnswersSecretIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where keepAnswersSecret in DEFAULT_KEEP_ANSWERS_SECRET or UPDATED_KEEP_ANSWERS_SECRET
-        defaultQuizzShouldBeFound("keepAnswersSecret.in=" + DEFAULT_KEEP_ANSWERS_SECRET + "," + UPDATED_KEEP_ANSWERS_SECRET);
-
-        // Get all the quizzList where keepAnswersSecret equals to UPDATED_KEEP_ANSWERS_SECRET
-        defaultQuizzShouldNotBeFound("keepAnswersSecret.in=" + UPDATED_KEEP_ANSWERS_SECRET);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByKeepAnswersSecretIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where keepAnswersSecret is not null
-        defaultQuizzShouldBeFound("keepAnswersSecret.specified=true");
-
-        // Get all the quizzList where keepAnswersSecret is null
-        defaultQuizzShouldNotBeFound("keepAnswersSecret.specified=false");
-    }
-
-    @Test
-    @Transactional
     void getAllQuizzesByPublishedIsEqualToSomething() throws Exception {
         // Initialize the database
         quizzRepository.saveAndFlush(quizz);
@@ -1020,136 +866,6 @@ class QuizzResourceIT {
 
         // Get all the quizzList where publishDate is null
         defaultQuizzShouldNotBeFound("publishDate.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit equals to DEFAULT_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.equals=" + DEFAULT_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit equals to UPDATED_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.equals=" + UPDATED_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit in DEFAULT_ATTEMPS_LIMIT or UPDATED_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.in=" + DEFAULT_ATTEMPS_LIMIT + "," + UPDATED_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit equals to UPDATED_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.in=" + UPDATED_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit is not null
-        defaultQuizzShouldBeFound("attempsLimit.specified=true");
-
-        // Get all the quizzList where attempsLimit is null
-        defaultQuizzShouldNotBeFound("attempsLimit.specified=false");
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit is greater than or equal to DEFAULT_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.greaterThanOrEqual=" + DEFAULT_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit is greater than or equal to UPDATED_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.greaterThanOrEqual=" + UPDATED_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsLessThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit is less than or equal to DEFAULT_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.lessThanOrEqual=" + DEFAULT_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit is less than or equal to SMALLER_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.lessThanOrEqual=" + SMALLER_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsLessThanSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit is less than DEFAULT_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.lessThan=" + DEFAULT_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit is less than UPDATED_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.lessThan=" + UPDATED_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitIsGreaterThanSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimit is greater than DEFAULT_ATTEMPS_LIMIT
-        defaultQuizzShouldNotBeFound("attempsLimit.greaterThan=" + DEFAULT_ATTEMPS_LIMIT);
-
-        // Get all the quizzList where attempsLimit is greater than SMALLER_ATTEMPS_LIMIT
-        defaultQuizzShouldBeFound("attempsLimit.greaterThan=" + SMALLER_ATTEMPS_LIMIT);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitPeriodIsEqualToSomething() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimitPeriod equals to DEFAULT_ATTEMPS_LIMIT_PERIOD
-        defaultQuizzShouldBeFound("attempsLimitPeriod.equals=" + DEFAULT_ATTEMPS_LIMIT_PERIOD);
-
-        // Get all the quizzList where attempsLimitPeriod equals to UPDATED_ATTEMPS_LIMIT_PERIOD
-        defaultQuizzShouldNotBeFound("attempsLimitPeriod.equals=" + UPDATED_ATTEMPS_LIMIT_PERIOD);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitPeriodIsInShouldWork() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimitPeriod in DEFAULT_ATTEMPS_LIMIT_PERIOD or UPDATED_ATTEMPS_LIMIT_PERIOD
-        defaultQuizzShouldBeFound("attempsLimitPeriod.in=" + DEFAULT_ATTEMPS_LIMIT_PERIOD + "," + UPDATED_ATTEMPS_LIMIT_PERIOD);
-
-        // Get all the quizzList where attempsLimitPeriod equals to UPDATED_ATTEMPS_LIMIT_PERIOD
-        defaultQuizzShouldNotBeFound("attempsLimitPeriod.in=" + UPDATED_ATTEMPS_LIMIT_PERIOD);
-    }
-
-    @Test
-    @Transactional
-    void getAllQuizzesByAttempsLimitPeriodIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        quizzRepository.saveAndFlush(quizz);
-
-        // Get all the quizzList where attempsLimitPeriod is not null
-        defaultQuizzShouldBeFound("attempsLimitPeriod.specified=true");
-
-        // Get all the quizzList where attempsLimitPeriod is null
-        defaultQuizzShouldNotBeFound("attempsLimitPeriod.specified=false");
     }
 
     @Test
@@ -1245,28 +961,6 @@ class QuizzResourceIT {
 
     @Test
     @Transactional
-    void getAllQuizzesByQuestionsIsEqualToSomething() throws Exception {
-        Question questions;
-        if (TestUtil.findAll(em, Question.class).isEmpty()) {
-            quizzRepository.saveAndFlush(quizz);
-            questions = QuestionResourceIT.createEntity(em);
-        } else {
-            questions = TestUtil.findAll(em, Question.class).get(0);
-        }
-        em.persist(questions);
-        em.flush();
-        quizz.addQuestions(questions);
-        quizzRepository.saveAndFlush(quizz);
-        UUID questionsId = questions.getId();
-        // Get all the quizzList where questions equals to questionsId
-        defaultQuizzShouldBeFound("questionsId.equals=" + questionsId);
-
-        // Get all the quizzList where questions equals to UUID.randomUUID()
-        defaultQuizzShouldNotBeFound("questionsId.equals=" + UUID.randomUUID());
-    }
-
-    @Test
-    @Transactional
     void getAllQuizzesByUserIsEqualToSomething() throws Exception {
         User user;
         if (TestUtil.findAll(em, User.class).isEmpty()) {
@@ -1300,17 +994,17 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
-            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
+            //            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
             .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
-            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
-            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
-            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
+            //            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_IMAGE))))
             .andExpect(jsonPath("$.[*].published").value(hasItem(DEFAULT_PUBLISHED.booleanValue())))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
-            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
-            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
+            //            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
+            //            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
             .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
 
         // Check, that the count call also returns 1

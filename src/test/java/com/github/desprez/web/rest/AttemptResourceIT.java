@@ -2,15 +2,25 @@ package com.github.desprez.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.github.desprez.IntegrationTest;
 import com.github.desprez.domain.Attempt;
 import com.github.desprez.domain.Quizz;
 import com.github.desprez.domain.User;
 import com.github.desprez.repository.AttemptRepository;
+import com.github.desprez.repository.UserRepository;
 import com.github.desprez.service.AttemptService;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.service.mapper.AttemptMapper;
@@ -19,7 +29,9 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -77,6 +89,9 @@ class AttemptResourceIT {
     private EntityManager em;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private MockMvc restAttemptMockMvc;
 
     private Attempt attempt;
@@ -87,7 +102,8 @@ class AttemptResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static Attempt createEntity(EntityManager em) {
+    public Attempt createEntity(EntityManager em) {
+        Optional<User> user = userRepository.findOneByLogin("user");
         Attempt attempt = new Attempt()
             .correctAnswerCount(DEFAULT_CORRECT_ANSWER_COUNT)
             .wrongAnswerCount(DEFAULT_WRONG_ANSWER_COUNT)
@@ -105,10 +121,15 @@ class AttemptResourceIT {
         }
         attempt.setQuizz(quizz);
         // Add required entity
-        User user = UserResourceIT.createEntity(em);
-        em.persist(user);
-        em.flush();
-        attempt.setUser(user);
+        if (user.isPresent()) {
+            attempt.setUser(user.orElse(null));
+        } else {
+            User newuser = new User();
+            newuser.setLogin("user"); // username used by @WithMockUser
+            newuser.setPassword(RandomStringUtils.randomAlphanumeric(60));
+            userRepository.saveAndFlush(newuser);
+            attempt.setUser(newuser);
+        }
         return attempt;
     }
 

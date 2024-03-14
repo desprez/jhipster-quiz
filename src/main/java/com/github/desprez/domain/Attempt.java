@@ -240,4 +240,16 @@ public class Attempt implements Serializable {
             ", ended='" + getEnded() + "'" +
             "}";
     }
+
+    public void incrementCorrectAnswerCount() {
+        this.correctAnswerCount++;
+    }
+
+    public void incrementWrongAnswerCount() {
+        this.wrongAnswerCount++;
+    }
+
+    public void incrementUnansweredCount() {
+        this.unansweredCount++;
+    }
 }

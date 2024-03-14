@@ -32,7 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PlayServiceImpl implements PlayService {
 
-    private final Logger log = LoggerFactory.getLogger(QuizzServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(PlayServiceImpl.class);
 
     private final QuizzRepository quizzRepository;
 
@@ -70,8 +70,8 @@ public class PlayServiceImpl implements PlayService {
         String username = getUsername();
         newAttempt.setUser(userRepository.findOneByLogin(username).orElseThrow());
 
-        List<Question> shuffleMe = new ArrayList<Question>(quizz.getQuestions());
-        if (quizz.getQuestionOrder() != null && quizz.getQuestionOrder().equals(DisplayOrder.RANDOM)) {
+        List<Question> shuffleMe = new ArrayList<>(quizz.getQuestions());
+        if (DisplayOrder.RANDOM.equals(quizz.getQuestionOrder())) {
             Collections.shuffle(shuffleMe);
         }
         shuffleMe.forEach(question -> {
@@ -94,44 +94,39 @@ public class PlayServiceImpl implements PlayService {
 
         Quizz existingQuizz = quizzRepository.findOneWithQuestionRelationships(attempt.getQuizz().getId()).orElseThrow();
 
-        int correctAnswerCount = 0;
-        int wrongAnswerCount = 0;
-        int unansweredCount = 0;
-
         for (Question question : existingQuizz.getQuestions()) {
-            boolean found = false;
-            for (AttemptAnswer answer : attempt.getAnswers()) {
-                if (answer.getQuestion().getId().equals(question.getId())) {
-                    found = true;
-                    Option optionAnswered = getOptionById(question, answer.getOption()).orElse(null);
-                    answer.setOption(optionAnswered);
-                    if (optionAnswered == null) {
-                        unansweredCount++;
-                        break;
-                    }
-                    if (checkIsCorrectAnswer(question, answer.getOption())) {
-                        correctAnswerCount++;
-                        answer.correct(true);
-                    } else {
-                        wrongAnswerCount++;
-                        answer.correct(false);
-                    }
-                    break;
-                }
-            }
-            if (!found) {
-                unansweredCount++;
-            }
+            evaluateQuestion(attempt, question);
         }
-        log.info("correctAnswerCount {}, wrongAnswerCount {}, unansweredCount {}", correctAnswerCount, wrongAnswerCount, unansweredCount);
-        attempt
-            .correctAnswerCount(correctAnswerCount)
-            .wrongAnswerCount(wrongAnswerCount)
-            .unansweredCount(unansweredCount)
-            .ended(Instant.now().truncatedTo(ChronoUnit.SECONDS));
+        attempt.ended(Instant.now().truncatedTo(ChronoUnit.SECONDS));
 
         attempt = attemptRepository.save(attempt);
+        log.info("attempt evaluated {}", attempt);
         return attemptMapper.toDto(attempt);
+    }
+
+    private void evaluateQuestion(Attempt attempt, Question question) {
+        boolean found = false;
+        for (AttemptAnswer answer : attempt.getAnswers()) {
+            if (answer.getQuestion().getId().equals(question.getId())) {
+                found = true;
+                Option optionAnswered = getOptionById(question, answer.getOption()).orElse(null);
+                if (optionAnswered == null) {
+                    attempt.incrementUnansweredCount();
+                    break;
+                }
+                answer.setOption(optionAnswered);
+                if (checkIsCorrectAnswer(question, answer.getOption())) {
+                    attempt.incrementCorrectAnswerCount();
+                    answer.correct(true);
+                } else {
+                    attempt.incrementWrongAnswerCount();
+                    answer.correct(false);
+                }
+            }
+        }
+        if (!found) {
+            attempt.incrementUnansweredCount();
+        }
     }
 
     private Optional<Option> getOptionById(Question question, Option optionAnswered) {
@@ -145,10 +140,7 @@ public class PlayServiceImpl implements PlayService {
         return Optional.empty();
     }
 
-    public Boolean checkIsCorrectAnswer(Question question, Option optionAnswer) {
-        if (optionAnswer == null) {
-            return false;
-        }
+    public boolean checkIsCorrectAnswer(Question question, Option optionAnswer) {
         return question.getCorrectOptionIndex().equals(optionAnswer.getIndex());
     }
 }

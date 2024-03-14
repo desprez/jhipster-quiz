@@ -68,7 +68,10 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     private CategoryFilter category;
 
+    private IntegerFilter maxAnswerTime;
     private BooleanFilter published;
+    private InstantFilter publishDate;
+    private IntegerFilter questionCount;
 
     private LongFilter userId;
 
@@ -82,7 +85,10 @@ public class QuizzCriteria implements Serializable, Criteria {
         this.description = other.description == null ? null : other.description.copy();
         this.difficulty = other.difficulty == null ? null : other.difficulty.copy();
         this.category = other.category == null ? null : other.category.copy();
+        this.maxAnswerTime = other.maxAnswerTime == null ? null : other.maxAnswerTime.copy();
         this.published = other.published == null ? null : other.published.copy();
+        this.publishDate = other.publishDate == null ? null : other.publishDate.copy();
+        this.questionCount = other.questionCount == null ? null : other.questionCount.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.distinct = other.distinct;
     }
@@ -167,6 +173,21 @@ public class QuizzCriteria implements Serializable, Criteria {
         this.category = category;
     }
 
+    public IntegerFilter getMaxAnswerTime() {
+        return maxAnswerTime;
+    }
+
+    public IntegerFilter maxAnswerTime() {
+        if (maxAnswerTime == null) {
+            maxAnswerTime = new IntegerFilter();
+        }
+        return maxAnswerTime;
+    }
+
+    public void setMaxAnswerTime(IntegerFilter maxAnswerTime) {
+        this.maxAnswerTime = maxAnswerTime;
+    }
+
     public BooleanFilter getPublished() {
         return published;
     }
@@ -180,6 +201,36 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     public void setPublished(BooleanFilter published) {
         this.published = published;
+    }
+
+    public InstantFilter getPublishDate() {
+        return publishDate;
+    }
+
+    public InstantFilter publishDate() {
+        if (publishDate == null) {
+            publishDate = new InstantFilter();
+        }
+        return publishDate;
+    }
+
+    public void setPublishDate(InstantFilter publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public IntegerFilter getQuestionCount() {
+        return questionCount;
+    }
+
+    public IntegerFilter questionCount() {
+        if (questionCount == null) {
+            questionCount = new IntegerFilter();
+        }
+        return questionCount;
+    }
+
+    public void setQuestionCount(IntegerFilter questionCount) {
+        this.questionCount = questionCount;
     }
 
     public LongFilter getUserId() {
@@ -220,7 +271,10 @@ public class QuizzCriteria implements Serializable, Criteria {
             Objects.equals(description, that.description) &&
             Objects.equals(difficulty, that.difficulty) &&
             Objects.equals(category, that.category) &&
+            Objects.equals(maxAnswerTime, that.maxAnswerTime) &&
             Objects.equals(published, that.published) &&
+            Objects.equals(publishDate, that.publishDate) &&
+            Objects.equals(questionCount, that.questionCount) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(distinct, that.distinct)
         );
@@ -228,7 +282,19 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, difficulty, category, published, userId, distinct);
+        return Objects.hash(
+            id,
+            title,
+            description,
+            difficulty,
+            category,
+            maxAnswerTime,
+            published,
+            publishDate,
+            questionCount,
+            userId,
+            distinct
+        );
     }
 
     // prettier-ignore
@@ -240,7 +306,10 @@ public class QuizzCriteria implements Serializable, Criteria {
             (description != null ? "description=" + description + ", " : "") +
             (difficulty != null ? "difficulty=" + difficulty + ", " : "") +
             (category != null ? "category=" + category + ", " : "") +
+			(maxAnswerTime != null ? "maxAnswerTime=" + maxAnswerTime + ", " : "") +
             (published != null ? "published=" + published + ", " : "") +
+			(publishDate != null ? "publishDate=" + publishDate + ", " : "") +
+            (questionCount != null ? "questionCount=" + questionCount + ", " : "") +
             (userId != null ? "userId=" + userId + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";

@@ -1,4 +1,4 @@
-package com.github.desprez.web.client;
+package com.github.desprez.service.client;
 
 import com.github.desprez.domain.Option;
 import com.github.desprez.domain.Question;

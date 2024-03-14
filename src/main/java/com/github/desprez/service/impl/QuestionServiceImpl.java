@@ -3,7 +3,7 @@ package com.github.desprez.service.impl;
 import com.github.desprez.domain.Question;
 import com.github.desprez.repository.QuestionRepository;
 import com.github.desprez.service.QuestionService;
-import com.github.desprez.web.client.OpenDBRestClient;
+import com.github.desprez.service.client.OpenDBRestClient;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

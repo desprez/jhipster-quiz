@@ -42,6 +42,8 @@ public class QuizzBasicDTO {
 
     private Instant publishDate;
 
+    private Integer maxAnswerTime;
+
     public UUID getId() {
         return id;
     }
@@ -131,6 +133,14 @@ public class QuizzBasicDTO {
         this.publishDate = publishDate;
     }
 
+    public Integer getMaxAnswerTime() {
+        return maxAnswerTime;
+    }
+
+    public void setMaxAnswerTime(Integer maxAnswerTime) {
+        this.maxAnswerTime = maxAnswerTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -155,15 +165,14 @@ public class QuizzBasicDTO {
     // prettier-ignore
   @Override
   public String toString() {
-      return "QuizzDTO{" +
-          "id='" + getId() + "'" +
-          ", title='" + getTitle() + "'" +
-          ", description='" + getDescription() + "'" +
-          ", difficulty='" + getDifficulty() + "'" +
-          ", category='" + getCategory() + "'" +
-          ", published='" + getPublished() + "'" +
-          ", image='" + getImage() + "'" +
-          ", user=" + getUser() +
-          "}";
+    return "QuizzDTO{" + "id='" + getId() + "'" 
+        + ", title='" + getTitle() + "'" 
+        + ", description='" + getDescription() + "'" 
+        + ", difficulty='" + getDifficulty() + "'" 
+        + ", category='" + getCategory() + "'" 
+        + ", published='" + getPublished() + "'" 
+        + ", maxAnswerTime='" + getMaxAnswerTime() + "'" 
+        + ", image='" + getImage() + "'" 
+        + ", user=" + getUser() + "}";
   }
 }

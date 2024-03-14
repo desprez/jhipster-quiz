@@ -19,8 +19,6 @@ public class QuizzDTO extends QuizzBasicDTO {
     @NotNull
     private DisplayOrder questionOrder;
 
-    private Integer maxAnswerTime;
-
     @NotNull
     private Boolean allowBack;
 
@@ -42,14 +40,6 @@ public class QuizzDTO extends QuizzBasicDTO {
 
     public void setQuestionOrder(DisplayOrder questionOrder) {
         this.questionOrder = questionOrder;
-    }
-
-    public Integer getMaxAnswerTime() {
-        return maxAnswerTime;
-    }
-
-    public void setMaxAnswerTime(Integer maxAnswerTime) {
-        this.maxAnswerTime = maxAnswerTime;
     }
 
     public Boolean getAllowBack() {
@@ -131,7 +121,6 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", difficulty='" + getDifficulty() + "'" +
             ", category='" + getCategory() + "'" +
             ", questionOrder='" + getQuestionOrder() + "'" +
-            ", maxAnswerTime=" + getMaxAnswerTime() +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
             ", keepAnswersSecret='" + getKeepAnswersSecret() + "'" +

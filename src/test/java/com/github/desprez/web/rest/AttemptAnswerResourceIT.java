@@ -75,7 +75,7 @@ class AttemptAnswerResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AttemptAnswer createEntity(EntityManager em) {
-        AttemptAnswer attemptAnswer = new AttemptAnswer().started(DEFAULT_STARTED).ended(DEFAULT_ENDED);
+        AttemptAnswer attemptAnswer = new AttemptAnswer().started(DEFAULT_STARTED).ended(DEFAULT_ENDED).correct(DEFAULT_CORRECT);
         // Add required entity
         Question question;
         if (TestUtil.findAll(em, Question.class).isEmpty()) {
