@@ -1,6 +1,6 @@
 {
-  "title": "",
-  "description": "",
+  "title": "A general knowledge quizz",
+  "description": "General knowledge quizz with questions about various subjects",
   "difficulty": "EASY",
   "category": "GENERAL_KNOWLEDGE",
   "published": true,
@@ -50,7 +50,7 @@
           "index": 2
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "statement": "How many consonants are there in the English alphabet?",
@@ -171,7 +171,7 @@
       "index": 9,
       "options": [
         {
-          "statement": "New York   ",
+          "statement": "New York",
           "index": 1
         },
         {
@@ -190,7 +190,7 @@
       "correctOptionIndex": 3
     },
     {
-      "statement": "Metre per second is the unit of Speed.",
+      "statement": "The meter per second (m/s) is the standard unit of speed and velocity in the International System of Units.",
       "index": 10,
       "options": [
         {
@@ -225,10 +225,10 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 4
     },
     {
-      "statement": "There are 200 bones in the Human Body.",
+      "statement": "There are exactly 200 bones in the human body.",
       "index": 12,
       "options": [
         {
@@ -263,7 +263,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "statement": "Photosynthesis helps the plants to make their own food.",
@@ -301,7 +301,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "statement": "Jupiter is the largest planet in our solar system?",
@@ -415,7 +415,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 4
     },
     {
       "statement": "The Great Wall of China is visible from space.",
@@ -430,7 +430,7 @@
           "index": 2
         }
       ],
-      "correctOptionIndex": 2
+      "correctOptionIndex": 1
     },
     {
       "statement": "What is the capital city of France?",
@@ -453,7 +453,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 4
     },
     {
       "statement": "The Amazon Rainforest produces 20% of the world's oxygen.",
@@ -468,7 +468,7 @@
           "index": 2
         }
       ],
-      "correctOptionIndex": 2
+      "correctOptionIndex": 1
     },
     {
       "statement": "Who wrote the play 'Romeo and Juliet'?",
@@ -491,7 +491,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 3
     },
     {
       "statement": "The currency of Japan is the Yuan.",
@@ -506,7 +506,7 @@
           "index": 2
         }
       ],
-      "correctOptionIndex": 2
+      "correctOptionIndex": 1
     },
     {
       "statement": "What is the largest mammal in the world?",
@@ -529,7 +529,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "statement": "The Earth is the only planet in our solar system that rotates clockwise.",
@@ -567,7 +567,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 2
     },
     {
       "statement": "Mount Everest is located in the Himalayas.",
@@ -582,7 +582,7 @@
           "index": 2
         }
       ],
-      "correctOptionIndex": 2
+      "correctOptionIndex": 1
     },
     {
       "statement": "In what year did Christopher Columbus first reach the Americas?",
@@ -605,7 +605,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 4
     },
     {
       "statement": "The Great Barrier Reef is the world's largest coral reef system.",
@@ -643,7 +643,7 @@
           "index": 4
         }
       ],
-      "correctOptionIndex": 1
+      "correctOptionIndex": 3
     },
     {
       "statement": "The Eiffel Tower is taller than the Statue of Liberty.",
