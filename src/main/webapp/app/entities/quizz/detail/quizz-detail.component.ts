@@ -7,12 +7,23 @@ import { DataUtils } from 'app/core/util/data-util.service';
 import { IQuizz } from '../quizz.model';
 import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 import { ConfirmationDialogService } from 'app/shared/confirmation-dialog/confirmation-dialog.service';
+import { NgbAccordionModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DigitToLetterPipe } from 'app/shared/pipe/digit-to-letter.pipe';
 
 @Component({
   standalone: true,
   selector: 'jhi-quizz-detail',
   templateUrl: './quizz-detail.component.html',
-  imports: [SharedModule, RouterModule, DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe, HasAnyAuthorityDirective],
+  imports: [
+    SharedModule,
+    RouterModule,
+    DurationPipe,
+    FormatMediumDatetimePipe,
+    FormatMediumDatePipe,
+    HasAnyAuthorityDirective,
+    NgbAccordionModule,
+    DigitToLetterPipe,
+  ],
 })
 export class QuizzDetailComponent {
   @Input() quizz: IQuizz | null = null;

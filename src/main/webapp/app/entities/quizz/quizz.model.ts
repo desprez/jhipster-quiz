@@ -24,7 +24,7 @@ export interface IQuizz {
   attempsLimit?: number | null;
   attempsLimitPeriod?: keyof typeof Period | null;
   questionCount?: number | null;
-  questions?: Pick<IQuestion, 'id' | 'statement' | 'index'>[] | null;
+  questions?: Pick<IQuestion, 'id' | 'statement' | 'index' | 'options' | 'correctOptionIndex'>[] | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }
 

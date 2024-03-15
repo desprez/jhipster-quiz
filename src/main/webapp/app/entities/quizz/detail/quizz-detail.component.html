@@ -89,14 +89,42 @@
 
           <dt><span jhiTranslate="quizzApp.quizz.questions">Questions</span></dt>
           <dd>
-            <div>
+            <!-- <div>
               <ul class="list-group">
                 <li *ngFor="let question of quizz!.questions" class="list-group-item d-flex">
-                  <span class="">{{ question.index }}</span
-                  >.
-                  <span [innerHTML]="question.statement"></span>
+                  <span class="">{{ question.index }}</span>.&nbsp;<span [innerHTML]="question.statement"></span>
                 </li>
               </ul>
+            </div> -->
+            <div ngbAccordion [closeOthers]="true">
+              @for (question of quizz!.questions; track question.id) {
+                <div ngbAccordionItem [collapsed]="question.id !== 'First'">
+                  <h2 ngbAccordionHeader>
+                    <button ngbAccordionButton>{{ question.index }}.&nbsp;<span [innerHTML]="question.statement"></span></button>
+                  </h2>
+                  <div ngbAccordionCollapse>
+                    <div ngbAccordionBody>
+                      <ng-template>
+                        <ul class="list-group">
+                          @for (option of question!.options; track $index) {
+                            <li
+                              class="list-group-item d-flex justify-content-between 
+                            {{ option.index === question.correctOptionIndex ? 'list-group-item-success' : '' }}"
+                            >
+                              <span class="">{{ $index | digitToLetter }}. {{ option.statement }}</span>
+                              <span>
+                                @if (option.index === question.correctOptionIndex) {
+                                  <fa-icon icon="check" class="text-success"></fa-icon>
+                                }
+                              </span>
+                            </li>
+                          }
+                        </ul>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
           </dd>
         </dl>
