@@ -58,7 +58,7 @@
                   tableName="attempt"
                   usePreparedStatements="true">
             <column name="id" type="${uuidType}"/>
-            <column name="correct_answercount" type="numeric"/>
+            <column name="correct_answer_count" type="numeric"/>
             <column name="wrong_answer_count" type="numeric"/>
             <column name="unanswered_count" type="numeric"/>
             <column name="started" type="date"/>

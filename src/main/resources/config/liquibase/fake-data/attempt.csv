@@ -1,3 +1,3 @@
-id;correct_answer_count;;;started;ended;quizz_id;user_id
+id;correct_answer_count;wrong_answer_count;unanswered_count;started;ended;quizz_id;user_id
 f34f26a1-e0ce-4a71-9043-6858e4b387d6;0;3;0;2023-11-29T23:00:00;2023-11-29T23:11:05;7bf9fa79-5b46-4bb0-bb38-298bf9bd036b;2
 80adba88-c349-4e92-b719-a60b4dd3987b;3;0;0;2023-11-30T15:40:00;2023-11-30T15:45:05;7bf9fa79-5b46-4bb0-bb38-298bf9bd036b;1
