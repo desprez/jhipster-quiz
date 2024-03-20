@@ -31,7 +31,7 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/quizz/browse" (click)="collapseNavbar()">
             <span>
-              <fa-icon icon="check-double"></fa-icon>
+              <fa-icon icon="search"></fa-icon>
               <span jhiTranslate="global.menu.browse">Browse</span>
             </span>
           </a>
@@ -40,8 +40,16 @@
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" routerLink="/quizz" (click)="collapseNavbar()">
               <span>
-                <fa-icon icon="check-double"></fa-icon>
-                <span jhiTranslate="global.menu.myquizzes">my Quizzes</span>
+                <fa-icon icon="list-check"></fa-icon>
+                <span jhiTranslate="global.menu.myquizzes">My Quizzes</span>
+              </span>
+            </a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/quizz" (click)="collapseNavbar()">
+              <span>
+                <fa-icon icon="trophy"></fa-icon>
+                <span jhiTranslate="global.menu.myscores">My scores</span>
               </span>
             </a>
           </li>
@@ -222,7 +230,11 @@
             @if (!account?.imageUrl) {
               <span>
                 <fa-icon icon="user"></fa-icon>
-                <span jhiTranslate="global.menu.account.main">Account</span>
+                @if (account !== null) {
+                  <span>{{ account.login }}</span>
+                } @else {
+                  <span jhiTranslate="global.menu.account.main">Account</span>
+                }
               </span>
             } @else {
               <span>
