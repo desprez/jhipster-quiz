@@ -13,7 +13,7 @@ import java.util.UUID;
  * A DTO for the {@link com.github.desprez.domain.Attempt} entity.
  */
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@JsonInclude(Include.NON_NULL)
+@JsonInclude(Include.NON_EMPTY)
 public class AttemptBasicDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
