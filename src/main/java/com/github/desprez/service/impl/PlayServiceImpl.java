@@ -110,11 +110,11 @@ public class PlayServiceImpl implements PlayService {
             if (answer.getQuestion().getId().equals(question.getId())) {
                 found = true;
                 Option optionAnswered = getOptionById(question, answer.getOption()).orElse(null);
+                answer.setOption(optionAnswered);
                 if (optionAnswered == null) {
                     attempt.incrementUnansweredCount();
                     break;
                 }
-                answer.setOption(optionAnswered);
                 if (checkIsCorrectAnswer(question, answer.getOption())) {
                     attempt.incrementCorrectAnswerCount();
                     answer.correct(true);
