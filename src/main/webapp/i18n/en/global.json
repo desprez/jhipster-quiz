@@ -6,7 +6,8 @@
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "browse": "Browse",
-      "myscore": "My score",
+      "myquizzes": "My quizzes",
+      "myscores": "My scores",
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
