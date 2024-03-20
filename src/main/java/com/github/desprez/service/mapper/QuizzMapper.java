@@ -49,5 +49,9 @@ public interface QuizzMapper extends EntityMapper<QuizzDTO, Quizz> {
         if (DisplayOrder.RANDOM.equals(target.getQuestionOrder())) {
             Collections.shuffle(target.getQuestions());
         }
+        if (target.getKeepAnswersSecret() && target.getPublished()) {
+            // hide correctAnswsers for published quizz
+            target.getQuestions().forEach(q -> q.setCorrectOptionIndex(null));
+        }
     }
 }
