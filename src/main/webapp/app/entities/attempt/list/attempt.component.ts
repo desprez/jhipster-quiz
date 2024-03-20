@@ -15,6 +15,7 @@ import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/conf
 import { IAttempt } from '../attempt.model';
 import { EntityArrayResponseType, AttemptService } from '../service/attempt.service';
 import { AttemptDeleteDialogComponent } from '../delete/attempt-delete-dialog.component';
+import { Dayjs } from 'dayjs';
 
 @Component({
   standalone: true,
@@ -150,5 +151,12 @@ export class AttemptComponent implements OnInit {
     } else {
       return [predicate + ',' + ascendingQueryParam];
     }
+  }
+
+  protected diffDate(attempt: IAttempt): number | null {
+    if (attempt.started && attempt.ended) {
+      return attempt.ended.diff(attempt.started);
+    }
+    return null;
   }
 }

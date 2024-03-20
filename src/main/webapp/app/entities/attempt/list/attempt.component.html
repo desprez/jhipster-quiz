@@ -75,7 +75,7 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
-            <th scope="col" jhiSortBy="date">
+            <th scope="col" jhiSortBy="started">
               <div class="d-flex">
                 <span jhiTranslate="quizzApp.attempt.date">Date</span>
 
@@ -113,7 +113,7 @@
               <td>{{ attempt.wrongAnswerCount }}</td>
               <td>{{ attempt.unansweredCount }}</td>
               <td>{{ attempt.started | dayJS: 'fromNow' }}</td>
-              <td>{{ attempt.ended!.diff(attempt.started) | duration }}</td>
+              <td>{{ diffDate(attempt) | duration }}</td>
               <td class="text-end">
                 <div class="btn-group">
                   <a [routerLink]="['/attempt', attempt.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
