@@ -1,0 +1,461 @@
+{
+  "title": "Angular test",
+  "description": "Below are the few Angular  Questions which test your knowledge of Angular Concepts.",
+  "difficulty": "EASY",
+  "category": "COMPUTERS",
+  "published": false,
+  "user": {
+    "id": 1,
+    "login": "admin"
+  },
+  "image": null,
+  "imageContentType": null,
+  "questionCount": 19,
+  "publishDate": null,
+  "maxAnswerTime": null,
+  "questionOrder": "RANDOM",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": true,
+  "attempsLimit": null,
+  "attempsLimitPeriod": null,
+  "questions": [
+    {
+      "statement": "What is the purpose of the ngClass directive in Angular?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "To add or remove a CSS class based on a condition",
+          "index": 1
+        },
+        {
+          "statement": "To create a CSS animation",
+          "index": 2
+        },
+        {
+          "statement": "To create a CSS transition",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the ngSwitch directive in Angular?",
+      "index": 17,
+      "options": [
+        {
+          "statement": "To conditionally render HTML elements",
+          "index": 1
+        },
+        {
+          "statement": "To create a switch statement",
+          "index": 2
+        },
+        {
+          "statement": "To create a loop",
+          "index": 3
+        },
+        {
+          "statement": "To create a form control",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the purpose of the NgModule decorator in Angular?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "To define a module",
+          "index": 1
+        },
+        {
+          "statement": "To define a component",
+          "index": 2
+        },
+        {
+          "statement": "To define a service",
+          "index": 3
+        },
+        {
+          "statement": "To define a directive",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the RouterLink directive in Angular?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "To create a hyperlink to another page",
+          "index": 1
+        },
+        {
+          "statement": "To create a hyperlink to another component",
+          "index": 2
+        },
+        {
+          "statement": "To create a hyperlink to another route",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the purpose of the ngStyle directive in Angular?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "To add or remove a CSS style based on a condition",
+          "index": 1
+        },
+        {
+          "statement": "To create a CSS animation",
+          "index": 2
+        },
+        {
+          "statement": "To create a CSS transition",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the ActivatedRoute class in Angular?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "To access the parameters passed to a route",
+          "index": 1
+        },
+        {
+          "statement": "To access the query parameters passed to a route",
+          "index": 2
+        },
+        {
+          "statement": "To access the route data",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the purpose of the ngModel directive in Angular?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "To create a two-way data binding",
+          "index": 1
+        },
+        {
+          "statement": "To create a one-way data binding",
+          "index": 2
+        },
+        {
+          "statement": "To create a form control",
+          "index": 3
+        },
+        {
+          "statement": "To create a template reference variable",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the ngIf directive in Angular?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "To create a loop",
+          "index": 1
+        },
+        {
+          "statement": "To conditionally render HTML elements",
+          "index": 2
+        },
+        {
+          "statement": "To create a switch statement",
+          "index": 3
+        },
+        {
+          "statement": "To create a form control",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the purpose of the EventEmitter class in Angular?",
+      "index": 19,
+      "options": [
+        {
+          "statement": "To emit events from a component to its parent component",
+          "index": 1
+        },
+        {
+          "statement": "To emit events from a service to a component",
+          "index": 2
+        },
+        {
+          "statement": "To emit events from a component to a service",
+          "index": 3
+        },
+        {
+          "statement": "To emit events from a directive to a component",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the @ContentChild decorator in Angular?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "To reference a child component",
+          "index": 1
+        },
+        {
+          "statement": " To reference a child directive",
+          "index": 2
+        },
+        {
+          "statement": "To reference a child element",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Which of the following is a built-in directive in Angular?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "*ngFor",
+          "index": 1
+        },
+        {
+          "statement": "*ngIf",
+          "index": 2
+        },
+        {
+          "statement": "*ngSwitch",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the ngFor directive in Angular?",
+      "index": 16,
+      "options": [
+        {
+          "statement": "To conditionally render HTML elements",
+          "index": 1
+        },
+        {
+          "statement": "To create a switch statement",
+          "index": 2
+        },
+        {
+          "statement": "To create a loop",
+          "index": 3
+        },
+        {
+          "statement": "To create a form control",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the purpose of the @ViewChild decorator in Angular?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "To reference a child component",
+          "index": 1
+        },
+        {
+          "statement": "To reference a child directive",
+          "index": 2
+        },
+        {
+          "statement": "To reference a child element",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the purpose of the ElementRef class in Angular?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "To create a reference to an element in the DOM",
+          "index": 1
+        },
+        {
+          "statement": "To create a reference to a service",
+          "index": 2
+        },
+        {
+          "statement": "To create a reference to a component",
+          "index": 3
+        },
+        {
+          "statement": "To create a reference to a module",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the purpose of the Http module in Angular?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "To make HTTP requests to a server",
+          "index": 1
+        },
+        {
+          "statement": "To manage application state",
+          "index": 2
+        },
+        {
+          "statement": "To create components",
+          "index": 3
+        },
+        {
+          "statement": "To create modules",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is Angular ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "A programming language",
+          "index": 1
+        },
+        {
+          "statement": "A framework for building web applications",
+          "index": 2
+        },
+        {
+          "statement": "A database management system",
+          "index": 3
+        },
+        {
+          "statement": "An operating system",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the purpose of the HttpClientModule in Angular?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "To handle HTTP errors",
+          "index": 1
+        },
+        {
+          "statement": "To intercept HTTP requests and responses",
+          "index": 2
+        },
+        {
+          "statement": "To provide HTTP services to components",
+          "index": 3
+        },
+        {
+          "statement": "All of the above",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the purpose of the Renderer2 class in Angular?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "To create a reference to an element in the DOM",
+          "index": 1
+        },
+        {
+          "statement": "To create a reference to a service",
+          "index": 2
+        },
+        {
+          "statement": "To create a reference to a component",
+          "index": 3
+        },
+        {
+          "statement": "To manipulate the DOM",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the purpose of the ngContent directive in Angular?",
+      "index": 18,
+      "options": [
+        {
+          "statement": "To create a content projection",
+          "index": 1
+        },
+        {
+          "statement": "To create a content reference",
+          "index": 2
+        },
+        {
+          "statement": "To create a component",
+          "index": 3
+        },
+        {
+          "statement": "To create a module",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+[
+  {
+    "statement": "How many values can a single byte represent?",
+    "index": 1,
+    "correctOptionIndex": 3,
+    "options": [
+      {
+        "statement": "1024",
+        "index": 1
+      },
+      {
+        "statement": "8",
+        "index": 2
+      },
+      {
+        "statement": "256",
+        "index": 3
+      },
+      {
+        "statement": "1",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "In computing, what does LAN stand for?",
+    "index": 2,
+    "correctOptionIndex": 2,
+    "options": [
+      {
+        "statement": "Long Antenna Node",
+        "index": 1
+      },
+      {
+        "statement": "Local Area Network",
+        "index": 2
+      },
+      {
+        "statement": "Light Access Node",
+        "index": 3
+      },
+      {
+        "statement": "Land Address Navigation",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "What does GHz stand for?",
+    "index": 3,
+    "correctOptionIndex": 4,
+    "options": [
+      {
+        "statement": "Gigahetz",
+        "index": 1
+      },
+      {
+        "statement": "Gigahatz",
+        "index": 2
+      },
+      {
+        "statement": "Gigahotz",
+        "index": 3
+      },
+      {
+        "statement": "Gigahertz",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "What does LTS stand for in the software market?",
+    "index": 4,
+    "correctOptionIndex": 3,
+    "options": [
+      {
+        "statement": "Long Taco Service",
+        "index": 1
+      },
+      {
+        "statement": "Ludicrous Transfer Speed",
+        "index": 2
+      },
+      {
+        "statement": "Long Term Support",
+        "index": 3
+      },
+      {
+        "statement": "Ludicrous Turbo Speed",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "Pointers were not used in the original C programming language; they were added later on in C++.",
+    "index": 5,
+    "correctOptionIndex": 1,
+    "options": [
+      {
+        "statement": "False",
+        "index": 1
+      },
+      {
+        "statement": "True",
+        "index": 2
+      }
+    ]
+  },
+  {
+    "statement": "The programming language &#039;Swift&#039; was created to replace what other programming language?",
+    "index": 6,
+    "correctOptionIndex": 4,
+    "options": [
+      {
+        "statement": "Ruby",
+        "index": 1
+      },
+      {
+        "statement": "C++",
+        "index": 2
+      },
+      {
+        "statement": "C#",
+        "index": 3
+      },
+      {
+        "statement": "Objective-C",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "What language does Node.js use?",
+    "index": 7,
+    "correctOptionIndex": 3,
+    "options": [
+      {
+        "statement": "Java Source",
+        "index": 1
+      },
+      {
+        "statement": "Joomla Source Code",
+        "index": 2
+      },
+      {
+        "statement": "JavaScript",
+        "index": 3
+      },
+      {
+        "statement": "Java",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "Which programming language shares its name with an island in Indonesia?",
+    "index": 8,
+    "correctOptionIndex": 1,
+    "options": [
+      {
+        "statement": "Java",
+        "index": 1
+      },
+      {
+        "statement": "Jakarta",
+        "index": 2
+      },
+      {
+        "statement": "Python",
+        "index": 3
+      },
+      {
+        "statement": "C",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "What is the code name for the mobile operating system Android 7.0?",
+    "index": 9,
+    "correctOptionIndex": 4,
+    "options": [
+      {
+        "statement": "Jelly Bean",
+        "index": 1
+      },
+      {
+        "statement": "Ice Cream Sandwich",
+        "index": 2
+      },
+      {
+        "statement": "Marshmallow",
+        "index": 3
+      },
+      {
+        "statement": "Nougat",
+        "index": 4
+      }
+    ]
+  },
+  {
+    "statement": "Linus Torvalds created Linux and Git.",
+    "index": 10,
+    "correctOptionIndex": 1,
+    "options": [
+      {
+        "statement": "True",
+        "index": 1
+      },
+      {
+        "statement": "False",
+        "index": 2
+      }
+    ]
+  }
+]
