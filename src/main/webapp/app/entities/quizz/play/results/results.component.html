@@ -1,25 +1,26 @@
 <div class="modal-body">
   <jhi-alert-error></jhi-alert-error>
-
-  <div>
-    <div class="progress-percentage-wrapper">
-      <div class="progress-percentage ng-cloak">{{ current! / max! | percent }}</div>
-      <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" [color]="'#fa6f04'" />
+  <div class="text-center">
+    <div>
+      <div class="progress-percentage-wrapper">
+        <div class="progress-percentage ng-cloak">{{ current! / max! | percent }}</div>
+        <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" [color]="'#fa6f04'" />
+      </div>
+      <br />
     </div>
-    <br />
+
+    <h4><span jhiTranslate="quizzApp.quizz.play.result.completed">You've completed the Quizz !</span></h4>
+
+    <h5>
+      <span jhiTranslate="quizzApp.quizz.play.result.congratutations" [translateValues]="{ current: current, max: max }"
+        >and congrats!, You got {{ current }} out of {{ max }}'</span
+      >
+    </h5>
+
+    <p><span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAttempted">Total Question Attempted</span>: {{ answered }}</p>
+    <p>
+      <span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAnswered">Total Correct Answered</span>: {{ attempt!.correctAnswerCount }}
+    </p>
+    <p><span jhiTranslate="quizzApp.quizz.play.result.totalWrongAnswered">Total Wrong Answered</span>: {{ attempt!.wrongAnswerCount }}</p>
   </div>
-
-  <h6><span jhiTranslate="quizzApp.quizz.play.result.completed">You've completed the Quizz !</span></h6>
-
-  <p>
-    <span jhiTranslate="quizzApp.quizz.play.result.congratutations" [translateValues]="{ current: current, max: max }"
-      >and congrats!, You got {{ current }} out of {{ max }}'</span
-    >
-  </p>
-
-  <p><span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAttempted">Total Question Attempted</span>{{ answered }}</p>
-  <p>
-    <span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAnswered">Total Correct Answered</span>{{ attempt!.correctAnswerCount }}
-  </p>
-  <p><span jhiTranslate="quizzApp.quizz.play.result.totalWrongAnswered">Total Wrong Answered</span>{{ attempt!.wrongAnswerCount }}</p>
 </div>

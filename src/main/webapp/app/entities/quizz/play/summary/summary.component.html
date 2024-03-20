@@ -1,5 +1,10 @@
 <div class="col-4 cursor-pointer">
   @for (answer of attempt.answers; track answer.id; let idx = $index) {
-    <div (click)="goTo(idx)" class="p-3 mb-2 {{ isAnswered(answer) == 'Answered' ? 'bg-info' : 'bg-warning' }}">{{ idx + 1 }}</div>
+    <button type="button" class="btn btn-default btn-round">
+      <span>{{ idx + 1 }}</span>
+    </button>
+    <div (click)="goTo(idx)" class="badge rounded-pill {{ isAnswered(answer) == 'Answered' ? 'bg-info' : 'bg-warning' }}">
+      <h5>{{ idx + 1 }}</h5>
+    </div>
   }
 </div>

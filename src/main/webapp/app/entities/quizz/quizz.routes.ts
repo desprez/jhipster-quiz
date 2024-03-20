@@ -46,7 +46,7 @@ const quizzRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: QuizzUpdateComponent,
+    component: QuizzMakerComponent,
     resolve: {
       quizz: QuizzResolve,
     },

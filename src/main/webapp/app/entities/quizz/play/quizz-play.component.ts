@@ -65,11 +65,11 @@ export class QuizzPlayComponent {
   }
 
   displaySummary(): void {
-    if (this.quizz.allowReview) {
-      this.mode = PlayMode.SUMMARY;
-    } else {
-      this.displayResult();
-    }
+    // if (this.quizz.allowReview) {
+    //   this.mode = PlayMode.SUMMARY;
+    // } else {
+    this.displayResult();
+    // }
   }
 
   goto(index: number): void {

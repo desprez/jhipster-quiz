@@ -233,9 +233,10 @@
           <div>
             @if (editForm.get('image')!.value) {
               <img
+                alt="quizz"
                 [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
                 style="max-height: 100px"
-                alt="quizz image"
+                alt="quizz"
               />
             }
             @if (editForm.get('image')!.value) {
@@ -308,35 +309,10 @@
         }
       </div>
 
-      <!-- <div ngbAccordion [closeOthers]="true">
-        <ng-container formArrayName="questions">
-          @for (let question of questions; let i = index; let isFirst = first) {
-            <div ngbAccordionItem [collapsed]="!isFirst">
-              <h2 ngbAccordionHeader>
-                <button ngbAccordionButton>{{ question }}</button>
-              </h2>
-              <div ngbAccordionCollapse>
-                <div ngbAccordionBody>
-                  <ng-template>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-                    officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                    wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                    excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                    you probably haven't heard of them accusamus labore sustainable VHS.
-                  </ng-template>
-                </div>
-              </div>
-            </div>
-          }
-        </ng-container>
-      </div> -->
-
       <div formArrayName="questions" div class="card text-white bg-primary mb-12">
         <div *ngFor="let question of questions.controls; let i = index; trackBy: customTrackBy" class="card border-primary mb-12">
           <div class="card-header">
             <span class="text-primary">Question {{ i + 1 }}</span>
-            <!-- <a *ngIf="questions.length > 1" (click)="removeQuestion(i)" style="cursor: default; float: right">X</a> -->
 
             <button class="btn btn-secondary" type="button" id="button-addon2" (click)="removeQuestion(i)" style="float: right">
               <fa-icon icon="trash-alt"></fa-icon>
@@ -362,16 +338,7 @@
             <div formArrayName="options" *ngFor="let option of getOptionControls(i); let j = index">
               <ng-container [formGroupName]="j">
                 <ng-container class="form-group" style="padding-left: 100px">
-                  <!-- <a *ngIf="getOptionControls(i).length > 1" (click)="removeOption(i, j)" style="cursor: default; float: right">X</a> -->
-                  <!-- <input type="text" class="form-control" placeholder="Enter option" formControlName="statement" /> -->
-
                   <div class="input-group mb-3">
-                    <!-- <span class="input-group-text"><fa-icon icon="grip-vertical"></fa-icon></span> -->
-                    <div class="input-group-text">
-                      <!-- <input type="radio" [value]="getOptionIndex(i,j)" id="{{ 'field_correctOptionIndex' + i +'' + j}}" class="form-check-input mt-0"
-                      formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex{{ i }}"/> -->
-                      <!-- <input type="radio" [value]="j + 1" formControlName="correctOptionIndex" id="{{ 'field_correctOptionIndex' + i +''+ j}}" class="form-check-input mt-0"/> -->
-                    </div>
                     <span class="input-group-text">{{ j + 1 }}</span>
 
                     <input
@@ -381,10 +348,6 @@
                       [formControl]="getRadioBoundControl(i)"
                       [value]="j + 1"
                     />&nbsp;
-                    <!-- <input type="radio"  formcontrol="editForm.controls.questions[i].controls.correctOptionIndex" name="correctOptionIndex" [value]="i" (change)="onCorrectRadioChange(i, j)"/>&nbsp; -->
-
-                    <!-- name="correctOptionIndex" formControlName="correctOptionIndex"  -->
-                    <!-- <input type="radio" [value]="j+1" formControlName="correctOptionIndex" name="correctOptionIndex" /> -->
 
                     <input
                       type="text"
@@ -393,7 +356,6 @@
                       formControlName="statement"
                       placeholder="{{ 'quizzApp.quizz.maker.option.placeholder' | translate }}"
                     />
-                    <!-- <input type="text" formControlName="index" placeholder="Index"> -->
                     <button
                       *ngIf="getOptionControls(i).length > 1"
                       class="btn btn-secondary"
@@ -406,7 +368,6 @@
                   </div>
                 </ng-container>
               </ng-container>
-              <!-- <a class="pull-right" *ngIf="j == getOptionsFormArray(i).length - 1" (click)="addOption(i)" style="float: right">Option +</a> -->
               <button type="button" *ngIf="j == getOptionsFormArray(i).length - 1" class="btn btn-secondary" (click)="addOption(i)">
                 <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.option.addButton">Add option</span>
               </button>
@@ -417,13 +378,11 @@
       </div>
 
       <div class="margin-20">
-        <!-- <a (click)="addQuestion()" style="cursor: default; float: right"> New question + </a> -->
         <button type="button" class="btn btn-secondary" (click)="addQuestion()">
           <fa-icon icon="plus"></fa-icon>&nbsp;<span jhiTranslate="quizzApp.quizz.maker.question.addButton">Add option</span>
         </button>
       </div>
       <br />
-      <!-- <jhi-questions [questionsFormArray]="questions"></jhi-questions> -->
 
       <div>
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
@@ -439,10 +398,6 @@
         >
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
-      </div>
-
-      <div class="margin-20">
-        <pre>form value: <br>{{editForm.value | json}}</pre>
       </div>
     </form>
   </div>

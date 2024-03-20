@@ -9,11 +9,12 @@ import SharedModule from 'app/shared/shared.module';
 import { PlayMode } from '../play-mode';
 import { PlayFormComponent } from '../play-form/play-form.component';
 import dayjs from 'dayjs/esm';
+import { CountDownComponent } from 'app/shared/count-down/count-down.component';
 
 @Component({
   selector: 'jhi-questions',
   standalone: true,
-  imports: [SharedModule, PlayFormComponent],
+  imports: [SharedModule, PlayFormComponent, CountDownComponent],
   templateUrl: './questions.component.html',
 })
 export class QuestionsComponent implements OnInit {
@@ -130,5 +131,13 @@ export class QuestionsComponent implements OnInit {
 
   finishAttempt() {
     this.onNextStep.emit(PlayMode.RESULTS);
+  }
+
+  goTo(index: number) {
+    this.currentQuestionIndex = index;
+  }
+
+  isAnswered(answer: IAttemptAnswer) {
+    return answer.option?.id === undefined ? 'Not Answered' : 'Answered';
   }
 }

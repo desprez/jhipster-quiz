@@ -22,7 +22,7 @@ export class ModalContainerComponent implements OnDestroy {
   ) {
     route.data.pipe(takeUntil(this.destroy)).subscribe(data => {
       // When router navigates on this component is takes the data and opens up the QuizzPlay modal
-      this.currentDialog = this.modalService.open(QuizzPlayComponent, { centered: true, backdrop: 'static' });
+      this.currentDialog = this.modalService.open(QuizzPlayComponent, { centered: true, backdrop: 'static', size: 'lg' });
       this.currentDialog.componentInstance.quizz = data.quizz;
 
       // Go back to home page after the modal is closed

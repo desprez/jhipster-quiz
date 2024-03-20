@@ -1,18 +1,23 @@
 <div class="modal-body">
-  <jhi-alert-error></jhi-alert-error>
-  <header>
-    @if (timerEnabled) {
-      <div class="float-end">
-        <span class="badge bg-primary">
-          {{ remainingTime }}
-        </span>
-        <fa-icon icon="stopwatch"></fa-icon>
-      </div>
-    }
+  <div class="justify-content-between">
     <div class="float-start">
       <span class="badge bg-primary"> {{ currentQuestionIndex + 1 }} / {{ answerList.length }} </span>
     </div>
-  </header>
+    @if (timerEnabled) {
+      <div class="float-end">
+        <span class="badge bg-primary">
+          <fa-icon icon="stopwatch"></fa-icon>
+          <jhi-count-down [seconds]="remainingTime" (onTimeout)="finishAttempt()"></jhi-count-down>
+        </span>
+      </div>
+    }
+  </div>
+  <p>Question 5 out of 5</p>
+  <div class="justify-content-between">
+    <ngb-progressbar class="mb-3" [showValue]="true" type="primary" [value]="answerCount" [max]="3" />
+  </div>
+  <jhi-alert-error></jhi-alert-error>
+  <header></header>
 
   <h5>{{ answerList[currentQuestionIndex].question!.statement }}</h5>
 
@@ -24,18 +29,18 @@
     ></jhi-play-form>
   </div>
   <br />
-  <footer>
-    <div class="progress mb-3">
-      <div
-        class="progress-bar progress-bar-striped bg-success"
-        role="progressbar"
-        [ngStyle]="{ width: progress + '%' }"
-        aria-valuenow="0"
-        aria-valuemin="0"
-        aria-valuemax="100"
-      ></div>
-    </div>
-  </footer>
+  <footer></footer>
+</div>
+<div>
+  @for (answer of attempt.answers; track answer.id; let idx = $index) {
+    <button
+      type="button"
+      class="btn btn-circle btn-circle-sm m-1 {{ isAnswered(answer) == 'Answered' ? 'bg-info' : 'bg-danger' }}"
+      (click)="goTo(idx)"
+    >
+      <span>{{ idx + 1 }}</span>
+    </button>
+  }
 </div>
 <div class="modal-footer justify-content-between">
   <button type="button" [disabled]="currentQuestionIndex === 0" class="btn btn-outline-primary" (click)="previousQuestion()">
