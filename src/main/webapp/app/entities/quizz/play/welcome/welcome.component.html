@@ -1,7 +1,7 @@
 <div class="modal-body">
   <jhi-alert-error></jhi-alert-error>
-  <p>{{ quizz.description }}</p>
   @if (quizz.image) {
-    <img [src]="quizz.image" alt="quizz image" />
+    <img [src]="'data:' + quizz.imageContentType + ';base64,' + quizz.image" class="card-img-top" alt="quizz image" />
   }
+  <p>{{ quizz.description }}</p>
 </div>

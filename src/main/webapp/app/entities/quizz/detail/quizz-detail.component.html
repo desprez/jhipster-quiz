@@ -56,7 +56,7 @@
             @if (quizz.image) {
               <div>
                 <a (click)="openFile(quizz.image, quizz.imageContentType)">
-                  <img [src]="'data:' + quizz.imageContentType + ';base64,' + quizz.image" style="max-width: 100%" alt="quizz image" />
+                  <img [src]="'data:' + quizz.imageContentType + ';base64,' + quizz.image" style="max-width: 100%" alt="quizz" />
                 </a>
                 {{ quizz.imageContentType }}, {{ byteSize(quizz.image) }}
               </div>

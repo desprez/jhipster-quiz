@@ -48,7 +48,14 @@ export class QuizzDetailComponent {
 
   publish(): void {
     this.confirmationDialogService
-      .confirm('Please confirm..', 'Do you really want to ... ?')
+      .confirm(
+        'quizzApp.quizz.publish.title',
+        'quizzApp.quizz.publish.question',
+        'quizzApp.quizz.publish.warning',
+        'quizzApp.quizz.publish.confirm',
+        'quizzApp.quizz.publish.cancel',
+        'lg',
+      )
       .then(confirmed => console.log('User confirmed:', confirmed))
       .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }

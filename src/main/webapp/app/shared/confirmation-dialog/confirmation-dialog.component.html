@@ -1,11 +1,14 @@
 <div class="modal-header">
   <h4 class="modal-title">{{ title }}</h4>
-  <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="dismiss()">&times;</button>
+  <button type="button" class="btn-close" data-dismiss="modal" (click)="dismiss()"></button>
 </div>
 <div class="modal-body">
-  {{ message }}
+  <p class="text-primary">{{ message }}</p>
+  <p class="text-danger">{{ warning }}</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="decline()">{{ btnCancelText }}</button>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="decline()">
+    <fa-icon icon="ban"></fa-icon>&nbsp;{{ btnCancelText }}
+  </button>
   <button type="button" class="btn btn-primary" (click)="accept()">{{ btnOkText }}</button>
 </div>

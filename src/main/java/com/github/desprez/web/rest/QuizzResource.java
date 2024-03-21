@@ -229,7 +229,7 @@ public class QuizzResource {
      * @param id the id of the quizzDTO to publish.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @PutMapping("/{id}/publish")
+    @PostMapping("/{id}/publish")
     public ResponseEntity<Void> publishQuizz(
         @Parameter(description = "id of quizz to be published", example = "7bf9fa79-5b46-4bb0-bb38-298bf9bd036b") @PathVariable(
             "id"
@@ -239,7 +239,7 @@ public class QuizzResource {
         quizzService.publishQuiz(id);
         return ResponseEntity
             .noContent()
-            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
 }

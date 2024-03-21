@@ -14,6 +14,7 @@ export class ConfirmationDialogService {
   public confirm(
     titleKey: string,
     messageKey: string,
+    warningKey: string = '',
     btnOkKey: string = 'OK',
     btnCancelKey: string = 'Cancel',
     dialogSize: 'sm' | 'lg' = 'sm',
@@ -21,6 +22,7 @@ export class ConfirmationDialogService {
     const modalRef = this.modalService.open(ConfirmationDialogComponent, { size: dialogSize });
     modalRef.componentInstance.title = this.translate(titleKey);
     modalRef.componentInstance.message = this.translate(messageKey);
+    modalRef.componentInstance.warning = this.translate(warningKey);
     modalRef.componentInstance.btnOkText = this.translate(btnOkKey);
     modalRef.componentInstance.btnCancelText = this.translate(btnCancelKey);
 

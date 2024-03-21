@@ -39,6 +39,15 @@
       "limitedTime": "Temps limité",
       "unlimitedTime": "Sans limite de temps",
       "play": {
+        "rules": {
+          "title": "Some rules of this Quiz",
+          "timedRule": "You have {{ time }} seconds to answer each question",
+          "unlimitedRule": "You have unlimited time to complete the quizz",
+          "backRule": "You can go back to previous questions",
+          "reviewRule": "You can review your answers before submitting",
+          "attemptRule": "You have {{ attempsLimit }} attempts per {{attempsLimitPeriod}} to complete for this Quiz",
+          "cantExitRule": "You can't exit the quizz once started"
+        },
         "result": {
           "completed": "Vous avez terminé le Quiz ! ",
           "congratutations": "et félicitations !, vous avez obtenu {{ current }} sur {{ max }}",
@@ -60,6 +69,13 @@
           "addButton": "Ajouter une option",
           "removeButton": "Supprimer une option"
         }
+      },
+      "publish": {
+        "title": "Confirmer la publication",
+        "question": "Êtes-vous certain de vouloir publier le Quizz <strong>{{ title }}</strong> ?",
+        "warning": "Cette opération va rendre publique votre Quizz et vous ne pourrez plus le modifier. Cette opération est irréversible.",
+        "confirm": "Oui, publier",
+        "cancel": "Non, abandonner"
       }
     }
   }

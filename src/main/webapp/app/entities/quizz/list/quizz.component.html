@@ -130,18 +130,20 @@
                       <fa-icon icon="pencil-alt"></fa-icon>
                       <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                     </a>
+                    <button type="submit" (click)="publish(quizz)" class="btn btn-primary btn-sm" data-cy="entityPublishButton">
+                      <fa-icon icon="rocket"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.publish">Delete</span>
+                    </button>
+                    <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                      <fa-icon icon="times"></fa-icon>
+                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                    </button>
                   }
                   @if (quizz && quizz.published) {
                     <a [routerLink]="['/quizz', quizz.id, 'play']" class="btn btn-primary btn-sm" data-cy="entityPlayButton">
                       <fa-icon icon="play"></fa-icon>
                       <span class="d-none d-md-inline" jhiTranslate="entity.action.play">Play</span>
                     </a>
-                  }
-                  @if (quizz && !quizz.published) {
-                    <button type="submit" (click)="delete(quizz)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                      <fa-icon icon="times"></fa-icon>
-                      <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                    </button>
                   }
                 </div>
               </td>

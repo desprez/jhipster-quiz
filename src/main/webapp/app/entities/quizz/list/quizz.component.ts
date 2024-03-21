@@ -10,7 +10,7 @@ import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'ap
 import { FormsModule } from '@angular/forms';
 
 import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
-import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
+import { ASC, DESC, SORT, ITEM_DELETED_EVENT, ITEM_PUBLISHED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { DataUtils } from 'app/core/util/data-util.service';
 import { ParseLinks } from 'app/core/util/parse-links.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -19,6 +19,7 @@ import { EntityArrayResponseType, QuizzService } from '../service/quizz.service'
 import { IQuizz } from '../quizz.model';
 import { QuizzPlayComponent } from '../play/quizz-play.component';
 import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
+import { QuizzPublishDialogComponent } from '../publish/quizz-publish-dialog.component';
 
 @Component({
   standalone: true,
@@ -91,6 +92,22 @@ export class QuizzComponent implements OnInit {
     modalRef.closed
       .pipe(
         filter(reason => reason === ITEM_DELETED_EVENT),
+        switchMap(() => this.loadFromBackendWithRouteInformations()),
+      )
+      .subscribe({
+        next: (res: EntityArrayResponseType) => {
+          this.onResponseSuccess(res);
+        },
+      });
+  }
+
+  publish(quizz: IQuizz): void {
+    const modalRef = this.modalService.open(QuizzPublishDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.quizz = quizz;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed
+      .pipe(
+        filter(reason => reason === ITEM_PUBLISHED_EVENT),
         switchMap(() => this.loadFromBackendWithRouteInformations()),
       )
       .subscribe({

@@ -7,8 +7,8 @@
 @switch (mode) {
   @case (PlayModeEnum.WELCOME) {
     <jhi-welcome [quizz]="quizz"></jhi-welcome>
-    <div class="start_btn">
-      <button (click)="displayRules()">Start Quiz</button>
+    <div class="modal-footer justify-content-center">
+      <button type="button" class="btn btn-primary" (click)="displayRules()">Start Quiz</button>
     </div>
   }
   @case (PlayModeEnum.RULES) {

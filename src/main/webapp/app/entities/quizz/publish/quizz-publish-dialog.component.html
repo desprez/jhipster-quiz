@@ -1,0 +1,34 @@
+@if (quizz) {
+  <form name="publishForm" (ngSubmit)="confirmPublish(quizz.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="quizzPublishDialogHeading" jhiTranslate="quizzApp.quizz.publish.title">Confirm publish operation</h4>
+
+      <button type="button" class="btn-close" data-dismiss="modal" (click)="cancel()"></button>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        class="text-primary"
+        id="jhi-publish-quizz-heading"
+        jhiTranslate="quizzApp.quizz.publish.question"
+        [translateValues]="{ title: quizz.title }"
+      >
+        Are you sure you want to publish Quizz "{{ quizz.title }}" ?
+      </p>
+      <p class="text-danger" id="jhi-publish-quizz-warning" jhiTranslate="quizzApp.quizz.publish.warning">
+        This operation will make the Quizz available for public access. You can't undo this operation.
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-publish-quizz" data-cy="entityConfirmPublishButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="check"></fa-icon>&nbsp;<span jhiTranslate="entity.action.publish">Publish</span>
+      </button>
+    </div>
+  </form>
+}

@@ -71,6 +71,10 @@ export class QuizzService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  publish(id: string): Observable<HttpResponse<{}>> {
+    return this.http.post(`${this.resourceUrl}/${id}/publish`, null, { observe: 'response' });
+  }
+
   getQuizzIdentifier(quizz: Pick<IQuizz, 'id'>): string {
     return quizz.id;
   }
