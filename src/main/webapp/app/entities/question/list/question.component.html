@@ -32,7 +32,7 @@
 
   @if (questions && questions.length > 0) {
     <div class="table-responsive table-entities" id="entities">
-      <table class="table table-striped" aria-describedby="page-heading">
+      <table class="table table-striped table-hover" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
             <th scope="col" jhiSortBy="id">

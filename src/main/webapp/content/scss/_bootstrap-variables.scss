@@ -5,13 +5,13 @@
  * Make sure not to add !default to values here
  */
 
-$table-color: rgb(240, 183, 78);
-$yellow: rgb(240, 183, 78);
+// $table-color: rgb(240, 183, 78);
+// $yellow: rgb(240, 183, 78);
 
 .answer {
   padding: 15px 15px;
-  border-radius: 10px;
-  border: 1px solid #bbb;
+  //border-radius: 10px;
+  border: 2px solid #bbb;
   margin-bottom: 10px;
   align-items: center;
 }
@@ -27,4 +27,39 @@ $yellow: rgb(240, 183, 78);
   align-items: center;
   justify-content: space-between;
   padding: 0.7em 1.8em;
+}
+
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-circle i {
+  position: relative;
+  top: -1px;
+}
+
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 0.9rem;
+}
+
+.btn-circle-lg {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.1rem;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
 }
