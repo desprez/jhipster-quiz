@@ -19,7 +19,7 @@
   <jhi-alert-error></jhi-alert-error>
   <header></header>
 
-  <h5>{{ answerList[currentQuestionIndex].question!.statement }}</h5>
+  <h5><span [innerHTML]="answerList[currentQuestionIndex].question!.statement"></span></h5>
 
   <div class="row">
     <jhi-play-form

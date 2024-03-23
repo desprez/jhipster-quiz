@@ -48,13 +48,13 @@ export class QuestionsComponent implements OnInit {
 
   startQuizz() {
     this.answerList = this.attempt.answers || [];
-    if (this.quizz.maxAnswerTime != null && this.quizz.maxAnswerTime > 0) {
-      this.remainingTime = this.quizz.maxAnswerTime;
+    if (this.quizz.maxAnswerTime != null && this.quizz.maxAnswerTime !== 'PT0S') {
+      this.remainingTime = dayjs.duration(this.quizz.maxAnswerTime).asSeconds(); //this.quizz.maxAnswerTime;
       this.timerEnabled = true;
     } else {
       this.timerEnabled = false;
     }
-    this.startCounter();
+    //this.startCounter();
     this.answerList[this.currentQuestionIndex].started = dayjs();
   }
 
@@ -68,15 +68,13 @@ export class QuestionsComponent implements OnInit {
     this.answerList[this.currentQuestionIndex].ended = dayjs();
     if (this.currentQuestionIndex < this.answerList.length - 1) {
       this.currentQuestionIndex++;
-      // this.answerSelected.patchValue(this.answerList[this.currentQuestionIndex].option?.id);
     } else {
-      this.stopCounter();
+      //      this.stopCounter();
     }
   }
 
   previousQuestion(): void {
     if (this.currentQuestionIndex > 0) {
-      // this.answerSelected.patchValue(this.answerList[this.currentQuestionIndex].option?.id);
       this.currentQuestionIndex--;
     }
   }
@@ -90,32 +88,32 @@ export class QuestionsComponent implements OnInit {
     return question !== undefined ? question : { id: '', statement: 'Question not found', options: [] };
   }
 
-  private startCounter() {
-    if (!this.timerEnabled) {
-      return;
-    }
-    this.subscription.push(
-      this.timer.subscribe(res => {
-        if (this.remainingTime !== 0) {
-          this.remainingTime--;
-        }
-        // Auto move to next question after x seconds
-        if (this.remainingTime === 0) {
-          this.nextQuestion();
-          this.remainingTime = this.quizz?.maxAnswerTime ?? 0;
-        }
-      }),
-    );
-  }
+  // private startCounter() {
+  //   if (!this.timerEnabled) {
+  //     return;
+  //   }
+  //   this.subscription.push(
+  //     this.timer.subscribe(res => {
+  //       if (this.remainingTime !== 0) {
+  //         this.remainingTime--;
+  //       }
+  //       // Auto move to next question after x seconds
+  //       if (this.remainingTime === 0) {
+  //         this.nextQuestion();
+  //         this.remainingTime = this.quizz?.maxAnswerTime ?? 0;
+  //       }
+  //     }),
+  //   );
+  // }
 
-  private stopCounter() {
-    if (!this.timerEnabled) {
-      return;
-    }
-    this.subscription.forEach(element => {
-      element.unsubscribe();
-    });
-  }
+  // private stopCounter() {
+  //   if (!this.timerEnabled) {
+  //     return;
+  //   }
+  //   this.subscription.forEach(element => {
+  //     element.unsubscribe();
+  //   });
+  // }
 
   getProgressPercent() {
     if (this.attempt == null || this.attempt.answers == null || this.attempt.answers.length === 0) {

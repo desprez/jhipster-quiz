@@ -82,7 +82,7 @@ public class QuizzGatlingTest extends Simulation {
                                 ", \"difficulty\": \"EASY\"" +
                                 ", \"category\": \"GENERAL_KNOWLEDGE\"" +
                                 ", \"questionOrder\": \"RANDOM\"" +
-                                ", \"maxAnswerTime\": 0" +
+                                ", \"maxAnswerTime\": null" +
                                 ", \"allowBack\": null" +
                                 ", \"allowReview\": null" +
                                 ", \"keepAnswersSecret\": null" +
@@ -92,6 +92,7 @@ public class QuizzGatlingTest extends Simulation {
                                 ", \"attempsLimit\": 0" +
                                 ", \"attempsLimitPeriod\": \"HOUR\"" +
                                 ", \"questionCount\": 0" +
+                                ", \"passingScore\": 0" +
                                 "}"
                             )
                         )

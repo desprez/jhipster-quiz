@@ -9,14 +9,14 @@
     "login": "user"
   },
   "questionCount": 14,
-  "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "RANDOM",
-  "maxAnswerTime": null,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": true,
   "image": null,
   "imageContentType": null,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "What is the capital city of China?",

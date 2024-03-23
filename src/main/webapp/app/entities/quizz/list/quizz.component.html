@@ -105,7 +105,7 @@
                 <a [routerLink]="['/quizz', quizz.id, 'view']">{{ quizz.id }}</a>
               </td>
               <td>{{ quizz.title }}</td>
-              <td>{{ quizz.description }}</td>
+              <td><span [innerHTML]="quizz.description"></span></td>
               <td jhiTranslate="{{ 'quizzApp.Difficulty.' + quizz.difficulty }}">{{ quizz.difficulty }}</td>
               <td jhiTranslate="{{ 'quizzApp.Category.' + quizz.category }}">{{ quizz.category }}</td>
               <td class="text-center">{{ quizz.questionCount }}</td>

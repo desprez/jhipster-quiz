@@ -29,7 +29,7 @@
             <column name="question_order" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="max_answer_time" type="integer">
+            <column name="max_answer_time" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="allow_back" type="boolean">
@@ -60,6 +60,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="question_count" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="passing_score" type="integer">
                 <constraints nullable="true" />
             </column>
             <column name="user_id" type="bigint">
@@ -103,6 +106,7 @@
             <column name="attemps_limit" type="numeric"/>
             <column name="attemps_limit_period" type="string"/>
             <column name="question_count" type="numeric"/>
+            <column name="passing_score" type="numeric"/>
             <column name="user_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

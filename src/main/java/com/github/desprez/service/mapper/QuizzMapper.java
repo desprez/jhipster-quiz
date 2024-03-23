@@ -35,7 +35,15 @@ public interface QuizzMapper extends EntityMapper<QuizzDTO, Quizz> {
 
     @AfterMapping
     default void map(Quizz entity, @MappingTarget QuizzDTO target) {
-        if (DisplayOrder.FIXED.equals(target.getQuestionOrder())) {
+        if (Boolean.TRUE.equals(target.getPublished())) {
+            if (DisplayOrder.RANDOM.equals(target.getQuestionOrder())) {
+                Collections.shuffle(target.getQuestions());
+            }
+            if (Boolean.TRUE.equals(target.getKeepAnswersSecret())) {
+                // hide correctAnswsers for published quizz
+                target.getQuestions().forEach(q -> q.setCorrectOptionIndex(null));
+            }
+        } else {
             Collections.sort(
                 target.getQuestions(),
                 new Comparator<QuestionDTO>() {
@@ -45,13 +53,6 @@ public interface QuizzMapper extends EntityMapper<QuizzDTO, Quizz> {
                     }
                 }
             );
-        }
-        if (DisplayOrder.RANDOM.equals(target.getQuestionOrder())) {
-            Collections.shuffle(target.getQuestions());
-        }
-        if (target.getKeepAnswersSecret() && target.getPublished()) {
-            // hide correctAnswsers for published quizz
-            target.getQuestions().forEach(q -> q.setCorrectOptionIndex(null));
         }
     }
 }

@@ -230,8 +230,9 @@ describe('Quizz e2e test', () => {
 
       cy.get(`[data-cy="questionOrder"]`).select('RANDOM');
 
-      cy.get(`[data-cy="maxAnswerTime"]`).type('31943');
-      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', '31943');
+      cy.get(`[data-cy="maxAnswerTime"]`).type('PT27M');
+      cy.get(`[data-cy="maxAnswerTime"]`).blur();
+      cy.get(`[data-cy="maxAnswerTime"]`).should('have.value', 'PT27M');
 
       cy.get(`[data-cy="allowBack"]`).should('not.be.checked');
       cy.get(`[data-cy="allowBack"]`).click();
@@ -262,6 +263,8 @@ describe('Quizz e2e test', () => {
 
       cy.get(`[data-cy="questionCount"]`).type('29870');
       cy.get(`[data-cy="questionCount"]`).should('have.value', '29870');
+      cy.get(`[data-cy="passingScore"]`).type('80');
+      cy.get(`[data-cy="passingScore"]`).should('have.value', '80');
 
       cy.get(`[data-cy="user"]`).select(1);
 

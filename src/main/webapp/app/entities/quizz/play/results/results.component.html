@@ -9,14 +9,20 @@
       <br />
     </div>
 
-    <h4><span jhiTranslate="quizzApp.quizz.play.result.completed">You've completed the Quizz !</span></h4>
-
-    <h5>
-      <span jhiTranslate="quizzApp.quizz.play.result.congratutations" [translateValues]="{ current: current, max: max }"
-        >and congrats!, You got {{ current }} out of {{ max }}'</span
-      >
-    </h5>
-
+    @if (percent >= quizz!.passingScore!) {
+      <h4><span jhiTranslate="quizzApp.quizz.play.result.completed">You've completed the Quizz !</span></h4>
+      <h5>
+        <span jhiTranslate="quizzApp.quizz.play.result.congratutations" [translateValues]="{ current: current, max: max }">
+          and congrats!, You got {{ current }} out of {{ max }}
+        </span>
+      </h5>
+    }
+    @if (percent < quizz!.passingScore!) {
+      <h5>
+        <h4><span jhiTranslate="quizzApp.quizz.play.result.failed">You've failed the Quizz !</span></h4>
+        <span jhiTranslate="quizzApp.quizz.play.result.goodLuck"> Good luck next time! </span>
+      </h5>
+    }
     <p><span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAttempted">Total Question Attempted</span>: {{ answered }}</p>
     <p>
       <span jhiTranslate="quizzApp.quizz.play.result.totalQuestionAnswered">Total Correct Answered</span>: {{ attempt!.correctAnswerCount }}

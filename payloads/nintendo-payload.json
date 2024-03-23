@@ -1,0 +1,364 @@
+{
+  "title": "Nintendo Quiz",
+  "description": "Testez vos connaissances sur Nintendo avec ce quiz !",
+  "difficulty": "EASY",
+  "category": "VIDEO_GAMES",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "RANDOM",
+  "maxAnswerTime": "PT0S",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "passingScore": 80,
+  "questions": [
+    {
+      "statement": "Quelle célèbre console de jeu vidéo a été créée par Nintendo en 1985 ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Xbox",
+          "index": 1
+        },
+        {
+          "statement": "PlayStation",
+          "index": 2
+        },
+        {
+          "statement": "Atari",
+          "index": 3
+        },
+        {
+          "statement": "Game Boy",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quelle est la mascotte emblématique de Nintendo ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Mario",
+          "index": 1
+        },
+        {
+          "statement": "Pikachu",
+          "index": 2
+        },
+        {
+          "statement": "Sonic",
+          "index": 3
+        },
+        {
+          "statement": "Donkey Kong",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "En quelle année la Nintendo Switch a-t-elle été lancée sur le marché ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "2015",
+          "index": 1
+        },
+        {
+          "statement": "2016",
+          "index": 2
+        },
+        {
+          "statement": "2017",
+          "index": 3
+        },
+        {
+          "statement": "2018",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel jeu de course célèbre a été développé par Nintendo et est apparu pour la première fois en 1992 ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Need for Speed",
+          "index": 1
+        },
+        {
+          "statement": "Gran Turismo",
+          "index": 2
+        },
+        {
+          "statement": "Mario Kart",
+          "index": 3
+        },
+        {
+          "statement": "Burnout",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Comment s'appelle la princesse que Mario doit souvent sauver dans les jeux vidéo Nintendo ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Peach",
+          "index": 1
+        },
+        {
+          "statement": "Daisy",
+          "index": 2
+        },
+        {
+          "statement": "Zelda",
+          "index": 3
+        },
+        {
+          "statement": "Rosalina",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom de la console de jeu portable à succès de Nintendo lancée en 2004 ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Vita",
+          "index": 1
+        },
+        {
+          "statement": "PSP",
+          "index": 2
+        },
+        {
+          "statement": "Game Gear",
+          "index": 3
+        },
+        {
+          "statement": "Nintendo DS",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quelle est l'une des séries de jeux de rôle les plus populaires de Nintendo, mettant en scène des créatures appelées Pokémon ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Final Fantasy",
+          "index": 1
+        },
+        {
+          "statement": "Pokémon",
+          "index": 2
+        },
+        {
+          "statement": "Persona",
+          "index": 3
+        },
+        {
+          "statement": "Dragon Quest",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quelle fonctionnalité de la Nintendo Switch lui permet d'être utilisée comme console de salon ou console portable ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Tabletop Mode",
+          "index": 1
+        },
+        {
+          "statement": "Docking Mode",
+          "index": 2
+        },
+        {
+          "statement": "Switch and Play",
+          "index": 3
+        },
+        {
+          "statement": "Portable Mode",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quel personnage de jeu vidéo de Nintendo porte une casquette rouge et une salopette bleue ?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Luigi",
+          "index": 1
+        },
+        {
+          "statement": "Yoshi",
+          "index": 2
+        },
+        {
+          "statement": "Mario",
+          "index": 3
+        },
+        {
+          "statement": "Wario",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom de la franchise de jeux de combat de Nintendo qui met en scène des personnages emblématiques comme Mario, Link et Pikachu ?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Smash Brothers",
+          "index": 1
+        },
+        {
+          "statement": "Royal Rumble",
+          "index": 2
+        },
+        {
+          "statement": "Super Smash Rumble",
+          "index": 3
+        },
+        {
+          "statement": "Ultimate Battle Brawl",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom du personnage principal de la série de jeux vidéo The Legend of Zelda de Nintendo ?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "Ganon",
+          "index": 1
+        },
+        {
+          "statement": "Zelda",
+          "index": 2
+        },
+        {
+          "statement": "Link",
+          "index": 3
+        },
+        {
+          "statement": "Ganondorf",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom du chapeau magique de Nintendo qui donne à Mario des pouvoirs spéciaux dans les jeux vidéo ?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "Power Cap",
+          "index": 1
+        },
+        {
+          "statement": "Magic Cap",
+          "index": 2
+        },
+        {
+          "statement": "Super Cap",
+          "index": 3
+        },
+        {
+          "statement": "Cappy",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel est le nom du personnage principal de la série de jeux vidéo Metroid de Nintendo ?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "Samus Aran",
+          "index": 1
+        },
+        {
+          "statement": "Ridley",
+          "index": 2
+        },
+        {
+          "statement": "Mother Brain",
+          "index": 3
+        },
+        {
+          "statement": "Kraid",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom du dispositif de réalité virtuelle de Nintendo qui a été lancé en 1995 ?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "Virtual Reality System",
+          "index": 2
+        },
+        {
+          "statement": "Virtual Boy",
+          "index": 1
+        },
+        {
+          "statement": "Oculus Rift",
+          "index": 3
+        },
+        {
+          "statement": "PlayStation VR",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quel est le nom de la 1ere console Nintendo ?",
+      "index": 16,
+      "options": [
+        {
+          "statement": "Nintendo 64",
+          "index": 1
+        },
+        {
+          "statement": "Nintendo Entertainment System",
+          "index": 2
+        },
+        {
+          "statement": "Super Nintendo Entertainment System",
+          "index": 3
+        },
+        {
+          "statement": "GameCube",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

@@ -34,7 +34,7 @@
               <round-progress [current]="current" [max]="max" [rounded]="true" [radius]="100" [stroke]="20" [color]="'#fa6f04'" />
             </div>
           </dd>
-          <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answercount</span></dt>
+          <dt><span jhiTranslate="quizzApp.attempt.correctAnswerCount">Correct Answer Count</span></dt>
           <dd>
             <span>{{ attempt.correctAnswerCount }}</span>
           </dd>
@@ -61,8 +61,12 @@
                       answer.correct === true ? 'list-group-item-success' : 'list-group-item-danger'
                     }}"
                   >
-                    <span class="">{{ answer.option!.statement }}</span>
-                    <!-- <span style="float: right">
+                    @if (!answer.option) {
+                      <span class="" jhiTranslate="quizzApp.attempt.notAnswered">Not answered</span>
+                    }
+                    @if (answer.option) {
+                      <span class="">{{ answer.option!.statement }}</span>
+                      <!-- <span style="float: right">
                         @if (answer.correct === true ) {
                           <fa-icon icon="check"></fa-icon>
                         }
@@ -70,14 +74,15 @@
                           <fa-icon icon="times"></fa-icon>
                         }
                       </span> -->
-                    <span>
-                      <fa-icon
-                        [icon]="answer.correct === true ? 'check' : 'times'"
-                        aria-hidden="true"
-                        class="{{ answer.correct === true ? 'text-success' : 'text-danger' }}"
-                      ></fa-icon>
-                    </span>
-                    <br />
+                      <span>
+                        <fa-icon
+                          [icon]="answer.correct === true ? 'check' : 'times'"
+                          aria-hidden="true"
+                          class="{{ answer.correct === true ? 'text-success' : 'text-danger' }}"
+                        ></fa-icon>
+                      </span>
+                      <br />
+                    }
                   </li>
                 }
               </ul>

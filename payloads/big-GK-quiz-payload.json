@@ -3,16 +3,17 @@
   "description": "General knowledge quizz with questions about various subjects",
   "difficulty": "EASY",
   "category": "GENERAL_KNOWLEDGE",
-  "published": true,
+  "published": false,
   "user": {
     "id": 2,
     "login": "user"
   },
   "questionOrder": "FIXED",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "Which animal is known as the 'Ship of the Desert'?",

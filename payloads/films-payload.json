@@ -1,21 +1,22 @@
 {
-  "title": "Films",
-  "description": "",
+  "title": "Films Quiz",
+  "description": "Test your knowledge of the silver screen with this quiz!",
   "difficulty": "MEDIUM",
   "category": "FILM",
-  "published": true,
+  "published": false,
   "user": {
     "id": 2,
     "login": "user"
   },
   "questionOrder": "FIXED",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
+  "passingScore": 80,
   "questions": [
     {
-      "statement": "In the Mad Max franchise, what type of car is the Pursuit Special driven by Max?",
+      "statement": "In the <strong>Mad Max</strong> franchise, what type of car is the Pursuit Special driven by Max?",
       "index": 1,
       "correctOptionIndex": 1,
       "options": [
@@ -51,7 +52,7 @@
           "index": 2
         },
         {
-          "statement": " Dr. Strangelove ",
+          "statement": "Dr. Strangelove ",
           "index": 3
         },
         {
@@ -84,7 +85,7 @@
       ]
     },
     {
-      "statement": "In Mulan (1998), who is the leader of the Huns?",
+      "statement": "In <strong>Mulan</strong> (1998), who is the leader of the Huns?",
       "index": 4,
       "correctOptionIndex": 2,
       "options": [
@@ -153,7 +154,7 @@
       ]
     },
     {
-      "statement": "In the 1994 movie &quot;Speed&quot;, what is the minimum speed the bus must go to prevent to bomb from exploding?",
+      "statement": "In the 1994 movie <strong>Speed</strong>, what is the minimum speed the bus must go to prevent to bomb from exploding?",
       "index": 7,
       "correctOptionIndex": 2,
       "options": [
@@ -176,7 +177,7 @@
       ]
     },
     {
-      "statement": "In what year was the movie &quot;Police Academy&quot; released?",
+      "statement": "In what year was the movie <strong>Police Academy</strong> released?",
       "index": 8,
       "correctOptionIndex": 1,
       "options": [
@@ -199,7 +200,7 @@
       ]
     },
     {
-      "statement": "What is the correct spelling of the protagonist of the book in The NeverEnding Story (1984)?",
+      "statement": "What is the correct spelling of the protagonist of the book in <strong>The NeverEnding Story (1984)</strong>?",
       "index": 9,
       "correctOptionIndex": 2,
       "options": [
@@ -222,7 +223,7 @@
       ]
     },
     {
-      "statement": "What is the name of the villian in the 2015 Russian-American Sci-Fi Movie &quot;Hardcore Henry&quot;?",
+      "statement": "What is the name of the villian in the 2015 Russian-American Sci-Fi Movie <strong>Hardcore Henry</strong>?",
       "index": 10,
       "correctOptionIndex": 2,
       "options": [

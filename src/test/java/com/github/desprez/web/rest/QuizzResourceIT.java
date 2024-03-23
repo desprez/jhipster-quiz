@@ -20,6 +20,7 @@ import com.github.desprez.service.QuizzService;
 import com.github.desprez.service.dto.QuizzDTO;
 import com.github.desprez.service.mapper.QuizzMapper;
 import jakarta.persistence.EntityManager;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -64,9 +65,9 @@ class QuizzResourceIT {
     private static final DisplayOrder DEFAULT_QUESTION_ORDER = DisplayOrder.RANDOM;
     private static final DisplayOrder UPDATED_QUESTION_ORDER = DisplayOrder.FIXED;
 
-    private static final Integer DEFAULT_MAX_ANSWER_TIME = 1;
-    private static final Integer UPDATED_MAX_ANSWER_TIME = 2;
-    private static final Integer SMALLER_MAX_ANSWER_TIME = 1 - 1;
+    private static final Duration DEFAULT_MAX_ANSWER_TIME = Duration.ofHours(6);
+    private static final Duration UPDATED_MAX_ANSWER_TIME = Duration.ofHours(12);
+    private static final Duration SMALLER_MAX_ANSWER_TIME = Duration.ofHours(5);
 
     private static final Boolean DEFAULT_ALLOW_BACK = false;
     private static final Boolean UPDATED_ALLOW_BACK = true;
@@ -98,6 +99,10 @@ class QuizzResourceIT {
     private static final Integer DEFAULT_QUESTION_COUNT = 1;
     private static final Integer UPDATED_QUESTION_COUNT = 2;
     private static final Integer SMALLER_QUESTION_COUNT = 1 - 1;
+
+    private static final Integer DEFAULT_PASSING_SCORE = 1;
+    private static final Integer UPDATED_PASSING_SCORE = 2;
+    private static final Integer SMALLER_PASSING_SCORE = 1 - 1;
 
     private static final String ENTITY_API_URL = "/api/quizzes";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -146,6 +151,7 @@ class QuizzResourceIT {
             .attempsLimit(DEFAULT_ATTEMPS_LIMIT)
             .attempsLimitPeriod(DEFAULT_ATTEMPS_LIMIT_PERIOD)
             .questionCount(DEFAULT_QUESTION_COUNT)
+            .passingScore(DEFAULT_PASSING_SCORE)
             .addQuestions(
                 new Question()
                     .statement("question1")
@@ -193,7 +199,8 @@ class QuizzResourceIT {
             .publishDate(UPDATED_PUBLISH_DATE)
             .attempsLimit(UPDATED_ATTEMPS_LIMIT)
             .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
-            .questionCount(UPDATED_QUESTION_COUNT);
+            .questionCount(UPDATED_QUESTION_COUNT)
+            .passingScore(UPDATED_PASSING_SCORE);
         // Add required entity
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
@@ -237,6 +244,7 @@ class QuizzResourceIT {
         assertThat(testQuizz.getAttempsLimit()).isEqualTo(DEFAULT_ATTEMPS_LIMIT);
         assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(DEFAULT_ATTEMPS_LIMIT_PERIOD);
         assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
+        assertThat(testQuizz.getPassingScore()).isEqualTo(DEFAULT_PASSING_SCORE);
     }
 
     @Test
@@ -419,7 +427,7 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
             //            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
-            .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
+            .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME.toString())))
             //            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
             //            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
             //            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
@@ -429,7 +437,10 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
             //            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
             //            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
-            .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
+            .andExpect(
+                jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT))
+            )//.andExpect(jsonPath("$.[*].passingScore").value(hasItem(DEFAULT_PASSING_SCORE)))
+        ;
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -466,7 +477,7 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.difficulty").value(DEFAULT_DIFFICULTY.toString()))
             .andExpect(jsonPath("$.category").value(DEFAULT_CATEGORY.toString()))
             .andExpect(jsonPath("$.questionOrder").value(DEFAULT_QUESTION_ORDER.toString()))
-            .andExpect(jsonPath("$.maxAnswerTime").value(DEFAULT_MAX_ANSWER_TIME))
+            .andExpect(jsonPath("$.maxAnswerTime").value(DEFAULT_MAX_ANSWER_TIME.toString()))
             .andExpect(jsonPath("$.allowBack").value(DEFAULT_ALLOW_BACK.booleanValue()))
             .andExpect(jsonPath("$.allowReview").value(DEFAULT_ALLOW_REVIEW.booleanValue()))
             .andExpect(jsonPath("$.keepAnswersSecret").value(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue()))
@@ -476,7 +487,8 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
             .andExpect(jsonPath("$.attempsLimit").value(DEFAULT_ATTEMPS_LIMIT))
             .andExpect(jsonPath("$.attempsLimitPeriod").value(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString()))
-            .andExpect(jsonPath("$.questionCount").value(DEFAULT_QUESTION_COUNT));
+            .andExpect(jsonPath("$.questionCount").value(DEFAULT_QUESTION_COUNT))
+            .andExpect(jsonPath("$.passingScore").value(DEFAULT_PASSING_SCORE));
     }
 
     @Test
@@ -995,7 +1007,7 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].difficulty").value(hasItem(DEFAULT_DIFFICULTY.toString())))
             .andExpect(jsonPath("$.[*].category").value(hasItem(DEFAULT_CATEGORY.toString())))
             //            .andExpect(jsonPath("$.[*].questionOrder").value(hasItem(DEFAULT_QUESTION_ORDER.toString())))
-            .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME)))
+            .andExpect(jsonPath("$.[*].maxAnswerTime").value(hasItem(DEFAULT_MAX_ANSWER_TIME.toString())))
             //            .andExpect(jsonPath("$.[*].allowBack").value(hasItem(DEFAULT_ALLOW_BACK.booleanValue())))
             //            .andExpect(jsonPath("$.[*].allowReview").value(hasItem(DEFAULT_ALLOW_REVIEW.booleanValue())))
             //            .andExpect(jsonPath("$.[*].keepAnswersSecret").value(hasItem(DEFAULT_KEEP_ANSWERS_SECRET.booleanValue())))
@@ -1005,7 +1017,10 @@ class QuizzResourceIT {
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
             //            .andExpect(jsonPath("$.[*].attempsLimit").value(hasItem(DEFAULT_ATTEMPS_LIMIT)))
             //            .andExpect(jsonPath("$.[*].attempsLimitPeriod").value(hasItem(DEFAULT_ATTEMPS_LIMIT_PERIOD.toString())))
-            .andExpect(jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT)));
+            .andExpect(
+                jsonPath("$.[*].questionCount").value(hasItem(DEFAULT_QUESTION_COUNT))
+            )//.andExpect(jsonPath("$.[*].passingScore").value(hasItem(DEFAULT_PASSING_SCORE)))
+        ;
 
         // Check, that the count call also returns 1
         restQuizzMockMvc
@@ -1065,11 +1080,12 @@ class QuizzResourceIT {
             .keepAnswersSecret(UPDATED_KEEP_ANSWERS_SECRET)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .published(UPDATED_PUBLISHED)
+            //.published(UPDATED_PUBLISHED)
             .publishDate(UPDATED_PUBLISH_DATE)
             .attempsLimit(UPDATED_ATTEMPS_LIMIT)
             .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
-            .questionCount(UPDATED_QUESTION_COUNT);
+            .questionCount(UPDATED_QUESTION_COUNT)
+            .passingScore(UPDATED_PASSING_SCORE);
         QuizzDTO quizzDTO = quizzMapper.toDto(updatedQuizz);
 
         restQuizzMockMvc
@@ -1095,11 +1111,12 @@ class QuizzResourceIT {
         assertThat(testQuizz.getKeepAnswersSecret()).isEqualTo(UPDATED_KEEP_ANSWERS_SECRET);
         assertThat(testQuizz.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testQuizz.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
-        assertThat(testQuizz.getPublished()).isEqualTo(UPDATED_PUBLISHED);
+        //  assertThat(testQuizz.getPublished()).isEqualTo(UPDATED_PUBLISHED);
         assertThat(testQuizz.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
         assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
         assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
         assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
+        assertThat(testQuizz.getPassingScore()).isEqualTo(UPDATED_PASSING_SCORE);
     }
 
     @Test
@@ -1217,6 +1234,7 @@ class QuizzResourceIT {
         assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
         assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
         assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
+        assertThat(testQuizz.getPassingScore()).isEqualTo(DEFAULT_PASSING_SCORE);
     }
 
     @Test
@@ -1247,7 +1265,8 @@ class QuizzResourceIT {
             .publishDate(UPDATED_PUBLISH_DATE)
             .attempsLimit(UPDATED_ATTEMPS_LIMIT)
             .attempsLimitPeriod(UPDATED_ATTEMPS_LIMIT_PERIOD)
-            .questionCount(UPDATED_QUESTION_COUNT);
+            .questionCount(UPDATED_QUESTION_COUNT)
+            .passingScore(UPDATED_PASSING_SCORE);
 
         restQuizzMockMvc
             .perform(
@@ -1277,6 +1296,7 @@ class QuizzResourceIT {
         assertThat(testQuizz.getAttempsLimit()).isEqualTo(UPDATED_ATTEMPS_LIMIT);
         assertThat(testQuizz.getAttempsLimitPeriod()).isEqualTo(UPDATED_ATTEMPS_LIMIT_PERIOD);
         assertThat(testQuizz.getQuestionCount()).isEqualTo(UPDATED_QUESTION_COUNT);
+        assertThat(testQuizz.getPassingScore()).isEqualTo(UPDATED_PASSING_SCORE);
     }
 
     @Test

@@ -3,7 +3,7 @@
   "description": "",
   "difficulty": "EASY",
   "category": "GENERAL_KNOWLEDGE",
-  "published": true,
+  "published": false,
   "user": {
     "id": 2,
     "login": "user"
@@ -11,10 +11,11 @@
   "questionCount": 2,
   "publishDate": "2024-02-23T00:00:00Z",
   "questionOrder": "FIXED",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "Prince Charles and Princess Diana of Britain announce their separation in .... ?",

@@ -64,8 +64,8 @@ public class PlayServiceImpl implements PlayService {
             .quizz(quizz)
             .correctAnswerCount(0)
             .wrongAnswerCount(0)
-            .unansweredCount(0)
-            .started(Instant.now().truncatedTo(ChronoUnit.SECONDS)); // Angular  don't like miliseconds
+            .unansweredCount(quizz.getQuestionCount())
+            .started(Instant.now().truncatedTo(ChronoUnit.SECONDS)); // No more accuracy needed
 
         String username = getUsername();
         newAttempt.setUser(userRepository.findOneByLogin(username).orElseThrow());
@@ -91,7 +91,7 @@ public class PlayServiceImpl implements PlayService {
     @Override
     public AttemptDTO evaluate(AttemptDTO attemptDTO) {
         Attempt attempt = attemptMapper.toEntity(attemptDTO);
-
+        attempt.correctAnswerCount(0).wrongAnswerCount(0).unansweredCount(0);
         Quizz existingQuizz = quizzRepository.findOneWithQuestionRelationships(attempt.getQuizz().getId()).orElseThrow();
 
         for (Question question : existingQuizz.getQuestions()) {

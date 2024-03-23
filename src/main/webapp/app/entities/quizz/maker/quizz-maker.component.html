@@ -95,6 +95,38 @@
           </div>
         </div>
 
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="quizzApp.quizz.passingScore" for="field_passingScore">Passing Score</label>
+          <input
+            type="number"
+            class="form-control"
+            name="passingScore"
+            id="field_passingScore"
+            data-cy="passingScore"
+            formControlName="passingScore"
+          />
+          @if (editForm.get('passingScore')!.invalid && (editForm.get('passingScore')!.dirty || editForm.get('passingScore')!.touched)) {
+            <div>
+              @if (editForm.get('passingScore')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: 1 }"
+                  >This field should be at least 1.</small
+                >
+              }
+              @if (editForm.get('passingScore')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: 100 }"
+                  >This field cannot be more than 100.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('passingScore')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
         <div class="row">
           <div class="col mb-3">
             <label class="form-label" jhiTranslate="quizzApp.quizz.questionOrder" for="field_questionOrder">Question Order</label>
@@ -123,9 +155,16 @@
 
           <div class="col mb-3">
             <label class="form-label" jhiTranslate="quizzApp.quizz.maxAnswerTime" for="field_maxAnswerTime">Max Answer Time</label>
-            <input
-              type="number"
+            <!-- <input
+              type="text"
               class="form-control"
+              name="maxAnswerTime"
+              id="field_maxAnswerTime"
+              data-cy="maxAnswerTime"
+              formControlName="maxAnswerTime"
+            /> -->
+            <jhi-duration
+              [units]="['hours', 'minutes', 'seconds']"
               name="maxAnswerTime"
               id="field_maxAnswerTime"
               data-cy="maxAnswerTime"
@@ -233,7 +272,6 @@
           <div>
             @if (editForm.get('image')!.value) {
               <img
-                alt="quizz"
                 [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value"
                 style="max-height: 100px"
                 alt="quizz"

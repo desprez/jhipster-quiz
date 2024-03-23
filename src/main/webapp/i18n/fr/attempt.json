@@ -28,7 +28,8 @@
       "duration": "Durée",
       "answers": "Réponses",
       "quizz": "Quizz",
-      "user": "Joueur"
+      "user": "Joueur",
+      "notAnswered": "Non répondu"
     }
   }
 }

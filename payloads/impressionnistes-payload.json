@@ -3,7 +3,7 @@
   "description": "L'impressionnisme est un mouvement pictural apparu en France dans les années 1860 en opposition à l'art académique et visant à représenter le caractère éphémère de la lumière et ses effets sur les couleurs et les formes.",
   "difficulty": "EASY",
   "category": "ART",
-  "published": true,
+  "published": false,
   "publishDate": "2024-02-23T00:00:00Z",
   "questionCount": 8,
   "user": {
@@ -11,10 +11,11 @@
     "login": "user"
   },
   "questionOrder": "FIXED",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "Qui est considéré comme le chef de file du mouvement impressionniste ?",

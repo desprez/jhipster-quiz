@@ -11,14 +11,14 @@
   "image": null,
   "imageContentType": null,
   "questionCount": 10,
-  "publishDate": null,
   "questionOrder": "RANDOM",
-  "maxAnswerTime": null,
+  "maxAnswerTime": "PT0S",
   "allowBack": false,
   "allowReview": false,
   "keepAnswersSecret": false,
   "attempsLimit": null,
   "attempsLimitPeriod": null,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "Who is credited with inventing the telephone?",

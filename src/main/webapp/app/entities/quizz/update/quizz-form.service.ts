@@ -67,6 +67,7 @@ type QuizzFormGroupContent = {
   attempsLimit: FormControl<QuizzFormRawValue['attempsLimit']>;
   attempsLimitPeriod: FormControl<QuizzFormRawValue['attempsLimitPeriod']>;
   questionCount: FormControl<QuizzFormRawValue['questionCount']>;
+  passingScore: FormControl<QuizzFormRawValue['passingScore']>;
   user: FormControl<QuizzFormRawValue['user']>;
   questions: FormArray<FormGroup<QuestionFormGroupContent>>;
 };
@@ -124,6 +125,9 @@ export class QuizzFormService {
       attempsLimit: new FormControl(quizzRawValue.attempsLimit),
       attempsLimitPeriod: new FormControl(quizzRawValue.attempsLimitPeriod),
       questionCount: new FormControl(quizzRawValue.questionCount),
+      passingScore: new FormControl(quizzRawValue.passingScore, {
+        validators: [Validators.min(1), Validators.max(100)],
+      }),
       user: new FormControl(quizzRawValue.user, {
         validators: [Validators.required],
       }),

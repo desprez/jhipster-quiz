@@ -24,6 +24,7 @@ export const sampleWithPartialData: IQuizz = {
   allowReview: false,
   keepAnswersSecret: true,
   published: true,
+  passingScore: 79,
 };
 
 export const sampleWithFullData: IQuizz = {
@@ -44,6 +45,7 @@ export const sampleWithFullData: IQuizz = {
   attempsLimit: 30884,
   attempsLimitPeriod: 'DAY',
   questionCount: 20708,
+  passingScore: 30,
 };
 
 export const sampleWithNewData: NewQuizz = {

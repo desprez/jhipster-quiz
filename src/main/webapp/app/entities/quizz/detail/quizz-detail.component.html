@@ -37,7 +37,7 @@
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.maxAnswerTime">Max Answer Time</span></dt>
           <dd>
-            <span>{{ quizz.maxAnswerTime }}</span>
+            <span>{{ quizz.maxAnswerTime | duration }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.quizz.allowBack">Allow Back</span></dt>
           <dd>
@@ -82,9 +82,9 @@
           <dd>
             <span>{{ quizz.questionCount }}</span>
           </dd>
-          <dt><span jhiTranslate="quizzApp.quizz.user">User</span></dt>
+          <dt><span jhiTranslate="quizzApp.quizz.passingScore">Passing Score</span></dt>
           <dd>
-            <span>{{ quizz.user?.login }}</span>
+            <span>{{ quizz.passingScore }}</span>
           </dd>
 
           <dt><span jhiTranslate="quizzApp.quizz.questions">Questions</span></dt>

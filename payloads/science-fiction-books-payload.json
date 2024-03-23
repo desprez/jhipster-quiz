@@ -1,0 +1,300 @@
+{
+  "title": "Livres de science-fiction",
+  "description": "Testez vos connaissances sur les livres de science-fiction avec ce quiz !",
+  "difficulty": "EASY",
+  "category": "BOOKS",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "image": null,
+  "imageContentType": null,
+  "questionCount": 10,
+  "maxAnswerTime": "PT5M",
+  "questionOrder": "RANDOM",
+  "allowBack": false,
+  "allowReview": false,
+  "keepAnswersSecret": false,
+  "attempsLimit": null,
+  "attempsLimitPeriod": null,
+  "questions": [
+    {
+      "statement": "Qui est l'auteur du roman de science-fiction \"Fondation\" ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Ray Bradbury",
+          "index": 1
+        },
+        {
+          "statement": "Philip K. Dick",
+          "index": 2
+        },
+        {
+          "statement": "Arthur C. Clarke",
+          "index": 3
+        },
+        {
+          "statement": "Isaac Asimov ",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Dans quel roman de science-fiction peut-on retrouver les personnages Hazel, Fiver et Bigwig ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "Les Robots",
+          "index": 1
+        },
+        {
+          "statement": "Dune ",
+          "index": 2
+        },
+        {
+          "statement": "Neuromancer",
+          "index": 3
+        },
+        {
+          "statement": "Watership Down",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel roman de science-fiction explore les thèmes de la surveillance de masse et de la liberté individuelle, et met en scène le personnage de Winston Smith ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Le Guide du voyageur galactique",
+          "index": 1
+        },
+        {
+          "statement": "Ubik",
+          "index": 2
+        },
+        {
+          "statement": "1984",
+          "index": 3
+        },
+        {
+          "statement": "Les Cantos d'Hypérion",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Dans quel livre de la série 'Dune' peut-on découvrir l'arrivée de la famille Atreides sur la planète désertique d'Arrakis ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Dune",
+          "index": 1
+        },
+        {
+          "statement": "Les Enfants de Dune",
+          "index": 2
+        },
+        {
+          "statement": "Le Messie de Dune",
+          "index": 3
+        },
+        {
+          "statement": "L'Empereur-Dieu de Dune",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le titre du premier tome de la saga 'Fondation' d'Isaac Asimov ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Fondation et Empire",
+          "index": 1
+        },
+        {
+          "statement": "Prélude à Fondation",
+          "index": 2
+        },
+        {
+          "statement": "Seconde Fondation",
+          "index": 3
+        },
+        {
+          "statement": "Fondation",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Dans quel roman de science-fiction peut-on trouver la célèbre phrase 'La peur est le chemin vers le côté obscur : la peur mène à la colère, la colère mène à la haine, la haine... mène à la souffrance' ",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Les Fourmis",
+          "index": 1
+        },
+        {
+          "statement": "L'Armée des ténèbres",
+          "index": 2
+        },
+        {
+          "statement": "L'Hyperespace maléfique",
+          "index": 3
+        },
+        {
+          "statement": "Star Wars: Épisode I - La Menace fantôme",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel écrivain de science-fiction a imaginé le personnage du androïde Rachael Rosen dans son roman \"Les androïdes rêvent-ils de moutons électriques ?\" ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "H.G. Wells",
+          "index": 1
+        },
+        {
+          "statement": "Ursula K. Le Guin",
+          "index": 2
+        },
+        {
+          "statement": "Isaac Asimov",
+          "index": 3
+        },
+        {
+          "statement": "Philip K. Dick",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel roman de science-fiction explore les conséquences de la téléportation et des copies de l'âme humaine sur la notion d'identité ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Le Maître du Haut Château",
+          "index": 1
+        },
+        {
+          "statement": "Les Cantos d'Hypérion",
+          "index": 2
+        },
+        {
+          "statement": "Étoiles, garde-à-vous !",
+          "index": 3
+        },
+        {
+          "statement": "Ubik",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel est le titre du premier tome de la saga 'Hunger Games' de Suzanne Collins ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "L'Emprisonnement",
+          "index": 1
+        },
+        {
+          "statement": "Hunger Games",
+          "index": 2
+        },
+        {
+          "statement": "L'Embrasement",
+          "index": 3
+        },
+        {
+          "statement": "La Révolte",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Dans quelle œuvre de science-fiction peut-on trouver le personnage de Ford Prefect, un extraterrestre travaillant pour le Guide du voyageur galactique ?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Ne tirez pas sur l'oiseau moqueur",
+          "index": 1
+        },
+        {
+          "statement": "Ubik",
+          "index": 2
+        },
+        {
+          "statement": "Les Cantos d'Hypérion",
+          "index": 3
+        },
+        {
+          "statement": "Le Guide du voyageur galactique",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Qui est l’auteur de 'Ravage' ?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Arthur C. Clarke",
+          "index": 1
+        },
+        {
+          "statement": "Philip K. Dick",
+          "index": 2
+        },
+        {
+          "statement": "René Barjavel",
+          "index": 3
+        },
+        {
+          "statement": "H.G. Wells",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Lequel de ces romans est de H.G. Wells ?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "Les mondes d'Aldebaran",
+          "index": 1
+        },
+        {
+          "statement": "La guerre des mondes",
+          "index": 2
+        },
+        {
+          "statement": "A la croisée des mondes",
+          "index": 3
+        },
+        {
+          "statement": "Le Meilleur des mondes",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ],
+  "passingScore": 80
+}

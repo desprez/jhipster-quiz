@@ -13,7 +13,7 @@ export interface IQuizz {
   difficulty?: keyof typeof Difficulty | null;
   category?: keyof typeof Category | null;
   questionOrder?: keyof typeof DisplayOrder | null;
-  maxAnswerTime?: number | null;
+  maxAnswerTime?: string | null;
   allowBack?: boolean | null;
   allowReview?: boolean | null;
   keepAnswersSecret?: boolean | null;
@@ -24,6 +24,7 @@ export interface IQuizz {
   attempsLimit?: number | null;
   attempsLimitPeriod?: keyof typeof Period | null;
   questionCount?: number | null;
+  passingScore?: number | null;
   questions?: Pick<IQuestion, 'id' | 'statement' | 'index' | 'options' | 'correctOptionIndex'>[] | null;
   user?: Pick<IUser, 'id' | 'login'> | null;
 }

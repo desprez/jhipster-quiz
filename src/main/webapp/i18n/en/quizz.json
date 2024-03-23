@@ -34,6 +34,7 @@
       "attempsLimit": "Attemps Limit",
       "attempsLimitPeriod": "Attemps Limit Period",
       "questionCount": "Questions#",
+      "passingScore": "Passing Score",
       "questions": "Questions",
       "user": "Author",
       "limitedTime": "Limited Time",

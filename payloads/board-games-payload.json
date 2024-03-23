@@ -1,0 +1,279 @@
+{
+  "title": "Board Games Quizz",
+  "description": "This is a quiz that tests your knowledge on board games.",
+  "difficulty": "MEDIUM",
+  "category": "BOARD_GAMES",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": "PT0S",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "passingScore": 80,
+  "questions": [
+    {
+      "statement": "When was the board game <strong>Twister</strong>, released to the public?",
+      "index": 1,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "February 1966",
+          "index": 1
+        },
+        {
+          "statement": "September 1965",
+          "index": 2
+        },
+        {
+          "statement": "April 1966",
+          "index": 3
+        },
+        {
+          "statement": "January 1969",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "How many dots are on a single die?",
+      "index": 2,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "15",
+          "index": 1
+        },
+        {
+          "statement": "18",
+          "index": 2
+        },
+        {
+          "statement": "21",
+          "index": 3
+        },
+        {
+          "statement": "24",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Which of these games includes the phrase 'Do not pass Go, do not collect $200'?",
+      "index": 3,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "Monopoly",
+          "index": 1
+        },
+        {
+          "statement": "Coppit",
+          "index": 2
+        },
+        {
+          "statement": "Pay Day",
+          "index": 3
+        },
+        {
+          "statement": "Cluedo",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "How many spaces are there on a standard <strong>Monopoly</strong> board?",
+      "index": 4,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "36",
+          "index": 1
+        },
+        {
+          "statement": "55",
+          "index": 2
+        },
+        {
+          "statement": "40",
+          "index": 3
+        },
+        {
+          "statement": "28",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "&quot;PAYDAY: The Heist&quot; is a sequel to the board game &quot;Payday&quot;.",
+      "index": 5,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "False",
+          "index": 1
+        },
+        {
+          "statement": "True",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "statement": "In the game 'Suburbia', each player is given a borough to build a city. Which of these is not a borough in the base game?",
+      "index": 6,
+      "correctOptionIndex": 4,
+      "options": [
+        {
+          "statement": "Brooklyn",
+          "index": 1
+        },
+        {
+          "statement": "Queens",
+          "index": 2
+        },
+        {
+          "statement": "Manhattan",
+          "index": 3
+        },
+        {
+          "statement": "The Bronx",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "On a standard Monopoly board, which square is diagonally opposite &#039;Go&#039;? ",
+      "index": 7,
+      "correctOptionIndex": 1,
+      "options": [
+        {
+          "statement": "Free Parking",
+          "index": 1
+        },
+        {
+          "statement": "Go to Jail",
+          "index": 2
+        },
+        {
+          "statement": "The Electric Company",
+          "index": 3
+        },
+        {
+          "statement": "Jail",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Which one of these is not a real game in the Dungeons & Dragons series?",
+      "index": 8,
+      "correctOptionIndex": 4,
+      "options": [
+        {
+          "statement": "Dungeons & Dragons 3.5th edition",
+          "index": 1
+        },
+        {
+          "statement": "Advanced Dungeons & Dragons",
+          "index": 2
+        },
+        {
+          "statement": "Advanced Dungeons & Dragons 2nd edition",
+          "index": 3
+        },
+        {
+          "statement": "Extreme Dungeons & Dragons",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "Carcassonne is based on which French town?",
+      "index": 9,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "Clermont-Ferrand",
+          "index": 1
+        },
+        {
+          "statement": "Carcassonne",
+          "index": 2
+        },
+        {
+          "statement": "Marseille",
+          "index": 3
+        },
+        {
+          "statement": "Paris",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "How many pieces are there on the board at the start of a game of chess?",
+      "index": 10,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "36",
+          "index": 1
+        },
+        {
+          "statement": "16",
+          "index": 2
+        },
+        {
+          "statement": "32",
+          "index": 3
+        },
+        {
+          "statement": "20",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "statement": "In the game &quot;Racko&quot; you may pick up ANY card from the discard pile.",
+      "index": 11,
+      "correctOptionIndex": 2,
+      "options": [
+        {
+          "statement": "True",
+          "index": 1
+        },
+        {
+          "statement": "False",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "statement": "In the game of Clue, what is the correct weapon in the correct room?",
+      "index": 12,
+      "correctOptionIndex": 3,
+      "options": [
+        {
+          "statement": "Rope in the Study",
+          "index": 1
+        },
+        {
+          "statement": "Knife in the Hall",
+          "index": 2
+        },
+        {
+          "statement": "Lead Pipe in the Kitchen",
+          "index": 3
+        },
+        {
+          "statement": "Wrench in the Library",
+          "index": 4
+        }
+      ]
+    }
+  ]
+}

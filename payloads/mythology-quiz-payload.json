@@ -1,6 +1,6 @@
 {
-  "title": "A quiz about Mythology",
-  "description": "",
+  "title": "A quiz about Mythology EN",
+  "description": "This quiz is about mythology from around the world.",
   "difficulty": "EASY",
   "category": "MYTHOLOGY",
   "published": false,
@@ -9,10 +9,11 @@
     "login": "user"
   },
   "questionOrder": "FIXED",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "In Greek mythology, who is the king of the gods?",
@@ -245,7 +246,6 @@
       "correctOptionIndex": 2
     },
     {
-      "id": null,
       "statement": "This Greek goddess&#039;s name was chosen for the dwarf planet responsible for discord on Pluto&#039;s classification amongst astronomers.",
       "index": 11,
       "correctOptionIndex": 3,
@@ -269,7 +269,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "In most traditions, who was the wife of Zeus?",
       "index": 12,
       "correctOptionIndex": 3,
@@ -293,7 +292,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "What mytological creatures have women&#039;s faces and vultures&#039; bodies?",
       "index": 13,
       "correctOptionIndex": 2,
@@ -317,7 +315,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "How many heads does Cerberus have?",
       "index": 14,
       "correctOptionIndex": 1,
@@ -341,7 +338,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "The ancient Roman god of war was commonly known as which of the following?",
       "index": 15,
       "correctOptionIndex": 2,
@@ -365,7 +361,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "Who was the only god from Greece who did not get a name change in Rome?",
       "index": 16,
       "correctOptionIndex": 2,
@@ -389,7 +384,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "In Norse mythology, Thor once dressed as a woman.",
       "index": 17,
       "correctOptionIndex": 2,
@@ -405,7 +399,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?",
       "index": 18,
       "correctOptionIndex": 1,
@@ -429,7 +422,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "The Nike apparel and footwear brand takes it&#039;s name from the Greek goddess of what?",
       "index": 19,
       "correctOptionIndex": 4,
@@ -453,7 +445,6 @@
       ]
     },
     {
-      "id": null,
       "statement": "Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?",
       "index": 20,
       "correctOptionIndex": 4,

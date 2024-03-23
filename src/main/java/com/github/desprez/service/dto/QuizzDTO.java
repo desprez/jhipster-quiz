@@ -2,6 +2,8 @@ package com.github.desprez.service.dto;
 
 import com.github.desprez.domain.enumeration.DisplayOrder;
 import com.github.desprez.domain.enumeration.Period;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,10 @@ public class QuizzDTO extends QuizzBasicDTO {
     private Period attempsLimitPeriod;
 
     private List<QuestionDTO> questions = new ArrayList<>();
+
+    @Min(value = 1)
+    @Max(value = 100)
+    private Integer passingScore;
 
     public DisplayOrder getQuestionOrder() {
         return questionOrder;
@@ -90,6 +96,14 @@ public class QuizzDTO extends QuizzBasicDTO {
         this.questions = questions;
     }
 
+    public Integer getPassingScore() {
+        return passingScore;
+    }
+
+    public void setPassingScore(Integer passingScore) {
+        this.passingScore = passingScore;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -120,6 +134,7 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", description='" + getDescription() + "'" +
             ", difficulty='" + getDifficulty() + "'" +
             ", category='" + getCategory() + "'" +
+            ", maxAnswerTime='" + getMaxAnswerTime() + "'" +
             ", questionOrder='" + getQuestionOrder() + "'" +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
@@ -128,6 +143,7 @@ public class QuizzDTO extends QuizzBasicDTO {
             ", attempsLimit=" + getAttempsLimit() +
             ", attempsLimitPeriod='" + getAttempsLimitPeriod() + "'" +
             ", questions='" + getQuestions() + "'" +
+			", passingScore=" + getPassingScore() +
             ", user=" + getUser() +
             "}";
     }

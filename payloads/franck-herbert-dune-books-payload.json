@@ -1,0 +1,340 @@
+{
+  "title": "Frank Herbert's Dune Books",
+  "description": "Questions about the Dune series of books by Frank Herbert.",
+  "difficulty": "EASY",
+  "category": "BOOKS",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": "PT0S",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "questions": [
+    {
+      "statement": "What is the name of the desert planet in the Dune series?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "Arrakis",
+          "index": 1
+        },
+        {
+          "statement": "Tatooine",
+          "index": 2
+        },
+        {
+          "statement": "Hoth",
+          "index": 3
+        },
+        {
+          "statement": "Dagobah",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of the noble family that rules the planet Arrakis?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Corrino",
+          "index": 1
+        },
+        {
+          "statement": "Harkonnen",
+          "index": 2
+        },
+        {
+          "statement": "Atreides",
+          "index": 3
+        },
+        {
+          "statement": "Vernius",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of the giant sandworms that live on Arrakis?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Muad'Dib",
+          "index": 1
+        },
+        {
+          "statement": "Shai-Hulud",
+          "index": 2
+        },
+        {
+          "statement": "Kwisatz Haderach",
+          "index": 3
+        },
+        {
+          "statement": "Gom Jabbar",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the name of the drug that gives the user the ability to see the future?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Melange",
+          "index": 1
+        },
+        {
+          "statement": "The Water of Life",
+          "index": 2
+        },
+        {
+          "statement": "The Spice",
+          "index": 3
+        },
+        {
+          "statement": "The Elixir of Life",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of the prophesied messiah who will lead humanity to a golden age?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Leto Atreides",
+          "index": 1
+        },
+        {
+          "statement": "Paul Atreides",
+          "index": 2
+        },
+        {
+          "statement": "Duncan Idaho",
+          "index": 3
+        },
+        {
+          "statement": "Gurney Halleck",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the name of the secret society that manipulates the politics of the universe?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "The Ixians",
+          "index": 1
+        },
+        {
+          "statement": "The Spacing Guild",
+          "index": 2
+        },
+        {
+          "statement": "The Tleilaxu",
+          "index": 3
+        },
+        {
+          "statement": "The Bene Gesserit",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is the author of the Dune series of books?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Isaac Asimov",
+          "index": 1
+        },
+        {
+          "statement": "Arthur C. Clarke",
+          "index": 2
+        },
+        {
+          "statement": "Frank Herbert",
+          "index": 3
+        },
+        {
+          "statement": "George R. R. Martin",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of the first book in the Dune series?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Dune",
+          "index": 1
+        },
+        {
+          "statement": "Dune Messiah",
+          "index": 2
+        },
+        {
+          "statement": "Children of Dune",
+          "index": 3
+        },
+        {
+          "statement": "God Emperor of Dune",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of the second book in the Dune series?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Dune",
+          "index": 1
+        },
+        {
+          "statement": "Dune Messiah",
+          "index": 2
+        },
+        {
+          "statement": "Children of Dune",
+          "index": 3
+        },
+        {
+          "statement": "God Emperor of Dune",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "What is the name of the third book in the Dune series?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Dune",
+          "index": 1
+        },
+        {
+          "statement": "Dune Messiah",
+          "index": 2
+        },
+        {
+          "statement": "Children of Dune",
+          "index": 3
+        },
+        {
+          "statement": "God Emperor of Dune",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What is the name of the fourth book in the Dune series?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "Dune",
+          "index": 1
+        },
+        {
+          "statement": "Dune Messiah",
+          "index": 2
+        },
+        {
+          "statement": "Children of Dune",
+          "index": 3
+        },
+        {
+          "statement": "God Emperor of Dune",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "What is the name of species that produces the Spice Melange?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "The Klingon",
+          "index": 1
+        },
+        {
+          "statement": "The Bene Gesserit",
+          "index": 2
+        },
+        {
+          "statement": "The Na'vi",
+          "index": 3
+        },
+        {
+          "statement": "The Fremen",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Who is the main enemy of the characters in the “Dune” series?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "The Fremen",
+          "index": 1
+        },
+        {
+          "statement": "The Atreides",
+          "index": 2
+        },
+        {
+          "statement": "The Harkonnens",
+          "index": 3
+        },
+        {
+          "statement": "The Bene Gesserit",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "What powers does the spice give in the Dune series?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "A longer life span",
+          "index": 1
+        },
+        {
+          "statement": "Greater awareness of the universe",
+          "index": 2
+        },
+        {
+          "statement": "Prescience, a form of precognition based in genetics",
+          "index": 3
+        },
+        {
+          "statement": "All the above options",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    }
+  ]
+}

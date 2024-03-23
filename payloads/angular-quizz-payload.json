@@ -11,14 +11,14 @@
   "image": null,
   "imageContentType": null,
   "questionCount": 19,
-  "publishDate": null,
-  "maxAnswerTime": null,
+  "maxAnswerTime": "PT0S",
   "questionOrder": "RANDOM",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": true,
   "attempsLimit": null,
   "attempsLimitPeriod": null,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "What is the purpose of the ngClass directive in Angular?",

@@ -20,12 +20,13 @@ import { Period } from 'app/entities/enumerations/period.model';
 import { QuizzService } from '../service/quizz.service';
 import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from './quizz-form.service';
+import { DurationComponent } from 'app/shared/duration/duration.component';
 
 @Component({
   standalone: true,
   selector: 'jhi-quizz-update',
   templateUrl: './quizz-update.component.html',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective, DurationComponent],
 })
 export class QuizzUpdateComponent implements OnInit {
   isSaving = false;

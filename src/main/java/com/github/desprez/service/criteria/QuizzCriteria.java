@@ -68,7 +68,7 @@ public class QuizzCriteria implements Serializable, Criteria {
 
     private CategoryFilter category;
 
-    private IntegerFilter maxAnswerTime;
+    private DurationFilter maxAnswerTime;
     private BooleanFilter published;
     private InstantFilter publishDate;
     private IntegerFilter questionCount;
@@ -173,18 +173,18 @@ public class QuizzCriteria implements Serializable, Criteria {
         this.category = category;
     }
 
-    public IntegerFilter getMaxAnswerTime() {
+    public DurationFilter getMaxAnswerTime() {
         return maxAnswerTime;
     }
 
-    public IntegerFilter maxAnswerTime() {
+    public DurationFilter maxAnswerTime() {
         if (maxAnswerTime == null) {
-            maxAnswerTime = new IntegerFilter();
+            maxAnswerTime = new DurationFilter();
         }
         return maxAnswerTime;
     }
 
-    public void setMaxAnswerTime(IntegerFilter maxAnswerTime) {
+    public void setMaxAnswerTime(DurationFilter maxAnswerTime) {
         this.maxAnswerTime = maxAnswerTime;
     }
 

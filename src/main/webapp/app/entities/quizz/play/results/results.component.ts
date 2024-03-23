@@ -17,6 +17,7 @@ export class ResultsComponent implements OnChanges {
   current: number = 0;
   max: number = 0;
   answered: number = 0;
+  percent: number = 0;
 
   @Input({ required: true }) attempt!: IAttempt;
 
@@ -27,6 +28,7 @@ export class ResultsComponent implements OnChanges {
       this.current = this.attempt?.correctAnswerCount || 0;
       this.max = (this.attempt?.correctAnswerCount ?? 0) + (this.attempt?.wrongAnswerCount ?? 0) + (this.attempt?.unansweredCount ?? 0);
       this.answered = (this.attempt?.correctAnswerCount ?? 0) + (this.attempt?.wrongAnswerCount ?? 0);
+      this.percent = (this.current / this.max) * 100;
     }
   }
 }

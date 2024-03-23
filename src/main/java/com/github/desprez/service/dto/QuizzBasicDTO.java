@@ -1,10 +1,13 @@
 package com.github.desprez.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.github.desprez.domain.enumeration.Category;
 import com.github.desprez.domain.enumeration.Difficulty;
 import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
@@ -42,7 +45,7 @@ public class QuizzBasicDTO {
 
     private Instant publishDate;
 
-    private Integer maxAnswerTime;
+    private Duration maxAnswerTime;
 
     public UUID getId() {
         return id;
@@ -133,11 +136,11 @@ public class QuizzBasicDTO {
         this.publishDate = publishDate;
     }
 
-    public Integer getMaxAnswerTime() {
+    public Duration getMaxAnswerTime() {
         return maxAnswerTime;
     }
 
-    public void setMaxAnswerTime(Integer maxAnswerTime) {
+    public void setMaxAnswerTime(Duration maxAnswerTime) {
         this.maxAnswerTime = maxAnswerTime;
     }
 

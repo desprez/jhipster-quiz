@@ -8,6 +8,7 @@ import com.github.desprez.domain.enumeration.Period;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -56,7 +57,7 @@ public class Quizz implements Serializable {
     private DisplayOrder questionOrder;
 
     @Column(name = "max_answer_time")
-    private Integer maxAnswerTime;
+    private Duration maxAnswerTime;
 
     @NotNull
     @Column(name = "allow_back", nullable = false)
@@ -93,6 +94,11 @@ public class Quizz implements Serializable {
 
     @Column(name = "question_count")
     private Integer questionCount;
+
+    @Min(value = 1)
+    @Max(value = 100)
+    @Column(name = "passing_score")
+    private Integer passingScore;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "quizz", cascade = CascadeType.ALL, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -183,16 +189,16 @@ public class Quizz implements Serializable {
         this.questionOrder = questionOrder;
     }
 
-    public Integer getMaxAnswerTime() {
+    public Duration getMaxAnswerTime() {
         return this.maxAnswerTime;
     }
 
-    public Quizz maxAnswerTime(Integer maxAnswerTime) {
+    public Quizz maxAnswerTime(Duration maxAnswerTime) {
         this.setMaxAnswerTime(maxAnswerTime);
         return this;
     }
 
-    public void setMaxAnswerTime(Integer maxAnswerTime) {
+    public void setMaxAnswerTime(Duration maxAnswerTime) {
         this.maxAnswerTime = maxAnswerTime;
     }
 
@@ -326,6 +332,19 @@ public class Quizz implements Serializable {
         this.questionCount = questionCount;
     }
 
+    public Integer getPassingScore() {
+        return this.passingScore;
+    }
+
+    public Quizz passingScore(Integer passingScore) {
+        this.setPassingScore(passingScore);
+        return this;
+    }
+
+    public void setPassingScore(Integer passingScore) {
+        this.passingScore = passingScore;
+    }
+
     public Set<Question> getQuestions() {
         return this.questions;
     }
@@ -399,7 +418,7 @@ public class Quizz implements Serializable {
             ", difficulty='" + getDifficulty() + "'" +
             ", category='" + getCategory() + "'" +
             ", questionOrder='" + getQuestionOrder() + "'" +
-            ", maxAnswerTime=" + getMaxAnswerTime() +
+            ", maxAnswerTime='" + getMaxAnswerTime() + "'" +
             ", allowBack='" + getAllowBack() + "'" +
             ", allowReview='" + getAllowReview() + "'" +
             ", keepAnswersSecret='" + getKeepAnswersSecret() + "'" +
@@ -410,6 +429,7 @@ public class Quizz implements Serializable {
             ", attempsLimit=" + getAttempsLimit() +
             ", attempsLimitPeriod='" + getAttempsLimitPeriod() + "'" +
             ", questionCount=" + getQuestionCount() +
+            ", passingScore=" + getPassingScore() +
             "}";
     }
 }

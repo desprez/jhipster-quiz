@@ -20,6 +20,7 @@ import com.github.desprez.service.dto.AttemptAnswerDTO;
 import com.github.desprez.service.dto.AttemptDTO;
 import com.github.desprez.service.dto.OptionDTO;
 import jakarta.persistence.EntityManager;
+import java.time.Duration;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -64,7 +65,7 @@ class PlayResourceIT {
             .difficulty(Difficulty.EASY)
             .category(Category.GENERAL_KNOWLEDGE)
             .questionOrder(DisplayOrder.RANDOM)
-            .maxAnswerTime(0)
+            .maxAnswerTime(Duration.ofSeconds(300))
             .allowBack(false)
             .allowReview(false)
             .keepAnswersSecret(true)

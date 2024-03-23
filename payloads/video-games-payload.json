@@ -11,14 +11,14 @@
   "image": null,
   "imageContentType": null,
   "questionCount": 10,
-  "publishDate": null,
   "questionOrder": "FIXED",
-  "maxAnswerTime": null,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": true,
   "attempsLimit": null,
   "attempsLimitPeriod": null,
+  "passingScore": 80,
   "questions": [
     {
       "statement": "In the video game 'The Legend of Zelda: Breath of the Wild,' what is the name of the main character?",

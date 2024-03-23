@@ -1,20 +1,21 @@
 {
-  "title": "Quiz the Starwars universe (English)",
+  "title": "Quiz the Starwars universe (EN)",
   "description": "A quiz about Starwars universe",
   "difficulty": "EASY",
   "category": "FILM",
   "questionCount": 12,
   "questionOrder": "RANDOM",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "keepAnswersSecret": false,
-  "published": true,
+  "published": false,
   "publishDate": "2024-02-23T00:00:00Z",
   "user": {
     "id": 2,
     "login": "user"
   },
+  "passingScore": 95,
   "questions": [
     {
       "statement": "Who is Luke Skywalker's father?",
@@ -224,7 +225,7 @@
       "correctOptionIndex": 1
     },
     {
-      "statement": "Which Sith Lord is known for his red and black facial tattoos?",
+      "statement": "Which <strong>Sith Lord</strong> is known for his red and black facial tattoos?",
       "index": 10,
       "options": [
         {
@@ -247,7 +248,7 @@
       "correctOptionIndex": 1
     },
     {
-      "statement": "When does &quot;Rogue One: A Star Wars Story&quot; take place chronologically in the series?",
+      "statement": "When does <strong>Rogue One: A Star Wars Story</strong> take place chronologically in the series?",
       "index": 11,
       "correctOptionIndex": 4,
       "options": [
@@ -270,7 +271,7 @@
       ]
     },
     {
-      "statement": "In the original Star Wars trilogy, David Prowse was the actor who physically portrayed Darth Vader.",
+      "statement": "In the original Star Wars trilogy, <strong>David Prowse</strong> was the actor who physically portrayed Darth Vader.",
       "index": 12,
       "correctOptionIndex": 1,
       "options": [

@@ -22,13 +22,14 @@ import { IQuizz } from '../quizz.model';
 import { QuizzFormService, QuizzFormGroup } from '../update/quizz-form.service';
 import { IQuestion } from 'app/entities/question/question.model';
 import { IOption } from 'app/entities/option/option.model';
+import { DurationComponent } from 'app/shared/duration/duration.component';
 
 @Component({
   standalone: true,
   selector: 'jhi-quizz-maker',
   templateUrl: './quizz-maker.component.html',
   styleUrl: './quizz-maker.component.scss',
-  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective],
+  imports: [SharedModule, FormsModule, ReactiveFormsModule, HasAnyAuthorityDirective, DurationComponent],
 })
 export class QuizzMakerComponent implements OnInit {
   isSaving = false;

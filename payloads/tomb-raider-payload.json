@@ -1,0 +1,318 @@
+{
+  "title": "Lara Croft et Tomb Raider (FR)",
+  "description": "Testez vos connaissances sur l'héroïne Lara Croft et la série de jeux vidéo <strong>Tomb Raider</strong> !",
+  "difficulty": "EASY",
+  "category": "VIDEO_GAMES",
+  "published": true,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "RANDOM",
+  "maxAnswerTime": "PT0S",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": true,
+  "passingScore": 80,
+  "questions": [
+    {
+      "statement": "Quel est le nom de l'héroïne principale dans le jeu vidéo <strong>Tomb Raider</strong> ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Lara",
+          "index": 1
+        },
+        {
+          "statement": "Emily",
+          "index": 2
+        },
+        {
+          "statement": "Jessica",
+          "index": 3
+        },
+        {
+          "statement": "Sofia",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quelle société de développement de jeux vidéo a créé la série <strong>Tomb Raider</strong> ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Capcom",
+          "index": 1
+        },
+        {
+          "statement": "Ubisoft",
+          "index": 2
+        },
+        {
+          "statement": "Naughty Dog",
+          "index": 3
+        },
+        {
+          "statement": "Square Enix",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Dans quel type de jeu vidéo s'inscrit principalement la série <strong>Tomb Raider</strong> ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Jeu de sport",
+          "index": 1
+        },
+        {
+          "statement": "Jeu de tir à la première personne",
+          "index": 2
+        },
+        {
+          "statement": "Jeu d'aventure",
+          "index": 3
+        },
+        {
+          "statement": "Jeu de rôle",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quelle est la première année de sortie du premier jeu <strong>Tomb Raider</strong> ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "1995",
+          "index": 1
+        },
+        {
+          "statement": "2000",
+          "index": 2
+        },
+        {
+          "statement": "2005",
+          "index": 3
+        },
+        {
+          "statement": "1992",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom du premier jeu de la série <strong>Tomb Raider</strong> sorti en 1995 ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Tomb Raider: Legend",
+          "index": 1
+        },
+        {
+          "statement": "Tomb Raider: Anniversary",
+          "index": 2
+        },
+        {
+          "statement": "Tomb Raider: Underworld",
+          "index": 3
+        },
+        {
+          "statement": "Tomb Raider",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quelle est la profession de l'héroïne Lara Croft dans le jeu <strong>Tomb Raider</strong> ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Policière",
+          "index": 1
+        },
+        {
+          "statement": "Avocate",
+          "index": 2
+        },
+        {
+          "statement": "Athlète",
+          "index": 3
+        },
+        {
+          "statement": "Archéologue",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Dans combien de continents différents se déroulent les aventures de Lara Croft dans la série <strong>Tomb Raider</strong> ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "3",
+          "index": 1
+        },
+        {
+          "statement": "4",
+          "index": 2
+        },
+        {
+          "statement": "5",
+          "index": 4
+        },
+        {
+          "statement": "6",
+          "index": 3
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom du mentor et ami proche de Lara Croft dans la série <strong>Tomb Raider</strong> ?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "Sam Fisher",
+          "index": 1
+        },
+        {
+          "statement": "Nathan Drake",
+          "index": 2
+        },
+        {
+          "statement": "Victor Sullivan",
+          "index": 3
+        },
+        {
+          "statement": "Werner Von Croy",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel élément caractérise principalement le gameplay de la série <strong>Tomb Raider</strong> en termes d'exploration ?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "Plateformes",
+          "index": 1
+        },
+        {
+          "statement": "Combats de boss",
+          "index": 2
+        },
+        {
+          "statement": "Enigmes",
+          "index": 3
+        },
+        {
+          "statement": "Courses",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom de l'organisation secrète souvent présente dans les intrigues de la série <strong>Tomb Raider</strong> ?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "La Confrérie de l'Ordre",
+          "index": 1
+        },
+        {
+          "statement": "Les Templiers",
+          "index": 2
+        },
+        {
+          "statement": "Les Illuminatis",
+          "index": 3
+        },
+        {
+          "statement": "La Fraternité des Ombres",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom du père de Lara Croft, archéologue et aventurier, disparu lorsqu'elle était jeune ?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "Richard Croft",
+          "index": 1
+        },
+        {
+          "statement": "James Croft",
+          "index": 2
+        },
+        {
+          "statement": "John Croft",
+          "index": 3
+        },
+        {
+          "statement": "Robert Croft",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est le nom de l'île mystérieuse où se déroule l'action du jeu <strong>Tomb Raider</strong> sorti en 2013 ?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "Avalon",
+          "index": 1
+        },
+        {
+          "statement": "Atlantis",
+          "index": 2
+        },
+        {
+          "statement": "Yamatai",
+          "index": 3
+        },
+        {
+          "statement": "El Dorado",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le nom de l'actrice qui a incarné Lara Croft dans les films <strong>Lara Croft: Tomb Raider</strong> et <strong>Lara Croft: Tomb Raider, le berceau de la vie</strong> ?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "Milla Jovovich",
+          "index": 1
+        },
+        {
+          "statement": "Angelina Jolie",
+          "index": 2
+        },
+        {
+          "statement": "Kate Beckinsale",
+          "index": 3
+        },
+        {
+          "statement": "Scarlett Johansson",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    }
+  ]
+}

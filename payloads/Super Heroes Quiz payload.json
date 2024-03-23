@@ -6,11 +6,11 @@
   "questionOrder": "RANDOM",
   "questionCount": 11,
   "published": false,
-  "publishDate": "2024-02-23T00:00:00Z",
-  "maxAnswerTime": 0,
+  "maxAnswerTime": "PT0S",
   "allowBack": true,
   "allowReview": true,
   "secretGoodAnwers": false,
+  "passingScore": 80,
   "user": {
     "id": 2,
     "login": "user"

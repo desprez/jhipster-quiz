@@ -1,0 +1,356 @@
+{
+  "title": "Test de connaissances sur le système solaire",
+  "description": " Ce test de connaissances sur l'astronomie est destiné à tester vos connaissances générales sur notre système solaire. Il est composé de 15 questions à choix multiples. Bonne chance!",
+  "difficulty": "EASY",
+  "category": "SCIENCE_NATURE",
+  "published": false,
+  "user": {
+    "id": 2,
+    "login": "user"
+  },
+  "questionOrder": "FIXED",
+  "maxAnswerTime": "PT0S",
+  "allowBack": true,
+  "allowReview": true,
+  "keepAnswersSecret": false,
+  "passingScore": 80,
+  "questions": [
+    {
+      "statement": "Combien de planètes y a-t-il dans notre système solaire ?",
+      "index": 1,
+      "options": [
+        {
+          "statement": "6",
+          "index": 1
+        },
+        {
+          "statement": "8",
+          "index": 2
+        },
+        {
+          "statement": "10",
+          "index": 3
+        },
+        {
+          "statement": "12",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quelle est la planète la plus proche du soleil ?",
+      "index": 2,
+      "options": [
+        {
+          "statement": "La Terre",
+          "index": 1
+        },
+        {
+          "statement": "Mercure",
+          "index": 2
+        },
+        {
+          "statement": "Mars",
+          "index": 3
+        },
+        {
+          "statement": "Venus",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quelle est la plus grande planète du système solaire ?",
+      "index": 3,
+      "options": [
+        {
+          "statement": "Uranus",
+          "index": 1
+        },
+        {
+          "statement": "Saturne",
+          "index": 2
+        },
+        {
+          "statement": "Jupiter",
+          "index": 3
+        },
+        {
+          "statement": "Mars",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quel est le plus grand satellite naturel de Jupiter ?",
+      "index": 4,
+      "options": [
+        {
+          "statement": "Titan",
+          "index": 1
+        },
+        {
+          "statement": "Io",
+          "index": 2
+        },
+        {
+          "statement": "Ganymède",
+          "index": 3
+        },
+        {
+          "statement": "Europe",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Quelle planète est connue pour ses magnifiques anneaux ?",
+      "index": 5,
+      "options": [
+        {
+          "statement": "Mercure",
+          "index": 1
+        },
+        {
+          "statement": "Saturne",
+          "index": 2
+        },
+        {
+          "statement": "Mars",
+          "index": 3
+        },
+        {
+          "statement": "Uranus",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quel est le nom de la sonde de la NASA qui a atterri sur Mars en février 2021 ?",
+      "index": 6,
+      "options": [
+        {
+          "statement": "Voyager",
+          "index": 1
+        },
+        {
+          "statement": "Juno",
+          "index": 2
+        },
+        {
+          "statement": "Spirit",
+          "index": 3
+        },
+        {
+          "statement": "Perseverance",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Quel est le nom du premier satellite artificiel de la Terre, lancé en 1957 ?",
+      "index": 7,
+      "options": [
+        {
+          "statement": "Sputnik 1",
+          "index": 1
+        },
+        {
+          "statement": "Telstar 1",
+          "index": 2
+        },
+        {
+          "statement": "Mariner 10",
+          "index": 3
+        },
+        {
+          "statement": "Explorer 1",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quelle est la planète la plus éloignée du soleil ?",
+      "index": 8,
+      "options": [
+        {
+          "statement": "Neptune",
+          "index": 1
+        },
+        {
+          "statement": "Pluton",
+          "index": 2
+        },
+        {
+          "statement": "Uranus",
+          "index": 3
+        },
+        {
+          "statement": "Saturne",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quel est l'élément principal composant le noyau des étoiles, y compris notre soleil ?",
+      "index": 9,
+      "options": [
+        {
+          "statement": "Fer",
+          "index": 1
+        },
+        {
+          "statement": "Carbone",
+          "index": 2
+        },
+        {
+          "statement": "Azote",
+          "index": 3
+        },
+        {
+          "statement": "Hydrogène",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Combien de lunes a la Terre?",
+      "index": 10,
+      "options": [
+        {
+          "statement": "1",
+          "index": 1
+        },
+        {
+          "statement": "2",
+          "index": 2
+        },
+        {
+          "statement": "3",
+          "index": 3
+        },
+        {
+          "statement": "5",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Quelle est la distance moyenne qui sépare la Terre du Soleil ?",
+      "index": 11,
+      "options": [
+        {
+          "statement": "4 milions de kilomètres",
+          "index": 1
+        },
+        {
+          "statement": "60 milions de kilomètres",
+          "index": 2
+        },
+        {
+          "statement": "150 milions de kilomètres",
+          "index": 3
+        },
+        {
+          "statement": "350 milions de kilomètres",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 3
+    },
+    {
+      "statement": "Notre système solaire fait partie de la galaxie Andromede ?",
+      "index": 12,
+      "options": [
+        {
+          "statement": "Vrai",
+          "index": 1
+        },
+        {
+          "statement": "Faux",
+          "index": 2
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "En astronomie, quelle est la classification du Soleil ?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "Un nébuleuse",
+          "index": 1
+        },
+        {
+          "statement": "Une étoile naine jaune",
+          "index": 2
+        },
+        {
+          "statement": "Une étoile géante rouge",
+          "index": 3
+        },
+        {
+          "statement": "un pulsar",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Quelle est la durée nécessaire pour que la lumière du Soleil arrive sur la Terre ?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "8 secondes",
+          "index": 1
+        },
+        {
+          "statement": "8 minutes",
+          "index": 2
+        },
+        {
+          "statement": "8 heures",
+          "index": 3
+        },
+        {
+          "statement": "8 jours",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Combien de temps dure la rotation complète de la Lune autour de la Terre ?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "7 jours",
+          "index": 1
+        },
+        {
+          "statement": "14 jours",
+          "index": 2
+        },
+        {
+          "statement": "21 jours",
+          "index": 3
+        },
+        {
+          "statement": "28 jours",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    }
+  ]
+}
