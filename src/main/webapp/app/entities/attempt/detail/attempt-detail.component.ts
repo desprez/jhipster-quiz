@@ -7,6 +7,7 @@ import { IAttempt } from '../attempt.model';
 
 import { PercentPipe } from '@angular/common';
 import { RoundProgressComponent } from 'angular-svg-round-progressbar';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 @Component({
   standalone: true,
@@ -29,7 +30,16 @@ import { RoundProgressComponent } from 'angular-svg-round-progressbar';
   //   top: 30%;
   // }
   // `],
-  imports: [SharedModule, RouterModule, DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe, RoundProgressComponent, PercentPipe],
+  imports: [
+    SharedModule,
+    RouterModule,
+    DurationPipe,
+    FormatMediumDatetimePipe,
+    FormatMediumDatePipe,
+    RoundProgressComponent,
+    PercentPipe,
+    HasAnyAuthorityDirective,
+  ],
 })
 export class AttemptDetailComponent implements OnInit {
   current = 0;

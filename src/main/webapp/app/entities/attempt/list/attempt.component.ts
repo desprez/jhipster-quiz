@@ -16,6 +16,7 @@ import { IAttempt } from '../attempt.model';
 import { EntityArrayResponseType, AttemptService } from '../service/attempt.service';
 import { AttemptDeleteDialogComponent } from '../delete/attempt-delete-dialog.component';
 import { Dayjs } from 'dayjs';
+import HasAnyAuthorityDirective from 'app/shared/auth/has-any-authority.directive';
 
 @Component({
   standalone: true,
@@ -32,6 +33,7 @@ import { Dayjs } from 'dayjs';
     FormatMediumDatePipe,
     ItemCountComponent,
     DayJSPipe,
+    HasAnyAuthorityDirective,
   ],
 })
 export class AttemptComponent implements OnInit {

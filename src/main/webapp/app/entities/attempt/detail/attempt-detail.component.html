@@ -11,8 +11,8 @@
         <jhi-alert></jhi-alert>
 
         <dl class="row-md jh-entity-details">
-          <dt><span jhiTranslate="quizzApp.attempt.id">Id</span></dt>
-          <dd>
+          <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="quizzApp.attempt.id">Id</span></dt>
+          <dd *jhiHasAnyAuthority="'ROLE_ADMIN'">
             <span>{{ attempt.id }}</span>
           </dd>
           <dt><span jhiTranslate="quizzApp.attempt.quizz">Quizz</span></dt>
@@ -94,7 +94,7 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
 
-        <button type="button" [routerLink]="['/attempt', attempt.id, 'edit']" class="btn btn-primary">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="button" [routerLink]="['/attempt', attempt.id, 'edit']" class="btn btn-primary">
           <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
         </button>
       </div>

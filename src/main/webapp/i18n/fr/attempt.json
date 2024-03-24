@@ -18,8 +18,8 @@
         "title": "Tentative"
       },
       "id": "Id",
-      "correctAnswerCount": "Nombre de réponses correctes",
-      "wrongAnswerCount": "Nombre de réponses incorrectes",
+      "correctAnswerCount": "Réponses correctes",
+      "wrongAnswerCount": "Réponses incorrectes",
       "unansweredCount": "Non répondues",
       "score": "Score",
       "started": "Début",

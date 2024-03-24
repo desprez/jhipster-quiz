@@ -7,16 +7,6 @@
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="quizzApp.attempt.home.refreshListLabel">Refresh list</span>
       </button>
-
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-attempt"
-        [routerLink]="['/attempt/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="quizzApp.attempt.home.createLabel">Create a new Attempt</span>
-      </button>
     </div>
   </h2>
 
@@ -35,22 +25,21 @@
       <table class="table table-striped table-hover" aria-describedby="page-heading">
         <thead>
           <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-            <th scope="col" jhiSortBy="id">
+            <th *jhiHasAnyAuthority="'ROLE_ADMIN'" scope="col" jhiSortBy="id">
               <div class="d-flex">
                 <span jhiTranslate="quizzApp.attempt.id">Id</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="quizz.title">
-              <div class="d-flex">
-                <span jhiTranslate="quizzApp.attempt.quizz">Quizz</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
             <th scope="col" jhiSortBy="user.login">
               <div class="d-flex">
                 <span jhiTranslate="quizzApp.attempt.user">User</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="quizz.title">
+              <div class="d-flex">
+                <span jhiTranslate="quizzApp.attempt.quizz">Quizz</span>
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
@@ -96,8 +85,11 @@
         <tbody>
           @for (attempt of attempts; track trackId) {
             <tr data-cy="entityTable">
-              <td>
+              <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
                 <a [routerLink]="['/attempt', attempt.id, 'view']">{{ attempt.id }}</a>
+              </td>
+              <td>
+                {{ attempt.user?.login }}
               </td>
               <td>
                 @if (attempt.quizz) {
@@ -106,12 +98,9 @@
                   </div>
                 }
               </td>
-              <td>
-                {{ attempt.user?.login }}
-              </td>
-              <td>{{ attempt.correctAnswerCount }}</td>
-              <td>{{ attempt.wrongAnswerCount }}</td>
-              <td>{{ attempt.unansweredCount }}</td>
+              <td class="text-center">{{ attempt.correctAnswerCount }}</td>
+              <td class="text-center">{{ attempt.wrongAnswerCount }}</td>
+              <td class="text-center">{{ attempt.unansweredCount }}</td>
               <td>{{ attempt.started | dayJS: 'fromNow' }}</td>
               <td>{{ diffDate(attempt) | duration }}</td>
               <td class="text-end">
@@ -121,12 +110,23 @@
                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                   </a>
 
-                  <a [routerLink]="['/attempt', attempt.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                  <a
+                    *jhiHasAnyAuthority="'ROLE_ADMIN'"
+                    [routerLink]="['/attempt', attempt.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
                     <fa-icon icon="pencil-alt"></fa-icon>
                     <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                   </a>
 
-                  <button type="submit" (click)="delete(attempt)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <button
+                    *jhiHasAnyAuthority="'ROLE_ADMIN'"
+                    type="submit"
+                    (click)="delete(attempt)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
                     <fa-icon icon="times"></fa-icon>
                     <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                   </button>

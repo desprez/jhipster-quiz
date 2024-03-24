@@ -12,14 +12,14 @@
       </div>
     }
   </div>
-  <p>Question 5 out of 5</p>
+
   <div class="justify-content-between">
-    <ngb-progressbar class="mb-3" [showValue]="true" type="primary" [value]="answerCount" [max]="3" />
+    <ngb-progressbar class="mb-3" [showValue]="true" type="primary" [value]="answerCount" [max]="answerList.length" />
   </div>
   <jhi-alert-error></jhi-alert-error>
   <header></header>
 
-  <h5><span [innerHTML]="answerList[currentQuestionIndex].question!.statement"></span></h5>
+  <h5><span [innerHTML]="answerList[currentQuestionIndex].question!.statement">Question Statement</span></h5>
 
   <div class="row">
     <jhi-play-form
