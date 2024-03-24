@@ -284,6 +284,121 @@
           "index": 2
         }
       ]
+    },
+    {
+      "statement": "Which character says, 'May the Force be with you'?",
+      "index": 13,
+      "options": [
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 1
+        },
+        {
+          "statement": "Luke Skywalker",
+          "index": 2
+        },
+        {
+          "statement": "Han Solo",
+          "index": 3
+        },
+        {
+          "statement": "Princess Leia",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 4
+    },
+    {
+      "statement": "Which Jedi Master trains Anakin Skywalker?",
+      "index": 14,
+      "options": [
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 1
+        },
+        {
+          "statement": "Mace Windu",
+          "index": 2
+        },
+        {
+          "statement": "Yoda",
+          "index": 3
+        },
+        {
+          "statement": "Qui-Gon Jinn",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "What is the name of Darth Vader's flagship?",
+      "index": 15,
+      "options": [
+        {
+          "statement": "Executor",
+          "index": 1
+        },
+        {
+          "statement": "Devastator",
+          "index": 2
+        },
+        {
+          "statement": "Star Destroyer",
+          "index": 3
+        },
+        {
+          "statement": "Millennium Falcon",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
+    },
+    {
+      "statement": "Who is Princess Leia's adoptive father?",
+      "index": 16,
+      "options": [
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 1
+        },
+        {
+          "statement": "Bail Organa",
+          "index": 2
+        },
+        {
+          "statement": "Han Solo",
+          "index": 3
+        },
+        {
+          "statement": "Yoda",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 2
+    },
+    {
+      "statement": "Who is Yoda's apprentice in the prequel trilogy?",
+      "index": 17,
+      "options": [
+        {
+          "statement": "Obi-Wan Kenobi",
+          "index": 1
+        },
+        {
+          "statement": "Mace Windu",
+          "index": 2
+        },
+        {
+          "statement": "Qui-Gon Jinn",
+          "index": 3
+        },
+        {
+          "statement": "Count Dooku",
+          "index": 4
+        }
+      ],
+      "correctOptionIndex": 1
     }
   ]
 }
